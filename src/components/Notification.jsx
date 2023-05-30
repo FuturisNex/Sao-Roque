@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
-import { Button } from '.';
 import database from '../auth/firebase.js';
 
 const Notification = () => {
