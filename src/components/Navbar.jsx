@@ -5,6 +5,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import avatar from '../data/avatar.png';
+import Button from './Button';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
