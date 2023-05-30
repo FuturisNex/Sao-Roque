@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import database from '../auth/firebase.js';
+import { Button } from '.';
 
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);
