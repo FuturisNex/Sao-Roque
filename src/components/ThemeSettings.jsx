@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { BsCheck } from 'react-icons/bs';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
@@ -8,16 +8,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 
 const ThemeSettings = () => {
   const { setColor, setMode, currentMode, currentColor, setThemeSettings } = useStateContext();
-
-  useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setColor(currentThemeColor);
-      setMode(currentThemeMode);
-    }
-  }, []);
-
+  
   return (
     <div className="bg-half-transparent w-screen fixed nav-item top-0 right-0">
       <div className="float-right h-screen dark:text-gray-200  bg-white dark:bg-[#484B52] w-400">
@@ -31,9 +22,11 @@ const ThemeSettings = () => {
           >
             <MdOutlineCancel />
           </button>
+
         </div>
         <div className="flex-col border-t-1 border-color p-4 ml-4">
           <p className="font-semibold text-xl ">Opção de tema</p>
+
           <div className="mt-4">
             <input
               type="radio"
@@ -41,7 +34,7 @@ const ThemeSettings = () => {
               name="theme"
               value="Light"
               className="cursor-pointer"
-              onChange={() => setMode('Light')}
+              onChange={setMode}
               checked={currentMode === 'Light'}
             />
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
@@ -55,7 +48,7 @@ const ThemeSettings = () => {
               id="dark"
               name="theme"
               value="Dark"
-              onChange={() => setMode('Dark')}
+              onChange={setMode}
               className="cursor-pointer"
               checked={currentMode === 'Dark'}
             />
@@ -73,15 +66,15 @@ const ThemeSettings = () => {
                 <div
                   className="relative mt-2 cursor-pointer flex gap-5 items-center"
                   key={item.name}
-                  onClick={() => setColor(item.color)}
                 >
-                  <div
-                    className={`w-6 h-6 rounded-full ${item.color} ${
-                      currentColor === item.color ? 'ring-2 ring-primary' : ''
-                    }`}
+                  <button
+                    type="button"
+                    className="h-10 w-10 rounded-full cursor-pointer"
+                    style={{ backgroundColor: item.color }}
+                    onClick={() => setColor(item.color)}
                   >
-                    {currentColor === item.color && <BsCheck className="text-white absolute left-1.5 top-1.5" />}
-                  </div>
+                    <BsCheck className={`ml-2 text-2xl text-white ${item.color === currentColor ? 'block' : 'hidden'}`} />
+                  </button>
                 </div>
               </TooltipComponent>
             ))}
