@@ -16,6 +16,9 @@ const Notification = () => {
           const notificationsArray = Object.values(notificationsData);
           setNotifications(notificationsArray);
           setPiscando(true);
+          setTimeout(() => {
+            setPiscando(false);
+          }, 5000); // Define o tempo de piscar para 5 segundos (5000 milissegundos)
         }
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
@@ -25,20 +28,12 @@ const Notification = () => {
     fetchNotifications();
   }, []);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setPiscando(false);
-    }, 8000);
-
-    return () => clearTimeout(timeout);
-  }, [notifications]);
-
   return (
     <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`}>
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
-          <button type="button" className="text-white text-xs rounded p-1 px-2 bg-orange-theme mt-2">
+          <button type="button" className={`text-white text-xs rounded p-1 px-2 mt-2 ${piscando ? 'bg-orange-theme' : ''}`}>
             {notifications.length} Notificação{notifications.length !== 1 ? 'ões' : ''}
           </button>
         </div>
