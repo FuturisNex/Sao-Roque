@@ -43,9 +43,9 @@ const Notification = () => {
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
-<button type="button" className="text-white text-xs rounded p-1 px-2 bg-orange-theme mt-2">
-  {notifications.length} Notificação{notifications.length !== 1 ? 'ões' : ''}
-</button>
+          <button type="button" className="text-white text-xs rounded p-1 px-2 bg-orange-theme mt-2">
+            {notifications.length} Notificação{notifications.length !== 1 ? 'ões' : ''}
+          </button>
         </div>
         <Button
           icon={<MdOutlineCancel />}
