@@ -35,6 +35,7 @@ const Notification = () => {
 
   return (
     <div
+      /* eslint-disable-next-line react/jsx-curly-brace-presence */
       className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96`}
       style={{
         animation: `${piscando ? 'piscar 1s infinite' : 'none'}`,
