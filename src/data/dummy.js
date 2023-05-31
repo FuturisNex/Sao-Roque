@@ -112,7 +112,7 @@ export const themeColors = [
     name: 'red-theme',
     color: '#FF5C8E',
   },
-    {
+  {
     name: 'green-theme',
     color: '#03C9D7',
   },
