@@ -29,7 +29,7 @@ const Rebaixa = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       REBAIXA: 'https://docs.google.com/spreadsheets/d/1fpWoqKzuYC5_8G0RNtvjdpuUReQJnYjLB4RbGQl-ClY/edit?usp=sharing',
-      ENVIAR: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgQS1ishhDm7-b2P7?e=EgKHnE',
+      ENVIAR: 'https://sistema-comprador.vercel.app/forms',
     }[buyer];
 
     if (url) {
