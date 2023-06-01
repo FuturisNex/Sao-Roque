@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai';
 import { useStateContext } from '../../contexts/ContextProvider';
-import { Link } from 'react-router-dom';
 import './Comprador.css';
 
 const buyers = ['ADAUTO', 'MARIVONE', 'NETA', 'SENA'];
