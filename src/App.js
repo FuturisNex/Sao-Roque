@@ -14,6 +14,11 @@ import Comprador from './pages/Comprador/Comprador';
 import Analise from './pages/Analise/Analise';
 import Contratos from './pages/Contratos/Contratos';
 
+import Adauto from './pages/Compradores/Adauto/Adauto';
+import Jovita from './pages/Compradores/Jovita/Jovita';
+import Marivone from './pages/Compradores/Marivone/Marivone';
+import Sena from './pages/Compradores/Sena/Sena';
+
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
@@ -64,6 +69,12 @@ const App = () => {
             <div>
               {themeSettings && <ThemeSettings />}
               <Routes>
+                {/* compradores */}
+                <Route path="/adauto" element={<Adauto />} />
+                <Route path="/marivone" element={<Marivone />} />
+                <Route path="/neta" element={<Jovita />} />
+                <Route path="/sena" element={<Sena />} />
+
                 {/* dashboard */}
                 <Route path="/" element={<Comprador />} />
                 <Route path="/comprador" element={<Comprador />} />

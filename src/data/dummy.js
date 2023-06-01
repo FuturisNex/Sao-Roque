@@ -101,8 +101,8 @@ export const themeColors = [
     color: '#1A97F5',
   },
   {
-    name: 'green-theme',
-    color: '#03C9D7',
+    name: 'indigo-theme',
+    color: '#1E4DB7',
   },
   {
     name: 'purple-theme',
@@ -113,8 +113,8 @@ export const themeColors = [
     color: '#FF5C8E',
   },
   {
-    name: 'indigo-theme',
-    color: '#1E4DB7',
+    name: 'green-theme',
+    color: '#03C9D7',
   },
   {
     color: '#FB9678',
