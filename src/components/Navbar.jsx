@@ -34,7 +34,7 @@ const Navbar = () => {
       try {
         // Aqui você deve implementar a lógica para buscar os dados do Firebase
         // e determinar se a bolinha laranja deve piscar ou não
-        const notificationsData = await getNotificationsDataFromFirebase();
+        const notificationsData = await getNotificationsDataFromFirebase(); // <-- Substitua pelo seu código
 
         const isPiscando = notificationsData.some(notification => notification.Piscar === true);
         setIsPiscando(isPiscando);
