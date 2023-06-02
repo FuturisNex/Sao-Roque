@@ -1,9 +1,15 @@
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0; }
-  100% { opacity: 1; }
+.piscando {
+  animation: piscar 1s infinite;
 }
 
-.piscando {
-  animation: blink 1s infinite;
+@keyframes piscar {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
