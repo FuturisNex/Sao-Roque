@@ -47,14 +47,17 @@ const Navbar = () => {
               { Piscar: true },
             ]);
           }, 1000);
-        });
+         });
 
-        const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
-        setShowBolinha(hasPiscandoNotification);
-      } catch (error) {
-        console.log('Erro ao buscar notificações:', error);
-      }
-    };
+    const hasPiscandoNotification = notificationsData.some(
+      (notification) => notification.Piscar
+    );
+    setShowBolinha(hasPiscandoNotification);
+  } catch (error) {
+    console.log('Erro ao buscar notificações:', error);
+  }
+};
+
 
     getNotificationsDataFromFirebase();
   }, []);
