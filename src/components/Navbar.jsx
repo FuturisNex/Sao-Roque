@@ -3,6 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import './Style/noti.css';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -27,8 +28,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
-  const [piscandoNotificacao, setPiscandoNotificacao] = useState(false);
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
+  const [isPiscando, setIsPiscando] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -48,7 +49,7 @@ const Navbar = () => {
         if (notificationsData) {
           const notificationsArray = Object.values(notificationsData);
           const isPiscando = notificationsArray.some(notification => notification.Piscar === true);
-          setPiscandoNotificacao(isPiscando);
+          setIsPiscando(isPiscando);
         }
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
@@ -64,7 +65,7 @@ const Navbar = () => {
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
-        <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} isPiscando={piscandoNotificacao} />
+        <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} isPiscando={isPiscando} />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
