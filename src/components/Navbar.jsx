@@ -9,30 +9,32 @@ import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 import './Style/noti.css';
 
-const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
-  <TooltipComponent content={title} position="BottomCenter">
-    <button
-      type="button"
-      onClick={() => customFunc()}
-      style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-light-gray"
-    >
-      {isPiscando && (
-        <span
-          style={{ background: dotColor }}
-          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2 animate-piscar"
-        />
-      )}
-      {!isPiscando && (
-        <span
-          style={{ background: 'transparent' }}
-          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-        />
-      )}
-      {icon}
-    </button>
-  </TooltipComponent>
-);
+const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => {
+  const [showDot, setShowDot] = useState(false);
+
+  useEffect(() => {
+    setShowDot(isPiscando);
+  }, [isPiscando]);
+
+  return (
+    <TooltipComponent content={title} position="BottomCenter">
+      <button
+        type="button"
+        onClick={() => customFunc()}
+        style={{ color }}
+        className="relative text-xl rounded-full p-3 hover:bg-light-gray"
+      >
+        {showDot && (
+          <span
+            style={{ background: dotColor }}
+            className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2 animate-piscar"
+          />
+        )}
+        {icon}
+      </button>
+    </TooltipComponent>
+  );
+};
 
 const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
