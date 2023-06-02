@@ -53,7 +53,7 @@ const Navbar = () => {
         }, 1000);
       });
 
-      const hasPiscandoNotification = notificationsData.some(notification => notification.Piscar === true);
+      const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
       setIsPiscando(hasPiscandoNotification);
     } catch (error) {
       console.log('Erro ao buscar notificações:', error);
