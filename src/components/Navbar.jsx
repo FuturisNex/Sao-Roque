@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -31,7 +31,39 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 };
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
+  const { currentColor, handleClick, isClicked } = useStateContext();
+  const [isPiscando, setIsPiscando] = useState(false);
+
+  const handleActiveMenu = () => {
+    // Implemente a lógica para ativar/desativar o menu
+  };
+
+  useEffect(() => {
+    const getNotificationsDataFromFirebase = async () => {
+      try {
+        // Simulação de busca de dados do Firebase
+        // Substitua essa implementação pela sua lógica real de busca dos dados
+        const notificationsData = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve([
+              { Piscar: true },
+              { Piscar: false },
+              { Piscar: true },
+            ]);
+          }, 1000);
+        });
+
+        const hasPiscandoNotification = notificationsData.some(
+          (notification) => notification.Piscar === true
+        );
+        setIsPiscando(hasPiscandoNotification);
+      } catch (error) {
+        console.log('Erro ao buscar notificações:', error);
+      }
+    };
+
+    getNotificationsDataFromFirebase();
+  }, []);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -70,8 +102,8 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
       </div>
-      {isClicked.notification && (<Notification />)}
-      {isClicked.userProfile && (<UserProfile />)}
+      {isClicked.notification && <Notification />}
+      {isClicked.userProfile && <UserProfile />}
     </div>
   );
 };
