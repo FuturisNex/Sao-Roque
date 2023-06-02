@@ -26,14 +26,6 @@ const Notification = () => {
     };
 
     fetchNotifications();
-
-    const interval = setInterval(() => {
-      setPiscando((prevState) => !prevState);
-    }, 500); // Define o intervalo de piscar em milissegundos (neste exemplo, 500ms)
-
-    return () => {
-      clearInterval(interval);
-    };
   }, []);
 
   return (
