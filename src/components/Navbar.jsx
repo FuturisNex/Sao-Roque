@@ -8,7 +8,7 @@ import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
-const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
+const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
@@ -18,7 +18,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
     >
       <span
         style={{ background: dotColor }}
-        className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+        className={`absolute inline-flex rounded-full h-2 w-2 right-2 top-2 ${isPiscando ? 'piscando' : ''}`}
       />
       {icon}
     </button>
@@ -68,7 +68,14 @@ const Navbar = () => {
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
-        <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
+        <NavButton
+        title="Notification"
+        dotColor="rgb(254, 201, 15)"
+        customFunc={() => handleClick('notification')}
+        color={currentColor}
+        icon={<RiNotification3Line />}
+        isPiscando={isPiscando}
+        />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
