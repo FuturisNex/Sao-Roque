@@ -7,6 +7,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+import database from '../auth/firebase.js';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -38,14 +39,6 @@ const Navbar = () => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    if (screenSize <= 900) {
-      setActiveMenu(false);
-    } else {
-      setActiveMenu(true);
-    }
-  }, [screenSize]);
 
   useEffect(() => {
     const fetchPiscarNotificacao = async () => {
