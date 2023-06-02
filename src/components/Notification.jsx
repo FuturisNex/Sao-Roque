@@ -17,7 +17,7 @@ const Notification = () => {
           const notificationsArray = Object.values(notificationsData);
           setNotifications(notificationsArray);
 
-          const isPiscando = notificationsArray.some(notification => notification.Piscar === 'true');
+          const isPiscando = notificationsArray.some((notification) => notification.Piscar === 'true');
           setPiscando(isPiscando);
         }
       } catch (error) {
