@@ -36,7 +36,7 @@ const Navbar = () => {
         const notificationsData = snapshot.val();
         if (notificationsData) {
           const notificationsArray = Object.values(notificationsData);
-          const hasPiscando = notificationsArray.some(notification => notification.Piscar === true);
+          const hasPiscando = notificationsArray.some((notification) => notification.Piscar === true);
           setIsPiscando(hasPiscando);
         }
       } catch (error) {
