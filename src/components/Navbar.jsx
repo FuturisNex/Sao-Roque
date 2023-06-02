@@ -7,8 +7,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-
-import './Navbar.css'; // Importe o arquivo CSS com as animações
+import './Style/noti.css';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
   <TooltipComponent content={title} position="BottomCenter">
