@@ -30,7 +30,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 
 const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
-  const [isPiscando, setIsPiscando] = useState(false);
+  const [showBolinha, setShowBolinha] = useState(true);
 
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
@@ -52,7 +52,7 @@ const Navbar = () => {
         });
 
         const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
-        setIsPiscando(hasPiscandoNotification);
+        setShowBolinha(hasPiscandoNotification);
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
       }
@@ -76,7 +76,7 @@ const Navbar = () => {
           customFunc={() => handleClick('notification')}
           color={currentColor}
           icon={<RiNotification3Line />}
-          isPiscando={isPiscando}
+          isPiscando={showBolinha}
         />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
