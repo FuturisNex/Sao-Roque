@@ -3,7 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import database from '../auth/firebase.js';
+
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
@@ -26,55 +26,44 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
   const [isPiscando, setIsPiscando] = useState(false);
 
   useEffect(() => {
-    const fetchPiscarStatus = async () => {
+    const fetchNotifications = async () => {
       try {
-        const snapshot = await database.ref('notificacao/noti').once('value');
-        const notificationsData = snapshot.val();
-        if (notificationsData) {
-          const notificationsArray = Object.values(notificationsData);
-          const hasPiscando = notificationsArray.some((notification) => notification.Piscar === true);
-          setIsPiscando(hasPiscando);
-        }
+        // Aqui você deve implementar a lógica para buscar os dados do Firebase
+        // e determinar se a bolinha laranja deve piscar ou não
+        const notificationsData = await getNotificationsDataFromFirebase();
+
+        const isPiscando = notificationsData.some(notification => notification.Piscar === true);
+        setIsPiscando(isPiscando);
       } catch (error) {
-        console.log('Erro ao buscar o status de piscar:', error);
+        console.log('Erro ao buscar notificações:', error);
       }
     };
 
-    fetchPiscarStatus();
+    fetchNotifications();
   }, []);
-
-  useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (screenSize <= 900) {
-      setActiveMenu(false);
-    } else {
-      setActiveMenu(true);
-    }
-  }, [screenSize]);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
-      <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
+      <NavButton
+        title="Menu"
+        customFunc={handleActiveMenu}
+        color={currentColor}
+        icon={<AiOutlineMenu />}
+      />
       <div className="flex">
         <NavButton
-        title="Notification"
-        dotColor="rgb(254, 201, 15)"
-        customFunc={() => handleClick('notification')}
-        color={currentColor}
-        icon={<RiNotification3Line />}
-        isPiscando={isPiscando}
+          title="Notification"
+          dotColor="rgb(254, 201, 15)"
+          customFunc={() => handleClick('notification')}
+          color={currentColor}
+          icon={<RiNotification3Line />}
+          isPiscando={isPiscando}
         />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
@@ -98,7 +87,6 @@ const Navbar = () => {
       </div>
       {isClicked.notification && (<Notification />)}
       {isClicked.userProfile && (<UserProfile />)}
-      {isPiscando && (<div className="piscando" />)}
     </div>
   );
 };
