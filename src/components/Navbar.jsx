@@ -16,10 +16,12 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
-      <span
-        style={{ background: dotColor }}
-        className={`absolute inline-flex rounded-full h-2 w-2 right-2 top-2 ${isPiscando ? 'piscando' : ''}`}
-      />
+      {isPiscando && (
+        <span
+          style={{ background: dotColor }}
+          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2 animate-piscar"
+        />
+      )}
       {icon}
     </button>
   </TooltipComponent>
@@ -43,7 +45,7 @@ const Navbar = () => {
         }, 1000);
       });
 
-      const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
+      const hasPiscandoNotification = notificationsData.some(notification => notification.Piscar === true);
       setIsPiscando(hasPiscandoNotification);
     } catch (error) {
       console.log('Erro ao buscar notificações:', error);
@@ -67,7 +69,7 @@ const Navbar = () => {
       <div className="flex">
         <NavButton
           title="Notification"
-          dotColor="rgb(254, 201, 15)"
+          dotColor="red"
           customFunc={() => handleClick('notification')}
           color={currentColor}
           icon={<RiNotification3Line />}
