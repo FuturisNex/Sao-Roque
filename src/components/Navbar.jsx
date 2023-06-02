@@ -39,6 +39,8 @@ const Navbar = () => {
   useEffect(() => {
     const getNotificationsDataFromFirebase = async () => {
       try {
+        // Simulação de busca de dados do Firebase
+        // Substitua essa implementação pela sua lógica real de busca dos dados
         const notificationsData = await new Promise((resolve) => {
           setTimeout(() => {
             resolve([
@@ -47,17 +49,14 @@ const Navbar = () => {
               { Piscar: true },
             ]);
           }, 1000);
-         });
+        });
 
-    const hasPiscandoNotification = notificationsData.some(
-      (notification) => notification.Piscar
-    );
-    setShowBolinha(hasPiscandoNotification);
-  } catch (error) {
-    console.log('Erro ao buscar notificações:', error);
-  }
-};
-
+        const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar);
+        setShowBolinha(hasPiscandoNotification);
+      } catch (error) {
+        console.log('Erro ao buscar notificações:', error);
+      }
+    };
 
     getNotificationsDataFromFirebase();
   }, []);
