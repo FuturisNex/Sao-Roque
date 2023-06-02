@@ -29,21 +29,29 @@ const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
   const [isPiscando, setIsPiscando] = useState(false);
 
+  const getNotificationsDataFromFirebase = async () => {
+    try {
+      // Simulação de busca de dados do Firebase
+      // Substitua essa implementação pela sua lógica real de busca dos dados
+      const notificationsData = await new Promise((resolve) => {
+        setTimeout(() => {
+          resolve([
+            { Piscar: true },
+            { Piscar: false },
+            { Piscar: true },
+          ]);
+        }, 1000);
+      });
+
+      const hasPiscandoNotification = notificationsData.some(notification => notification.Piscar === true);
+      setIsPiscando(hasPiscandoNotification);
+    } catch (error) {
+      console.log('Erro ao buscar notificações:', error);
+    }
+  };
+
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        // Aqui você deve implementar a lógica para buscar os dados do Firebase
-        // e determinar se a bolinha laranja deve piscar ou não
-        const notificationsData = await getNotificationsDataFromFirebase(); // <-- Substitua pela sua função de busca
-
-        const hasPiscandoNotification = notificationsData.some(notification => notification.Piscar === true);
-        setIsPiscando(hasPiscandoNotification);
-      } catch (error) {
-        console.log('Erro ao buscar notificações:', error);
-      }
-    };
-
-    fetchNotifications();
+    getNotificationsDataFromFirebase();
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
