@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -10,19 +10,6 @@ import { useStateContext } from '../contexts/ContextProvider';
 import './Style/noti.css';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => {
-  const [showDot, setShowDot] = useState(false);
-
-  useEffect(() => {
-    setShowDot(isPiscando);
-  }, [isPiscando]);
-
-  useEffect(() => {
-    // Verifica se o valor de isPiscando é false no Firebase e atualiza o estado de showDot
-    if (!isPiscando) {
-      setShowDot(false);
-    }
-  }, [isPiscando]);
-
   return (
     <TooltipComponent content={title} position="BottomCenter">
       <button
@@ -31,7 +18,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
         style={{ color }}
         className="relative text-xl rounded-full p-3 hover:bg-light-gray"
       >
-        {showDot && isPiscando && (
+        {isPiscando && (
           <span
             style={{ background: dotColor }}
             className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2 animate-piscar"
@@ -45,34 +32,6 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 
 const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
-  const [isPiscando, setIsPiscando] = useState(false);
-
-  const getNotificationsDataFromFirebase = async () => {
-    try {
-      // Simulação de busca de dados do Firebase
-      // Substitua essa implementação pela sua lógica real de busca dos dados
-      const notificationsData = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve([
-            { Piscar: true },
-            { Piscar: false },
-            { Piscar: true },
-          ]);
-        }, 1000);
-      });
-
-      const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
-      setIsPiscando(hasPiscandoNotification);
-    } catch (error) {
-      console.log('Erro ao buscar notificações:', error);
-    }
-  };
-
-  useEffect(() => {
-    getNotificationsDataFromFirebase();
-  }, []);
-
-  const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
