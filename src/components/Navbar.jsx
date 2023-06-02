@@ -16,6 +16,13 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
     setShowDot(isPiscando);
   }, [isPiscando]);
 
+  useEffect(() => {
+    // Verifica se o valor de isPiscando é false no Firebase e atualiza o estado de showDot
+    if (!isPiscando) {
+      setShowDot(false);
+    }
+  }, [isPiscando]);
+
   return (
     <TooltipComponent content={title} position="BottomCenter">
       <button
