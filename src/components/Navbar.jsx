@@ -9,7 +9,7 @@ import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 import './Style/noti.css';
 
-const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => {
+const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
   return (
     <TooltipComponent content={title} position="BottomCenter">
       <button
@@ -28,7 +28,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
       </button>
     </TooltipComponent>
   );
-};
+);
 
 const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
@@ -53,9 +53,7 @@ const Navbar = () => {
           }, 1000);
         });
 
-        const hasPiscandoNotification = notificationsData.some(
-          (notification) => notification.Piscar === true
-        );
+        const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
         setIsPiscando(hasPiscandoNotification);
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
