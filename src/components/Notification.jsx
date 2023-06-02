@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import database from '../auth/firebase.js';
 import Button from './Button';
+import './Style/noti.css';
 
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);
@@ -15,10 +16,11 @@ const Notification = () => {
         if (notificationsData) {
           const notificationsArray = Object.values(notificationsData);
           setNotifications(notificationsArray);
-          setPiscando(true);
-          setTimeout(() => {
-            setPiscando(false);
-          }, 5000); // Define o tempo de piscar para 5 segundos (5000 milissegundos)
+
+          const isPiscando = notificationsArray.some(
+            notification => notification.Piscar === 'true'
+          );
+          setPiscando(isPiscando);
         }
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
@@ -33,7 +35,10 @@ const Notification = () => {
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
-          <button type="button" className={`text-white text-xs rounded p-1 px-2 mt-2 ${piscando ? 'bg-orange-theme' : ''}`}>
+          <button
+            type="button"
+            className={`text-white text-xs rounded p-1 px-2 mt-2 ${piscando ? 'bg-red-theme' : ''}`}
+          >
             {notifications.length} Notificação{notifications.length !== 1 ? 'ões' : ''}
           </button>
         </div>
