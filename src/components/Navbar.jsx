@@ -8,6 +8,8 @@ import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
+import './Navbar.css'; // Importe o arquivo CSS com as animações
+
 const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
@@ -20,6 +22,12 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
         <span
           style={{ background: dotColor }}
           className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2 animate-piscar"
+        />
+      )}
+      {!isPiscando && (
+        <span
+          style={{ background: 'transparent' }}
+          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
         />
       )}
       {icon}
@@ -45,7 +53,7 @@ const Navbar = () => {
         }, 1000);
       });
 
-      const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar === true);
+      const hasPiscandoNotification = notificationsData.some(notification => notification.Piscar === true);
       setIsPiscando(hasPiscandoNotification);
     } catch (error) {
       console.log('Erro ao buscar notificações:', error);
