@@ -8,25 +8,25 @@ const Notification = () => {
   const [notifications, setNotifications] = useState([]);
   const [piscando, setPiscando] = useState(false);
 
-  useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const snapshot = await database.ref('notificacao/noti').once('value');
-        const notificationsData = snapshot.val();
-        if (notificationsData) {
-          const notificationsArray = Object.values(notificationsData);
-          setNotifications(notificationsArray);
+useEffect(() => {
+  const fetchNotifications = async () => {
+    try {
+      const snapshot = await database.ref('notificacao').once('value');
+      const notificationsData = snapshot.val();
+      if (notificationsData) {
+        const notificationsArray = Object.values(notificationsData);
+        setNotifications(notificationsArray);
 
-          const isPiscando = notificationsArray.some((notification) => notification.Piscar === 'true');
-          setPiscando(isPiscando);
-        }
-      } catch (error) {
-        console.log('Erro ao buscar notificações:', error);
+        const isPiscando = notificationsArray.some((notification) => notification.Piscar === true);
+        setPiscando(isPiscando);
       }
-    };
+    } catch (error) {
+      console.log('Erro ao buscar notificações:', error);
+    }
+  };
 
-    fetchNotifications();
-  }, []);
+  fetchNotifications();
+}, []);
 
   return (
     <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`}>
