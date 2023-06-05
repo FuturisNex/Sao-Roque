@@ -51,7 +51,7 @@ const Navbar = () => {
           }, 1000);
         });
 
-        const hasPiscandoNotification = notificationsData.some((notificacao/noti) => notification.Piscar);
+        const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar);
         setShowBolinha(hasPiscandoNotification);
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
