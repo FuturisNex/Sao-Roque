@@ -3,7 +3,6 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -38,22 +37,29 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-const getNotificationsDataFromFirebase = async () => {
-  try {
-    // Referência para o caminho 'notification' no Firebase Realtime Database
-    const notificationsRef = firebase.database().ref('notification');
+    const getNotificationsDataFromFirebase = async () => {
+      try {
+        // Simulação de busca de dados do Firebase
+        // Substitua essa implementação pela sua lógica real de busca dos dados
+        const notificationsData = await new Promise((resolve) => {
+          setTimeout(() => {
+            resolve([
+              { Piscar: true },
+              { Piscar: false },
+              { Piscar: true },
+            ]);
+          }, 1000);
+        });
 
-    // Obtenha os dados do Firebase Realtime Database
-    const snapshot = await notificationsRef.once('value');
-    const notificationsData = snapshot.val();
+        const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar);
+        setShowBolinha(hasPiscandoNotification);
+      } catch (error) {
+        console.log('Erro ao buscar notificações:', error);
+      }
+    };
 
-    // Verifique se algum item tem o valor 'Piscar' igual a true
-    const hasPiscandoNotification = Object.values(notificationsData).some(notification => notification.Piscar);
-    setShowBolinha(hasPiscandoNotification);
-  } catch (error) {
-    console.log('Erro ao buscar notificações:', error);
-  }
-};
+    getNotificationsDataFromFirebase();
+  }, []);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
