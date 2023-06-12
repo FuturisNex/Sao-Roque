@@ -32,28 +32,27 @@ const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
   const [showBolinha, setShowBolinha] = useState(true);
   const [navId, setNavId] = useState('');
-
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
   };
 
 useEffect(() => {
-  const getNotificationsDataFromFirebase = async () => {
-    try {
-      const snapshot = await database.ref('notificacao').orderByChild('Piscar').equalTo(false).once('value');
-      const notificationsData = snapshot.val();
-      if (notificationsData) {
-        const notificationsArray = Object.values(notificationsData);
-        const hasPiscandoNotification = notificationsArray.some((notification) => notification.Piscar);
-        setShowBolinha(hasPiscandoNotification);
+    const getNotificationsDataFromFirebase = async () => {
+      try {
+        const snapshot = await database.ref('notificacao').orderByChild('Piscar').equalTo(false).once('value');
+        const notificationsData = snapshot.val();
+        if (notificationsData) {
+          const notificationsArray = Object.values(notificationsData);
+          const hasPiscandoNotification = notificationsArray.some((notification) => notification.Piscar);
+          setShowBolinha(hasPiscandoNotification);
+        }
+      } catch (error) {
+        console.log('Erro ao buscar notificações:', error);
       }
-    } catch (error) {
-      console.log('Erro ao buscar notificações:', error);
-    }
-  };
+    };
 
-  getNotificationsDataFromFirebase();
-}, []);
+    getNotificationsDataFromFirebase();
+  }, []);
 
   const generateRandomId = () => {
     // Função para gerar um ID único
