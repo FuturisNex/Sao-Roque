@@ -1,84 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { MdOutlineCancel } from 'react-icons/md';
 import database from '../auth/firebase.js';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { RiNotification3Line } from 'react-icons/ri';
-import { MdKeyboardArrowDown } from 'react-icons/md';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import Button from './Button';
+import './Style/noti.css';
 
-import avatar from '../data/avatar.png';
-import { Notification, UserProfile } from '.';
-import { useStateContext } from '../contexts/ContextProvider';
-
-const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
-  // Restante do código...
-);
-
-const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
-  const [piscarStatus, setPiscarStatus] = useState(false);
+const Notification = ({ navId }) => {
+  const [notifications, setNotifications] = useState([]);
+  const [piscando, setPiscando] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
+    const ref = database.ref('notificacao');
+
+    const handleNotificationAdded = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) => [...prevState, notification]);
+      setPiscando(true);
+    };
+
+    const handleNotificationRemoved = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
+      setPiscando(notifications.length > 1);
+    };
+
+    ref.child('noti').on('child_added', handleNotificationAdded);
+    ref.child('noti').on('child_removed', handleNotificationRemoved);
+
+    return () => {
+      ref.child('noti').off('child_added', handleNotificationAdded);
+      ref.child('noti').off('child_removed', handleNotificationRemoved);
+    };
   }, []);
-
-  useEffect(() => {
-    const ref = database.ref('notificacao/Piscar');
-
-    // Cria um listener para verificar o valor em tempo real
-    ref.on('value', snapshot => {
-      const value = snapshot.val();
-      setPiscarStatus(value === true);
-    });
-
-    // Remove o listener quando o componente é desmontado
-    return () => ref.off('value');
-  }, []);
-
-  const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
-    <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
-      <NavButton
-        title="Menu"
-        customFunc={handleActiveMenu}
-        color={currentColor}
-        icon={<AiOutlineMenu />}
-      />
-      <div className="flex">
-        <NavButton
-          title="Notification"
-          dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
-          customFunc={() => handleClick('notification')}
-          color={currentColor}
-          icon={<RiNotification3Line />}
-        />
-        <TooltipComponent content="Profile" position="BottomCenter">
-          <div
-            className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick('userProfile')}
+    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`} id={navId}>
+      <div className="flex justify-between items-center">
+        <div>
+          <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
+          <button
+            type="button"
+            className={`text-white text-xs rounded p-1 px-2 mt-2 ${piscando ? 'bg-red-theme' : ''}`}
           >
-            <img
-              className="rounded-full w-8 h-8"
-              src={avatar}
-              alt="user-profile"
-            />
-            <p>
-              <span className="text-gray-400 text-14">Olá,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-14">
-                Bem Vindo
-              </span>
-            </p>
-            <MdKeyboardArrowDown className="text-gray-400 text-14" />
-          </div>
-        </TooltipComponent>
+            {notifications.length} Notificação{notifications.length !== 1 ? 'ões' : ''}
+          </button>
+        </div>
+        <Button
+          icon={<MdOutlineCancel />}
+          color="rgb(153, 171, 180)"
+          bgHoverColor="light-gray"
+          size="2xl"
+          borderRadius="50%"
+        />
       </div>
-      {isClicked.notification && <Notification />}
-      {isClicked.userProfile && <UserProfile />}
+      <div className="mt-5">
+        {notifications.map((notification, index) => (
+          <div key={index} className="flex flex-col gap-1 border-b-1 border-color p-3">
+            <p className="font-semibold dark:text-gray-200">{notification.Titulo}</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">{notification.Descricao}</p>
+          </div>
+        ))}
+        {notifications.length === 0 && (
+          <div className="flex items-center justify-center mt-3">
+            <p className="text-gray-500 text-sm">Nenhuma notificação encontrada.</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
 
-export default Navbar;
+export default Notification;
