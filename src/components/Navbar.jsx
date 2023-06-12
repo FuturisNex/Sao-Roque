@@ -44,7 +44,7 @@ const Navbar = () => {
         const notificationsData = snapshot.val();
         if (notificationsData) {
           const notificationsArray = Object.values(notificationsData);
-          const hasPiscandoNotification = notificationsArray.some((notification) => notification.Piscar);
+          const hasPiscandoNotification = notificationsArray.some((notification) => notification.Piscar === true);
           setShowBolinha(hasPiscandoNotification);
         }
       } catch (error) {
