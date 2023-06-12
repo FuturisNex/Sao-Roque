@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import 'firebase/database';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -7,7 +8,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-import database from '../auth/firebase.js';
+import firebase from 'firebase/app';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -27,7 +28,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
 
   useEffect(() => {
@@ -35,16 +36,21 @@ const Navbar = () => {
     window.addEventListener('resize', handleResize);
     handleResize();
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [setScreenSize]);
 
   useEffect(() => {
-    const ref = database.ref('notificacao/Piscar');
-    ref.on('value', snapshot => { const value = snapshot.val();
+    const handlePiscarStatus = snapshot => {
+      const value = snapshot.val();
       setPiscarStatus(value === true);
-    });
+    };
 
-    // Remove o listener quando o componente é desmontado
-    return () => ref.off('value');
+    const database = firebase.database();
+    const ref = database.ref('notificacao/Piscar');
+    ref.on('value', handlePiscarStatus);
+
+    return () => {
+      ref.off('value', handlePiscarStatus);
+    };
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
