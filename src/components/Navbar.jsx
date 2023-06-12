@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import database from '../auth/firebase.js';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -8,6 +7,7 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+import database from '../auth/firebase.js';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -39,10 +39,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const ref = database.ref('notificacao/Piscar');
-
-    // Cria um listener para verificar o valor em tempo real
-    ref.on('value', snapshot => {
-      const value = snapshot.val();
+    ref.on('value', snapshot => { const value = snapshot.val();
       setPiscarStatus(value === true);
     });
 
