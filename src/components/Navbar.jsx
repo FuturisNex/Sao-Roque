@@ -31,35 +31,34 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
   const [showBolinha, setShowBolinha] = useState(true);
+  const [navId, setNavId] = useState('');
 
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
   };
 
-  useEffect(() => {
-    const getNotificationsDataFromFirebase = async () => {
-      try {
-        // Simulação de busca de dados do Firebase
-        // Substitua essa implementação pela sua lógica real de busca dos dados
-        const notificationsData = await new Promise((resolve) => {
-          setTimeout(() => {
-            resolve([
-              { Piscar: true },
-              { Piscar: false },
-              { Piscar: true },
-            ]);
-          }, 1000);
-        });
-
-        const hasPiscandoNotification = notificationsData.some((notification) => notification.Piscar);
+useEffect(() => {
+  const getNotificationsDataFromFirebase = async () => {
+    try {
+      const snapshot = await database.ref('notificacao').orderByChild('Piscar').equalTo(false).once('value');
+      const notificationsData = snapshot.val();
+      if (notificationsData) {
+        const notificationsArray = Object.values(notificationsData);
+        const hasPiscandoNotification = notificationsArray.some((notification) => notification.Piscar);
         setShowBolinha(hasPiscandoNotification);
-      } catch (error) {
-        console.log('Erro ao buscar notificações:', error);
       }
-    };
+    } catch (error) {
+      console.log('Erro ao buscar notificações:', error);
+    }
+  };
 
-    getNotificationsDataFromFirebase();
-  }, []);
+  getNotificationsDataFromFirebase();
+}, []);
+
+  const generateRandomId = () => {
+    // Função para gerar um ID único
+    return Math.random().toString(36).substring(2, 15);
+  };
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -98,7 +97,7 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
       </div>
-      {isClicked.notification && <Notification />}
+      {isClicked.notification && <Notification navId={navId} />}
       {isClicked.userProfile && <UserProfile />}
     </div>
   );
