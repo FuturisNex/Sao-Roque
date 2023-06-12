@@ -4,7 +4,7 @@ import database from '../auth/firebase.js';
 import Button from './Button';
 import './Style/noti.css';
 
-const Notification = () => {
+const Notification = ({ navId }) => {
   const [notifications, setNotifications] = useState([]);
   const [piscando, setPiscando] = useState(false);
 
@@ -29,7 +29,7 @@ const Notification = () => {
   }, []);
 
   return (
-    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`}>
+    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`} id={navId}>
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
