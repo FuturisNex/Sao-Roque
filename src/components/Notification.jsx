@@ -9,23 +9,29 @@ const Notification = ({ navId }) => {
   const [piscando, setPiscando] = useState(false);
 
   useEffect(() => {
-    const fetchNotifications = async () => {
-      try {
-        const snapshot = await database.ref('notificacao/noti').once('value');
-        const notificationsData = snapshot.val();
-        if (notificationsData) {
-          const notificationsArray = Object.values(notificationsData);
-          setNotifications(notificationsArray);
+    const ref = database.ref('notificacao');
 
-          const isPiscando = notificationsArray.some((notification) => notification.Piscar === 'true');
-          setPiscando(isPiscando);
-        }
-      } catch (error) {
-        console.log('Erro ao buscar notificações:', error);
-      }
+    const handleNotificationAdded = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) => [...prevState, notification]);
+      setPiscando(true);
     };
 
-    fetchNotifications();
+    const handleNotificationRemoved = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) =>
+        prevState.filter((item) => item.id !== notification.id)
+      );
+      setPiscando(notifications.length > 1);
+    };
+
+    ref.child('noti').on('child_added', handleNotificationAdded);
+    ref.child('noti').on('child_removed', handleNotificationRemoved);
+
+    return () => {
+      ref.child('noti').off('child_added', handleNotificationAdded);
+      ref.child('noti').off('child_removed', handleNotificationRemoved);
+    };
   }, []);
 
   return (
