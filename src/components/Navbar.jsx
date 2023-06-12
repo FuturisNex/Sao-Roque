@@ -27,28 +27,33 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, screenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
+    const handleResize = () => {
+      const windowSize = window.innerWidth;
+      // Faça algo com a variável windowSize, se necessário
+    };
     window.addEventListener('resize', handleResize);
     handleResize();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-useEffect(() => {
-  const ref = database.ref('notificacao/Piscar');
+  useEffect(() => {
+    const ref = database.ref('notificacao/Piscar');
 
-  // Cria um listener para verificar o valor em tempo real
-  ref.on('value', (snapshot) => {
-    const value = snapshot.val();
-    setPiscarStatus(value === true);
-  });
+    const handlePiscarStatus = (snapshot) => {
+      const value = snapshot.val();
+      setPiscarStatus(value === true);
+    };
 
-  // Remove o listener quando o componente é desmontado
-  return () => ref.off('value');
-}, []);
+    // Cria um listener para verificar o valor em tempo real
+    ref.on('value', handlePiscarStatus);
+
+    // Remove o listener quando o componente é desmontado
+    return () => ref.off('value', handlePiscarStatus);
+  }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
