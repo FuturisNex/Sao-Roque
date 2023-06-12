@@ -3,7 +3,6 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -33,6 +32,12 @@ const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
   const [showBolinha, setShowBolinha] = useState(true);
   const [navId, setNavId] = useState('');
+
+  const generateRandomId = () => {
+    const id = Math.random().toString(36).substring(7);
+    return id;
+  };
+
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
   };
@@ -55,9 +60,9 @@ const Navbar = () => {
     getNotificationsDataFromFirebase();
   }, []);
 
-  const generateRandomId () => {
-    return Math.random().toString(36).substring(2, 15);
-  };
+  useEffect(() => {
+    setNavId(generateRandomId());
+  }, []);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -96,7 +101,7 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
       </div>
-      {isClicked.notification && <Notification navId={navId} />}
+      {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
     </div>
   );
