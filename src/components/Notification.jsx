@@ -19,8 +19,7 @@ const Notification = ({ navId }) => {
 
     const handleNotificationRemoved = (snapshot) => {
       const notification = snapshot.val();
-      setNotifications((prevState) =>
-        prevState.filter((item) => item.id !== notification.id));
+      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
       setPiscando(notifications.length > 1);
     };
 
