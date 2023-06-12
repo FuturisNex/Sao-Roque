@@ -42,7 +42,7 @@ const Navbar = () => {
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
-      setPiscarStatus(value === true);
+      setPiscarStatus(value === true || value === 'true');
     };
 
     ref.on('value', handlePiscarStatus);
