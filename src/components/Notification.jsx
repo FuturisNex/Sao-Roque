@@ -6,7 +6,7 @@ import './Style/noti.css';
 
 const Notification = ({ navId }) => {
   const [notifications, setNotifications] = useState([]);
-  const [piscando, setPiscando] = useState(false);
+  const [showNotificationDot, setShowNotificationDot] = useState(false);
 
   useEffect(() => {
     const ref = database.ref('notificacao');
@@ -14,13 +14,13 @@ const Notification = ({ navId }) => {
     const handleNotificationAdded = (snapshot) => {
       const notification = snapshot.val();
       setNotifications((prevState) => [...prevState, notification]);
-      setPiscando(true);
+      setShowNotificationDot(true);
     };
 
     const handleNotificationRemoved = (snapshot) => {
       const notification = snapshot.val();
       setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-      setPiscando(notifications.length > 1);
+      setShowNotificationDot(notifications.length > 1);
     };
 
     ref.child('noti').on('child_added', handleNotificationAdded);
@@ -30,16 +30,16 @@ const Notification = ({ navId }) => {
       ref.child('noti').off('child_added', handleNotificationAdded);
       ref.child('noti').off('child_removed', handleNotificationRemoved);
     };
-  }, []);
+  }, [notifications.length]);
 
   return (
-    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`} id={navId}>
+    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${showNotificationDot ? 'has-dot' : ''}`} id={navId}>
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
           <button
             type="button"
-            className={`text-white text-xs rounded p-1 px-2 mt-2 ${piscando ? 'bg-red-theme' : ''}`}
+            className={`text-white text-xs rounded p-1 px-2 mt-2 ${showNotificationDot ? 'bg-red-theme' : ''}`}
           >
             {notifications.length} Notificação{notifications.length !== 1 ? 'ões' : ''}
           </button>
