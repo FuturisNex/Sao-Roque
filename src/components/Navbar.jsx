@@ -3,6 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -36,7 +37,7 @@ const Navbar = () => {
     // Implemente a lógica para ativar/desativar o menu
   };
 
-useEffect(() => {
+  useEffect(() => {
     const getNotificationsDataFromFirebase = async () => {
       try {
         const snapshot = await database.ref('notificacao').orderByChild('Piscar').equalTo(false).once('value');
@@ -54,8 +55,7 @@ useEffect(() => {
     getNotificationsDataFromFirebase();
   }, []);
 
-  const generateRandomId = () => {
-    // Função para gerar um ID único
+  const generateRandomId () => {
     return Math.random().toString(36).substring(2, 15);
   };
 
