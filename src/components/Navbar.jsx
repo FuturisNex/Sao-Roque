@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import 'firebase/database';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-import firebase from 'firebase/app';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
