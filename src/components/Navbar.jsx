@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
 import database from '../auth/firebase.js';
 import { toast } from 'react-toastify';
 import Sound from 'react-sound';
@@ -12,7 +13,7 @@ import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
-  <TooltipComponent content={title} position="BottomCenter">
+  <Tooltip title={title} position="bottom">
     <button
       type="button"
       onClick={() => customFunc()}
@@ -25,7 +26,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       />
       {icon}
     </button>
-  </TooltipComponent>
+  </Tooltip>
 );
 
 const Navbar = () => {
@@ -76,7 +77,7 @@ const Navbar = () => {
           color={currentColor}
           icon={<RiNotification3Line />}
         />
-        <TooltipComponent content="Profile" position="BottomCenter">
+        <Tooltip title="Profile" position="bottom">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfile')}
@@ -94,7 +95,7 @@ const Navbar = () => {
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
-        </TooltipComponent>
+        </Tooltip>
       </div>
       {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
