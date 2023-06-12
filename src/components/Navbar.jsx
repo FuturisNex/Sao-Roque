@@ -31,7 +31,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 
 const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
-  const [showBolinha, setShowBolinha] = useState(true);
+  const [showBolinha, setShowBolinha] = useState(false);
 
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
@@ -44,8 +44,7 @@ const Navbar = () => {
         const notificationsData = snapshot.val();
         if (notificationsData) {
           const notificationsArray = Object.values(notificationsData);
-          const hasPiscandoNotification = notificationsArray.some((notification) => notification.Piscar === true);
-          setShowBolinha(hasPiscandoNotification);
+          setShowBolinha(notificationsArray.length > 0);
         }
       } catch (error) {
         console.log('Erro ao buscar notificações:', error);
