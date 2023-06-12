@@ -37,18 +37,18 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const ref = database.ref('notificacao/Piscar');
+useEffect(() => {
+  const ref = database.ref('notificacao/Piscar');
 
-    // Cria um listener para verificar o valor em tempo real
-    ref.on('value', snapshot = () => {
-      const value = snapshot.val();
-      setPiscarStatus(value === true);
-    });
+  // Cria um listener para verificar o valor em tempo real
+  ref.on('value', (snapshot) => {
+    const value = snapshot.val();
+    setPiscarStatus(value === true);
+  });
 
-    // Remove o listener quando o componente é desmontado
-    return () => ref.off('value');
-  }, []);
+  // Remove o listener quando o componente é desmontado
+  return () => ref.off('value');
+}, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
