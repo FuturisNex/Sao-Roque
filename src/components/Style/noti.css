@@ -1,11 +1,15 @@
-@keyframes piscar {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.has-dot {
+  position: relative;
+}
+
+.has-dot::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(254, 201, 15);
 }
