@@ -14,13 +14,11 @@ const Notification = ({ navId }) => {
     const handleNotificationAdded = (snapshot) => {
       const notification = snapshot.val();
       setNotifications((prevState) => [...prevState, notification]);
-      setShowNotificationDot(true);
     };
 
     const handleNotificationRemoved = (snapshot) => {
       const notification = snapshot.val();
       setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-      setShowNotificationDot(notifications.length > 1);
     };
 
     ref.child('noti').on('child_added', handleNotificationAdded);
@@ -30,7 +28,11 @@ const Notification = ({ navId }) => {
       ref.child('noti').off('child_added', handleNotificationAdded);
       ref.child('noti').off('child_removed', handleNotificationRemoved);
     };
-  }, [notifications.length]);
+  }, []);
+
+  useEffect(() => {
+    setShowNotificationDot(notifications.length > 0);
+  }, [notifications]);
 
   return (
     <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${showNotificationDot ? 'has-dot' : ''}`} id={navId}>
@@ -53,13 +55,14 @@ const Notification = ({ navId }) => {
         />
       </div>
       <div className="mt-5">
-        {notifications.map((notification, index) => (
-          <div key={index} className="flex flex-col gap-1 border-b-1 border-color p-3">
-            <p className="font-semibold dark:text-gray-200">{notification.Titulo}</p>
-            <p className="text-gray-500 text-sm dark:text-gray-400">{notification.Descricao}</p>
-          </div>
-        ))}
-        {notifications.length === 0 && (
+        {notifications.length > 0 ? (
+          notifications.map((notification, index) => (
+            <div key={index} className="flex flex-col gap-1 border-b-1 border-color p-3">
+              <p className="font-semibold dark:text-gray-200">{notification.Titulo}</p>
+              <p className="text-gray-500 text-sm dark:text-gray-400">{notification.Descricao}</p>
+            </div>
+          ))
+        ) : (
           <div className="flex items-center justify-center mt-3">
             <p className="text-gray-500 text-sm">Nenhuma notificação encontrada.</p>
           </div>
