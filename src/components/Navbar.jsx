@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
-import { UserProfile } from '.';
+import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
-import './Style/noti.css';
 
-const NavButton = ({ title, customFunc, icon, color, showBolinha }) => (
+const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
@@ -18,61 +16,43 @@ const NavButton = ({ title, customFunc, icon, color, showBolinha }) => (
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
-      {showBolinha && (
-        <span
-          style={{ background: 'yellow' }}
-          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-        />
-      )}
+      <span
+        style={{ background: dotColor }}
+        className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
+      />
       {icon}
     </button>
   </TooltipComponent>
 );
 
 const Navbar = () => {
-  const { currentColor, handleClick, isClicked } = useStateContext();
-  const [showBolinha, setShowBolinha] = useState(false);
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
 
   useEffect(() => {
-    const ref = database.ref('notificacao');
+    const handleResize = () => setScreenSize(window.innerWidth);
 
-    const handleNotificationAdded = () => {
-      setShowBolinha(true);
-    };
+    window.addEventListener('resize', handleResize);
 
-    const handleNotificationRemoved = () => {
-      setShowBolinha(false);
-    };
+    handleResize();
 
-    ref.child('noti').on('child_added', handleNotificationAdded);
-    ref.child('noti').on('child_removed', handleNotificationRemoved);
-
-    return () => {
-      ref.child('noti').off('child_added', handleNotificationAdded);
-      ref.child('noti').off('child_removed', handleNotificationRemoved);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleActiveMenu = () => {
-    // Implemente a lógica para ativar/desativar o menu
-  };
+  useEffect(() => {
+    if (screenSize <= 900) {
+      setActiveMenu(false);
+    } else {
+      setActiveMenu(true);
+    }
+  }, [screenSize]);
+
+  const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
-      <NavButton
-        title="Menu"
-        customFunc={handleActiveMenu}
-        color={currentColor}
-        icon={<AiOutlineMenu />}
-      />
+      <NavButton title="Menu" customFunc={handleActiveMenu} color={currentColor} icon={<AiOutlineMenu />} />
       <div className="flex">
-        <NavButton
-          title="Notification"
-          customFunc={() => handleClick('notification')}
-          color={currentColor}
-          icon={<RiNotification3Line />}
-          showBolinha={showBolinha}
-        />
+        <NavButton title="Notification" dotColor="rgb(254, 201, 15)" customFunc={() => handleClick('notification')} color={currentColor} icon={<RiNotification3Line />} />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
@@ -93,7 +73,8 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
       </div>
-      {isClicked.userProfile && <UserProfile />}
+      {isClicked.notification && (<Notification />)}
+      {isClicked.userProfile && (<UserProfile />)}
     </div>
   );
 };
