@@ -3,6 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -31,12 +32,6 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
 const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
   const [showBolinha, setShowBolinha] = useState(true);
-  const [navId, setNavId] = useState('');
-
-  const generateRandomId = () => {
-    const id = Math.random().toString(36).substring(7);
-    return id;
-  };
 
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
@@ -58,10 +53,6 @@ const Navbar = () => {
     };
 
     getNotificationsDataFromFirebase();
-  }, []);
-
-  useEffect(() => {
-    setNavId(generateRandomId());
   }, []);
 
   return (
