@@ -6,11 +6,11 @@ import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
-import { Notification, UserProfile } from '.';
+import { UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 import './Style/noti.css';
 
-const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => (
+const NavButton = ({ title, customFunc, icon, color, showBolinha }) => (
   <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
@@ -18,10 +18,10 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, isPiscando }) => 
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
-      {isPiscando && (
+      {showBolinha && (
         <span
-          style={{ background: dotColor }}
-          className={`absolute inline-flex rounded-full h-2 w-2 right-2 top-2 ${isPiscando ? 'animate-piscar' : ''}`}
+          style={{ background: 'yellow' }}
+          className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
         />
       )}
       {icon}
@@ -33,26 +33,29 @@ const Navbar = () => {
   const { currentColor, handleClick, isClicked } = useStateContext();
   const [showBolinha, setShowBolinha] = useState(false);
 
+  useEffect(() => {
+    const ref = database.ref('notificacao');
+
+    const handleNotificationAdded = () => {
+      setShowBolinha(true);
+    };
+
+    const handleNotificationRemoved = () => {
+      setShowBolinha(false);
+    };
+
+    ref.child('noti').on('child_added', handleNotificationAdded);
+    ref.child('noti').on('child_removed', handleNotificationRemoved);
+
+    return () => {
+      ref.child('noti').off('child_added', handleNotificationAdded);
+      ref.child('noti').off('child_removed', handleNotificationRemoved);
+    };
+  }, []);
+
   const handleActiveMenu = () => {
     // Implemente a lógica para ativar/desativar o menu
   };
-
-  useEffect(() => {
-    const getNotificationsDataFromFirebase = async () => {
-      try {
-        const snapshot = await database.ref('notificacao').orderByChild('Piscar').equalTo(false).once('value');
-        const notificationsData = snapshot.val();
-        if (notificationsData) {
-          const notificationsArray = Object.values(notificationsData);
-          setShowBolinha(notificationsArray.length > 0);
-        }
-      } catch (error) {
-        console.log('Erro ao buscar notificações:', error);
-      }
-    };
-
-    getNotificationsDataFromFirebase();
-  }, []);
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -65,11 +68,10 @@ const Navbar = () => {
       <div className="flex">
         <NavButton
           title="Notification"
-          dotColor="red"
           customFunc={() => handleClick('notification')}
           color={currentColor}
           icon={<RiNotification3Line />}
-          isPiscando={showBolinha}
+          showBolinha={showBolinha}
         />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div
@@ -91,7 +93,6 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
       </div>
-      {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
     </div>
   );
