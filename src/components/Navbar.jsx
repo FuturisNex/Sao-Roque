@@ -27,18 +27,15 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, screenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      const windowSize = window.innerWidth;
-      // Faça algo com a variável windowSize, se necessário
-    };
+    const handleResize = () => setScreenSize(window.innerWidth);
     window.addEventListener('resize', handleResize);
     handleResize();
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [setScreenSize]);
 
   useEffect(() => {
     const ref = database.ref('notificacao/Piscar');
@@ -48,10 +45,8 @@ const Navbar = () => {
       setPiscarStatus(value === true);
     };
 
-    // Cria um listener para verificar o valor em tempo real
     ref.on('value', handlePiscarStatus);
 
-    // Remove o listener quando o componente é desmontado
     return () => ref.off('value', handlePiscarStatus);
   }, []);
 
