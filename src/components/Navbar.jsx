@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -26,8 +26,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, isClicked, setScreenSize, screenSize } = useStateContext();
-  const [showNotification, setShowNotification] = useState(false);
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -48,14 +47,6 @@ const Navbar = () => {
   }, [screenSize]);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
-
-  const handleClick = (menu) => {
-    if (menu === 'notification') {
-      setShowNotification(!showNotification);
-    } else {
-      setShowNotification(false);
-    }
-  };
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -82,7 +73,7 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
       </div>
-      {showNotification && (<Notification setShowNotification={setShowNotification} />)}
+      {isClicked.notification && (<Notification />)}
       {isClicked.userProfile && (<UserProfile />)}
     </div>
   );
