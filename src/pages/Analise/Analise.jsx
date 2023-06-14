@@ -28,7 +28,7 @@ const Analise = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      POWER_BI: 'https://app.powerbi.com/groups/7370386d-4f05-4152-a9c5-82346a52f0c3/reports/1970b52a-475d-4d35-a532-41db44773e6a/ReportSection4ac92021ce3fed6e9883?experience=power-bi',
+      POWER_BI: 'https://app.powerbi.com/groups/7370386d-4f05-4152-a9c5-82346a52f0c3/reports/361817de-cc82-4b92-8ff4-ebfc7443e787/ReportSection4ac92021ce3fed6e9883?experience=power-bi',
       DRIVE: 'https://lookerstudio.google.com/reporting/07ec0290-fb22-40ae-87db-64721ab3f0a5',
     }[buyer];
 
