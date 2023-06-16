@@ -4,8 +4,9 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
-import database from '../auth/firebase.js';
 import { toast } from 'react-toastify';
+import Sound from 'react-sound';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
