@@ -4,13 +4,14 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
-import { toast } from 'react-toastify';
-import Sound from 'react-sound';
 import database from '../auth/firebase.js';
+import { toast } from 'react-toastify';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+
+import soundFile from '../data/som.mp3'; // Importe o arquivo de som
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <Tooltip title={title} position="bottom">
@@ -60,6 +61,18 @@ const Navbar = () => {
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
+
+  useEffect(() => {
+    if (playSound) {
+      const audio = new Audio(soundFile);
+      audio.play();
+
+      audio.onended = () => {
+        setPlaySound(false);
+      };
+    }
+  }, [playSound]);
+  
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
