@@ -58,7 +58,8 @@
   }
   
   .buyer-card {
-    height: 150px;
+    width: 80%;
+    height: 180px;
     padding: 10px;
   }
   
