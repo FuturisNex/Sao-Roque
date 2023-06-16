@@ -47,7 +47,7 @@ const Navbar = () => {
       setPiscarStatus(value === true || value === 'true');
 
       if (value === true || value === 'true') {
-        setPlaySound(true); // Ativa o som da notificação
+        // setPlaySound(true); // Ativa o som da notificação
         toast('Nova notificação!'); // Exibe a notificação do navegador
       }
     };
