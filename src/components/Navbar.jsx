@@ -40,18 +40,14 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    // Inicializa o Firebase com as configurações do seu projeto
-    firebase.initializeApp({
-      // Sua configuração do Firebase aqui
-    });
-
-    const ref = firebase.database().ref('notificacao/Piscar');
+    const ref = database.ref('notificacao/Piscar');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
       setPiscarStatus(value === true || value === 'true');
 
       if (value === true || value === 'true') {
+        // setPlaySound(true); // Ativa o som da notificação
         toast('Nova notificação!'); // Exibe a notificação do navegador
       }
     };
