@@ -54,7 +54,7 @@
 
 @media (max-width: 600px) {
   .buyers-container {
-    padding: 10px;
+    padding: 0px;
   }
   
   .buyer-card {
