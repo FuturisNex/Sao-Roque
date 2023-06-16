@@ -11,8 +11,6 @@ import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
-import soundFile from '../data/som.mp3'; // Importe o arquivo de som
-
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <Tooltip title={title} position="bottom">
     <button
@@ -62,18 +60,6 @@ const Navbar = () => {
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
-  useEffect(() => {
-    if (playSound) {
-      const audio = new Audio(soundFile);
-      audio.play();
-
-      audio.onended = () => {
-        setPlaySound(false);
-      };
-    }
-  }, [playSound]);
-  
-
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
       <NavButton
@@ -112,13 +98,6 @@ const Navbar = () => {
       </div>
       {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
-      {playSound && (
-        <Sound
-          url="../data/som.mp3"
-          playStatus={Sound.status.PLAYING}
-          onFinishedPlaying={() => setPlaySound(false)}
-        />
-      )}
     </div>
   );
 };
