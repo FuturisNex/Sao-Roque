@@ -1,13 +1,12 @@
 .buyers-container {
   max-width: 800px;
   margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .buyers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
 }
 
 .buyer-card {
@@ -23,8 +22,7 @@
   align-items: center;
   text-align: center;
   height: 200px;
-  position: relative;
-  box-sizing: border-box; /* Add box-sizing property */
+  position: relative; /* Add position relative for pseudo-element */
 }
 
 .buyer-card:before {
@@ -59,21 +57,21 @@
   margin-bottom: 10px;
 }
 
+/* Responsive adjustments */
 @media (max-width: 600px) {
-  .buyers-grid {
-    justify-content: center;
+  .buyers-container {
+    padding: 10px;
   }
-
+  
   .buyer-card {
-    width: 80%;
-    height: auto;
-    padding: 15px;
+    height: 150px;
+    padding: 10px;
   }
-
+  
   .buyer-card p {
     font-size: 18px;
   }
-
+  
   .buyer-card h2 {
     font-size: 16px;
   }
