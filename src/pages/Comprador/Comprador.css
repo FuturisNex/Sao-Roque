@@ -1,8 +1,7 @@
 .buyers-container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 20px;
-  box-sizing: border-box; /* Add box-sizing property */
+  box-sizing: border-box;
 }
 
 .buyers-grid {
@@ -60,14 +59,13 @@
   margin-bottom: 10px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
   .buyers-grid {
-    justify-content: center; /* Add justify-content property */
+    justify-content: center;
   }
 
   .buyer-card {
-    width: 100%; /* Add width property */
+    width: 80%;
     height: auto;
     padding: 15px;
   }
