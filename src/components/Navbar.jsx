@@ -5,7 +5,6 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import firebase from 'firebase/app';
 import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
