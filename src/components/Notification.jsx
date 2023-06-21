@@ -55,8 +55,8 @@ const Notification = ({ navId }) => {
       <div className="mt-5">
         {notifications.map((notification, index) => (
           <div key={index} className="flex flex-col gap-1 border-b-1 border-color p-3">
-            <p className="font-semibold dark:text-gray-200">{notification.Titulo}</p>
-            <p className="text-gray-500 text-sm dark:text-gray-400">{notification.Descricao}</p>
+            <p className="font-semibold dark:text-gray-200">{notification.titulo}</p>
+            <p className="text-gray-500 text-sm dark:text-gray-400">{notification.descricao}</p>
           </div>
         ))}
         {notifications.length === 0 && (
