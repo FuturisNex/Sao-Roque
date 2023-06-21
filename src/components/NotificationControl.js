@@ -14,7 +14,11 @@ const Notification = ({ navId }) => {
     const handleNotificationAdded = (snapshot) => {
       const notification = snapshot.val();
       setNotifications((prevState) => [...prevState, notification]);
-      setPiscando(true);
+
+      if (!notification.Piscar) {
+        setPiscando(true);
+        ref.child('Piscar').set(true); // Define notificacao/Piscar como true
+      }
     };
 
     const handleNotificationRemoved = (snapshot) => {
