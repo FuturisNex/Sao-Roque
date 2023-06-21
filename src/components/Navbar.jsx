@@ -70,7 +70,7 @@ const Navbar = () => {
       />
       <div className="flex">
         <NavButton
-          title="Notification"
+          title="Notificações"
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
           customFunc={() => {
             handleClick('notification');
