@@ -30,7 +30,7 @@ const Notification = ({ navId }) => {
       ref.child('noti').off('child_added', handleNotificationAdded);
       ref.child('noti').off('child_removed', handleNotificationRemoved);
     };
-  }, []);
+  }, [notifications.length]);
 
   return (
     <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`} id={navId}>
@@ -70,8 +70,6 @@ const Notification = ({ navId }) => {
 };
 
 const NotificationControl = () => {
-  const [notifications, setNotifications] = useState([]);
-  const [piscar, setPiscar] = useState(false);
   const [novaNotificacao, setNovaNotificacao] = useState({
     titulo: '',
     descricao: '',
@@ -101,13 +99,13 @@ const NotificationControl = () => {
       <h2>Controle das Notificações</h2>
 
       <form>
-        <label>
+        <label htmlFor="titulo">
           Título:
-          <input type="text" name="titulo" value={novaNotificacao.titulo} onChange={handleCampoChange} />
+          <input type="text" id="titulo" name="titulo" value={novaNotificacao.titulo} onChange={handleCampoChange} />
         </label>
-        <label>
+        <label htmlFor="descricao">
           Descrição:
-          <input type="text" name="descricao" value={novaNotificacao.descricao} onChange={handleCampoChange} />
+          <input type="text" id="descricao" name="descricao" value={novaNotificacao.descricao} onChange={handleCampoChange} />
         </label>
 
         <button type="button" onClick={adicionarNotificacao}>
@@ -115,7 +113,6 @@ const NotificationControl = () => {
         </button>
       </form>
 
-      {/* Resto do código... */}
       <Notification navId="notification" />
     </div>
   );
