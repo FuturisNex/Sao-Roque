@@ -7,6 +7,7 @@ import './Style/noti.css';
 const Notification = ({ navId }) => {
   const [notifications, setNotifications] = useState([]);
   const [piscando, setPiscando] = useState(false);
+  const audioRef = useRef(null);
 
   useEffect(() => {
     const ref = database.ref('notificacao');
@@ -15,6 +16,7 @@ const Notification = ({ navId }) => {
       const notification = snapshot.val();
       setNotifications((prevState) => [...prevState, notification]);
       setPiscando(true);
+      playNotificationSound();
     };
 
     const handleNotificationRemoved = (snapshot) => {
@@ -31,9 +33,16 @@ const Notification = ({ navId }) => {
       ref.child('noti').off('child_removed', handleNotificationRemoved);
     };
   }, []);
-
+  
+    const playNotificationSound = () => {
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
+    };
+  
   return (
     <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${piscando ? 'piscando' : ''}`} id={navId}>
+     <audio ref={audioRef} src="../data/som.mp3" />
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
