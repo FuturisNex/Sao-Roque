@@ -75,8 +75,8 @@ const Notification = ({ navId }) => {
 
 const NotificationControl = () => {
   const [novaNotificacao, setNovaNotificacao] = useState({
-    Titulo: '',
-    Descricao: '',
+    titulo: '',
+    descricao: '',
   });
 
   const handleCampoChange = (event) => {
@@ -93,8 +93,8 @@ const NotificationControl = () => {
     novaNotificacaoRef.set(novaNotificacao);
 
     setNovaNotificacao({
-      Titulo: '',
-      Descricao: '',
+      titulo: '',
+      descricao: '',
     });
   };
 
