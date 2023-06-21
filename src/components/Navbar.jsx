@@ -4,8 +4,8 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
-import { toast } from 'react-toastify';
 import database from '../auth/firebase.js';
+import { toast } from 'react-toastify';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -31,6 +31,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
+  const [playSound, setPlaySound] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -47,7 +48,7 @@ const Navbar = () => {
       setPiscarStatus(value === true || value === 'true');
 
       if (value === true || value === 'true') {
-        // setPlaySound(true); // Ativa o som da notificação
+        setPlaySound(true); // Ativa o som da notificação
         toast('Nova notificação!'); // Exibe a notificação do navegador
       }
     };
@@ -71,7 +72,10 @@ const Navbar = () => {
         <NavButton
           title="Notification"
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
-          customFunc={() => handleClick('notification')}
+          customFunc={() => {
+            handleClick('notification');
+            setPlaySound(false); // Desativa o som quando a notificação é aberta
+          }}
           color={currentColor}
           icon={<RiNotification3Line />}
         />
@@ -97,6 +101,13 @@ const Navbar = () => {
       </div>
       {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
+      {playSound && (
+        <audio
+          src="../data/som.mp3"
+          autoPlay
+          onEnded={() => setPlaySound(false)}
+        />
+      )}
     </div>
   );
 };
