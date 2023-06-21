@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import database from '../auth/firebase.js';
-import Button from './Button';
 import './Style/noti.css';
 
 const Notification = ({ navId }) => {
