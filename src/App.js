@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
@@ -94,6 +96,7 @@ const App = () => {
           </div>
         </div>
       </BrowserRouter>
+     <ToastContainer />
     </div>
   );
 };
