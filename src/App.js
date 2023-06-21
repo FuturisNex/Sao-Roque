@@ -21,6 +21,8 @@ import Jovita from './pages/Compradores/Jovita/Jovita';
 import Marivone from './pages/Compradores/Marivone/Marivone';
 import Sena from './pages/Compradores/Sena/Sena';
 
+import NotificationControl from './components/NotificationControl';
+
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
 
@@ -90,6 +92,9 @@ const App = () => {
                 <Route path="/rebaixa" element={<Rebaixa />} />
                 <Route path="/encarte" element={<Encarte />} />
                 <Route path="/winthor" element={<Winthor />} />
+
+                <Route path="/notificacaoedit" element={<NotificationControl />} />
+
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
