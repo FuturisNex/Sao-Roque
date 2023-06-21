@@ -4,8 +4,8 @@ import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
-import database from '../auth/firebase.js';
 import { toast } from 'react-toastify';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -101,13 +101,11 @@ const Navbar = () => {
       </div>
       {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
-      {playSound && (
-        <audio
-          src="../data/som.mp3"
-          autoPlay
-          onEnded={() => setPlaySound(false)}
-        />
-      )}
+    {playSound && (
+      <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
+        <track kind="captions" srcLang="en" label="Portuguese captions" />
+      </audio>
+    )}
     </div>
   );
 };
