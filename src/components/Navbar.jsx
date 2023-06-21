@@ -101,11 +101,11 @@ const Navbar = () => {
       </div>
       {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
-    {playSound && (
-      <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
-        <track kind="captions" srcLang="en" label="Portuguese captions" />
-      </audio>
-    )}
+      {playSound && (
+        <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
+          <track kind="captions" srcLang="en" label="Portuguese captions" />
+        </audio>
+      )}
     </div>
   );
 };
