@@ -99,24 +99,25 @@ const NotificationControl = () => {
   };
 
   return (
-    <div>
-      <h2>Controle das Notificações</h2>
-
-      <form>
+    <div className="prevencao">
+      <h2 className="prevencao__subtitulo">Controle das Notificações</h2>
+      <form className="prevencao__form">
+        <div className="prevencao__input-group">
         <label htmlFor="titulo">
           Título:
           <input type="text" id="titulo" name="titulo" value={novaNotificacao.titulo} onChange={handleCampoChange} />
         </label>
+        </div>
+        <div className="prevencao__input-group">
         <label htmlFor="descricao">
           Descrição:
           <input type="text" id="descricao" name="descricao" value={novaNotificacao.descricao} onChange={handleCampoChange} />
         </label>
-
-        <button type="button" onClick={adicionarNotificacao}>
+        </div>
+        <button className="prevencao__submit" type="button" onClick={adicionarNotificacao}>
           Salvar
         </button>
       </form>
-
       <Notification navId="notification" />
     </div>
   );
