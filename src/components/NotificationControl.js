@@ -17,7 +17,7 @@ const Notification = ({ navId }) => {
 
       if (!notification.Piscar) {
         setPiscando(true);
-        ref.child('Piscar').set(true); // Define notificacao/Piscar como true
+        ref.child('Piscar').set(true);
       }
     };
 
@@ -105,11 +105,11 @@ const NotificationControl = () => {
       <form>
         <label htmlFor="titulo">
           Título:
-          <input type="text" id="titulo" name="titulo" value={novaNotificacao.Titulo} onChange={handleCampoChange} />
+          <input type="text" id="titulo" name="titulo" value={novaNotificacao.titulo} onChange={handleCampoChange} />
         </label>
         <label htmlFor="descricao">
           Descrição:
-          <input type="text" id="descricao" name="descricao" value={novaNotificacao.Descricao} onChange={handleCampoChange} />
+          <input type="text" id="descricao" name="descricao" value={novaNotificacao.descricao} onChange={handleCampoChange} />
         </label>
 
         <button type="button" onClick={adicionarNotificacao}>
