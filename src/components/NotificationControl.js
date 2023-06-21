@@ -71,8 +71,8 @@ const Notification = ({ navId }) => {
 
 const NotificationControl = () => {
   const [novaNotificacao, setNovaNotificacao] = useState({
-    titulo: '',
-    descricao: '',
+    Titulo: '',
+    Descricao: '',
   });
 
   const handleCampoChange = (event) => {
@@ -89,8 +89,8 @@ const NotificationControl = () => {
     novaNotificacaoRef.set(novaNotificacao);
 
     setNovaNotificacao({
-      titulo: '',
-      descricao: '',
+      Titulo: '',
+      Descricao: '',
     });
   };
 
@@ -101,11 +101,11 @@ const NotificationControl = () => {
       <form>
         <label htmlFor="titulo">
           Título:
-          <input type="text" id="titulo" name="titulo" value={novaNotificacao.titulo} onChange={handleCampoChange} />
+          <input type="text" id="titulo" name="titulo" value={novaNotificacao.Titulo} onChange={handleCampoChange} />
         </label>
         <label htmlFor="descricao">
           Descrição:
-          <input type="text" id="descricao" name="descricao" value={novaNotificacao.descricao} onChange={handleCampoChange} />
+          <input type="text" id="descricao" name="descricao" value={novaNotificacao.Descricao} onChange={handleCampoChange} />
         </label>
 
         <button type="button" onClick={adicionarNotificacao}>
