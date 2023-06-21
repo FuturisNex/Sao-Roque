@@ -4,7 +4,7 @@ import database from '../auth/firebase.js';
 import Button from './Button';
 import './Style/noti.css';
 
-const NotificationControl = ({ navId }) => {
+const Notification = ({ navId }) => {
   const [notifications, setNotifications] = useState([]);
   const [piscando, setPiscando] = useState(false);
 
