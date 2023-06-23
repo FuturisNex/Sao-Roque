@@ -9,7 +9,7 @@ const Notification = ({ navId }) => {
   const [piscando, setPiscando] = useState(false);
 
   useEffect(() => {
-    const ref = database.ref('notificacao');
+    const ref = database.ref('Notificacao');
 
     const handleNotificationAdded = (snapshot) => {
       const notification = snapshot.val();
@@ -23,12 +23,12 @@ const Notification = ({ navId }) => {
       setPiscando(notifications.length > 1);
     };
 
-    ref.child('noti').on('child_added', handleNotificationAdded);
-    ref.child('noti').on('child_removed', handleNotificationRemoved);
+    ref.child('Alerta').on('child_added', handleNotificationAdded);
+    ref.child('Alerta').on('child_removed', handleNotificationRemoved);
 
     return () => {
-      ref.child('noti').off('child_added', handleNotificationAdded);
-      ref.child('noti').off('child_removed', handleNotificationRemoved);
+      ref.child('Alerta').off('child_added', handleNotificationAdded);
+      ref.child('Alerta').off('child_removed', handleNotificationRemoved);
     };
   }, []);
 
