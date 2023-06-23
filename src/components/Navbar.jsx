@@ -41,7 +41,7 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    const ref = database.ref('notificacao/Piscar');
+    const ref = database.ref('Notificacao/Piscar');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
