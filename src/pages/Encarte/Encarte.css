@@ -59,7 +59,7 @@
   .container-encarte {
     max-width: 100%;
     padding: 0 10px;
-    padding-top: 100px; /* Espaçamento superior para compensar o header em dispositivos móveis */
+    padding-top: 80px; /* Espaçamento superior para compensar o header em dispositivos móveis */
   }
 
   .buyers-encarte {
