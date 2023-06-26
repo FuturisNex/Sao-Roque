@@ -38,7 +38,7 @@ const Comprador = () => {
     }[buyer];
 
     if (url) {
-      window.open(url);
+      window.location.href = url;
     }
   };
 
