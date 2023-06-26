@@ -7,13 +7,7 @@
   box-sizing: border-box; /* Inclui o padding no cálculo da largura total */
 }
 
-.buyers-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.buyers-grid {
+.buyers {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
@@ -32,14 +26,6 @@
   align-items: center;
   text-align: center;
   height: 200px;
-}
-
-.buyer-card:before {
-  content: "";
-  position: absolute;
-  background: linear-gradient(to bottom right, #fafafa, #f2f2f2);
-  filter: blur(10px);
-  z-index: -1;
 }
 
 .buyer-card:hover {
@@ -62,27 +48,27 @@
 }
 
 @media (max-width: 600px) {
-  .container-encarte {
+  .container {
     max-width: 100%;
     padding: 0 10px;
     padding-top: 100px; /* Espaçamento superior para compensar o header em dispositivos móveis */
   }
 
-  .buyers-encarte {
+  .buyers {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
-  .buyer-card-encarte {
+  .buyer-card {
     margin-top: 30px;
-    height: 150px;
+    height: 200px;
     padding: 40px;
   }
 
-  .buyer-card-encarte p {
+  .buyer-card p {
     font-size: 18px;
   }
 
-  .buyer-card-encarte h2 {
+  .buyer-card h2 {
     font-size: 16px;
   }
 }
