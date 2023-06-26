@@ -36,10 +36,6 @@ const Comprador = () => {
       SENA: '/sena',
 
     }[buyer];
-
-    if (url) {
-      window.open(url, '_blank');
-    }
   };
 
   return (
