@@ -7,12 +7,14 @@ import './Style/noti.css';
 const Notification = ({ navId }) => {
   const [notifications, setNotifications] = useState([]);
   const [piscando, setPiscando] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      setIsMobile(window.innerWidth <= 768);
     };
+
+    handleResize();
 
     window.addEventListener('resize', handleResize);
 
@@ -46,7 +48,7 @@ const Notification = ({ navId }) => {
   }, []);
 
   return (
-    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96 ${windowWidth < 768 ? 'w-full' : ''} ${piscando ? 'piscando' : ''}`} id={navId}>
+    <div className={`nav-item absolute right-5 md:right-40 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg ${isMobile ? 'w-full' : 'w-96'} ${piscando ? 'piscando' : ''}`} id={navId}>
       <div className="flex justify-between items-center">
         <div>
           <p className="font-semibold text-lg dark:text-gray-200">Notificações</p>
