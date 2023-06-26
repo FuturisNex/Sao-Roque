@@ -55,8 +55,9 @@
 
 @media (max-width: 600px) {
   .container-encarte {
-    max-width: 100%; /* Altera a largura máxima para ocupar toda a largura da tela */
-    padding: 0 10px; /* Remove o padding nas laterais */
+    margin-top: 50px;
+    max-width: 100%;
+    padding: 0 10px;
   }
 
   .buyers-encarte {
