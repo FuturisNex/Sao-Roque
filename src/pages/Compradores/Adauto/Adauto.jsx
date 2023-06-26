@@ -39,8 +39,8 @@ const Adauto = () => {
   };
 
   return (
-    <div className={`container ${currentMode === 'Dark' ? 'dark' : ''}`}>
-      <div className="buyers">
+    <div className={`container-adauto ${currentMode === 'Dark' ? 'dark' : ''}`}>
+      <div className="buyers-adauto">
         {buyers.map((buyer, index) => (
           <BuyerCard key={index} buyer={buyer} handleClick={handleBuyerClick} />
         ))}
