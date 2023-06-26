@@ -36,11 +36,10 @@ const Comprador = () => {
       SENA: '/sena',
 
     }[buyer];
-    
-        if (url) {
+
+    if (url) {
       window.open(url);
     }
-    
   };
 
   return (
