@@ -3,8 +3,8 @@
   margin: 0 auto;
   padding: 20px;
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column; /* Altera a direção do fluxo para coluna */
+  padding-top: 100px; /* Espaçamento superior para compensar o header */
+  box-sizing: border-box; /* Inclui o padding no cálculo da largura total */
 }
 
 .buyers-encarte {
@@ -59,14 +59,15 @@
   .container-encarte {
     max-width: 100%;
     padding: 0 10px;
+    padding-top: 100px; /* Espaçamento superior para compensar o header em dispositivos móveis */
   }
 
   .buyers-encarte {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Redefine a largura mínima dos itens */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   }
 
   .buyer-card-encarte {
-    margin-top: 30px; /* Reduz a margem superior */
+    margin-top: 30px;
     height: 150px;
     padding: 10px;
   }
