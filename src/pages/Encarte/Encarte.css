@@ -2,7 +2,9 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  overflow-x: hidden; /* Impede a rolagem horizontal */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column; /* Altera a direção do fluxo para coluna */
 }
 
 .buyers-encarte {
@@ -55,7 +57,6 @@
 
 @media (max-width: 600px) {
   .container-encarte {
-    margin-top: 50px;
     max-width: 100%;
     padding: 0 10px;
   }
