@@ -23,7 +23,6 @@
   align-items: center;
   text-align: center;
   height: 200px;
-  position: relative; /* Add position relative for pseudo-element */
 }
 
 .buyer-card:before {
@@ -32,11 +31,6 @@
   background: linear-gradient(to bottom right, #fafafa, #f2f2f2);
   filter: blur(10px);
   z-index: -1;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 8px;
 }
 
 .buyer-card:hover {
@@ -60,12 +54,14 @@
 
 @media (max-width: 600px) {
   .buyers-container {
-    padding: 10px;
+    padding: 0px;
   }
   
   .buyer-card {
-    height: 150px;
+    width: 80%;
+    height: 180px;
     padding: 10px;
+    margin: 0 auto;
   }
   
   .buyer-card p {
