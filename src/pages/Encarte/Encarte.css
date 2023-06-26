@@ -2,6 +2,7 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
+  overflow-x: hidden; /* Impede a rolagem horizontal */
 }
 
 .buyers-encarte {
@@ -53,23 +54,25 @@
 }
 
 @media (max-width: 600px) {
-  .buyers-container {
-    max-width: 500px;
-    padding: 0px;
+  .container-encarte {
+    max-width: 100%; /* Altera a largura máxima para ocupar toda a largura da tela */
+    padding: 0 10px; /* Remove o padding nas laterais */
   }
-  
+
+  .buyers-encarte {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Redefine a largura mínima dos itens */
+  }
+
   .buyer-card-encarte {
-    margin-top: 50px;
-    width: 70%;
+    margin-top: 30px; /* Reduz a margem superior */
     height: 150px;
     padding: 10px;
-    margin: 0 auto;
   }
-  
+
   .buyer-card-encarte p {
     font-size: 18px;
   }
-  
+
   .buyer-card-encarte h2 {
     font-size: 16px;
   }
