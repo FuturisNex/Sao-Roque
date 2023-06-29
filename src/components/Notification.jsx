@@ -4,7 +4,6 @@ import { getMessaging, onMessage } from 'firebase/messaging';
 
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);
-  const [piscando, setPiscando] = useState(false);
 
   useEffect(() => {
     const messaging = getMessaging();
@@ -12,13 +11,11 @@ const Notification = () => {
     onMessage(messaging, (payload) => {
       const { notification } = payload;
       setNotifications((prevState) => [...prevState, notification]);
-      setPiscando(true);
     });
   }, []);
 
   const handleClick = () => {
     setNotifications([]);
-    setPiscando(false);
   };
 
   return (
