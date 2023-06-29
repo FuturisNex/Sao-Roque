@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
 import { getMessaging, onMessage } from 'firebase/messaging';
 
-const Notification = ({ navId, playSound }) => {
+const Notification = () => {
   const [notifications, setNotifications] = useState([]);
   const [piscando, setPiscando] = useState(false);
 
