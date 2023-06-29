@@ -5,7 +5,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import database from '../auth/firebase.js';
+import { getMessaging, onMessage } from 'firebase/messaging';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -41,21 +41,14 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    const ref = database.ref('Notificacao/Piscar');
-
-    const handlePiscarStatus = (snapshot) => {
-      const value = snapshot.val();
-      setPiscarStatus(value === true || value === 'true');
-
-      if (value === true || value === 'true') {
-        setPlaySound(true); // Ativa o som da notificação
-        toast('Nova notificação!'); // Exibe a notificação do navegador
-      }
-    };
-
-    ref.on('value', handlePiscarStatus);
-
-    return () => ref.off('value', handlePiscarStatus);
+    const messaging = getMessaging();
+    
+    onMessage(messaging, (payload) => {
+      const { notification } = payload;
+      setPiscarStatus(true);
+      setPlaySound(true);
+      toast(notification.body);
+    });
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
@@ -99,13 +92,8 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked.notification && <Notification />}
-      {isClicked.userProfile && <UserProfile />}
-      {playSound && (
-        <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
-          <track kind="captions" srcLang="en" label="Portuguese captions" />
-        </audio>
-      )}
+      {isClicked && activeMenu === 'notification' && <Notification navId="notification" playSound={playSound} />}
+      {isClicked && activeMenu === 'userProfile' && <UserProfile navId="userProfile" />}
     </div>
   );
 };
