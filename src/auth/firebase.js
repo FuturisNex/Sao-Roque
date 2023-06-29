@@ -1,4 +1,3 @@
-import { getAnalytics } from "firebase/analytics";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/database';
 
@@ -13,6 +12,5 @@ const firebaseConfig = {
 };
 const app = firebase.initializeApp(firebaseConfig);
 const database = app.database();
-const analytics = getAnalytics(app);
 
 export default database;
