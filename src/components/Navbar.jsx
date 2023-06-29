@@ -32,7 +32,7 @@ const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
-  const [notificationPermission, setNotificationPermission] = useState(false);
+  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -42,16 +42,7 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    // Verificar a permissão de notificação
-    if ('Notification' in window && Notification.permission !== 'granted') {
-      Notification.requestPermission().then((permission) => {
-        setNotificationPermission(permission === 'granted');
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    const ref = database.ref('Notificacao/Piscar');
+    const ref = database.ref('Notificacoes');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
@@ -59,32 +50,42 @@ const Navbar = () => {
 
       if (value === true || value === 'true') {
         setPlaySound(true); // Ativa o som da notificação
-
-        if (notificationPermission) {
-          const notification = new Notification('Nova notificação!', {
-            body: 'Conteúdo da notificação',
-          });
-
-          // Obter o tempo de expiração da notificação em tempo real
-          const expirationRef = database.ref('Notificacao/TempoExpiracao');
-          expirationRef.once('value', (expirationSnapshot) => {
-            const expirationTime = expirationSnapshot.val();
-
-            // Verificar se o tempo de expiração é um número válido
-            if (typeof expirationTime === 'number' && expirationTime > 0) {
-              setTimeout(() => {
-                notification.close();
-              }, expirationTime * 1000);
-            }
-          });
-        }
+        toast('Nova notificação!'); // Exibe a notificação do navegador
       }
     };
 
-    ref.on('value', handlePiscarStatus);
+    ref.child('Piscar').on('value', handlePiscarStatus);
 
-    return () => ref.off('value', handlePiscarStatus);
-  }, [notificationPermission]);
+    return () => ref.child('Piscar').off('value', handlePiscarStatus);
+  }, []);
+
+  useEffect(() => {
+    const ref = database.ref('Notificacoes');
+
+    const handleNotificationAdded = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) => [...prevState, notification]);
+
+      const expirationTimeInMillis = notification.expiracao * 24 * 60 * 60 * 1000;
+
+      setTimeout(() => {
+        setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
+      }, expirationTimeInMillis);
+    };
+
+    const handleNotificationRemoved = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
+    };
+
+    ref.on('child_added', handleNotificationAdded);
+    ref.on('child_removed', handleNotificationRemoved);
+
+    return () => {
+      ref.off('child_added', handleNotificationAdded);
+      ref.off('child_removed', handleNotificationRemoved);
+    };
+  }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
@@ -127,7 +128,7 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked.notification && <Notification />}
+      {isClicked.notification && <Notification notifications={notifications} />}
       {isClicked.userProfile && <UserProfile />}
       {playSound && (
         <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
