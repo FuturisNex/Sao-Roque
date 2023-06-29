@@ -1,29 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { MdClose } from 'react-icons/md';
-import { getMessaging, onMessage } from 'firebase/compat/messaging';
-import database from '../auth/firebase.js'; // Importe a instância do Firebase
+import { initializeApp } from 'firebase/app';
+import { getMessaging, onMessage } from 'firebase/messaging';
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyBR7ZeYNiLbshvMe5powb4wNnT6p7xt1q8',
+  authDomain: 'grupo-sao-roque.firebaseapp.com',
+  databaseURL: 'https://grupo-sao-roque-default-rtdb.firebaseio.com',
+  projectId: 'grupo-sao-roque',
+  storageBucket: 'grupo-sao-roque.appspot.com',
+  messagingSenderId: '436605416235',
+  appId: '1:436605416235:web:6e9db798ded70ab7690b6e',
+};
+
+const app = initializeApp(firebaseConfig);
+const messaging = getMessaging(app);
 
 const Notification = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const messaging = getMessaging(database); // Use a instância do Firebase importada
-
     onMessage(messaging, (payload) => {
       const { notification } = payload;
       setNotifications((prevState) => [...prevState, notification]);
     });
-
-    return () => {
-      messaging.onMessage.unsubscribe();
-    };
   }, []);
 
   const handleClick = () => {
     setNotifications([]);
   };
 
-   return (
+  return (
     <div className="absolute bg-white shadow-lg rounded-xl text-14 z-20 overflow-y-auto max-h-96 w-60 top-14 right-0 mr-6 mt-1">
       <div className="flex justify-between items-center p-2 border-b border-gray-300">
         <h2 className="text-base font-semibold">Notificações</h2>
