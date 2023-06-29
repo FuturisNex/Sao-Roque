@@ -3,6 +3,7 @@ import { MdClose } from 'react-icons/md';
 import { initializeApp } from 'firebase/app';
 import { getMessaging, onMessage } from 'firebase/messaging';
 
+// Configuração do Firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyBR7ZeYNiLbshvMe5powb4wNnT6p7xt1q8',
   authDomain: 'grupo-sao-roque.firebaseapp.com',
@@ -13,6 +14,7 @@ const firebaseConfig = {
   appId: '1:436605416235:web:6e9db798ded70ab7690b6e',
 };
 
+// Inicialização do app Firebase
 const app = initializeApp(firebaseConfig);
 const messaging = getMessaging(app);
 
@@ -20,6 +22,7 @@ const Notification = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
+    // Listener para receber notificações em tempo real
     onMessage(messaging, (payload) => {
       const { notification } = payload;
       setNotifications((prevState) => [...prevState, notification]);
