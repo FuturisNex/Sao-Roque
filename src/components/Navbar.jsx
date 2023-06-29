@@ -32,7 +32,6 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
-  const [playSound, setPlaySound] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -43,11 +42,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const messaging = getMessaging();
-    
+
     onMessage(messaging, (payload) => {
       const { notification } = payload;
       setPiscarStatus(true);
-      setPlaySound(true);
       toast(notification.body);
     });
   }, []);
@@ -68,7 +66,6 @@ const Navbar = () => {
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
           customFunc={() => {
             handleClick('notification');
-            setPlaySound(false); // Desativa o som quando a notificação é aberta
           }}
           color={currentColor}
           icon={<RiNotification3Line />}
