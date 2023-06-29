@@ -10,7 +10,10 @@ const firebaseConfig = {
   messagingSenderId: '436605416235',
   appId: '1:436605416235:web:6e9db798ded70ab7690b6e',
 };
-const app = firebase.initializeApp(firebaseConfig);
-const database = app.database();
 
-export default database;
+const app = firebase.initializeApp(firebaseConfig);
+
+// Obtém a referência do banco de dados
+const database = firebase.database();
+
+export { app, database };
