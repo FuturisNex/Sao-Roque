@@ -35,7 +35,7 @@ const Notification = ({ navId }) => {
 
       setTimeout(() => {
         setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-        setPiscando(notifications.length > 1);
+        setPiscando(prevState => prevState && notifications.length > 1);
       }, expirationTimeInMillis);
     };
 
@@ -44,7 +44,7 @@ const Notification = ({ navId }) => {
       setNotifications((prevState) =>
         prevState.filter((item) => item.id !== notification.id)
       );
-      setPiscando(notifications.length > 1);
+      setPiscando(prevState => prevState && notifications.length > 1);
     };
 
     ref.on('child_added', handleNotificationAdded);
