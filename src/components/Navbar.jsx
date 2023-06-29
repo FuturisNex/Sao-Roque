@@ -8,7 +8,8 @@ import { toast } from 'react-toastify';
 import { getMessaging, onMessage } from 'firebase/messaging';
 
 import avatar from '../data/avatar.png';
-import { Notification, UserProfile } from '.';
+import Notification from './Notification';
+import UserProfile from './UserProfile';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -92,8 +93,8 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked && activeMenu === 'notification' && <Notification navId="notification" playSound={playSound} />}
-      {isClicked && activeMenu === 'userProfile' && <UserProfile navId="userProfile" />}
+      {isClicked && activeMenu === 'notification' && <Notification />}
+      {isClicked && activeMenu === 'userProfile' && <UserProfile />}
     </div>
   );
 };
