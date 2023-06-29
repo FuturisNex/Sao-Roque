@@ -5,11 +5,10 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import { getMessaging, onMessage } from 'firebase/messaging';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
-import Notification from './Notification';
-import UserProfile from './UserProfile';
+import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
@@ -32,6 +31,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
+  const [playSound, setPlaySound] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -41,13 +41,21 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    const messaging = getMessaging();
+    const ref = database.ref('Notificacao/Piscar');
 
-    onMessage(messaging, (payload) => {
-      const { notification } = payload;
-      setPiscarStatus(true);
-      toast(notification.body);
-    });
+    const handlePiscarStatus = (snapshot) => {
+      const value = snapshot.val();
+      setPiscarStatus(value === true || value === 'true');
+
+      if (value === true || value === 'true') {
+        setPlaySound(true); // Ativa o som da notificação
+        toast('Nova notificação!'); // Exibe a notificação do navegador
+      }
+    };
+
+    ref.on('value', handlePiscarStatus);
+
+    return () => ref.off('value', handlePiscarStatus);
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
@@ -66,6 +74,7 @@ const Navbar = () => {
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
           customFunc={() => {
             handleClick('notification');
+            setPlaySound(false); // Desativa o som quando a notificação é aberta
           }}
           color={currentColor}
           icon={<RiNotification3Line />}
@@ -90,8 +99,13 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked && activeMenu === 'notification' && <Notification />}
-      {isClicked && activeMenu === 'userProfile' && <UserProfile />}
+      {isClicked.notification && <Notification />}
+      {isClicked.userProfile && <UserProfile />}
+      {playSound && (
+        <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
+          <track kind="captions" srcLang="en" label="Portuguese captions" />
+        </audio>
+      )}
     </div>
   );
 };
