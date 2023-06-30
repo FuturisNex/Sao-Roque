@@ -9,7 +9,7 @@ import {
   app,
   messaging,
   requestFirebaseNotificationPermission,
-} from './firebase'; // Importe corretamente o arquivo firebase.js
+} from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
