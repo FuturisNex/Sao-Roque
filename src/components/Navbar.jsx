@@ -5,7 +5,11 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import database from '../auth/firebase.js';
+import {
+  app,
+  messaging,
+  requestFirebaseNotificationPermission,
+} from './firebase'; // Importe corretamente o arquivo firebase.js
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -34,14 +38,7 @@ const Navbar = () => {
   const [playSound, setPlaySound] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, [setScreenSize]);
-
-  useEffect(() => {
-    const ref = database.ref('Notificacao/Piscar');
+    const ref = app.database().ref('Notificacao/Piscar');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
@@ -49,11 +46,13 @@ const Navbar = () => {
 
       if (value === true || value === 'true') {
         setPlaySound(true); // Ativa o som da notificação
-        toast('Nova notificação!'); // Exibe a notificação do navegador
+        toast('Nova notificação!'); // Exibe a notificação do navegador usando o toast
       }
     };
 
     ref.on('value', handlePiscarStatus);
+
+    requestFirebaseNotificationPermission();
 
     return () => ref.off('value', handlePiscarStatus);
   }, []);
