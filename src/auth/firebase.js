@@ -1,5 +1,5 @@
 import firebase from 'firebase/compat/app';
-import 'firebase/messaging';
+import 'firebase/compat/database';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBR7ZeYNiLbshvMe5powb4wNnT6p7xt1q8',
@@ -11,5 +11,6 @@ const firebaseConfig = {
   appId: '1:436605416235:web:6e9db798ded70ab7690b6e',
 };
 const app = firebase.initializeApp(firebaseConfig);
+const database = app.database();
 
-export const messaging = firebase.messaging();
+export default database;
