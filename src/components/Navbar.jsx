@@ -5,7 +5,8 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import { messaging } from '../auth/firebase.js';
+import database from '../auth/firebase.js';
+
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
@@ -31,7 +32,6 @@ const Navbar = () => {
   const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
-  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -41,37 +41,8 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    const requestNotificationPermission = async () => {
-      try {
-        await messaging.requestPermission();
-        console.log('Permissões de notificação concedidas.');
+    const ref = database.ref('Notificacao/Piscar');
 
-        const token = await messaging.getToken();
-        console.log('Token de registro:', token);
-
-        // Agora você pode enviar o token de registro para o seu servidor
-      } catch (error) {
-        console.log('Falha ao solicitar permissões de notificação:', error);
-      }
-    };
-
-    requestNotificationPermission();
-  }, []);
-
-  useEffect(() => {
-    const handleNotification = (payload) => {
-      const { title } = payload.notification;
-      toast(title); // Exibe a notificação usando o React Toastify
-    };
-
-    messaging.onMessage(handleNotification);
-
-    return () => {
-      messaging.onMessage.unsubscibe(handleNotification);
-    };
-  }, []);
-
-  useEffect(() => {
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
       setPiscarStatus(value === true || value === 'true');
@@ -82,37 +53,9 @@ const Navbar = () => {
       }
     };
 
-    const ref = database.ref('Notificacoes');
-    ref.child('Piscar').on('value', handlePiscarStatus);
+    ref.on('value', handlePiscarStatus);
 
-    return () => ref.child('Piscar').off('value', handlePiscarStatus);
-  }, []);
-
-  useEffect(() => {
-    const handleNotificationAdded = (snapshot) => {
-      const notification = snapshot.val();
-      setNotifications((prevState) => [...prevState, notification]);
-
-      const expirationTimeInMillis = notification.expiracao * 24 * 60 * 60 * 1000;
-
-      setTimeout(() => {
-        setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-      }, expirationTimeInMillis);
-    };
-
-    const handleNotificationRemoved = (snapshot) => {
-      const notification = snapshot.val();
-      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-    };
-
-    const ref = database.ref('Notificacoes');
-    ref.on('child_added', handleNotificationAdded);
-    ref.on('child_removed', handleNotificationRemoved);
-
-    return () => {
-      ref.off('child_added', handleNotificationAdded);
-      ref.off('child_removed', handleNotificationRemoved);
-    };
+    return () => ref.off('value', handlePiscarStatus);
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
@@ -156,7 +99,7 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked.notification && <Notification notifications={notifications} />}
+      {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
       {playSound && (
         <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
