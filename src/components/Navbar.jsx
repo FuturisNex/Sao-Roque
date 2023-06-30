@@ -7,7 +7,6 @@ import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
 import {
   app,
-  messaging,
   requestFirebaseNotificationPermission,
 } from '../auth/firebase.js';
 
@@ -33,7 +32,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
 
