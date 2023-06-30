@@ -5,8 +5,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import database from '../auth/firebase.js';
-
+import { messaging } from '../auth/firebase.js';
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
@@ -42,8 +41,37 @@ const Navbar = () => {
   }, [setScreenSize]);
 
   useEffect(() => {
-    const ref = database.ref('Notificacoes');
+    const requestNotificationPermission = async () => {
+      try {
+        await messaging.requestPermission();
+        console.log('Permissões de notificação concedidas.');
 
+        const token = await messaging.getToken();
+        console.log('Token de registro:', token);
+
+        // Agora você pode enviar o token de registro para o seu servidor
+      } catch (error) {
+        console.log('Falha ao solicitar permissões de notificação:', error);
+      }
+    };
+
+    requestNotificationPermission();
+  }, []);
+
+  useEffect(() => {
+    const handleNotification = (payload) => {
+      const { title } = payload.notification;
+      toast(title); // Exibe a notificação usando o React Toastify
+    };
+
+    messaging.onMessage(handleNotification);
+
+    return () => {
+      messaging.onMessage.unsubscibe(handleNotification);
+    };
+  }, []);
+
+  useEffect(() => {
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
       setPiscarStatus(value === true || value === 'true');
@@ -54,14 +82,13 @@ const Navbar = () => {
       }
     };
 
+    const ref = database.ref('Notificacoes');
     ref.child('Piscar').on('value', handlePiscarStatus);
 
     return () => ref.child('Piscar').off('value', handlePiscarStatus);
   }, []);
 
   useEffect(() => {
-    const ref = database.ref('Notificacoes');
-
     const handleNotificationAdded = (snapshot) => {
       const notification = snapshot.val();
       setNotifications((prevState) => [...prevState, notification]);
@@ -78,6 +105,7 @@ const Navbar = () => {
       setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
     };
 
+    const ref = database.ref('Notificacoes');
     ref.on('child_added', handleNotificationAdded);
     ref.on('child_removed', handleNotificationRemoved);
 
