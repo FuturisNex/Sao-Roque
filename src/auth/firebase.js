@@ -29,7 +29,7 @@ const setupFirebaseMessaging = () => {
   onMessage(messaging, (payload) => {
     console.log('Received FCM message:', payload);
     // Faça algo com a notificação recebida, como exibir um toast ou uma notificação no navegador
-    new Notification(payload.notification.title, { body: payload.notification.body });
+    Notification(payload.notification.title, { body: payload.notification.body });
   });
 };
 
