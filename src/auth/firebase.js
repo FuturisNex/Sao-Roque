@@ -1,5 +1,6 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/database';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+import { getMessaging, onMessage } from 'firebase/messaging';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBR7ZeYNiLbshvMe5powb4wNnT6p7xt1q8',
@@ -10,7 +11,9 @@ const firebaseConfig = {
   messagingSenderId: '436605416235',
   appId: '1:436605416235:web:6e9db798ded70ab7690b6e',
 };
-const app = firebase.initializeApp(firebaseConfig);
-const database = app.database();
 
-export default database;
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+const messaging = getMessaging();
+
+export { app, database, messaging, onMessage };

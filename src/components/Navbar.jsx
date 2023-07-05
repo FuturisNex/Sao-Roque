@@ -2,17 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
-import { Tooltip } from 'react-tippy';
-import 'react-tippy/dist/tippy.css';
-import { toast } from 'react-toastify';
-import database from '../auth/firebase.js';
-
+import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
+import { messaging, onMessage } from '../auth/firebase';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
-  <Tooltip title={title} position="bottom">
+  <TooltipComponent content={title} position="BottomCenter">
     <button
       type="button"
       onClick={() => customFunc()}
@@ -25,69 +22,46 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       />
       {icon}
     </button>
-  </Tooltip>
+  </TooltipComponent>
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize, screenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
-  const [playSound, setPlaySound] = useState(false);
-  const [notifications, setNotifications] = useState([]);
+  const [deviceToken, setDeviceToken] = useState('');
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, [setScreenSize]);
+    messaging
+      .requestPermission()
+      .then(() => messaging.getToken())
+      .then((token) => {
+        console.log('Device Token:', token);
+        setDeviceToken(token);
+      })
+      .catch((error) => {
+        console.error('Error requesting permission/token:', error);
+      });
+
+    onMessage((payload) => {
+      console.log('Received message:', payload);
+      // Faça o que for necessário com a mensagem recebida
+    });
+  }, []);
 
   useEffect(() => {
-    const ref = database.ref('Notificacoes');
+    const ref = database.ref('notificacao/Piscar');
 
-    const handlePiscarStatus = (snapshot) => {
+    ref.on('value', (snapshot) => {
       const value = snapshot.val();
-      setPiscarStatus(value === true || value === 'true');
+      setPiscarStatus(value === true);
+    });
 
-      if (value === true || value === 'true') {
-        setPlaySound(true); // Ativa o som da notificação
-        toast('Nova notificação!'); // Exibe a notificação do navegador
-      }
-    };
-
-    ref.child('Piscar').on('value', handlePiscarStatus);
-
-    return () => ref.child('Piscar').off('value', handlePiscarStatus);
+    return () => ref.off('value');
   }, []);
 
-  useEffect(() => {
-    const ref = database.ref('Notificacoes');
-
-    const handleNotificationAdded = (snapshot) => {
-      const notification = snapshot.val();
-      setNotifications((prevState) => [...prevState, notification]);
-
-      const expirationTimeInMillis = notification.expiracao * 24 * 60 * 60 * 1000;
-
-      setTimeout(() => {
-        setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-      }, expirationTimeInMillis);
-    };
-
-    const handleNotificationRemoved = (snapshot) => {
-      const notification = snapshot.val();
-      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-    };
-
-    ref.on('child_added', handleNotificationAdded);
-    ref.on('child_removed', handleNotificationRemoved);
-
-    return () => {
-      ref.off('child_added', handleNotificationAdded);
-      ref.off('child_removed', handleNotificationRemoved);
-    };
-  }, []);
-
-  const handleActiveMenu = () => setActiveMenu(!activeMenu);
+  const handleActiveMenu = () => {
+    setActiveMenu(!activeMenu);
+  };
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -99,16 +73,13 @@ const Navbar = () => {
       />
       <div className="flex">
         <NavButton
-          title="Notificações"
+          title="Notification"
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
-          customFunc={() => {
-            handleClick('notification');
-            setPlaySound(false); // Desativa o som quando a notificação é aberta
-          }}
+          customFunc={() => handleClick('notification')}
           color={currentColor}
           icon={<RiNotification3Line />}
         />
-        <Tooltip title="Profile" position="bottom">
+        <TooltipComponent content="Profile" position="BottomCenter">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfile')}
@@ -126,15 +97,10 @@ const Navbar = () => {
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
-        </Tooltip>
+        </TooltipComponent>
       </div>
-      {isClicked.notification && <Notification notifications={notifications} />}
+      {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
-      {playSound && (
-        <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
-          <track kind="captions" srcLang="en" label="Portuguese captions" />
-        </audio>
-      )}
     </div>
   );
 };
