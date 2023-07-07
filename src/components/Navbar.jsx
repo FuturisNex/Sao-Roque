@@ -5,7 +5,10 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import database from '../auth/firebase.js';
+import {
+  app,
+  requestFirebaseNotificationPermission,
+} from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -29,20 +32,12 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
-  const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener('resize', handleResize);
-    handleResize();
-    return () => window.removeEventListener('resize', handleResize);
-  }, [setScreenSize]);
-
-  useEffect(() => {
-    const ref = database.ref('Notificacoes');
+    const ref = app.database().ref('Notificacao/Piscar');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
@@ -50,41 +45,15 @@ const Navbar = () => {
 
       if (value === true || value === 'true') {
         setPlaySound(true); // Ativa o som da notificação
-        toast('Nova notificação!'); // Exibe a notificação do navegador
+        toast('Nova notificação!'); // Exibe a notificação do navegador usando o toast
       }
     };
 
-    ref.child('Piscar').on('value', handlePiscarStatus);
+    ref.on('value', handlePiscarStatus);
 
-    return () => ref.child('Piscar').off('value', handlePiscarStatus);
-  }, []);
+    requestFirebaseNotificationPermission();
 
-  useEffect(() => {
-    const ref = database.ref('Notificacoes');
-
-    const handleNotificationAdded = (snapshot) => {
-      const notification = snapshot.val();
-      setNotifications((prevState) => [...prevState, notification]);
-
-      const expirationTimeInMillis = notification.expiracao * 24 * 60 * 60 * 1000;
-
-      setTimeout(() => {
-        setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-      }, expirationTimeInMillis);
-    };
-
-    const handleNotificationRemoved = (snapshot) => {
-      const notification = snapshot.val();
-      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
-    };
-
-    ref.on('child_added', handleNotificationAdded);
-    ref.on('child_removed', handleNotificationRemoved);
-
-    return () => {
-      ref.off('child_added', handleNotificationAdded);
-      ref.off('child_removed', handleNotificationRemoved);
-    };
+    return () => ref.off('value', handlePiscarStatus);
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
@@ -128,7 +97,7 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked.notification && <Notification notifications={notifications} />}
+      {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
       {playSound && (
         <audio src="../data/som.mp3" autoPlay onEnded={() => setPlaySound(false)}>
