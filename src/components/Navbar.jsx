@@ -5,10 +5,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md';
 import { Tooltip } from 'react-tippy';
 import 'react-tippy/dist/tippy.css';
 import { toast } from 'react-toastify';
-import {
-  app,
-  requestFirebaseNotificationPermission,
-} from '../auth/firebase.js';
+import database from '../auth/firebase.js';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -32,12 +29,19 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked } = useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, handleClick, isClicked, setScreenSize } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
 
   useEffect(() => {
-    const ref = app.database().ref('Notificacao/Piscar');
+    const handleResize = () => setScreenSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => window.removeEventListener('resize', handleResize);
+  }, [setScreenSize]);
+
+  useEffect(() => {
+    const ref = database.ref('Notificacao/Piscar');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
@@ -45,13 +49,11 @@ const Navbar = () => {
 
       if (value === true || value === 'true') {
         setPlaySound(true); // Ativa o som da notificação
-        toast('Nova notificação!'); // Exibe a notificação do navegador usando o toast
+        toast('Nova notificação!'); // Exibe a notificação do navegador
       }
     };
 
     ref.on('value', handlePiscarStatus);
-
-    requestFirebaseNotificationPermission();
 
     return () => ref.off('value', handlePiscarStatus);
   }, []);
