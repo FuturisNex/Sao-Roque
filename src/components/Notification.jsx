@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
-import { messaging } from '../auth/firebase';
+import database from '../auth/firebase.js';
 import Button from './Button';
 import './Style/noti.css';
 
@@ -24,36 +24,27 @@ const Notification = ({ navId }) => {
   }, []);
 
   useEffect(() => {
-    const handleNotificationReceived = (payload) => {
-      const notification = {
-        titulo: payload.notification.title,
-        descricao: payload.notification.body,
-        recebida: true,
-      };
+    const ref = database.ref('Notificacao');
 
+    const handleNotificationAdded = (snapshot) => {
+      const notification = snapshot.val();
       setNotifications((prevState) => [...prevState, notification]);
       setPiscando(true);
     };
 
-    messaging.onMessage(handleNotificationReceived);
+    const handleNotificationRemoved = (snapshot) => {
+      const notification = snapshot.val();
+      setNotifications((prevState) => prevState.filter((item) => item.id !== notification.id));
+      setPiscando(notifications.length > 1);
+    };
+
+    ref.child('Alerta').on('child_added', handleNotificationAdded);
+    ref.child('Alerta').on('child_removed', handleNotificationRemoved);
 
     return () => {
-      messaging.onMessage(handleNotificationReceived);
+      ref.child('Alerta').off('child_added', handleNotificationAdded);
+      ref.child('Alerta').off('child_removed', handleNotificationRemoved);
     };
-  }, []);
-
-  useEffect(() => {
-    const requestNotificationPermission = async () => {
-      try {
-        await messaging.requestPermission();
-        const token = await messaging.getToken();
-        console.log('Token do dispositivo:', token);
-      } catch (error) {
-        console.log('Erro ao solicitar permissão de notificação:', error);
-      }
-    };
-
-    requestNotificationPermission();
   }, []);
 
   return (
@@ -81,12 +72,6 @@ const Notification = ({ navId }) => {
           <div key={index} className="flex flex-col gap-1 border-b-1 border-color p-3">
             <p className="font-semibold dark:text-gray-200">{notification.titulo}</p>
             <p className="text-gray-500 text-sm dark:text-gray-400">{notification.descricao}</p>
-            {/* Exibe a notificação recebida */}
-            {notification.recebida && (
-              <div className="text-xs text-red-theme font-semibold mt-1">
-                Notificação recebida
-              </div>
-            )}
           </div>
         ))}
         {notifications.length === 0 && (
