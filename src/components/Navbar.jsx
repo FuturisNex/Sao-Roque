@@ -123,7 +123,7 @@ const Navbar = () => {
             </span>
           )}
         </NavButton>
-        <Tooltip title="Profile" position="bottom">
+        <Tooltip title="Perfil" position="bottom">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfile')}
