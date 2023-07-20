@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { RiNotification3Line } from "react-icons/ri";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { Tooltip } from "react-tippy";
-import "react-tippy/dist/tippy.css";
-import { toast } from "react-toastify";
-import database from "../auth/firebase.js";
+import React, { useEffect, useState } from 'react';
+import { AiOutlineMenu } from 'react-icons/ai';
+import { RiNotification3Line } from 'react-icons/ri';
+import { MdKeyboardArrowDown } from 'react-icons/md';
+import { Tooltip } from 'react-tippy';
+import 'react-tippy/dist/tippy.css';
+import { toast } from 'react-toastify';
+import database from '../auth/firebase.js';
 
-import "./Style/navbar.css";
+import './Style/navbar.css';
 
-import avatar from "../data/avatar.png";
-import { Notification, UserProfile } from ".";
-import { useStateContext } from "../contexts/ContextProvider";
+import avatar from '../data/avatar.png';
+import { Notification, UserProfile } from '.';
+import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor, children }) => (
   <Tooltip title={title} position="bottom">
