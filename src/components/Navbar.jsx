@@ -51,7 +51,6 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [setScreenSize]);
 
- 
   useEffect(() => {
     const ref = database.ref('Notificacao/Alerta');
 
