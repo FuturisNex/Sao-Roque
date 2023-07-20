@@ -46,14 +46,14 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     handleResize();
-    return () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [setScreenSize]);
 
  
   useEffect(() => {
-    const ref = database.ref("Notificacao/Alerta"); // Target the 'Notificacao/Alerta' node
+    const ref = database.ref('Notificacao/Alerta');
 
     const handleNotificationCount = (snapshot) => {
       const data = snapshot.val();
@@ -61,31 +61,30 @@ const Navbar = () => {
       setNotificationCount(count);
     };
 
-    ref.on("value", handleNotificationCount);
+    ref.on('value', handleNotificationCount);
 
-    return () => ref.off("value", handleNotificationCount);
+    return () => ref.off('value', handleNotificationCount);
   }, []);
 
   useEffect(() => {
-    const ref = database.ref("Notificacao/Piscar");
+    const ref = database.ref('Notificacao/Piscar');
 
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
-      setPiscarStatus(value === true || value === "true");
+      setPiscarStatus(value === true || value === 'true');
 
-      if (value === true || value === "true") {
-        setPlaySound(true); // Ativa o som da notificação
-        
-        // Custom style for the notification toast
+      if (value === true || value === 'true') {
+        setPlaySound(true);
+
         const toastStyle = {
           position: toast.POSITION.END_CENTER,
-          marginTop: '50px', 
+          marginTop: '50px',
           borderRadius: '4px',
           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
         };
 
         // Display the notification toast
-        toast("Nova notificação!", {
+        toast('Nova notificação!', {
           position: toast.POSITION.END_CENTER,
           autoClose: 3000, // Close after 3 seconds
           style: toastStyle,
@@ -93,9 +92,9 @@ const Navbar = () => {
       }
     };
 
-    ref.on("value", handlePiscarStatus);
+    ref.on('value', handlePiscarStatus);
 
-    return () => ref.off("value", handlePiscarStatus);
+    return () => ref.off('value', handlePiscarStatus);
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
@@ -111,16 +110,16 @@ const Navbar = () => {
       <div className="flex">
         <NavButton
           title="Notificações"
-          dotColor={piscarStatus ? "rgb(254, 201, 15)" : "transparent"}
+          dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
           customFunc={() => {
-            handleClick("notification");
+            handleClick('notification');
             setPlaySound(false); // Desativa o som quando a notificação é aberta
           }}
           color={currentColor}
           icon={<RiNotification3Line />}
         >
           {notificationCount > 0 && (
-            <span className="notification-count" style={{ background: "red" }}>
+            <span className="notification-count" style={{ background: 'red' }}>
               {notificationCount}
             </span>
           )}
@@ -128,7 +127,7 @@ const Navbar = () => {
         <Tooltip title="Profile" position="bottom">
           <div
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-            onClick={() => handleClick("userProfile")}
+            onClick={() => handleClick('userProfile')}
           >
             <img
               className="rounded-full w-8 h-8"
@@ -136,7 +135,7 @@ const Navbar = () => {
               alt="user-profile"
             />
             <p>
-              <span className="text-gray-400 text-14">Olá,</span>{" "}
+              <span className="text-gray-400 text-14">Olá,</span>{' '}
               <span className="text-gray-400 font-bold ml-1 text-14">
                 Bem Vindo
               </span>
