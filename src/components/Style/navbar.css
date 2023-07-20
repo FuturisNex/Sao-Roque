@@ -2,17 +2,17 @@
 
 .notification-count {
     position: absolute;
-    top: -1px;
-    right: -1px;
+    top: 1px;
+    right: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
     border-radius: 50%;
     background: linear-gradient(45deg, #ff5252, #f82953e0); /* Gradient background */
     color: #fff;
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     opacity: 0; /* Initially transparent */
