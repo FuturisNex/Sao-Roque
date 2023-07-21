@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import database from '../auth/firebase.js';
 
 import './Style/navbar.css';
+import './Style/notificationBellAnimation.css';
 
 import avatar from '../data/avatar.png';
 import { Notification, UserProfile } from '.';
@@ -43,6 +44,7 @@ const Navbar = () => {
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
+  const [bellAnimation, setBellAnimation] = useState(false); // Estado para controlar a animação do sino de notificação
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -58,6 +60,13 @@ const Navbar = () => {
       const data = snapshot.val();
       const count = Object.keys(data).length;
       setNotificationCount(count);
+
+      if (count > 0) {
+        setBellAnimation(true); // Ativa a animação do sino de notificação se houver notificações
+        setTimeout(() => {
+          setBellAnimation(false);
+        }, 1000);
+      }
     };
 
     ref.on('value', handleNotificationCount);
@@ -82,12 +91,16 @@ const Navbar = () => {
           boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
         };
 
-        // Display the notification toast
         toast('Nova notificação!', {
           position: toast.POSITION.END_CENTER,
-          autoClose: 3000, // Close after 3 seconds
+          autoClose: 3000,
           style: toastStyle,
         });
+
+        setBellAnimation(true); // Ativa a animação do sino de notificação quando houver uma notificação
+        setTimeout(() => {
+          setBellAnimation(false);
+        }, 1000);
       }
     };
 
@@ -97,6 +110,15 @@ const Navbar = () => {
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
+
+  const handleNotificationClick = () => {
+    handleClick('notification');
+    setPlaySound(false);
+    setBellAnimation(true);
+    setTimeout(() => {
+      setBellAnimation(false);
+    }, 1000);
+  };
 
   return (
     <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
@@ -110,12 +132,9 @@ const Navbar = () => {
         <NavButton
           title="Notificações"
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
-          customFunc={() => {
-            handleClick('notification');
-            setPlaySound(false); // Desativa o som quando a notificação é aberta
-          }}
+          customFunc={handleNotificationClick} // Usamos a nova função criada
           color={currentColor}
-          icon={<RiNotification3Line />}
+          icon={<RiNotification3Line className={bellAnimation ? 'bell-animation' : ''} />}
         >
           {notificationCount > 0 && (
             <span className="notification-count" style={{ background: 'red' }}>
@@ -136,7 +155,7 @@ const Navbar = () => {
             <p>
               <span className="text-gray-400 text-14">Olá,</span>{' '}
               <span className="text-gray-400 font-bold ml-1 text-14">
-                Bem Vindo
+                Bem-vindo
               </span>
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
