@@ -65,9 +65,10 @@ const Notification = ({ navId }) => {
           bgHoverColor="light-gray"
           size="2xl"
           borderRadius="50%"
+          className="mt-2" // Add this line to move the cancel button higher
         />
       </div>
-      <div className="mt-5">
+      <div>
         {notifications.map((notification, index) => (
           <div key={index} className="flex flex-col gap-1 border-b-1 border-color p-3">
             <p className="font-semibold dark:text-gray-200">{notification.titulo}</p>
