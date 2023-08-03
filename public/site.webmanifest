@@ -3,7 +3,7 @@
     "short_name": "Grupo São Roque",
     "icons": [
       {
-        "src": "logo.png",
+        "src": "logo192.png",
         "sizes": "192x192",
         "type": "image/png"
       }
