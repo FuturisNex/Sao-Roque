@@ -29,7 +29,7 @@ const Analise = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       POWER_BI: 'https://app.powerbi.com/home?experience=power-bi',
-      DRIVE: 'https://lookerstudio.google.com/reporting/07ec0290-fb22-40ae-87db-64721ab3f0a5',
+      DRIVE: 'https://lookerstudio.google.com/reporting/b3ed707c-2106-4a76-816e-b52138f230f6',
     }[buyer];
 
     if (url) {
