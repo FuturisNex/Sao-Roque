@@ -1,6 +1,8 @@
 .Sidebar-logo {
     display: flex;
     margin: auto;
+    margin-top: 10px;
+    margin-bottom: -50px;
     width: 70%;
   }
   
