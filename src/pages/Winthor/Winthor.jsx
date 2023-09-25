@@ -9,10 +9,8 @@ const buyers = [
   { name: 'Fluxo de Compras | Receber Mercadoria', videoId: 'j4ZSvoGotls', icon: <AiFillPlayCircle size={45} color="white" /> },
   { name: 'Fluxo de Compras | Precificar Produto', videoId: '0vsJXkJMUhM', icon: <AiFillPlayCircle size={45} color="white" /> },
   { name: 'Fluxo de Compras | Devolução Fornecedor ', videoId: 'TqKBB4_741Y', icon: <AiFillPlayCircle size={45} color="white" /> },
-  { name: '', videoId: 'Z25hgEbgIEs', icon: <AiFillPlayCircle size={45} color="white" /> },
-  { name: '', videoId: 'j4ZSvoGotls', icon: <AiFillPlayCircle size={45} color="white" /> },
   { name: 'Fluxo de Compras | Montar Bônus', videoId: 'JAOrixml7IA', icon: <AiFillPlayCircle size={45} color="white" /> },
-  { name: 'TRANSFERENCIA', videoId: 'YEnRnU2P2xY', icon: <AiFillPlayCircle size={45} color="white" /> },
+  { name: 'Tranferencia', videoId: 'YEnRnU2P2xY', icon: <AiFillPlayCircle size={45} color="white" /> },
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
