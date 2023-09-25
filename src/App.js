@@ -20,6 +20,7 @@ import Adauto from './pages/Compradores/Adauto/Adauto';
 import Jovita from './pages/Compradores/Jovita/Jovita';
 import Marivone from './pages/Compradores/Marivone/Marivone';
 import Sena from './pages/Compradores/Sena/Sena';
+import Jurandir from './pages/Compradores/Jurandir/Jurandir';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
@@ -76,6 +77,7 @@ const App = () => {
                 <Route path="/marivone" element={<Marivone />} />
                 <Route path="/neta" element={<Jovita />} />
                 <Route path="/sena" element={<Sena />} />
+                <Route path="/jurandir" element={<Jurandir />} />
 
                 {/* dashboard */}
                 <Route path="/" element={<Comprador />} />

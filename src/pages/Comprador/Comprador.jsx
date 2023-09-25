@@ -8,6 +8,7 @@ const buyers = [
   { name: 'MARIVONE', icon: <AiOutlineUser size={30} color="white" /> },
   { name: 'NETA', icon: <AiOutlineUser size={30} color="white" /> },
   { name: 'SENA', icon: <AiOutlineUser size={30} color="white" /> },
+  { name: 'JURANDIR', icon: <AiOutlineUser size={30} color="white" /> },
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
@@ -34,6 +35,7 @@ const Comprador = () => {
       MARIVONE: '/marivone',
       NETA: '/neta',
       SENA: '/sena',
+      JURANDIR: '/jurandir',
 
     }[buyer];
 
