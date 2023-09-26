@@ -9,7 +9,7 @@ const buyers = [
   { name: 'MARIVONE', icon: <FaShower size={30} color="white" /> }, // Ícone de higiene (alterado)
   { name: 'NETA', icon: <GiWineBottle size={30} color="white" /> }, // Ícone de bebidas
   { name: 'SENA', icon: <GiShoppingCart size={30} color="white" /> }, // Novo ícone para Sena (Supermercado)
-  { name: 'JURANDIR', icon: <GiSaltShaker size={30} color="white" /> } // Novo ícone para Jurandir (Temperos)
+  { name: 'JURANDIR', icon: <GiSaltShaker size={30} color="white" /> }, // Novo ícone para Jurandir (Temperos)
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
