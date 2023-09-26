@@ -1,9 +1,6 @@
 import React from 'react';
-import { FaCheese } from 'react-icons/fa'; // Ícone de frios
-import { FaShower } from 'react-icons/fa'; // Ícone de higiene
-import { GiWineBottle } from 'react-icons/gi'; // Ícone de bebidas
-import { GiShoppingCart } from 'react-icons/gi'; // Novo ícone para Sena (Supermercado)
-import { GiSaltShaker } from 'react-icons/gi'; // Novo ícone para Jurandir (Temperos)
+import { FaCheese, FaShower } from 'react-icons/fa'; // Ícone de frios
+import { GiWineBottle, GiShoppingCart, GiSaltShaker } from 'react-icons/gi'; // Ícone de bebidas
 import { useStateContext } from '../../contexts/ContextProvider';
 import './Comprador.css';
 
