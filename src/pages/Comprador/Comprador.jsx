@@ -1,14 +1,18 @@
 import React from 'react';
-import { AiOutlineUser } from 'react-icons/ai';
+import { FaCheese } from 'react-icons/fa'; // Ícone de frios
+import { FaShower } from 'react-icons/fa'; // Ícone de higiene
+import { GiWineBottle } from 'react-icons/gi'; // Ícone de bebidas
+import { GiShoppingCart } from 'react-icons/gi'; // Novo ícone para Sena (Supermercado)
+import { GiSaltShaker } from 'react-icons/gi'; // Novo ícone para Jurandir (Temperos)
 import { useStateContext } from '../../contexts/ContextProvider';
 import './Comprador.css';
 
 const buyers = [
-  { name: 'ADAUTO', icon: <AiOutlineUser size={30} color="white" /> },
-  { name: 'MARIVONE', icon: <AiOutlineUser size={30} color="white" /> },
-  { name: 'NETA', icon: <AiOutlineUser size={30} color="white" /> },
-  { name: 'SENA', icon: <AiOutlineUser size={30} color="white" /> },
-  { name: 'JURANDIR', icon: <AiOutlineUser size={30} color="white" /> },
+  { name: 'ADAUTO', icon: <FaCheese size={30} color="white" /> }, // Ícone de frios
+  { name: 'MARIVONE', icon: <FaShower size={30} color="white" /> }, // Ícone de higiene (alterado)
+  { name: 'NETA', icon: <GiWineBottle size={30} color="white" /> }, // Ícone de bebidas
+  { name: 'SENA', icon: <GiShoppingCart size={30} color="white" /> }, // Novo ícone para Sena (Supermercado)
+  { name: 'JURANDIR', icon: <GiSaltShaker size={30} color="white" /> } // Novo ícone para Jurandir (Temperos)
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
