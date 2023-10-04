@@ -15,16 +15,16 @@ export const gridOrderImage = (props) => (
 );
 
 export const links = [
-  {
-    title: 'Comprador',
-    links: [
-      {
-        name: 'Comprador',
-        url: 'comprador',
-        icon: <IoMdPerson />,
-      },
-    ],
-  },
+// {
+//   title: 'Comprador',
+//  links: [
+//    {
+//    name: 'Comprador',
+  //      url: 'comprador',
+  //      icon: <IoMdPerson />,
+  //    },
+//   ],
+// },
   {
     title: 'Rebaixa',
     links: [
