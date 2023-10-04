@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChartBar, FaTags, FaFileContract } from 'react-icons/fa';
 import { AiOutlineCalendar, AiFillPlayCircle } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
-import { IoMdPerson, IoMdContacts } from 'react-icons/io';
+import { IoMdContacts } from 'react-icons/io';
 
 export const gridOrderImage = (props) => (
   <div>
