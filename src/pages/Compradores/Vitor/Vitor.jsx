@@ -28,8 +28,8 @@ const Vitor = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      104: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgR0vIwXi-o7NCcMw',
-      103: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgS4pyin7Jw56LJH3?e=MowmiX',
+      104: 'https://docs.google.com/spreadsheets/d/1h6iWCT2Eri88ohewbDCRUVirfIt-zxw0kFbq-1fVaSM/edit?usp=sharing',
+      103: '',
     }[buyer];
 
     if (url) {

@@ -30,7 +30,7 @@ const Sergio = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       104: 'https://docs.google.com/spreadsheets/d/1Rn24sTyDbZnTaTz-oIfLtdi3Js5xP25n_N40AoN5y5g/edit?usp=sharing',
-      103: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgSpJDb_hXw_nPjOI?e=zszoaP',
+      103: '',
     }[buyer];
 
     if (url) {

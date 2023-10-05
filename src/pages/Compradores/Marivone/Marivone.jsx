@@ -29,7 +29,7 @@ const Marivone = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       104: 'https://docs.google.com/spreadsheets/d/1upuc5OBhPe0H2FQjzDZfEXIMcsrFl4GJyT3i-Nc00KI/edit?usp=sharing',
-      103: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgS-wK40kNW6eQ6SU?e=2JaAPB',
+      103: '',
     }[buyer];
 
     if (url) {
