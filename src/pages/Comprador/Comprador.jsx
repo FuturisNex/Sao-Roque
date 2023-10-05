@@ -5,9 +5,9 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import './Comprador.css';
 
 const buyers = [
-  { name: 'ADAUTO', icon: <FaCheese size={30} color="white" /> }, // Ícone de frios
+  { name: 'SERGIO', icon: <FaCheese size={30} color="white" /> }, // Ícone de frios
   { name: 'MARIVONE', icon: <FaShower size={30} color="white" /> }, // Ícone de higiene (alterado)
-  { name: 'NETA', icon: <GiWineBottle size={30} color="white" /> }, // Ícone de bebidas
+  { name: 'VITOR', icon: <GiWineBottle size={30} color="white" /> }, // Ícone de bebidas
   { name: 'SENA', icon: <GiShoppingCart size={30} color="white" /> }, // Novo ícone para Sena (Supermercado)
   { name: 'JURANDIR', icon: <GiSaltShaker size={30} color="white" /> }, // Novo ícone para Jurandir (Temperos)
 ];

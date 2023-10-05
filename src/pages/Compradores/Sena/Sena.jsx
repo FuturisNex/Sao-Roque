@@ -28,7 +28,7 @@ const Sena = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      104: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgTekIoJgwP2RR_9_?e=Y0ycrh',
+      104: 'https://docs.google.com/spreadsheets/d/14J0YayetfkKq82SFNRTFhpNHUwdTDn2kdmur1GrABtU/edit?usp=sharing',
       103: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgTWxn8qIYgrKxo0D?e=TeldcU',
     }[buyer];
 

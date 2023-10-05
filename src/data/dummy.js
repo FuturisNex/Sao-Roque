@@ -2,7 +2,7 @@ import React from 'react';
 import { FaChartBar, FaTags, FaFileContract } from 'react-icons/fa';
 import { AiOutlineCalendar, AiFillPlayCircle } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
-import { IoMdContacts } from 'react-icons/io';
+import { IoMdPerson, IoMdContacts } from 'react-icons/io';
 
 export const gridOrderImage = (props) => (
   <div>
@@ -15,16 +15,16 @@ export const gridOrderImage = (props) => (
 );
 
 export const links = [
-// {
-//   title: 'Comprador',
-//  links: [
-//    {
-//    name: 'Comprador',
-  //      url: 'comprador',
-  //      icon: <IoMdPerson />,
-  //    },
-//   ],
-// },
+  {
+    title: 'Comprador',
+    links: [
+      {
+        name: 'Comprador',
+        url: 'comprador',
+        icon: <IoMdPerson />,
+      },
+    ],
+  },
   {
     title: 'Rebaixa',
     links: [
