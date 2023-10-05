@@ -1,7 +1,8 @@
 import React from 'react';
 import { BsFolder } from 'react-icons/bs';
+
 import { useStateContext } from '../../../contexts/ContextProvider';
-import './Jovita.css';
+import './Sergio.css';
 
 const buyers = [
   { name: '104', icon: <BsFolder size={30} color="white" /> },
@@ -23,13 +24,13 @@ const BuyerCard = ({ buyer, handleClick }) => {
   );
 };
 
-const Jovita = () => {
+const Sergio = () => {
   const { currentMode } = useStateContext();
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      104: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgR0vIwXi-o7NCcMw',
-      103: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgS4pyin7Jw56LJH3?e=MowmiX',
+      104: 'https://docs.google.com/spreadsheets/d/1Rn24sTyDbZnTaTz-oIfLtdi3Js5xP25n_N40AoN5y5g/edit?usp=sharing',
+      103: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgSpJDb_hXw_nPjOI?e=zszoaP',
     }[buyer];
 
     if (url) {
@@ -38,8 +39,8 @@ const Jovita = () => {
   };
 
   return (
-    <div className={`container-jovita ${currentMode === 'Dark' ? 'dark' : ''}`}>
-      <div className="buyers-jovita">
+    <div className={`container-adauto ${currentMode === 'Dark' ? 'dark' : ''}`}>
+      <div className="buyers-adauto">
         {buyers.map((buyer, index) => (
           <BuyerCard key={index} buyer={buyer} handleClick={handleBuyerClick} />
         ))}
@@ -48,4 +49,4 @@ const Jovita = () => {
   );
 };
 
-export default Jovita;
+export default Sergio;

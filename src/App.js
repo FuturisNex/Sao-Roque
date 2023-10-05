@@ -16,8 +16,8 @@ import Comprador from './pages/Comprador/Comprador';
 import Analise from './pages/Analise/Analise';
 import Contratos from './pages/Contratos/Contratos';
 
-import Adauto from './pages/Compradores/Adauto/Adauto';
-import Jovita from './pages/Compradores/Jovita/Jovita';
+import Sergio from './pages/Compradores/Sergio/Sergio';
+import Vitor from './pages/Compradores/Vitor/Vitor';
 import Marivone from './pages/Compradores/Marivone/Marivone';
 import Sena from './pages/Compradores/Sena/Sena';
 import Jurandir from './pages/Compradores/Jurandir/Jurandir';
@@ -73,9 +73,9 @@ const App = () => {
               {themeSettings && <ThemeSettings />}
               <Routes>
                 {/* compradores */}
-                <Route path="/adauto" element={<Adauto />} />
+                <Route path="/sergio" element={<Sergio />} />
                 <Route path="/marivone" element={<Marivone />} />
-                <Route path="/neta" element={<Jovita />} />
+                <Route path="/vitor" element={<Vitor />} />
                 <Route path="/sena" element={<Sena />} />
                 <Route path="/jurandir" element={<Jurandir />} />
 

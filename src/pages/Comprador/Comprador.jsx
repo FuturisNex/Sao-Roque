@@ -32,9 +32,9 @@ const Comprador = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      ADAUTO: '/adauto',
+      SERGIO: '/sergio',
       MARIVONE: '/marivone',
-      NETA: '/neta',
+      VITOR: '/vitor',
       SENA: '/sena',
       JURANDIR: '/jurandir',
 
