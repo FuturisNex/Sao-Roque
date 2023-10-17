@@ -1,11 +1,11 @@
-import React from 'react';
-import { AiOutlineShoppingCart, AiOutlineCloudDownload } from 'react-icons/ai';
-import { useStateContext } from '../../contexts/ContextProvider';
-import './Analise.css';
+import React from "react";
+import { AiOutlineShoppingCart, AiOutlineCloudDownload } from "react-icons/ai";
+import { useStateContext } from "../../contexts/ContextProvider";
+import "./Analise.css";
 
 const buyers = [
-  { name: 'POWER_BI', icon: <AiOutlineShoppingCart size={30} color="white" /> },
-  { name: 'DRIVE', icon: <AiOutlineCloudDownload size={30} color="white" /> },
+  { name: "POWER_BI", icon: <AiOutlineShoppingCart size={30} color="white" /> },
+  { name: "DRIVE", icon: <AiOutlineCloudDownload size={30} color="white" /> },
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
@@ -13,7 +13,7 @@ const BuyerCard = ({ buyer, handleClick }) => {
 
   return (
     <div
-      className={`buyer-card ${currentMode === 'Dark' ? 'dark' : ''}`}
+      className={`buyer-card ${currentMode === "Dark" ? "dark" : ""}`}
       style={{ backgroundColor: currentColor }}
       onClick={() => handleClick(buyer.name)}
     >
@@ -28,17 +28,19 @@ const Analise = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      POWER_BI: 'https://app.powerbi.com/home?experience=power-bi',
-      DRIVE: 'https://lookerstudio.google.com/reporting/b3ed707c-2106-4a76-816e-b52138f230f6',
+      POWER_BI: "https://app.powerbi.com/home?experience=power-bi",
+      DRIVE: "/drive",
     }[buyer];
 
     if (url) {
-      window.open(url, '_blank');
+      window.open(url, "_self");
     }
   };
 
   return (
-    <div className={`container-analise ${currentMode === 'Dark' ? 'dark' : ''}`}>
+    <div
+      className={`container-analise ${currentMode === "Dark" ? "dark" : ""}`}
+    >
       <div className="buyers-analise">
         {buyers.map((buyer, index) => (
           <BuyerCard key={index} buyer={buyer} handleClick={handleBuyerClick} />
