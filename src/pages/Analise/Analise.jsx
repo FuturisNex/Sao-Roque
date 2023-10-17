@@ -29,11 +29,11 @@ const Analise = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       POWER_BI: 'https://app.powerbi.com/home?experience=power-bi',
-      DRIVE: '/drive',
+      DRIVE: 'https://lookerstudio.google.com/s/rMP5fuIJygU',
     }[buyer];
 
     if (url) {
-      window.open(url, '_self');
+      window.open(url, '_blank');
     }
   };
 
