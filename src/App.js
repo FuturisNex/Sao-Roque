@@ -14,7 +14,6 @@ import Encarte from './pages/Encarte/Encarte';
 import Agenda from './pages/Agenda/Agenda';
 import Comprador from './pages/Comprador/Comprador';
 import Analise from './pages/Analise/Analise';
-import Drive from './pages/Analise/Drive/Drive';
 import Contratos from './pages/Contratos/Contratos';
 
 import Sergio from './pages/Compradores/Sergio/Sergio';
@@ -84,7 +83,6 @@ const App = () => {
                 <Route path="/" element={<Comprador />} />
                 <Route path="/comprador" element={<Comprador />} />
                 <Route path="/analise" element={<Analise />} />
-                <Route path="/drive" element={<Drive />} />
 
                 {/* pages */}
                 <Route path="/contratos" element={<Contratos />} />
