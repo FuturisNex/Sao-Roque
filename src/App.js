@@ -2,10 +2,8 @@ import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import { useStateContext } from './contexts/ContextProvider';
-import { Navbar, Sidebar, ThemeSettings } from './components';
+import { Navbar, Sidebar } from './components';
 import './App.css';
 import Winthor from './pages/Winthor/Winthor';
 import Rebaixa from './pages/Rebaixa/Rebaixa';
@@ -23,16 +21,6 @@ import Sena from './pages/Compradores/Sena/Sena';
 import Jurandir from './pages/Compradores/Jurandir/Jurandir';
 
 const App = () => {
-  const { setCurrentColor, setCurrentMode, currentMode, activeMenu, currentColor, themeSettings, setThemeSettings } = useStateContext();
-
-  useEffect(() => {
-    const currentThemeColor = localStorage.getItem('colorMode');
-    const currentThemeMode = localStorage.getItem('themeMode');
-    if (currentThemeColor && currentThemeMode) {
-      setCurrentColor(currentThemeColor);
-      setCurrentMode(currentThemeMode);
-    }
-  }, []);
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
