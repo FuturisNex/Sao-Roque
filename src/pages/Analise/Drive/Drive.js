@@ -7,13 +7,15 @@ function Drive() {
   const scaledIframeUrl = `${iframeUrl}&scale=0.5`; // Ajuste o valor de escala conforme necessário
 
   return (
+<div>
     <iframe
       className="my-iframe"
       src={scaledIframeUrl}
       frameBorder="0"
       allowFullScreen
-      title="Looker Report">
-      </iframe>
+      title="Looker Report"
+     ></iframe>
+<div/>
   );
 }
 
