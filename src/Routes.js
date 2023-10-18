@@ -16,28 +16,28 @@ import Marivone from './pages/Compradores/Marivone/Marivone';
 import Sena from './pages/Compradores/Sena/Sena';
 import Jurandir from './pages/Compradores/Jurandir/Jurandir';
 
-const AppRoutes = () => {
+const AppRoutes = () => (
   <Routes>
-      {/* compradores */}
-      <Route path="/sergio" element={<Sergio />} />
-      <Route path="/marivone" element={<Marivone />} />
-      <Route path="/vitor" element={<Vitor />} />
-      <Route path="/sena" element={<Sena />} />
-      <Route path="/jurandir" element={<Jurandir />} />
+    {/* compradores */}
+    <Route path="/sergio" element={<Sergio />} />
+    <Route path="/marivone" element={<Marivone />} />
+    <Route path="/vitor" element={<Vitor />} />
+    <Route path="/sena" element={<Sena />} />
+    <Route path="/jurandir" element={<Jurandir />} />
 
-      {/* dashboard */}
-      <Route path="/" element={<Comprador />} />
-      <Route path="/comprador" element={<Comprador />} />
-      <Route path="/rebaixa" element={<Rebaixa />} />
-      <Route path="/encarte" element={<Encarte />} />
-      <Route path="/analise" element={<Analise />} />
-      <Route path="/contratos" element={<Contratos />} />
-      <Route path="/agenda" element={<Agenda />} />
-      <Route path="/winthor" element={<Winthor />} />
+    {/* dashboard */}
+    <Route path="/" element={<Comprador />} />
+    <Route path="/comprador" element={<Comprador />} />
+    <Route path="/rebaixa" element={<Rebaixa />} />
+    <Route path="/encarte" element={<Encarte />} />
+    <Route path="/analise" element={<Analise />} />
+    <Route path="/contratos" element={<Contratos />} />
+    <Route path="/agenda" element={<Agenda />} />
+    <Route path="/winthor" element={<Winthor />} />
 
-      {/* Não Encontrado */}
-      <Route path="*" element={<NotFound />} />
+    {/* Não Encontrado */}
+    <Route path="*" element={<NotFound />} />
   </Routes>
-};
+);
 
 export default AppRoutes;
