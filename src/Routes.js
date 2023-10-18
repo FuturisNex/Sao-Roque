@@ -16,8 +16,7 @@ import Marivone from './pages/Compradores/Marivone/Marivone';
 import Sena from './pages/Compradores/Sena/Sena';
 import Jurandir from './pages/Compradores/Jurandir/Jurandir';
 
-const AppRoutes = () =>{
-  return (
+const AppRoutes = () => {
     <Routes>
       {/* compradores */}
       <Route path="/sergio" element={<Sergio />} />
@@ -39,7 +38,6 @@ const AppRoutes = () =>{
       {/* Não Encontrado */}
       <Route path="*" element={<NotFound />} />
     </Routes>
-  );
 };
 
 export default AppRoutes;
