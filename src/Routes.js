@@ -17,7 +17,7 @@ import Sena from './pages/Compradores/Sena/Sena';
 import Jurandir from './pages/Compradores/Jurandir/Jurandir';
 
 const AppRoutes = () => {
-    <Routes>
+  <Routes>
       {/* compradores */}
       <Route path="/sergio" element={<Sergio />} />
       <Route path="/marivone" element={<Marivone />} />
@@ -37,7 +37,7 @@ const AppRoutes = () => {
 
       {/* Não Encontrado */}
       <Route path="*" element={<NotFound />} />
-    </Routes>
+  </Routes>
 };
 
 export default AppRoutes;
