@@ -16,7 +16,7 @@ import Marivone from './pages/Compradores/Marivone/Marivone';
 import Sena from './pages/Compradores/Sena/Sena';
 import Jurandir from './pages/Compradores/Jurandir/Jurandir';
 
-const AppRoutes = () => {
+const AppRoutes = () =>{
   return (
     <Routes>
       {/* compradores */}
