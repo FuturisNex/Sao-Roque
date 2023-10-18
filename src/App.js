@@ -2,14 +2,13 @@
 import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter, Routes } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { useStateContext } from './contexts/ContextProvider';
 import { Navbar, Sidebar, ThemeSettings } from './components';
 import './App.css';
 import AppRoutes from './Routes';
 
 const App = () => {
-  
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } = useStateContext();
 
   useEffect(() => {
