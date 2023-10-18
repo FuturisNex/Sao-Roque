@@ -1,26 +1,15 @@
+// App.js
 import React, { useEffect } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes } from 'react-router-dom';
 import { useStateContext } from './contexts/ContextProvider';
 import { Navbar, Sidebar, ThemeSettings } from './components';
 import './App.css';
-import Winthor from './pages/Winthor/Winthor';
-import Rebaixa from './pages/Rebaixa/Rebaixa';
-import NotFound from './pages/Notfound/NotFund';
-import Encarte from './pages/Encarte/Encarte';
-import Agenda from './pages/Agenda/Agenda';
-import Comprador from './pages/Comprador/Comprador';
-import Analise from './pages/Analise/Analise';
-import Contratos from './pages/Contratos/Contratos';
-
-import Sergio from './pages/Compradores/Sergio/Sergio';
-import Vitor from './pages/Compradores/Vitor/Vitor';
-import Marivone from './pages/Compradores/Marivone/Marivone';
-import Sena from './pages/Compradores/Sena/Sena';
-import Jurandir from './pages/Compradores/Jurandir/Jurandir';
+import AppRoutes from './Routes';
 
 const App = () => {
+  
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } = useStateContext();
 
   useEffect(() => {
@@ -57,30 +46,7 @@ const App = () => {
             </div>
             <div>
               {themeSettings && <ThemeSettings />}
-              <Routes>
-                {/* compradores */}
-                <Route path="/sergio" element={<Sergio />} />
-                <Route path="/marivone" element={<Marivone />} />
-                <Route path="/vitor" element={<Vitor />} />
-                <Route path="/sena" element={<Sena />} />
-                <Route path="/jurandir" element={<Jurandir />} />
-
-                {/* dashboard */}
-                <Route path="/" element={<Comprador />} />
-                <Route path="/comprador" element={<Comprador />} />
-                <Route path="/analise" element={<Analise />} />
-
-                {/* pages */}
-                <Route path="/contratos" element={<Contratos />} />
-
-                {/* apps */}
-                <Route path="/agenda" element={<Agenda />} />
-                <Route path="/rebaixa" element={<Rebaixa />} />
-                <Route path="/encarte" element={<Encarte />} />
-                <Route path="/winthor" element={<Winthor />} />
-
-                <Route path="*" element={<NotFound />} />
-              </Routes>
+              <AppRoutes /> {/* Renderize suas rotas personalizadas aqui */}
             </div>
           </div>
         </div>
