@@ -45,7 +45,7 @@ const Encarte = () => {
       <div className="buyers-encarte">
         {buyers.map((buyer, index) => (
           <BuyerCard key={index} buyer={buyer} handleClick={handleBuyerClick} />
-        )}
+        )};
       </div>
     </div>
   );
