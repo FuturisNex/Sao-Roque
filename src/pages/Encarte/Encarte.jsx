@@ -6,7 +6,8 @@ import './Encarte.css';
 
 const buyers = [
   { name: 'ENCARTE', icon: <FaTags size={30} color="white" /> },
-  { name: 'HORTIFRUTI', icon: <FiShoppingBag size={30} color="white" /> },
+  { name: 'HORTIFRUTI', icon: <FaAppleAlt size={30} color="white" /> }, // Use o ícone de maçã para representar frutas
+  { name: 'TERÇA DA CARNE', icon: <FaDrumstickBite size={30} color="white" /> }, // Use o ícone de carne
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
@@ -31,6 +32,7 @@ const Encarte = () => {
     const url = {
       ENCARTE: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgQS1ishhDm7-b2P7?e=EgKHnE',
       HORTIFRUTI: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgTHuzJzOF8V9wHHX?e=ri4cZW',
+      'TERÇA DA CARNE': 'https://1drv.ms/x/s!Aunh5h-BPQ1LgTHuzJzOF8V9wHHX?e=ri4cZW', // Atualize o nome aqui
     }[buyer];
 
     if (url) {
