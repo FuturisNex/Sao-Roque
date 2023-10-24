@@ -5,6 +5,7 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import './Contratos.css';
 
 const buyers = [
+  { name: 'DRIVE', icon: <AiFillShop size={30} color="white" /> },
   { name: 'FORNECEDORES', icon: <IoMdPeople size={30} color="white" /> },
   { name: 'LOJAS', icon: <AiFillShop size={30} color="white" /> },
 ];
@@ -29,6 +30,7 @@ const Contratos = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
+      DRIVE: 'https://drive.google.com/drive/folders/1HO28LH6vEyn61a5Im0AXiqtPb03I4bsK?usp=sharing',
       FORNECEDORES: 'https://docs.google.com/spreadsheets/d/14h7LutZ--7YvGK2Xbm8QqCb1DnQd2IDs3Sd71RUF4TU/edit?usp=share_link',
       LOJAS: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgSgHvulSJogZPW88?e=UfX02C',
     }[buyer];
