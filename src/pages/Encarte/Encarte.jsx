@@ -1,6 +1,5 @@
 import React from 'react';
-import { FaTags, FaDrumstickBite } from 'react-icons/fa';
-import { FiShoppingBag } from 'react-icons/fi';
+import { FaTags, FaDrumstickBite, FaAppleAlt } from 'react-icons/fa';
 import { useStateContext } from '../../contexts/ContextProvider';
 import './Encarte.css';
 
