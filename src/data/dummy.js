@@ -74,10 +74,10 @@ export const links = [
     ],
   },
   {
-    title: 'Contratos',
+    title: 'Documentos',
     links: [
       {
-        name: 'Contratos',
+        name: 'Documentos',
         url: 'contratos',
         icon: <FaFileContract />,
       },
