@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiFillShop } from 'react-icons/ai';
 import { IoMdPeople } from 'react-icons/io';
-import { FaGoogleDrive } from 'react-icons/fa';
+import { FaGoogleDrive, FaShoppingBag } from 'react-icons/fa';
 import { useStateContext } from '../../contexts/ContextProvider';
 import './Contratos.css';
 
@@ -9,7 +9,7 @@ const buyers = [
   { name: 'DRIVE', icon: <FaGoogleDrive size={30} color="white" /> },
   { name: 'FORNECEDORES', icon: <IoMdPeople size={30} color="white" /> },
   { name: 'LOJAS', icon: <AiFillShop size={30} color="white" /> },
-  { name: 'LOJAS NOVAS', icon: <AiFillShop size={30} color="white" /> },
+  { name: 'LOJAS NOVAS', icon: <FaShoppingBag size={30} color="white" /> },
 
 ];
 
