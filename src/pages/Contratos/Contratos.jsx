@@ -35,7 +35,7 @@ const Contratos = () => {
     const url = {
       DRIVE: 'https://drive.google.com/drive/folders/1HO28LH6vEyn61a5Im0AXiqtPb03I4bsK?usp=sharing',
       FORNECEDORES: 'https://docs.google.com/spreadsheets/d/14h7LutZ--7YvGK2Xbm8QqCb1DnQd2IDs3Sd71RUF4TU/edit?usp=share_link',
-      FILIAIS: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgSgHvulSJogZPW88?e=UfX02C',
+      FILIAIS: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/Ed4CXqJ__99Om6Q9cSxjFqAB9Cn2gpn1GAgO1DDlYGslsg?e=YLKJLt',
       'LOJAS NOVAS': 'https://drive.google.com/drive/folders/1oOHQdrnLiTQyplYKSTIYpTLIoI5CAy8c?usp=drive_link',
     }[buyer];
 
