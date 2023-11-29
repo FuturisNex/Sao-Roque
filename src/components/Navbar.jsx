@@ -46,6 +46,14 @@ const Navbar = () => {
   const [notificationCount, setNotificationCount] = useState(0);
   const [bellAnimation, setBellAnimation] = useState(false);
 
+  // Move the declaration of handleBellAnimation here
+  const handleBellAnimation = () => {
+    setBellAnimation(true);
+    setTimeout(() => {
+      setBellAnimation(false);
+    }, 1000);
+  };
+
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
     window.addEventListener('resize', handleResize);
@@ -61,13 +69,6 @@ const Navbar = () => {
     if (count > 0) {
       handleBellAnimation();
     }
-  };
-
-  const handleBellAnimation = () => {
-    setBellAnimation(true);
-    setTimeout(() => {
-      setBellAnimation(false);
-    }, 1000);
   };
 
   useEffect(() => {
