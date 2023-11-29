@@ -68,6 +68,7 @@
   }
 
   .buyer-card {
+    margin-left: -12px;
     height: 180px;
     padding: 20px;
   }
