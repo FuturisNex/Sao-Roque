@@ -5,7 +5,7 @@ import '../Style-Card.css';
 
 const buyers = [
   { name: 'ENCARTE', icon: <FaTags size={30} color="white" /> },
-  { name: 'HORTIFRUTI', icon: <FaAppleAlt size={30} color="white" /> }, // Use o ícone de maçã para representar frutas
+  { name: 'HORTIFRUTI', icon: <FaAppleAlt size={30} color="white" /> },
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
@@ -28,8 +28,8 @@ const Encarte = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      ENCARTE: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgQS1ishhDm7-b2P7?e=EgKHnE',
-      HORTIFRUTI: 'https://1drv.ms/x/s!Aunh5h-BPQ1LgTHuzJzOF8V9wHHX?e=ri4cZW',
+      ENCARTE: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/ERWE-6dnq8pGmCgmN82I-s0BlShBNli92IGa2bYCjJcCJQ?e=SPKcfr',
+      HORTIFRUTI: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/EUWS5ZCmQ-JLtlo65IXz2koBZ8YJLn72qOBj_MsPH7-O3w?e=dziQco',
     }[buyer];
 
     if (url) {
