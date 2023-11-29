@@ -15,14 +15,14 @@
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: linear-gradient(45deg, #ff5252, #f82953e0); /* Gradient background */
+    background: linear-gradient(45deg, #ff5252, #f82953e0);
     color: #fff;
     font-size: 12px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    opacity: 0; /* Initially transparent */
-    animation: fadeIn 0.5s ease forwards, pulse 1.5s ease infinite; /* Fade-in and pulse animations */
-    overflow: hidden; /* Clip the border */
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards, pulse 1.5s ease infinite;
+    overflow: hidden;
   }
   
   @keyframes fadeIn {
@@ -43,7 +43,6 @@
     }
   }
   
-  /* Class for the disappearing border effect */
   .disappearing-border {
     content: '';
     position: absolute;
@@ -51,14 +50,14 @@
     right: 0;
     width: 100%;
     height: 100%;
-    border: 5px solid transparent; /* Initially transparent border */
+    border: 5px solid transparent;
     border-radius: 50%;
-    animation: borderFadeOut 1.5s 1.5s forwards; /* Border fade-out animation */
+    animation: borderFadeOut 1.5s 1.5s forwards;
   }
   
   @keyframes borderFadeOut {
     to {
-      border-color: rgba(255, 255, 255, 0); /* Fully transparent border */
+      border-color: rgba(255, 255, 255, 0);
     }
   }
   

@@ -5,20 +5,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useStateContext } from './contexts/ContextProvider';
 import { Navbar, Sidebar, ThemeSettings } from './components';
 import './App.css';
-import Winthor from './pages/Winthor/Winthor';
-import Rebaixa from './pages/Rebaixa/Rebaixa';
-import NotFound from './pages/Notfound/NotFund';
-import Encarte from './pages/Encarte/Encarte';
-import Agenda from './pages/Agenda/Agenda';
-import Comprador from './pages/Comprador/Comprador';
-import Analise from './pages/Analise/Analise';
-import Contratos from './pages/Contratos/Contratos';
-
-import Sergio from './pages/Compradores/Sergio/Sergio';
-import Vitor from './pages/Compradores/Vitor/Vitor';
-import Marivone from './pages/Compradores/Marivone/Marivone';
-import Sena from './pages/Compradores/Sena/Sena';
-import Jurandir from './pages/Compradores/Jurandir/Jurandir';
+import { Winthor, Rebaixa, NotFound, Encarte, Agenda, Comprador, Analise, Documentos, Sergio, Vitor, Marivone, Sena, Jurandir } from './pages';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } = useStateContext();
@@ -32,27 +19,19 @@ const App = () => {
     }
   }, []);
 
+  const isDarkMode = currentMode === 'Dark';
+  const isMenuActive = activeMenu;
+
   return (
-    <div className={currentMode === 'Dark' ? 'dark' : ''}>
+    <div className={isDarkMode ? 'dark' : ''}>
       <BrowserRouter>
-        <div className="flex relative dark:bg-main-dark-bg">
-          {activeMenu ? (
-            <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white">
-              <Sidebar />
-            </div>
-          ) : (
-            <div className="w-0 dark:bg-secondary-dark-bg">
-              <Sidebar />
-            </div>
-          )}
-          <div
-            className={
-              activeMenu
-                ? 'dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72 w-full'
-                : 'bg-main-bg dark:bg-main-dark-bg w-full min-h-screen flex-2'
-            }
-          >
-            <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full">
+        <div className={`flex relative ${isDarkMode ? 'dark:bg-main-dark-bg' : 'bg-main-bg'}`}>
+          <div className={`w-${isMenuActive ? '72 fixed' : '0'} sidebar ${isDarkMode ? 'dark:bg-secondary-dark-bg' : ''} bg-white`}>
+            <Sidebar />
+          </div>
+          <div className={`${isMenuActive ? 'dark:bg-main-dark-bg bg-main-bg min-h-screen md:ml-72' : 'bg-main-bg dark:bg-main-dark-bg'
+            } w-full min-h-screen flex-2`}>
+            <div className={`fixed md:static bg-main-bg ${isDarkMode ? 'dark:bg-main-dark-bg' : ''} navbar w-full`}>
               <Navbar />
             </div>
             <div>
@@ -71,7 +50,7 @@ const App = () => {
                 <Route path="/analise" element={<Analise />} />
 
                 {/* pages */}
-                <Route path="/contratos" element={<Contratos />} />
+                <Route path="/documentos" element={<Documentos />} />
 
                 {/* apps */}
                 <Route path="/agenda" element={<Agenda />} />

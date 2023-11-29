@@ -18,7 +18,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor, children }) => (
   <Tooltip title={title} position="bottom">
     <button
       type="button"
-      onClick={() => customFunc()}
+      onClick={customFunc}
       style={{ color }}
       className="relative text-xl rounded-full p-3 hover:bg-light-gray"
     >
@@ -44,7 +44,7 @@ const Navbar = () => {
   const [piscarStatus, setPiscarStatus] = useState(false);
   const [playSound, setPlaySound] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
-  const [bellAnimation, setBellAnimation] = useState(false); // Estado para controlar a animação do sino de notificação
+  const [bellAnimation, setBellAnimation] = useState(false);
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -53,64 +53,56 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [setScreenSize]);
 
+  const handleNotificationCount = (snapshot) => {
+    const data = snapshot.val();
+    const count = Object.keys(data || {}).length;
+    setNotificationCount(count);
+
+    if (count > 0) {
+      handleBellAnimation();
+    }
+  };
+
+  const handleBellAnimation = () => {
+    setBellAnimation(true);
+    setTimeout(() => {
+      setBellAnimation(false);
+    }, 1000);
+  };
+
   useEffect(() => {
     const ref = database.ref('Notificacao/Alerta');
-
-    const handleNotificationCount = (snapshot) => {
-      const data = snapshot.val();
-      const count = Object.keys(data).length;
-      setNotificationCount(count);
-
-      if (count > 0) {
-        setBellAnimation(true); // Ativa a animação do sino de notificação se houver notificações
-        setTimeout(() => {
-          setBellAnimation(false);
-        }, 1000);
-      }
-    };
-
     ref.on('value', handleNotificationCount);
-
     return () => ref.off('value', handleNotificationCount);
   }, []);
 
   useEffect(() => {
     const ref = database.ref('Notificacao/Piscar');
-
     const handlePiscarStatus = (snapshot) => {
       const value = snapshot.val();
       setPiscarStatus(value === true || value === 'true');
 
       if (value === true || value === 'true') {
         setPlaySound(true);
-
-        const toastStyle = {
-          position: toast.POSITION.END_CENTER,
-          marginTop: '50px',
-          borderRadius: '4px',
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
-        };
-
+        handleBellAnimation();
         toast('Nova notificação!', {
           position: toast.POSITION.END_CENTER,
           autoClose: 3000,
-          style: toastStyle,
+          style: {
+            position: toast.POSITION.END_CENTER,
+            marginTop: '50px',
+            borderRadius: '4px',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
+          },
         });
-
-        setBellAnimation(true); // Ativa a animação do sino de notificação quando houver uma notificação
-        setTimeout(() => {
-          setBellAnimation(false);
-        }, 1000);
       }
     };
 
     ref.on('value', handlePiscarStatus);
-
     return () => ref.off('value', handlePiscarStatus);
   }, []);
 
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
-
   const handleNotificationClick = () => {
     handleClick('notification');
     setPlaySound(false);
@@ -132,7 +124,7 @@ const Navbar = () => {
         <NavButton
           title="Notificações"
           dotColor={piscarStatus ? 'rgb(254, 201, 15)' : 'transparent'}
-          customFunc={handleNotificationClick} // Usamos a nova função criada
+          customFunc={handleNotificationClick}
           color={currentColor}
           icon={<RiNotification3Line className={bellAnimation ? 'bell-animation' : ''} />}
         >
@@ -152,12 +144,14 @@ const Navbar = () => {
               src={avatar}
               alt="user-profile"
             />
-            <p>
-              <span className="text-gray-400 text-14">Olá,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-14">
-                Bem-vindo
-              </span>
-            </p>
+            {window.innerWidth > 768 && (
+              <p>
+                <span className="text-gray-400 text-14">Olá,</span>{' '}
+                <span className="text-gray-400 font-bold ml-1 text-14">
+                  Bem-vindo
+                </span>
+              </p>
+            )}
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </Tooltip>

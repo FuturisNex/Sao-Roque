@@ -65,7 +65,7 @@ const Notification = ({ navId }) => {
           bgHoverColor="light-gray"
           size="2xl"
           borderRadius="50%"
-          className="mt-2" // Add this line to move the cancel button higher
+          className="mt-2"
         />
       </div>
       <div>

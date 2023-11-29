@@ -43,12 +43,6 @@ export const links = [
         url: 'encarte',
         icon: <FaTags />,
       },
-      {
-        name: 'Itens por comprador',
-        url: '/1drv.ms/x/s!Aunh5h-BPQ1LgSJA6pptURJMugvB?e=gSzrfP',
-        target: '_blank',
-        icon: <IoMdContacts />,
-      },
     ],
   },
 
@@ -78,7 +72,7 @@ export const links = [
     links: [
       {
         name: 'Documentos',
-        url: 'contratos',
+        url: 'documentos',
         icon: <FaFileContract />,
       },
     ],
