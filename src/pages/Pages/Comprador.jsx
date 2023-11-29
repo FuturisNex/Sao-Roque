@@ -2,7 +2,7 @@ import React from 'react';
 import { FaCheese, FaShower } from 'react-icons/fa'; // Ícone de frios
 import { GiWineBottle, GiShoppingCart, GiSaltShaker } from 'react-icons/gi'; // Ícone de bebidas
 import { useStateContext } from '../../contexts/ContextProvider';
-import '../../pages/Style-Card.css';
+import '../Style-Card.css';
 
 const buyers = [
   { name: 'SERGIO', icon: <FaCheese size={30} color="white" /> }, // Ícone de frios

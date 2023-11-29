@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaTags, FaDrumstickBite, FaAppleAlt } from 'react-icons/fa';
 import { useStateContext } from '../../contexts/ContextProvider';
-import '../../pages/Style-Card.css';
+import '../Style-Card.css';
 
 const buyers = [
   { name: 'ENCARTE', icon: <FaTags size={30} color="white" /> },

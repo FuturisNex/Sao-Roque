@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillPlayCircle } from 'react-icons/ai';
 import { useStateContext } from '../../contexts/ContextProvider';
-import '../../pages/Style-Card.css';
+import '../Style-Card.css';
 
 const buyers = [
   { name: 'Fluxo de Compras | Abertura', videoId: 'e3Pryx0gFJo', icon: <AiFillPlayCircle size={45} color="white" /> },

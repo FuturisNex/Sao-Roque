@@ -3,7 +3,7 @@ import { AiFillShop } from 'react-icons/ai';
 import { IoMdPeople } from 'react-icons/io';
 import { FaGoogleDrive, FaShoppingBag } from 'react-icons/fa';
 import { useStateContext } from '../../contexts/ContextProvider';
-import '../../pages/Style-Card.css';
+import '../Style-Card.css';
 
 const buyers = [
   { name: 'DRIVE', icon: <FaGoogleDrive size={30} color="white" /> },

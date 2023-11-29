@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsFolder } from 'react-icons/bs';
 import { useStateContext } from '../../contexts/ContextProvider';
-import '../../pages/Style-Card.css';
+import '../Style-Card.css';
 
 const buyers = [
   { name: '104', icon: <BsFolder size={30} color="white" /> },

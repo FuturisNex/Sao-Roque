@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineShoppingCart, AiOutlineSend } from 'react-icons/ai';
 import { useStateContext } from '../../contexts/ContextProvider';
-import '../../pages/Style-Card.css';
+import '../Style-Card.css';
 
 const buyers = [
   { name: 'REBAIXA', icon: <AiOutlineShoppingCart size={30} color="white" /> },
