@@ -15,7 +15,6 @@ const Sidebar = () => {
     }
   };
 
-  // Se o menu estiver inativo, retornar null para não renderizar a barra lateral
   if (!activeMenu) {
     return null;
   }
