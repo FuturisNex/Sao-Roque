@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTags, FaDrumstickBite, FaAppleAlt } from 'react-icons/fa';
+import { FaTags, FaAppleAlt } from 'react-icons/fa';
 import { useStateContext } from '../../contexts/ContextProvider';
 import '../Style-Card.css';
 
