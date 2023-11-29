@@ -33,10 +33,10 @@ const Documentos = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      DRIVE: 'https://drive.google.com/drive/folders/1HO28LH6vEyn61a5Im0AXiqtPb03I4bsK?usp=sharing',
-      FORNECEDORES: 'https://docs.google.com/spreadsheets/d/14h7LutZ--7YvGK2Xbm8QqCb1DnQd2IDs3Sd71RUF4TU/edit?usp=share_link',
+      DRIVE: 'https://gsaoroque-my.sharepoint.com/:f:/g/personal/gustavo_batista_gruposaoroque_com/EpNxFnAUcpdCrhRiY8X09QIBM087cvW9nn5CgrQLRQc-Rg?e=4dv08P',
+      FORNECEDORES: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/Eb2H5W_8tjZAuQA88FvCEeoBQjQSXzqS7AvjVVyctonQtw?e=dRKS3y',
       FILIAIS: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/Ed4CXqJ__99Om6Q9cSxjFqAB9Cn2gpn1GAgO1DDlYGslsg?e=YLKJLt',
-      'LOJAS NOVAS': 'https://drive.google.com/drive/folders/1oOHQdrnLiTQyplYKSTIYpTLIoI5CAy8c?usp=drive_link',
+      'LOJAS NOVAS': 'https://gsaoroque-my.sharepoint.com/:f:/g/personal/gustavo_batista_gruposaoroque_com/EsuTPpTUAPVMgKbldAnvrpQBpf7uwVnxqz2oePujdJniGQ?e=8Ghxm4',
     }[buyer];
 
     if (url) {
