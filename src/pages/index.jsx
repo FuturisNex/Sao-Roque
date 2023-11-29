@@ -6,7 +6,6 @@ export { default as Agenda } from './Pages/Agenda';
 export { default as Comprador } from './Pages/Comprador';
 export { default as Analise } from './Pages/Analise';
 export { default as Documentos } from './Pages/Documentos';
-
 export { default as Sergio } from './Compradores/Sergio';
 export { default as Vitor } from './Compradores/Vitor';
 export { default as Marivone } from './Compradores/Marivone';
