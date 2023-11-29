@@ -15,6 +15,7 @@ const Sidebar = () => {
     }
   };
 
+  // Se o menu estiver inativo, retornar null para não renderizar a barra lateral
   if (!activeMenu) {
     return null;
   }
@@ -24,57 +25,55 @@ const Sidebar = () => {
 
   return (
     <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10" style={{ width: '280px' }}>
-      <>
-        <img
-          src={logo}
-          alt="Logo"
-          className="Sidebar-logo"
-          style={{
-            display: 'flex',
-            margin: 'auto',
-            marginTop: '25px',
-            marginBottom: '-20px',
-            width: '60%',
-          }}
-        />
-        <div className="flex justify-between items-center">
-          <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900" />
-          <TooltipComponent content="Menu" position="BottomCenter">
-            <button
-              type="button"
-              onClick={() => setActiveMenu(!activeMenu)}
-              style={{ color: currentColor }}
-              className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
-            >
-              <MdOutlineCancel />
-            </button>
-          </TooltipComponent>
-        </div>
-        <div className="mt-10 ">
-          {links.map((item) => (
-            <div key={item.title}>
-              <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">
-                {item.title}
-              </p>
-              {item.links.map((link) => (
-                <NavLink
-                  to={`/${link.url}`}
-                  key={link.name}
-                  onClick={handleCloseSideBar}
-                  style={({ isActive }) => ({
-                    backgroundColor: isActive ? currentColor : '',
-                  })}
-                  className={({ isActive }) => (isActive ? activeLink : normalLink)}
-                  target={link.target === '_blank' ? '_blank' : undefined}
-                >
-                  {link.icon}
-                  <span className="capitalize ">{link.name}</span>
-                </NavLink>
-              ))}
-            </div>
-          ))}
-        </div>
-      </>
+      <img
+        src={logo}
+        alt="Logo"
+        className="Sidebar-logo"
+        style={{
+          display: 'flex',
+          margin: 'auto',
+          marginTop: '25px',
+          marginBottom: '-20px',
+          width: '60%',
+        }}
+      />
+      <div className="flex justify-between items-center">
+        <Link to="/" onClick={handleCloseSideBar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900" />
+        <TooltipComponent content="Menu" position="BottomCenter">
+          <button
+            type="button"
+            onClick={() => setActiveMenu(!activeMenu)}
+            style={{ color: currentColor }}
+            className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
+          >
+            <MdOutlineCancel />
+          </button>
+        </TooltipComponent>
+      </div>
+      <div className="mt-10 ">
+        {links.map((item) => (
+          <div key={item.title}>
+            <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">
+              {item.title}
+            </p>
+            {item.links.map((link) => (
+              <NavLink
+                to={`/${link.url}`}
+                key={link.name}
+                onClick={handleCloseSideBar}
+                style={({ isActive }) => ({
+                  backgroundColor: isActive ? currentColor : '',
+                })}
+                className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                target={link.target === '_blank' ? '_blank' : undefined}
+              >
+                {link.icon}
+                <span className="capitalize ">{link.name}</span>
+              </NavLink>
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
