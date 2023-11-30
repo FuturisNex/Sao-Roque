@@ -28,7 +28,7 @@ const Jurandir = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      104: 'https://docs.google.com/spreadsheets/d/1Y2ZEzU1Q1TnTUFSjphyOU5Xl4RURzTXRgomzKut8KMk/edit?usp=sharing',
+      104: 'https://docs.google.com/spreadsheets/d/1aDAwsHYgf658PbaD_fdiQKDfTo4vwz48WFzBYaCp9PY/edit?usp=drive_link',
       103: '',
     }[buyer];
 
