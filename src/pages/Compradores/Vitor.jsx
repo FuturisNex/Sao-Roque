@@ -28,7 +28,7 @@ const Vitor = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      104: 'https://docs.google.com/spreadsheets/d/1h6iWCT2Eri88ohewbDCRUVirfIt-zxw0kFbq-1fVaSM/edit?usp=sharing',
+      104: 'https://docs.google.com/spreadsheets/d/1teHwt6aLclKPUhWEGOp1ZmBZUf3HvMfIvFwjil0dt74/edit?usp=drive_link',
       103: '',
     }[buyer];
 
