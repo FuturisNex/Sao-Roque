@@ -28,7 +28,7 @@ const Marivone = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      104: 'https://docs.google.com/spreadsheets/d/1upuc5OBhPe0H2FQjzDZfEXIMcsrFl4GJyT3i-Nc00KI/edit?usp=sharing',
+      104: 'https://docs.google.com/spreadsheets/d/1_JHiLM3lRr3Ue4Yz-shtXMjh_vP0FD9E_LvEur9OSck/edit?usp=drive_link',
       103: '',
     }[buyer];
 
