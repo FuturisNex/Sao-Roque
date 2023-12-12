@@ -25,6 +25,16 @@ export const links = [
       },
     ],
   },
+    {
+    title: 'Encarte',
+    links: [
+      {
+        name: 'Encarte',
+        url: 'encarte',
+        icon: <FaTags />,
+      },
+    ],
+  },
   {
     title: 'Rebaixa',
     links: [
@@ -35,17 +45,16 @@ export const links = [
       },
     ],
   },
-  {
-    title: 'Encarte',
+    {
+    title: 'Agendamento',
     links: [
       {
-        name: 'Encarte',
-        url: 'encarte',
-        icon: <FaTags />,
+        name: 'Agenda',
+        url: 'agenda',
+        icon: <AiOutlineCalendar />,
       },
     ],
   },
-
   {
     title: 'Análise',
     links: [
@@ -53,17 +62,6 @@ export const links = [
         name: 'Análises',
         url: 'analise',
         icon: <FaChartBar />,
-      },
-    ],
-  },
-
-  {
-    title: 'Calêndario',
-    links: [
-      {
-        name: 'Agenda',
-        url: 'agenda',
-        icon: <AiOutlineCalendar />,
       },
     ],
   },
