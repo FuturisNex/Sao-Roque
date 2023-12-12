@@ -25,7 +25,7 @@ export const links = [
       },
     ],
   },
-    {
+  {
     title: 'Encarte',
     links: [
       {
@@ -45,7 +45,7 @@ export const links = [
       },
     ],
   },
-    {
+  {
     title: 'Agendamento',
     links: [
       {
