@@ -4,7 +4,7 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import '../Style-Card.css';
 
 const buyers = [
-  { name: 'AGENDA', icon: <FaClock size={30} color="white" /> },
+  { name: 'AGENDAR', icon: <FaClock size={30} color="white" /> },
   { name: 'CALÊNDARIO', icon: <FaCalendarAlt size={30} color="white" /> },
 ];
 
@@ -28,7 +28,7 @@ const Analise = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      AGENDA: 'https://outlook.office365.com/owa/calendar/Agenda@gruposaoroque.com/bookings/',
+      AGENDAR: 'https://outlook.office365.com/owa/calendar/Agenda@gruposaoroque.com/bookings/',
       CALÊNDARIO: 'https://outlook.live.com/owa/calendar/f50a311e-0c0e-40be-ac78-089d25ab4a61/3e801de7-c2f8-48f5-aa3c-b8de0ce39af9/cid-4B0D3D811FE6E1E9/index.html',
     }[buyer];
 
