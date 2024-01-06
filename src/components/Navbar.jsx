@@ -10,7 +10,7 @@ import database from '../auth/firebase.js';
 import './Style/navbar.css';
 import './Style/notificationBellAnimation.css';
 
-import avatar from '../data/avatar.png';
+import avatar from '../data/img/avatar.png';
 import { Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 

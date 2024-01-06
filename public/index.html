@@ -1,20 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/logo.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Sistema Comercial" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.png" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Grupo São Roque</title>
 
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
-
-  <title>Grupo São Roque</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="logo192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="logo512.png">
 </head>
+
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+    <div id="root"></div>
+
+    <script src="/path/to/react.js"></script>
+    <script src="/path/to/react-dom.js"></script>
+
+    <script>
+        function getCurrentPage() {
+            return window.location.pathname;
+        }
+
+        const currentPage = getCurrentPage();
+
+        if (currentPage === '/comprador') {
+            const compradorManifest = require('/path/to/comprador-manifest.json');
+            document.title = compradorManifest.name;
+
+            const compradorScript = document.createElement('script');
+            compradorScript.src = '/path/to/seu/comprador.js';
+            document.body.appendChild(compradorScript);
+            
+        } else if (currentPage === '/rebaixa-envio') {
+            const rebaixaEnvioManifest = require('/path/to/rebaixa-envio-manifest.json');
+            document.title = rebaixaEnvioManifest.name;
+
+            const rebaixaEnvioScript = document.createElement('script');
+            rebaixaEnvioScript.src = '/path/to/rebaixa-envio.js';
+            document.body.appendChild(rebaixaEnvioScript);
+        }
+    </script>
 </body>
+
 </html>

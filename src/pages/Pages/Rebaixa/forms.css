@@ -1,0 +1,228 @@
+.containerForms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url("../../../data/img/fundo.jpg");
+  background-size: cover;
+}
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #242424;
+  border-radius: 5px;
+  padding: 25px;
+  font-size: 1.2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 330px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.errorMessage span {
+  margin-bottom: 30px;
+}
+
+.errorMessage button {
+  background-color: #fff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #6dce70;
+  color: #fff;
+  border-radius: 5px;
+  padding: 25px;
+  font-size: 1.2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 330px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.successMessage span {
+  margin-bottom: 30px;
+}
+
+.successMessage button {
+  background-color: #fff;
+  color: #4caf50;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.logo-form {
+  background-size: cover;
+  width: 100%;
+  max-width: 12em;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem;
+  background-color: rgba(240, 240, 240, 0.576);
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.form__label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.select {
+  background-color: white;
+  color: black;
+}
+
+.form__input {
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+  margin-bottom: 0.8rem;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  font-size: 1rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.form__input:focus {
+  outline: none;
+  border-bottom: 2px solid #0f39ac;
+}
+
+.form__button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #0f39ac;
+  margin-top: 1rem;
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.form__ver {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #2baf0a;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+.form__button:hover {
+  background-color: #3c65d8;
+}
+
+.form__ver:hover {
+  background-color: #5bd116;
+}
+
+.form__ver1 {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #f74200;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+
+.form__ver1:hover {
+  background-color: #ff9100;
+}
+
+@media only screen and (max-width: 768px) {
+  .errorMessage {
+    font-size: 1rem;
+    padding: 15px;
+    width: 80%;
+  }
+
+  .errorMessage span {
+    margin-bottom: 15px;
+  }
+
+  .errorMessage button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
+  .successMessage {
+    font-size: 1rem;
+    padding: 15px;
+    width: 80%;
+  }
+
+  .successMessage span {
+    margin-bottom: 15px;
+  }
+
+  .successMessage button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
+  .containerForms,
+  .form {
+    width: 100%;
+  }
+
+  .form {
+    padding: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .form__button,
+  .form__ver .form__ver1 {
+    width: 100%;
+  }
+}

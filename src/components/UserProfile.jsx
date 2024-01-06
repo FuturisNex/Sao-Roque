@@ -4,7 +4,7 @@ import Button from './Button';
 
 import { userProfileData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
-import avatar from '../data/avatar.png';
+import avatar from '../data/img/avatar.png';
 
 const UserProfile = () => {
   const { currentColor } = useStateContext();

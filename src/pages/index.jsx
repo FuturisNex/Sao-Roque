@@ -1,5 +1,6 @@
 export { default as Winthor } from './Pages/Winthor';
-export { default as Rebaixa } from './Pages/Rebaixa';
+export { default as Rebaixa } from './Pages/Rebaixa/Rebaixa';
+export { default as RebaixaEnvio } from './Pages/Rebaixa/RebaixaEnvio';
 export { default as NotFound } from './Notfound/NotFund';
 export { default as Encarte } from './Pages/Encarte';
 export { default as Agenda } from './Pages/Agenda';

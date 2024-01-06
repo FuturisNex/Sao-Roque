@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { MdOutlineCancel } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import logo from '../data/logotipo.png';
+import logo from '../data/img/logotipo.png';
 import { links } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineShoppingCart, AiOutlineSend } from 'react-icons/ai';
-import { useStateContext } from '../../contexts/ContextProvider';
-import '../Style-Card.css';
+import { useStateContext } from '../../../contexts/ContextProvider';
+import '../../Style-Card.css';
 
 const buyers = [
   { name: 'REBAIXA', icon: <AiOutlineShoppingCart size={30} color="white" /> },
@@ -29,7 +29,7 @@ const Rebaixa = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       REBAIXA: 'https://docs.google.com/spreadsheets/d/1fpWoqKzuYC5_8G0RNtvjdpuUReQJnYjLB4RbGQl-ClY/edit?usp=sharing',
-      ENVIAR: 'https://sistema-comprador.vercel.app/forms',
+      ENVIAR: 'rebaixa-envio',
     }[buyer];
 
     if (url) {
