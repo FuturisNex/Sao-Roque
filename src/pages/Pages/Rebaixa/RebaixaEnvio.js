@@ -196,134 +196,134 @@ const RebaixaEnvio = () => {
   };
 
   return (
-    <div className='containerForms'>
+    <div className="containerForms">
       <Helmet>
-        <link rel='manifest' href='/rebaixa-envio-manifest.json' />
+        <link rel="manifest" href="/rebaixa-envio-manifest.json" />
       </Helmet>
       {isSubmitted && successMessage && (
-        <div className='successMessage'>
+        <div className="successMessage">
           <span>{successMessage}</span>
           <button onClick={handleCloseSuccessMessage}>OK</button>
         </div>
       )}
-      <form onSubmit={handleSubmit} className='form'>
-        <img src={logo} alt='Logo' className='logo-form' />
+      <form onSubmit={handleSubmit} className="form">
+        <img src={logo} alt="Logo" className="logo-form" />
 
-        <label htmlFor='responsavel' className='form__label'>
+        <label htmlFor="responsavel" className="form__label">
           Seu Nome
         </label>
         <input
-          type='text'
-          id='responsavel'
+          type="text"
+          id="responsavel"
           value={responsavel}
           onChange={handleChangeResponsavel}
-          className='form__input'
+          className="form__input"
           required
         />
 
-        <label htmlFor='filial' className='form__label'>
+        <label htmlFor="filial" className="form__label">
           Sua Loja
         </label>
         <select
-          id='filial'
+          id="filial"
           value={filial}
           onChange={(event) => setFilial(event.target.value)}
-          className='form__input select'
+          className="form__input select"
           required
         >
-          <option value=''>Selecione a Loja</option>
-          <option value='Santa Mônica'>Santa Mônica</option>
-          <option value='Tomé de Souza'>Tomé de Souza</option>
-          <option value='Castro Alves'>Castro Alves</option>
-          <option value='Fraga Maia'>Fraga Maia</option>
-          <option value='Artemia Pires'>Artemia Pires</option>
-          <option value='Artemia Express'>Artemia Express</option>
-          <option value='Calamar Express'>Calamar Express</option>
+          <option value="">Selecione a Loja</option>
+          <option value="Santa Mônica">Santa Mônica</option>
+          <option value="Tomé de Souza">Tomé de Souza</option>
+          <option value="Castro Alves">Castro Alves</option>
+          <option value="Fraga Maia">Fraga Maia</option>
+          <option value="Artemia Pires">Artemia Pires</option>
+          <option value="Artemia Express">Artemia Express</option>
+          <option value="Calamar Express">Calamar Express</option>
         </select>
 
-        <label htmlFor='cod' className='form__label'>
+        <label htmlFor="cod" className="form__label">
           Código Interno do Produto
         </label>
         <input
-          type='number'
-          id='cod'
-          name='cod'
+          type="number"
+          id="cod"
+          name="cod"
           value={cod}
           onChange={handleChange}
-          className='form__input'
+          className="form__input"
           required
         />
 
-        <label htmlFor='descricao' className='form__label'>
+        <label htmlFor="descricao" className="form__label">
           Descrição do Produto
         </label>
         <input
-          type='text'
-          id='descricao'
-          name='descricao'
+          type="text"
+          id="descricao"
+          name="descricao"
           value={descricao}
           onChange={handleChange}
-          className='form__input'
+          className="form__input"
           required
         />
 
-        <label htmlFor='quantidade' className='form__label'>
+        <label htmlFor="quantidade" className="form__label">
           Quantidade a Vencer
         </label>
         <input
-          type='number'
-          id='quantidade'
-          name='quantidade'
+          type="number"
+          id="quantidade"
+          name="quantidade"
           value={quantidade}
           onChange={handleChange}
-          className='form__input'
+          className="form__input"
           required
         />
 
-        <label htmlFor='sugestao' className='form__label'>
+        <label htmlFor="sugestao" className="form__label">
           Sugestão de Preço
         </label>
         <input
-          type='text'
-          id='sugestao'
-          name='sugestao'
+          type="text"
+          id="sugestao"
+          name="sugestao"
           value={sugestao}
           onChange={handleChange}
-          className='form__input'
+          className="form__input"
         />
 
-        <label htmlFor='data' className='form__label'>
+        <label htmlFor="data" className="form__label">
           Data de Vencimento
         </label>
         <input
-          type='date'
-          id='data'
-          name='data'
+          type="date"
+          id="data"
+          name="data"
           value={data}
           onChange={handleChange}
-          className='form__input'
+          className="form__input"
           required
         />
 
         <button
-          type='submit'
-          className='form__button'
+          type="submit"
+          className="form__button"
           disabled={isLoading || isSending || isSubmitting}
         >
-          {isSubmitting ? 'Enviando...' : 'Enviar'}
+          {isSubmitting ? "Enviando..." : "Enviar"}
         </button>
 
-        {errorMessage && <div className='errorMessage'>{errorMessage}</div>}
+        {errorMessage && <div className="errorMessage">{errorMessage}</div>}
         <button
-          type='button'
-          className='form__ver'
+          type="button"
+          className="form__ver"
           onClick={handleOpenExcelLink}
         >
           Lista
         </button>
         <button
-          type='button'
-          className='form__ver1'
+          type="button"
+          className="form__ver1"
           onClick={handleOpenExcelLink1}
         >
           Acompanhamento
