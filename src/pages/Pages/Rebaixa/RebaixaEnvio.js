@@ -74,11 +74,6 @@ const RebaixaEnvio = () => {
         return;
       }
 
-      const response = await axios.post(
-        'https://script.google.com/macros/s/AKfycbzgryf5YTtOZjjxPKPdsBlXGHxW2tf8f9VwZTnZtqYW4ZiREno8St9evy9lYHJBpxXR/exec',
-        formData,
-      );
-
       const formData = new FormData();
       formData.append('Responsavel', responsavel);
       formData.append('Filial', filial);
@@ -87,6 +82,11 @@ const RebaixaEnvio = () => {
       formData.append('Quantidade', quantidade);
       formData.append('Sugestao', sugestao);
       formData.append('Data', formatDate(data));
+
+      const response = await axios.post(
+        'https://script.google.com/macros/s/AKfycbzgryf5YTtOZjjxPKPdsBlXGHxW2tf8f9VwZTnZtqYW4ZiREno8St9evy9lYHJBpxXR/exec',
+        formData,
+      );
 
       if (response.status === 200) {
         setSuccessMessage(response.data);
