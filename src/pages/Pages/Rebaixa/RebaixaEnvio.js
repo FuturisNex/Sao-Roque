@@ -28,7 +28,7 @@ const RebaixaEnvio = () => {
   const fetchProductDescription = () => {
     try {
       const matchingProduct = productsData.find(
-        (product) => product.Codigo === parseInt(cod),
+        (product) => product.Codigo === parseInt(cod, 10),
       );
 
       if (matchingProduct) {
@@ -141,6 +141,11 @@ const RebaixaEnvio = () => {
         return;
       }
 
+      const response = await axios.post(
+        'https://script.google.com/macros/s/AKfycbzgryf5YTtOZjjxPKPdsBlXGHxW2tf8f9VwZTnZtqYW4ZiREno8St9evy9lYHJBpxXR/exec',
+        formData,
+      );
+
       const formData = new FormData();
       formData.append('Responsavel', responsavel);
       formData.append('Filial', filial);
@@ -149,11 +154,6 @@ const RebaixaEnvio = () => {
       formData.append('Quantidade', quantidade);
       formData.append('Sugestao', sugestao);
       formData.append('Data', formatDate(data));
-
-      const response = await axios.post(
-        'https://script.google.com/macros/s/AKfycbzgryf5YTtOZjjxPKPdsBlXGHxW2tf8f9VwZTnZtqYW4ZiREno8St9evy9lYHJBpxXR/exec',
-        formData,
-      );
 
       if (response.status === 200) {
         setSuccessMessage(response.data);
@@ -203,7 +203,7 @@ const RebaixaEnvio = () => {
       {isSubmitted && successMessage && (
         <div className="successMessage">
           <span>{successMessage}</span>
-          <button onClick={handleCloseSuccessMessage}>OK</button>
+          <button type="button" onClick={handleCloseSuccessMessage}>OK</button>
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
