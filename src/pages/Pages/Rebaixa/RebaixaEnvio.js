@@ -209,7 +209,7 @@ const RebaixaEnvio = () => {
       <form onSubmit={handleSubmit} className="form">
         <img src={logo} alt="Logo" className="logo-form" />
 
-        <label htmlFor={"responsavel"} className="form__label">
+        <label htmlFor="responsavel" className="form__label">
           Seu Nome
         </label>
         <input
@@ -221,7 +221,7 @@ const RebaixaEnvio = () => {
           required
         />
 
-        <label htmlFor={"filial"} className="form__label">
+        <label htmlFor="filial" className="form__label">
           Sua Loja
         </label>
         <select
@@ -241,7 +241,7 @@ const RebaixaEnvio = () => {
           <option value="Calamar Express">Calamar Express</option>
         </select>
 
-        <label htmlFor={"cod"} className="form__label">
+        <label htmlFor="cod" className="form__label">
           Código Interno do Produto
         </label>
         <input
@@ -254,7 +254,7 @@ const RebaixaEnvio = () => {
           required
         />
 
-        <label htmlFor={"descricao"} className="form__label">
+        <label htmlFor="descricao" className="form__label">
           Descrição do Produto
         </label>
         <input
@@ -267,7 +267,7 @@ const RebaixaEnvio = () => {
           required
         />
 
-        <label htmlFor={"quantidade"} className="form__label">
+        <label htmlFor="quantidade" className="form__label">
           Quantidade a Vencer
         </label>
         <input
@@ -280,7 +280,7 @@ const RebaixaEnvio = () => {
           required
         />
 
-        <label htmlFor={"sugestao"} className="form__label">
+        <label htmlFor="sugestao" className="form__label">
           Sugestão de Preço
         </label>
         <input
@@ -292,7 +292,7 @@ const RebaixaEnvio = () => {
           className="form__input"
         />
 
-        <label htmlFor={"data"} className="form__label">
+        <label htmlFor="data" className="form__label">
           Data de Vencimento
         </label>
         <input
