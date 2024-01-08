@@ -21,6 +21,14 @@ const RebaixaEnvio = () => {
   const [isSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const resetForm = () => {
+    setCod('');
+    setDescricao('');
+    setQuantidade('');
+    setSugestao('');
+    setData('');
+  };
+
   const handleChangeResponsavel = (event) => {
     setResponsavel(event.target.value.toUpperCase());
   };
@@ -40,6 +48,7 @@ const RebaixaEnvio = () => {
       setErrorMessage(
         'Erro ao buscar a descrição do produto. Tente novamente mais tarde.',
       );
+      return null;
     }
   };
 
@@ -167,14 +176,7 @@ const RebaixaEnvio = () => {
         setErrorMessage('');
       }
     }
-  };
-
-  const resetForm = () => {
-    setCod('');
-    setDescricao('');
-    setQuantidade('');
-    setSugestao('');
-    setData('');
+    return null;
   };
 
   const handleCloseSuccessMessage = () => {
