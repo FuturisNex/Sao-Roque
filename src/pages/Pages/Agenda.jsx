@@ -29,7 +29,7 @@ const Analise = () => {
   const handleBuyerClick = (buyer) => {
     const url = {
       AGENDAR: 'https://outlook.office365.com/owa/calendar/Agenda@gruposaoroque.com/bookings/',
-      CALÊNDARIO: 'https://outlook.live.com/owa/calendar/f50a311e-0c0e-40be-ac78-089d25ab4a61/3e801de7-c2f8-48f5-aa3c-b8de0ce39af9/cid-4B0D3D811FE6E1E9/index.html',
+      CALÊNDARIO: 'https://outlook.office.com/bookings/calendar',
     }[buyer];
 
     if (url) {
