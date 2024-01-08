@@ -25,6 +25,7 @@ module.exports = {
     'react/state-in-constructor': 0,
     'import/prefer-default-export': 0,
     "jsx-a11y/control-has-associated-label": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     'max-len': [
       2,
       550,
