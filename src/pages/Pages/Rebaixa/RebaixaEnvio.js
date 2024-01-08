@@ -43,6 +43,59 @@ const RebaixaEnvio = () => {
     }
   };
 
+  const formatDate = (date) => {
+    const [year, month, day] = date.split('-');
+    return `${day}/${month}/${year}`;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setErrorMessage('');
+    setSuccessMessage('');
+
+    try {
+      if (new Date(data) < new Date()) {
+        setErrorMessage('Não é permitido adicionar um produto com a data já vencida.');
+        return;
+      }
+
+      const response = await axios.post(
+        'https://script.google.com/macros/s/AKfycbzgryf5YTtOZjjxPKPdsBlXGHxW2tf8f9VwZTnZtqYW4ZiREno8St9evy9lYHJBpxXR/exec',
+        formData,
+      );
+
+      const formData = new FormData();
+      formData.append('Responsavel', responsavel);
+      formData.append('Filial', filial);
+      formData.append('Cod', cod);
+      formData.append('Descricao', descricao);
+      formData.append('Quantidade', quantidade);
+      formData.append('Sugestao', sugestao);
+      formData.append('Data', formatDate(data));
+
+      if (response.status === 200) {
+        setSuccessMessage(response.data);
+        resetForm();
+        setIsSubmitted(true);
+      } else {
+        throw new Error(
+          'Erro ao enviar formulário. Tente novamente mais tarde.',
+        );
+      }
+    } catch (error) {
+      console.error(error);
+      setErrorMessage(error.message);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   useEffect(() => {
     const clearErrorMessage = () => {
       setErrorMessage('');
@@ -122,59 +175,6 @@ const RebaixaEnvio = () => {
     setQuantidade('');
     setSugestao('');
     setData('');
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (isSubmitting) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setErrorMessage('');
-    setSuccessMessage('');
-
-    try {
-      if (new Date(data) < new Date()) {
-        setErrorMessage('Não é permitido adicionar um produto com a data já vencida.');
-        return;
-      }
-
-      const response = await axios.post(
-        'https://script.google.com/macros/s/AKfycbzgryf5YTtOZjjxPKPdsBlXGHxW2tf8f9VwZTnZtqYW4ZiREno8St9evy9lYHJBpxXR/exec',
-        formData,
-      );
-
-      const formData = new FormData();
-      formData.append('Responsavel', responsavel);
-      formData.append('Filial', filial);
-      formData.append('Cod', cod);
-      formData.append('Descricao', descricao);
-      formData.append('Quantidade', quantidade);
-      formData.append('Sugestao', sugestao);
-      formData.append('Data', formatDate(data));
-
-      if (response.status === 200) {
-        setSuccessMessage(response.data);
-        resetForm();
-        setIsSubmitted(true);
-      } else {
-        throw new Error(
-          'Erro ao enviar formulário. Tente novamente mais tarde.',
-        );
-      }
-    } catch (error) {
-      console.error(error);
-      setErrorMessage(error.message);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const formatDate = (date) => {
-    const [year, month, day] = date.split('-');
-    return `${day}/${month}/${year}`;
   };
 
   const handleCloseSuccessMessage = () => {
