@@ -115,6 +115,7 @@ const RebaixaEnvio = () => {
 
       return () => clearTimeout(timeoutId);
     }
+    return () => {};
   }, [errorMessage]);
 
   useEffect(() => {
