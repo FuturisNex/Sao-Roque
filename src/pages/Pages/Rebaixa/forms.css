@@ -138,32 +138,24 @@
   transition: all 0.3s ease-in-out;
 }
 
-.form__ver {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #2baf0a;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin-top: 10px;
-}
-
 .form__button:hover {
   background-color: #3c65d8;
 }
 
-.form__ver:hover {
-  background-color: #5bd116;
+.Relatorios {
+  display: flex;
 }
 
-.form__ver1 {
+.btn_ver {
+  margin-right: 0.2rem;
+  margin-left: 0.2rem;
+}
+
+.btn_ver {
   width: 100%;
+  min-width: 207px;
   padding: 0.5rem;
-  background-color: #f74200;
+  background-color: #15b400;
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
@@ -171,11 +163,10 @@
   border-radius: 0.3rem;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  margin-top: 10px;
   margin-bottom: 25px;
 }
 
-.form__ver1:hover {
+.btn_ver:hover {
   background-color: #ff9100;
 }
 
@@ -221,8 +212,12 @@
     margin-bottom: 0;
   }
 
-  .form__button,
-  .form__ver .form__ver1 {
+  .form__button {
     width: 100%;
+  }
+
+  .btn_ver {
+    width: 100%;
+    min-width: 130px;
   }
 }
