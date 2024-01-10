@@ -317,20 +317,22 @@ const RebaixaEnvio = () => {
         </button>
 
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
-        <button
-          type="button"
-          className="form__ver"
-          onClick={handleOpenExcelLink}
-        >
-          Lista
-        </button>
-        <button
-          type="button"
-          className="form__ver1"
-          onClick={handleOpenExcelLink1}
-        >
-          Acompanhamento
-        </button>
+        <div className="Relatorios">
+          <button
+            type="button"
+            className="btn_ver"
+            onClick={handleOpenExcelLink}
+          >
+            Lista
+          </button>
+          <button
+            type="button"
+            className="btn_ver"
+            onClick={handleOpenExcelLink1}
+          >
+            Dashboard
+          </button>
+        </div>
       </form>
     </div>
   );
