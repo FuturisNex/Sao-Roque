@@ -16,7 +16,6 @@ export const gridOrderImage = (props) => (
 
 export const links = [
   {
-    title: 'Comprador',
     links: [
       {
         name: 'Comprador',
@@ -26,7 +25,6 @@ export const links = [
     ],
   },
   {
-    title: 'Encarte',
     links: [
       {
         name: 'Encarte',
@@ -36,7 +34,6 @@ export const links = [
     ],
   },
   {
-    title: 'Rebaixa',
     links: [
       {
         name: 'Rebaixa',
@@ -46,7 +43,6 @@ export const links = [
     ],
   },
   {
-    title: 'Agendamento',
     links: [
       {
         name: 'Agenda',
@@ -56,7 +52,6 @@ export const links = [
     ],
   },
   {
-    title: 'Análise',
     links: [
       {
         name: 'Análises',
@@ -66,7 +61,6 @@ export const links = [
     ],
   },
   {
-    title: 'Documentos',
     links: [
       {
         name: 'Documentos',
@@ -80,7 +74,7 @@ export const links = [
     links: [
       {
         name: 'Curso Whintor',
-        url: 'winthor',
+        url: '',
         icon: <AiFillPlayCircle />,
       },
     ],
