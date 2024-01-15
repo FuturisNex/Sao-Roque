@@ -1,11 +1,11 @@
-import React from "react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useStateContext } from "./contexts/ContextProvider";
-import { Navbar, Sidebar, ThemeSettings } from "./components";
-import "./App.css";
+import React from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useStateContext } from './contexts/ContextProvider';
+import { Navbar, Sidebar, ThemeSettings } from './components';
+import './App.css';
 import {
   Winthor,
   Rebaixa,
@@ -21,29 +21,29 @@ import {
   Sena,
   Jurandir,
   RebaixaEnvio,
-} from "./pages";
+} from './pages';
 
 const App = () => {
   const { currentMode, activeMenu, themeSettings } = useStateContext();
 
-  const isDarkMode = currentMode === "Dark";
+  const isDarkMode = currentMode === 'Dark';
   const isMenuActive = activeMenu;
 
-  const isRebaixaEnvioPage = window.location.pathname === "/rebaixa-envio";
+  const isRebaixaEnvioPage = window.location.pathname === '/rebaixa-envio';
 
   return (
-    <div className={isDarkMode ? "dark" : ""}>
+    <div className={isDarkMode ? 'dark' : ''}>
       <BrowserRouter>
         <div
           className={`flex relative ${
-            isDarkMode ? "dark:bg-main-dark-bg" : "bg-main-bg"
+            isDarkMode ? 'dark:bg-main-dark-bg' : 'bg-main-bg'
           }`}
         >
           <div
             className={`w-${
-              isMenuActive && !isRebaixaEnvioPage ? "72 fixed" : "0"
+              isMenuActive && !isRebaixaEnvioPage ? '72 fixed' : '0'
             } sidebar ${
-              isDarkMode ? "dark:bg-secondary-dark-bg" : ""
+              isDarkMode ? 'dark:bg-secondary-dark-bg' : ''
             } bg-white`}
           >
             {isRebaixaEnvioPage ? null : <Sidebar />}
@@ -51,15 +51,15 @@ const App = () => {
           <div
             className={`w-full min-h-screen flex-2 ${
               isMenuActive && !isRebaixaEnvioPage
-                ? "dark:bg-main-dark-bg bg-main-bg md:ml-72"
-                : "bg-main-bg dark:bg-main-dark-bg"
+                ? 'dark:bg-main-dark-bg bg-main-bg md:ml-72'
+                : 'bg-main-bg dark:bg-main-dark-bg'
             }`}
           >
             <div
               className={`fixed md:static bg-main-bg ${
                 isMenuActive && !isRebaixaEnvioPage
-                  ? "dark:bg-main-dark-bg"
-                  : ""
+                  ? 'dark:bg-main-dark-bg'
+                  : ''
               } navbar w-full`}
             >
               {isRebaixaEnvioPage ? null : <Navbar />}
