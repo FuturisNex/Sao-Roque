@@ -2,7 +2,7 @@
     "name": "Sistema de Rebaixas",
     "short_name": "Rebaixas",
     "description": "Este é um sistema usado para envio de validades.",
-    "start_url": "/rebaixa-envio",
+    "start_url": "/validades/rebaixa-envio",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
