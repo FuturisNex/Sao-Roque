@@ -28,7 +28,7 @@ const App = () => {
   const isDarkMode = currentMode === 'Dark';
   const isMenuActive = activeMenu;
 
-  const isRebaixaEnvioPage = window.location.pathname === '/rebaixa-envio';
+  const isRebaixaEnvioPage = window.location.pathname === '/validades/rebaixa-envio';
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
