@@ -70,11 +70,10 @@ export const links = [
     ],
   },
   {
-    title: 'Cursos',
     links: [
       {
         name: 'Curso Whintor',
-        url: '',
+        url: 'mudança',
         icon: <AiFillPlayCircle />,
       },
     ],
