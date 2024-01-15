@@ -66,19 +66,19 @@ const App = () => {
             <div>
               {themeSettings && <ThemeSettings />}
               <Routes>
-                <Route path="/sergio" element={<Sergio />} />
-                <Route path="/marivone" element={<Marivone />} />
-                <Route path="/vitor" element={<Vitor />} />
-                <Route path="/sena" element={<Sena />} />
-                <Route path="/jurandir" element={<Jurandir />} />
-                <Route path="/comprador" element={<Comprador />} />
-                <Route path="/analise" element={<Analise />} />
-                <Route path="/documentos" element={<Documentos />} />
-                <Route path="/agenda" element={<Agenda />} />
-                <Route path="/rebaixa" element={<Rebaixa />} />
-                <Route path="/rebaixa-envio" element={<RebaixaEnvio />} />
-                <Route path="/encarte" element={<Encarte />} />
-                <Route path="/winthor" element={<Winthor />} />
+                <Route path="/comercial/comprador/sergio" element={<Sergio />} />
+                <Route path="/comercial/comprador/marivone" element={<Marivone />} />
+                <Route path="/comercial/comprador/vitor" element={<Vitor />} />
+                <Route path="/comercial/comprador/sena" element={<Sena />} />
+                <Route path="/comercial/comprador/jurandir" element={<Jurandir />} />
+                <Route path="/comercial/comprador" element={<Comprador />} />
+                <Route path="/comercial/analise" element={<Analise />} />
+                <Route path="/comercial/documentos" element={<Documentos />} />
+                <Route path="/comercial/agenda" element={<Agenda />} />
+                <Route path="/comercial/rebaixa" element={<Rebaixa />} />
+                <Route path="/comercial/encarte" element={<Encarte />} />
+                <Route path="/comercial/winthor" element={<Winthor />} />
+                <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
                 <Route path="/" element={<Comprador />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
