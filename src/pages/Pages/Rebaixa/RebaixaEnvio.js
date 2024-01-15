@@ -11,7 +11,6 @@ const RebaixaEnvio = () => {
   const [cod, setCod] = useState('');
   const [descricao, setDescricao] = useState('');
   const [quantidade, setQuantidade] = useState('');
-  const [sugestao, setSugestao] = useState('');
   const [data, setData] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -25,7 +24,6 @@ const RebaixaEnvio = () => {
     setCod('');
     setDescricao('');
     setQuantidade('');
-    setSugestao('');
     setData('');
   };
 
@@ -80,7 +78,6 @@ const RebaixaEnvio = () => {
       formData.append('Cod', cod);
       formData.append('Descricao', descricao);
       formData.append('Quantidade', quantidade);
-      formData.append('Sugestao', sugestao);
       formData.append('Data', formatDate(data));
 
       const response = await axios.post(
@@ -142,13 +139,6 @@ const RebaixaEnvio = () => {
       setDescricao(value);
     } else if (name === 'quantidade') {
       setQuantidade(value);
-    } else if (name === 'sugestao') {
-      const formattedValue = value
-        .replace('.', ',')
-        .replace(/[^0-9,]/g, '')
-        .replace(/(,.*),/g, '$1')
-        .replace(/,(\d{3})/g, '.$1');
-      setSugestao(formattedValue);
     } else if (name === 'data') {
       setData(value);
     }
@@ -281,18 +271,6 @@ const RebaixaEnvio = () => {
           onChange={handleChange}
           className="form__input"
           required
-        />
-
-        <label htmlFor="sugestao" className="form__label">
-          Sugestão de Preço
-        </label>
-        <input
-          type="text"
-          id="sugestao"
-          name="sugestao"
-          value={sugestao}
-          onChange={handleChange}
-          className="form__input"
         />
 
         <label htmlFor="data" className="form__label">
