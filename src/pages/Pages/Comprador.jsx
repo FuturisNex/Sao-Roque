@@ -32,11 +32,11 @@ const Comprador = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      SERGIO: '/sergio',
-      MARIVONE: '/marivone',
-      VITOR: '/vitor',
-      SENA: '/sena',
-      JURANDIR: '/jurandir',
+      SERGIO: '/comercial/comprador/sergio',
+      MARIVONE: '/comercial/comprador/marivone',
+      VITOR: '/comercial/comprador/vitor',
+      SENA: '/comercial/comprador/sena',
+      JURANDIR: '/comercial/comprador/jurandir',
 
     }[buyer];
 
