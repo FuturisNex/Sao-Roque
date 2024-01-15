@@ -19,7 +19,7 @@ export const links = [
     links: [
       {
         name: 'Comprador',
-        url: 'comprador',
+        url: 'comercial/comprador',
         icon: <IoMdPerson />,
       },
     ],
@@ -28,7 +28,7 @@ export const links = [
     links: [
       {
         name: 'Encarte',
-        url: 'encarte',
+        url: 'comercial/encarte',
         icon: <FaTags />,
       },
     ],
@@ -37,7 +37,7 @@ export const links = [
     links: [
       {
         name: 'Rebaixa',
-        url: 'rebaixa',
+        url: 'comercial/rebaixa',
         icon: <FiShoppingBag />,
       },
     ],
@@ -46,7 +46,7 @@ export const links = [
     links: [
       {
         name: 'Agenda',
-        url: 'agenda',
+        url: 'comercial/agenda',
         icon: <AiOutlineCalendar />,
       },
     ],
@@ -55,7 +55,7 @@ export const links = [
     links: [
       {
         name: 'Análises',
-        url: 'analise',
+        url: 'comercial/analise',
         icon: <FaChartBar />,
       },
     ],
@@ -64,7 +64,7 @@ export const links = [
     links: [
       {
         name: 'Documentos',
-        url: 'documentos',
+        url: 'comercial/documentos',
         icon: <FaFileContract />,
       },
     ],
@@ -73,7 +73,7 @@ export const links = [
     links: [
       {
         name: 'Curso Whintor',
-        url: 'mudança',
+        url: 'comercial/mudança',
         icon: <AiFillPlayCircle />,
       },
     ],
