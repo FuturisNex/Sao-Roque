@@ -2,7 +2,7 @@
   "name": "Dashboard Setor Compras",
   "short_name": "Setor COmpras",
   "description": "Este é um sistema usado para gerenciamento do setor de compras.",
-  "start_url": "/comprador",
+  "start_url": "/comercial/comprador",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
