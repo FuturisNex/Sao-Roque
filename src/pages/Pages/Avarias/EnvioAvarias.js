@@ -41,7 +41,7 @@ const FormPage = () => {
       return '';
     } catch (error) {
       setErrorMessage(
-        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.'
+        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.',
       );
     }
   };
@@ -101,7 +101,7 @@ const FormPage = () => {
     }
   };
 
- const resetForm = () => {
+  const resetForm = () => {
     setCod('');
     setFornecedor('');
     setTipo('');
@@ -147,7 +147,6 @@ const FormPage = () => {
       formData.append('Vlnota', formatCurrency(vlnota));
       formData.append('Obs', obs);
 
-
       const response = await axios.post(
         'https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exec',
         formData
@@ -159,7 +158,7 @@ const FormPage = () => {
         setIsSubmitted(true);
       } else {
         throw new Error(
-          'Erro ao enviar formulário. Tente novamente mais tarde.'
+          'Erro ao enviar formulário. Tente novamente mais tarde.',
         );
       }
     } catch (error) {
@@ -325,7 +324,7 @@ const FormPage = () => {
           className="form__button"
           disabled={isLoading || isSending || isSubmitting}
         >
-          {isSubmitting ? "Enviando..." : "Enviar"}
+          {isSubmitting ? 'Enviando...' : 'Enviar'}
         </button>
 
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
