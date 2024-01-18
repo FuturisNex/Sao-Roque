@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './Style/home.css';
 
 const HomeAvarias = () => {
-  
   return (
     <div className="home-container">
       <div className="header">
