@@ -75,7 +75,7 @@ const ListaAvarias = () => {
                   </span>
                   <br />
                   <span className="nota">
-                    <b>Nº NOTA:</b> {avaria["Nº NOTA"]}
+                    <b>Nº NOTA:</b> {avaria['Nº NOTA']}
                   </span>
                   <br />
                   <span className="perca">
@@ -94,12 +94,12 @@ const ListaAvarias = () => {
                 <h2 className="titulo-detalhes">Detalhes da Avaria</h2>
                 <div className="avaria-detalhes">
                   {detalhesOrdenados.map((key) => {
-                    if (key !== "id") {
+                    if (key !== 'id') {
                       return (
                         <div key={key} className="detalhe-item">
                           <span className="detalhe-label">
                             {key.toUpperCase()}:
-                          </span>{" "}
+                          </span>{' '}
                           {selectedAvaria[key]}
                         </div>
                       );
