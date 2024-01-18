@@ -31,7 +31,7 @@ const FormPage = () => {
   const fetchProductDescription = () => {
     try {
       const matchingProduct = fornecedorData.find(
-        (product) => product.Codigo === parseInt(cod);
+        (product) => product.Codigo === parseInt(cod),
       );
 
       if (matchingProduct) {
