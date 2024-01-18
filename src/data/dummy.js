@@ -73,7 +73,7 @@ export const links = [
     links: [
       {
         name: 'Curso Whintor',
-        url: 'comercial/mudança',
+        url: 'comercial/winthor',
         icon: <AiFillPlayCircle />,
       },
     ],
