@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Style/forms.css";
-import logo from "../data/img/logotipo.png";
+import logo from "../../../data/img/logotipo.png";
 import axios from "axios";
 import fornecedorData from '../../../data/fornecedores.json';
 import Cookies from 'js-cookie';
