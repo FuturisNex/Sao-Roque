@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import database from '../auth/firebase';
+import database from '../../../auth/firebase';
 import "./Style/lista.css";
 
 const ListaAvarias = () => {
