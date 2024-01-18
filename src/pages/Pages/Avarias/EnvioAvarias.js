@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import "./Style/forms.css";
-import logo from "../../../data/img/logotipo.png";
-import fornecedorData from '../../../data/fornecedores.json';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './Style/forms.css';
 import Cookies from 'js-cookie';
+import logo from '../../../data/img/logotipo.png';
+import fornecedorData from '../../../data/fornecedores.json';
 
 const FormPage = () => {
-  const [responsavel, setResponsavel] = useState("");
-  const [filial, setFilial] = useState("");
-  const [cod, setCod] = useState("");
-  const [fornecedor, setFornecedor] = useState("");
-  const [tipo, setTipo] = useState("");
-  const [perca, setPerca] = useState("");
-  const [quantidade, setQuantidade] = useState("");
-  const [nota, setNota] = useState("");
-  const [vlnota, setVlnota] = useState("");
-  const [obs, setObs] = useState("");
+  const [responsavel, setResponsavel] = useState('');
+  const [filial, setFilial] = useState('');
+  const [cod, setCod] = useState('');
+  const [fornecedor, setFornecedor] = useState('');
+  const [tipo, setTipo] = useState('');
+  const [perca, setPerca] = useState('');
+  const [quantidade, setQuantidade] = useState('');
+  const [nota, setNota] = useState('');
+  const [vlnota, setVlnota] = useState('');
+  const [obs, setObs] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [previousCod, setPreviousCod] = useState("");
+  const [successMessage, setSuccessMessage] = useState('');
+  const [previousCod, setPreviousCod] = useState('');
   const [isSending, setIsSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -31,17 +31,17 @@ const FormPage = () => {
   const fetchProductDescription = () => {
     try {
       const matchingProduct = fornecedorData.find(
-        (product) => product.Codigo === parseInt(cod)
+        (product) => product.Codigo === parseInt(cod);
       );
 
       if (matchingProduct) {
         return matchingProduct.Fornecedor;
       }
 
-      return "";
+      return '';
     } catch (error) {
       setErrorMessage(
-        "Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde."
+        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.'
       );
     }
   };
@@ -53,10 +53,10 @@ const FormPage = () => {
 
   useEffect(() => {
     const fetchData = () => {
-      if (cod !== "" && cod !== previousCod) {
+      if (cod !== '' && cod !== previousCod) {
         setIsLoading(true);
-        setErrorMessage("");
-        setSuccessMessage("");
+        setErrorMessage('');
+        setSuccessMessage('');
         const description = fetchProductDescription();
         setFornecedor(description);
         setPreviousCod(cod);
@@ -82,33 +82,44 @@ const FormPage = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "cod") {
+    if (name === 'cod') {
       setCod(value);
-    } else if (name === "fornecedor") {
+    } else if (name === 'fornecedor') {
       setFornecedor(value);
-    } else if (name === "tipo") {
+    } else if (name === 'tipo') {
       setTipo(value);
-    } else if (name === "perca") {
+    } else if (name === 'perca') {
       setPerca(value);
-    } else if (name === "quantidade") {
+    } else if (name === 'quantidade') {
       setQuantidade(value);
-    } else if (name === "vlnota") {
+    } else if (name === 'vlnota') {
       setVlnota(value);
-    } else if (name === "nota") {
+    } else if (name === 'nota') {
       setNota(value);
-    } else if (name === "obs") {
+    } else if (name === 'obs') {
       setObs(value);
     }
   };
 
+ const resetForm = () => {
+    setCod('');
+    setFornecedor('');
+    setTipo('');
+    setPerca('');
+    setQuantidade('');
+    setVlnota('');
+    setNota('');
+    setObs('');
+  };
+
   const handleVlnotaChange = (event) => {
     const value = event.target.value;
-    const sanitizedValue = value.replace(/[^0-9,]/g, "");
+    const sanitizedValue = value.replace(/[^0-9,]/g, '');
     setVlnota(sanitizedValue);
   };
 
   const formatCurrency = (value) => {
-    const formattedValue = parseFloat(value.replace(",", "."), 10).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const formattedValue = parseFloat(value.replace(',', '.'), 10).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     return formattedValue;
   };
 
@@ -120,25 +131,25 @@ const FormPage = () => {
     }
 
     setIsSubmitting(true);
-    setErrorMessage("");
-    setSuccessMessage("");
+    setErrorMessage('');
+    setSuccessMessage('');
 
     try {
       const formData = new FormData();
-      formData.append("Responsavel", responsavel);
-      formData.append("Filial", filial);
-      formData.append("Cod", cod);
-      formData.append("Fornecedor", fornecedor);
-      formData.append("Tipo", tipo);
-      formData.append("Perca", perca);
-      formData.append("Quantidade", quantidade);
-      formData.append("Nota", nota);
-      formData.append("Vlnota", formatCurrency(vlnota));
-      formData.append("Obs", obs);
+      formData.append('Responsavel', responsavel);
+      formData.append('Filial', filial);
+      formData.append('Cod', cod);
+      formData.append('Fornecedor', fornecedor);
+      formData.append('Tipo', tipo);
+      formData.append('Perca', perca);
+      formData.append('Quantidade', quantidade);
+      formData.append('Nota', nota);
+      formData.append('Vlnota', formatCurrency(vlnota));
+      formData.append('Obs', obs);
 
 
       const response = await axios.post(
-        "https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exec",
+        'https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exec',
         formData
       );
 
@@ -148,7 +159,7 @@ const FormPage = () => {
         setIsSubmitted(true);
       } else {
         throw new Error(
-          "Erro ao enviar formulário. Tente novamente mais tarde."
+          'Erro ao enviar formulário. Tente novamente mais tarde.'
         );
       }
     } catch (error) {
@@ -159,20 +170,9 @@ const FormPage = () => {
     }
   };
 
-  const resetForm = () => {
-    setCod("");
-    setFornecedor("");
-    setTipo("");
-    setPerca("");
-    setQuantidade("");
-    setVlnota("");
-    setNota("");
-    setObs("");
-  };
-
   const handleCloseSuccessMessage = () => {
     setIsSubmitted(false);
-    setSuccessMessage("");
+    setSuccessMessage('');
   };
 
   return (
