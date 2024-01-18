@@ -4,12 +4,8 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import '../Style-Card.css';
 
 const buyers = [
-  { name: 'Fluxo de Compras | Abertura', videoId: 'e3Pryx0gFJo', icon: <AiFillPlayCircle size={45} color="white" /> },
   { name: 'Fluxo de Compras | Digitar Pedido', videoId: 'Z25hgEbgIEs', icon: <AiFillPlayCircle size={45} color="white" /> },
-  { name: 'Fluxo de Compras | Receber Mercadoria', videoId: 'j4ZSvoGotls', icon: <AiFillPlayCircle size={45} color="white" /> },
   { name: 'Fluxo de Compras | Precificar Produto', videoId: '0vsJXkJMUhM', icon: <AiFillPlayCircle size={45} color="white" /> },
-  { name: 'Fluxo de Compras | Devolução Fornecedor ', videoId: 'TqKBB4_741Y', icon: <AiFillPlayCircle size={45} color="white" /> },
-  { name: 'Fluxo de Compras | Montar Bônus', videoId: 'JAOrixml7IA', icon: <AiFillPlayCircle size={45} color="white" /> },
   { name: 'Tranferencia', videoId: 'YEnRnU2P2xY', icon: <AiFillPlayCircle size={45} color="white" /> },
 ];
 
