@@ -1,0 +1,73 @@
+/* home.css */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../../resources/images/img.jpeg');
+    background-size: cover;
+    color: #fff;
+    font-family: Arial, sans-serif; /* Defina a fonte desejada */
+  }
+  
+  .header {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: center; /* Centralize o texto */
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .option {
+    text-decoration: none;
+  }
+  
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin: 0 1rem;
+    transition: background-color 0.3s ease-in-out;
+    text-transform: uppercase; /* Transforme o texto em maiúsculas */
+  }
+  
+  .btn-primary {
+    background-color: #0f39ac;
+    color: #fff;
+  }
+  
+  .btn-secondary {
+    background-color: #00b618;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #3c65d8;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #7ae43c;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .header {
+      font-size: 1.5rem;
+    }
+  
+    .btn-primary,
+    .btn-secondary {
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+    }
+  }
