@@ -21,7 +21,7 @@ const FormPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [previousCod, setPreviousCod] = useState('');
-  const [isSending, setIsSending] = useState(false);
+  const [isSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChangeResponsavel = (event) => {
