@@ -7,11 +7,11 @@ const ListaAvarias = () => {
   const [selectedAvaria, setSelectedAvaria] = useState(null);
 
   useEffect(() => {
-    const avariasRef = database.ref("BancoDadosAvarias");
+    const avariasRef = database.ref('BancoDadosAvarias');
 
     const fetchData = async () => {
       try {
-        const snapshot = await avariasRef.once("value");
+        const snapshot = await avariasRef.once('value');
         const avariasData = snapshot.val();
 
         if (avariasData) {
@@ -24,12 +24,12 @@ const ListaAvarias = () => {
           setAvarias(avariasArray);
         }
       } catch (error) {
-        console.error("Erro ao buscar dados:", error);
+        console.error('Erro ao buscar dados:', error);
       }
     };
     fetchData();
     return () => {
-      avariasRef.off("value");
+      avariasRef.off('value');
     };
   }, []);
 
@@ -42,19 +42,19 @@ const ListaAvarias = () => {
   };
 
   const detalhesOrdenados = [
-    "Nº VERBA",
-    "ENVIO",
-    "RESPONSAVEL",
-    "FILIAL",
-    "CODIGO",
-    "FORNECEDOR",
-    "TIPO",
-    "PERCA",
-    "QUANTIDADE",
-    "Nº NOTA",
-    "VL NOTA",
-    "STATUS",
-    "OBSERVAÇÕES",
+    'Nº VERBA',
+    'ENVIO',
+    'RESPONSAVEL',
+    'FILIAL',
+    'CODIGO',
+    'FORNECEDOR',
+    'TIPO',
+    'PERCA',
+    'QUANTIDADE',
+    'Nº NOTA',
+    'VL NOTA',
+    'STATUS',
+    'OBSERVAÇÕES',
   ];
 
   return (
