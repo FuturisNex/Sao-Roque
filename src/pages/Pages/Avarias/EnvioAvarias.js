@@ -149,7 +149,7 @@ const FormPage = () => {
 
       const response = await axios.post(
         'https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exec',
-        formData;
+        formData,
       );
 
       if (response.status === 200) {
