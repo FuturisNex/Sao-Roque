@@ -38,8 +38,8 @@
 }
 
 .avaria-item:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.603)
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .pendente {
