@@ -66,29 +66,30 @@ const ListaAvarias = () => {
             {avarias.map((avaria) => (
               <li
                 key={avaria.id}
-                onClick={() => handleAvariaClick(avaria)}
                 className={`avaria-item ${avaria.STATUS.toLowerCase()}`}
               >
-                <div>
-                  <span className="fornecedor">
-                    <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
-                  </span>
-                  <br />
-                  <span className="nota">
-                    <b>Nº NOTA:</b> {avaria['Nº NOTA']}
-                  </span>
-                  <br />
-                  <span className="perca">
-                    <b>PERCA:</b> {avaria.PERCA}
-                  </span>
-                </div>
+                <button onClick={() => handleAvariaClick(avaria)}>
+                  <div>
+                    <span className="fornecedor">
+                      <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
+                    </span>
+                    <br />
+                    <span className="nota">
+                      <b>Nº NOTA:</b> {avaria['Nº NOTA']}
+                    </span>
+                    <br />
+                    <span className="perca">
+                      <b>PERCA:</b> {avaria.PERCA}
+                    </span>
+                  </div>
+                </button>
               </li>
             ))}
           </ul>
           {selectedAvaria && (
             <div className="avaria-overlay">
               <div className="avaria-card-details">
-                <button className="close" onClick={handleCloseDetailCard}>
+                <button type="button" className="close" onClick={handleCloseDetailCard}>
                   <span>X</span>
                 </button>
                 <h2 className="titulo-detalhes">Detalhes da Avaria</h2>
