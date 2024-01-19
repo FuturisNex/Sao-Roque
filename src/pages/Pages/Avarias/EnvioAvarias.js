@@ -201,6 +201,25 @@ const FormPage = () => {
           required
         />
 
+        <label htmlFor="comprador" className="form__label">
+          Selecione o Comprador:
+        </label>
+        <select
+          id="comprador"
+          value={comprador}
+          onChange={(event) => setComprador(event.target.value)}
+          className="form__input select"
+          required
+        >
+          <option value="">Selecione o Comprador</option>
+          <option value="SÉRGIO">Sérgio</option>
+          <option value="SENA">Sena</option>
+          <option value="MARIVONE">Marivone</option>
+          <option value="JURANDIR">Jurandir</option>
+          <option value="VITOR">Vitor</option>
+          <option value="LUCAS">Lucas</option>
+        </select>      
+
         <label htmlFor="filial" className="form__label">
           Selecione a loja:
         </label>
@@ -219,25 +238,6 @@ const FormPage = () => {
           <option value="11">Tomé de Souza</option>
           <option value="13">Artemia Express</option>
           <option value="14">Calamar Express</option>
-        </select>
-
-        <label htmlFor="comprador" className="form__label">
-          Selecione o Comprador:
-        </label>
-        <select
-          id="comprador"
-          value={comprador}
-          onChange={(event) => setComprador(event.target.value)}
-          className="form__input select"
-          required
-        >
-          <option value="">Selecione o Comprador</option>
-          <option value="SÉRGIO">Sérgio</option>
-          <option value="SENA">Sena</option>
-          <option value="MARIVONE">Marivone</option>
-          <option value="JURANDIR">Jurandir</option>
-          <option value="VITOR">Vitor</option>
-          <option value="LUCAS">Lucas</option>
         </select>
 
         <label htmlFor="cod" className="form__label">
