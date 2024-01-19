@@ -81,22 +81,20 @@ const FormPage = () => {
   }, []);
 
   const handleChange = ({ target: { name, value } }) => {
-    if (name === 'cod') {
-      setCod(value);
-    } else if (name === 'fornecedor') {
-      setFornecedor(value);
-    } else if (name === 'tipo') {
-      setTipo(value);
-    } else if (name === 'perca') {
-      setPerca(value);
-    } else if (name === 'quantidade') {
-      setQuantidade(value);
-    } else if (name === 'vlnota') {
-      setVlnota(value);
-    } else if (name === 'nota') {
-      setNota(value);
-    } else if (name === 'obs') {
-      setObs(value);
+    const setters = {
+      cod: setCod,
+      fornecedor: setFornecedor,
+      tipo: setTipo,
+      perca: setPerca,
+      quantidade: setQuantidade,
+      vlnota: setVlnota,
+      nota: setNota,
+      obs: setObs,
+    };
+
+    const setter = setters[name];
+    if (setter) {
+      setter(value);
     }
   };
 
