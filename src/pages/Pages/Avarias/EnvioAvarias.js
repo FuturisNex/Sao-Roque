@@ -168,7 +168,7 @@ const FormPage = () => {
 
   const handleCloseSuccessMessage = () => {
     setIsSubmitted(false);
-    setSuccessMessage('");
+    setSuccessMessage('');
   };
 
   return (
