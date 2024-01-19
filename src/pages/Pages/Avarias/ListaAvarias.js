@@ -75,11 +75,11 @@ const ListaAvarias = () => {
                     <span className="fornecedor">
                       <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
                     </span>
-                    <span className="nota">
-                      <b>Nº NOTA:</b> {avaria['Nº NOTA']}
-                    </span>
                     <span className="perca">
                       <b>TIPO:</b> {avaria.TIPO}
+                    </span>
+                    <span className="nota">
+                      <b>Nº NOTA:</b> {avaria['Nº NOTA']}
                     </span>
                   </div>
                 </button>
