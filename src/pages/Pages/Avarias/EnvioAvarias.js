@@ -31,7 +31,7 @@ const FormPage = () => {
   const fetchProductDescription = () => {
     try {
       const matchingProduct = fornecedorData.find(
-        (product) => product.Codigo === parseInt(cod),
+        (product) => product.Codigo === parseInt(cod, 10),
       );
 
       if (matchingProduct) {
@@ -80,8 +80,8 @@ const FormPage = () => {
     }
   }, []);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
     if (name === 'cod') {
       setCod(value);
     } else if (name === 'fornecedor') {
@@ -179,7 +179,7 @@ const FormPage = () => {
       {isSubmitted && successMessage && (
         <div className="successMessage">
           <span>{successMessage}</span>
-          <button type="button "onClick={handleCloseSuccessMessage}>OK</button>
+          <button type="button"onClick={handleCloseSuccessMessage}>OK</button>
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
