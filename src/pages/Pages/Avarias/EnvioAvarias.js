@@ -7,6 +7,7 @@ import fornecedorData from '../../../data/fornecedores.json';
 
 const FormPage = () => {
   const [responsavel, setResponsavel] = useState('');
+  const [comprador, setComprador] = useState('');
   const [filial, setFilial] = useState('');
   const [cod, setCod] = useState('');
   const [fornecedor, setFornecedor] = useState('');
@@ -82,6 +83,8 @@ const FormPage = () => {
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'cod') {
       setCod(value);
+    } else if (name === 'comprador') {
+      setComprador(value);
     } else if (name === 'fornecedor') {
       setFornecedor(value);
     } else if (name === 'tipo') {
@@ -98,6 +101,7 @@ const FormPage = () => {
   };
 
   const resetForm = () => {
+    setComprador('');
     setCod('');
     setFornecedor('');
     setTipo('');
@@ -135,6 +139,7 @@ const FormPage = () => {
     try {
       const formData = new FormData();
       formData.append('Responsavel', responsavel);
+      formData.append('Comprador', comprador);
       formData.append('Filial', filial);
       formData.append('Cod', cod);
       formData.append('Fornecedor', fornecedor);
@@ -214,6 +219,25 @@ const FormPage = () => {
           <option value="11">Tomé de Souza</option>
           <option value="13">Artemia Express</option>
           <option value="14">Calamar Express</option>
+        </select>
+
+        <label htmlFor="comprador" className="form__label">
+          Selecione o Comprador:
+        </label>
+        <select
+          id="comprador"
+          value={comprador}
+          onChange={(event) => setComprador(event.target.value)}
+          className="form__input select"
+          required
+        >
+          <option value="">Selecione o Comprador</option>
+          <option value="SÉRGIO">Sérgio</option>
+          <option value="SENA">Sena</option>
+          <option value="MARIVONE">Marivone</option>
+          <option value="JURANDIR">Jurandir</option>
+          <option value="VITOR">Vitor</option>
+          <option value="LUCAS">Lucas</option>
         </select>
 
         <label htmlFor="cod" className="form__label">
