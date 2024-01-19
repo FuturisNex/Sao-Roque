@@ -185,7 +185,7 @@ const FormPage = () => {
         <img src={logo} alt="Logo" className="logo-form" />
 
         <label htmlFor="responsavel" className="form__label">
-          Nome do Respolsavel:
+          Nome do Responsavel:
         </label>
         <input
           type="text"
@@ -213,7 +213,7 @@ const FormPage = () => {
           <option value="5">Artemia Pires</option>
           <option value="11">Tomé de Souza</option>
           <option value="13">Artemia Express</option>
-          <option value="14">Calamar</option>
+          <option value="14">Calamar Express</option>
         </select>
 
         <label htmlFor="cod" className="form__label">
