@@ -321,7 +321,7 @@ const FormPage = () => {
           className="form__button"
           disabled={isLoading || isSending || isSubmitting}
         >
-          {isSubmitting ? "Enviando..." : "Enviar"}
+          {isSubmitting ? 'Enviando...' : 'Enviar'}
         </button>
 
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
