@@ -25,20 +25,27 @@
         const currentPage = getCurrentPage();
 
         if (currentPage === '/comercial/comprador') {
-            const compradorManifest = require('/path/to/comercial/comprador-manifest.json');
+            const compradorManifest = require('/path/to/public/comprador-manifest.json');
             document.title = compradorManifest.name;
 
             const compradorScript = document.createElement('script');
-            compradorScript.src = '/path/to/seu/comercial/comprador.js';
+            compradorScript.src = '/path/to/src/pages/pages/Comprador.js';
             document.body.appendChild(compradorScript);
             
-        } else if (currentPage === '/validades/rebaixa-envio') {
-            const rebaixaEnvioManifest = require('/path/to/validades/rebaixa-envio-manifest.json');
+        } else if (currentPage === '/Rebaixa/rebaixa-envio') {
+            const rebaixaEnvioManifest = require('/path/to/public/rebaixa-envio-manifest.json');
             document.title = rebaixaEnvioManifest.name;
 
             const rebaixaEnvioScript = document.createElement('script');
-            rebaixaEnvioScript.src = '/path/to/validades/rebaixa-envio.js';
+            rebaixaEnvioScript.src = '/path/to//src/pages/pages/Rebaixa/Rebaixa.js';
             document.body.appendChild(rebaixaEnvioScript);
+        } else if (currentPage === '/avarias') {
+            const rebaixaEnvioManifest = require('/path/to/public/avarias-manifest.json');
+            document.title = avariasManifest.name;
+
+            const rebaixaEnvioScript = document.createElement('script');
+            rebaixaEnvioScript.src = '/path/to/src/pages/pages/Avarias/HomeAvarias.js';
+            document.body.appendChild(homeAvariasScript);
         }
     </script>
 </body>
