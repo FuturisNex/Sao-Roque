@@ -78,7 +78,7 @@ const ListaAvarias = () => {
                     </span>
                     <br />
                     <span className="perca">
-                      <b>PERCA:</b> {avaria.TIPO}
+                      <b>TIPO:</b> {avaria.TIPO}
                     </span>
                   </div>
                 </button>
