@@ -68,7 +68,7 @@ const ListaAvarias = () => {
                 key={avaria.id}
                 className={`avaria-item ${avaria.STATUS.toLowerCase()}`}
               >
-                <button onClick={() => handleAvariaClick(avaria)}>
+                <button type="button" onClick={() => handleAvariaClick(avaria)}>
                   <div>
                     <span className="fornecedor">
                       <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
