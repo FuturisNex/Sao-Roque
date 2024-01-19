@@ -44,6 +44,7 @@ const ListaAvarias = () => {
   const detalhesOrdenados = [
     'ENVIO',
     'RESPONSAVEL',
+    'COMPRADOR',
     'FILIAL',
     'CODIGO',
     'FORNECEDOR',
