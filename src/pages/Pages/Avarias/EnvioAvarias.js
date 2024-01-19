@@ -11,7 +11,7 @@ const FormPage = () => {
   const [cod, setCod] = useState('');
   const [fornecedor, setFornecedor] = useState('');
   const [tipo, setTipo] = useState('');
-  const [quantidade, setQuantidade] = useState('');
+  const [volume, setVolume] = useState('');
   const [nota, setNota] = useState('');
   const [vlnota, setVlnota] = useState('');
   const [obs, setObs] = useState('');
@@ -86,8 +86,8 @@ const FormPage = () => {
       setFornecedor(value);
     } else if (name === 'tipo') {
       setTipo(value);
-    } else if (name === 'quantidade') {
-      setQuantidade(value);
+    } else if (name === 'volume') {
+      setVolume(value);
     } else if (name === 'vlnota') {
       setVlnota(value);
     } else if (name === 'nota') {
@@ -101,7 +101,7 @@ const FormPage = () => {
     setCod('');
     setFornecedor('');
     setTipo('');
-    setQuantidade('');
+    setVolume('');
     setVlnota('');
     setNota('');
     setObs('');
@@ -139,7 +139,7 @@ const FormPage = () => {
       formData.append('Cod', cod);
       formData.append('Fornecedor', fornecedor);
       formData.append('Tipo', tipo);
-      formData.append('Quantidade', quantidade);
+      formData.append('Volume', volume);
       formData.append('Nota', nota);
       formData.append('Vlnota', formatCurrency(vlnota));
       formData.append('Obs', obs);
@@ -284,14 +284,14 @@ const FormPage = () => {
           className="form__input"
         />
 
-        <label htmlFor="quantidade" className="form__label">
+        <label htmlFor="volume" className="form__label">
           Volume:
         </label>
         <input
           type="number"
-          id="quantidade"
-          name="quantidade"
-          value={quantidade}
+          id="volume"
+          name="volume"
+          value={volume}
           onChange={handleChange}
           className="form__input"
           required
