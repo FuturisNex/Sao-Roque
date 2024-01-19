@@ -49,7 +49,7 @@ const ListaAvarias = () => {
     'CODIGO',
     'FORNECEDOR',
     'TIPO',
-    'QUANTIDADE',
+    'VOLUME',
     'Nº NOTA',
     'VL NOTA',
     'STATUS',
