@@ -11,7 +11,6 @@ const FormPage = () => {
   const [cod, setCod] = useState('');
   const [fornecedor, setFornecedor] = useState('');
   const [tipo, setTipo] = useState('');
-  const [perca, setPerca] = useState('');
   const [quantidade, setQuantidade] = useState('');
   const [nota, setNota] = useState('');
   const [vlnota, setVlnota] = useState('');
@@ -87,8 +86,6 @@ const FormPage = () => {
       setFornecedor(value);
     } else if (name === 'tipo') {
       setTipo(value);
-    } else if (name === 'perca') {
-      setPerca(value);
     } else if (name === 'quantidade') {
       setQuantidade(value);
     } else if (name === 'vlnota') {
@@ -104,7 +101,6 @@ const FormPage = () => {
     setCod('');
     setFornecedor('');
     setTipo('');
-    setPerca('');
     setQuantidade('');
     setVlnota('');
     setNota('');
@@ -118,7 +114,10 @@ const FormPage = () => {
   };
 
   const formatCurrency = (value) => {
-    const formattedValue = parseFloat(value.replace(',', '.'), 10).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const formattedValue = parseFloat(
+      value.replace(',', '.'),
+      10,
+    ).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     return formattedValue;
   };
 
@@ -140,7 +139,6 @@ const FormPage = () => {
       formData.append('Cod', cod);
       formData.append('Fornecedor', fornecedor);
       formData.append('Tipo', tipo);
-      formData.append('Perca', perca);
       formData.append('Quantidade', quantidade);
       formData.append('Nota', nota);
       formData.append('Vlnota', formatCurrency(vlnota));
@@ -170,7 +168,7 @@ const FormPage = () => {
 
   const handleCloseSuccessMessage = () => {
     setIsSubmitted(false);
-    setSuccessMessage('');
+    setSuccessMessage('");
   };
 
   return (
@@ -178,7 +176,9 @@ const FormPage = () => {
       {isSubmitted && successMessage && (
         <div className="successMessage">
           <span>{successMessage}</span>
-          <button type="button" onClick={handleCloseSuccessMessage}>OK</button>
+          <button type="button" onClick={handleCloseSuccessMessage}>
+            OK
+          </button>
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
@@ -253,33 +253,10 @@ const FormPage = () => {
         >
           <option value="">Selecione o tipo</option>
           <option value="Validade | Vencido">Validade | Vencido</option>
-          <option value="Avarias | Danificado | Imprópio para Consumo">Avarias | Danificado | Imprópio para Consumo</option>
+          <option value="Avarias | Danificado | Imprópio para Consumo">
+            Avarias | Danificado | Imprópio para Consumo
+          </option>
         </select>
-
-        <label htmlFor="perca" className="form__label">
-          Qual foi a perca:
-        </label>
-        <input
-          type="text"
-          id="perca"
-          name="perca"
-          value={perca}
-          onChange={handleChange}
-          className="form__input"
-        />
-
-        <label htmlFor="quantidade" className="form__label">
-          Quantidade:
-        </label>
-        <input
-          type="number"
-          id="quantidade"
-          name="quantidade"
-          value={quantidade}
-          onChange={handleChange}
-          className="form__input"
-          required
-        />
 
         <label htmlFor="nota" className="form__label">
           Nº da Nota:
@@ -306,24 +283,45 @@ const FormPage = () => {
           className="form__input"
         />
 
-        <label htmlFor="obs" className="form__label">
-          Observações:
+        <label htmlFor="quantidade" className="form__label">
+          Quantidade:
         </label>
         <input
-          type="text"
-          id="obs"
-          name="obs"
-          value={obs}
+          type="number"
+          id="quantidade"
+          name="quantidade"
+          value={quantidade}
           onChange={handleChange}
           className="form__input"
+          required
         />
+
+        <label htmlFor="obs" className="form__label">
+          Informações Adicionais:
+        </label>
+        <select
+          id="obs"
+          value={obs}
+          onChange={(event) => setTipo(event.target.value)}
+          className="form__input select"
+          required
+        >
+          <option value="">Informação adicional</option>
+          <option value="Feito a rebaixa mas não vendeu tudo">
+            Feito a rebaixa mas não vendeu tudo
+          </option>
+          <option value="Encontrado Vencido">
+            Encontrado Vencido, não enviado para rebaixa
+          </option>
+          <option value="Avariado Loja">Avariado Loja</option>
+        </select>
 
         <button
           type="submit"
           className="form__button"
           disabled={isLoading || isSending || isSubmitting}
         >
-          {isSubmitting ? 'Enviando...' : 'Enviar'}
+          {isSubmitting ? "Enviando..." : "Enviar"}
         </button>
 
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
