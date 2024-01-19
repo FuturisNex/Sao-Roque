@@ -185,7 +185,7 @@ const FormPage = () => {
         <img src={logo} alt="Logo" className="logo-form" />
 
         <label htmlFor="responsavel" className="form__label">
-          Seu Primeiro Nome:
+          Nome do Respolsavel:
         </label>
         <input
           type="text"
@@ -296,26 +296,6 @@ const FormPage = () => {
           className="form__input"
           required
         />
-
-        <label htmlFor="obs" className="form__label">
-          Informações Adicionais:
-        </label>
-        <select
-          id="obs"
-          value={obs}
-          onChange={(event) => setTipo(event.target.value)}
-          className="form__input select"
-          required
-        >
-          <option value="">Informação adicional</option>
-          <option value="Feito a rebaixa mas não vendeu tudo">
-            Feito a rebaixa mas não vendeu tudo
-          </option>
-          <option value="Encontrado Vencido">
-            Encontrado Vencido, não enviado para rebaixa
-          </option>
-          <option value="Avariado Loja">Avariado Loja</option>
-        </select>
 
         <button
           type="submit"
