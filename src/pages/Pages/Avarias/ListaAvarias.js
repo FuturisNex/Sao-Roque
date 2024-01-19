@@ -42,7 +42,6 @@ const ListaAvarias = () => {
   };
 
   const detalhesOrdenados = [
-    'Nº VERBA',
     'ENVIO',
     'RESPONSAVEL',
     'FILIAL',
