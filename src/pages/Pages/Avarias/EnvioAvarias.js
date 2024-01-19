@@ -218,7 +218,7 @@ const FormPage = () => {
           <option value="JURANDIR">Jurandir</option>
           <option value="VITOR">Vitor</option>
           <option value="LUCAS">Lucas</option>
-        </select>      
+        </select>
 
         <label htmlFor="filial" className="form__label">
           Selecione a loja:
