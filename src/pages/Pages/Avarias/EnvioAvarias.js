@@ -208,11 +208,12 @@ const FormPage = () => {
         >
           <option value="">Selecione a Loja</option>
           <option value="1">Santa Mônica</option>
-          <option value="11">Tomé de Souza</option>
           <option value="2">Castro Alves</option>
-          <option value="3">Tomba</option>
           <option value="4">Fraga Maia</option>
           <option value="5">Artemia Pires</option>
+          <option value="11">Tomé de Souza</option>
+          <option value="13">Artemia Express</option>
+          <option value="14">Calamar</option>
         </select>
 
         <label htmlFor="cod" className="form__label">
@@ -284,7 +285,7 @@ const FormPage = () => {
         />
 
         <label htmlFor="quantidade" className="form__label">
-          Quantidade:
+          Volume:
         </label>
         <input
           type="number"
