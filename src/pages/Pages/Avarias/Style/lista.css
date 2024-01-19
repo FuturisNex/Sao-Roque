@@ -1,125 +1,124 @@
 .containerLista {
-display: flex;
-justify-content: center;
-align-items: center;
-background-color: #828282;
-min-height: 100vh;
-background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e0e0e0;
+  background-size: cover;
 }
 
 .lista-avarias {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .titulo {
-    font-size: 28px;
-    margin-bottom: 30px;
-  }
-  
-  .avarias-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .avaria-item {
-    padding: 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    max-width: 800px;
-    width: 100%;
-    transition: background-color 0.3s;
-    border-radius: 10px;
-    text-align: left;
-  }
-  
-  .avaria-item:hover {
-    background-color: #f0f0f0;
-  }
-  
-  .pendente {
-    background-color: #ff000081;
-  }
-  
-  .resolvido {
-    background-color: #00d60080;
-  }
-  
-  .avaria-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .avaria-card-details {
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid #ccc;
-    padding: 30px;
-    max-width: 80%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    border-radius: 10px;
-    position: relative;
-  }
-  
-  .close {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: #555;
-    border-radius: 50%;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .close:hover {
-    transform: scale(1.1);
-  }
-  
-  .titulo-detalhes {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .detalhes {
-    font-size: 16px;
-  }
-  
-  .detalhe-item {
-    margin-bottom: 10px;
-  }
-  
-  .detalhe-label {
-    font-weight: bold;
-    margin-right: 5px;
-    color: #555;
-  }
-  
-  .avaria-detalhes {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .avaria-item .titulo {
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .avaria-item .dados {
-    font-weight: normal;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  text-align: center;
+}
+
+.titulo {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.avarias-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avaria-item {
+  padding: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  max-width: 800px;
+  width: 100%;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.avaria-item:hover {
+  background-color: #f0f0f0;
+}
+
+.pendente {
+  background-color: #ff000081;
+}
+
+.resolvido {
+  background-color: #00d60080;
+}
+
+.avaria-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avaria-card-details {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  padding: 30px;
+  max-width: 80%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #555;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.close:hover {
+  transform: scale(1.1);
+}
+
+.titulo-detalhes {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.detalhes {
+  font-size: 16px;
+}
+
+.detalhe-item {
+  margin-bottom: 10px;
+}
+
+.detalhe-label {
+  font-weight: bold;
+  margin-right: 5px;
+  color: #555;
+}
+
+.avaria-detalhes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.avaria-item .titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.avaria-item .dados {
+  font-weight: normal;
+}
