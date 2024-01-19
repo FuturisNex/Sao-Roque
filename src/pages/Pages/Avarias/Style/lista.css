@@ -122,3 +122,8 @@
 .avaria-item .dados {
   font-weight: normal;
 }
+
+.avaria-item button div span {
+  display: block;
+  text-align: left;
+}
