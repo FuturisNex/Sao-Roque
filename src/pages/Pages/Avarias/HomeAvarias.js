@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Style/home.css';
 
-const HomeAvarias = () => {
+const HomeAvarias = () => (
   return (
     <div className="home-container">
       <div className="header">
@@ -18,6 +18,6 @@ const HomeAvarias = () => {
       </div>
     </div>
   );
-};
+);
 
 export default HomeAvarias;
