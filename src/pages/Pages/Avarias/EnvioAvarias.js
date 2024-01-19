@@ -80,8 +80,7 @@ const FormPage = () => {
     }
   }, []);
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
+  const handleChange = ({ target: { name, value } }) => {
     if (name === 'cod') {
       setCod(value);
     } else if (name === 'fornecedor') {
@@ -179,7 +178,7 @@ const FormPage = () => {
       {isSubmitted && successMessage && (
         <div className="successMessage">
           <span>{successMessage}</span>
-          <button type="button"onClick={handleCloseSuccessMessage}>OK</button>
+          <button type="button" onClick={handleCloseSuccessMessage}>OK</button>
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
