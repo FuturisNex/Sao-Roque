@@ -1,0 +1,49 @@
+{
+  "name": "Avarias",
+  "short_name": "Avarias",
+  "description": "Este é um sistema usado para gerenciamento do setor de compras.",
+  "start_url": "/avarias",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "64x64 32x32 24x24 16x16",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "logo192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "logo.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "logo512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+  "splash_pages": null,
+  "prefer_related_applications": false,
+  "screenshots": [
+    {
+      "src": "/path/to/screenshot1.png",
+      "sizes": "1280x800",
+      "type": "image/png"
+    },
+    {
+      "src": "/path/to/screenshot2.png",
+      "sizes": "1280x800",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["Dashboard"]
+}
