@@ -20,7 +20,6 @@ import {
   Sena,
   Jurandir,
   RebaixaEnvio,
-  HomeAvarias,
   EnvioAvarias,
   ListaAvarias,
 } from './pages';
