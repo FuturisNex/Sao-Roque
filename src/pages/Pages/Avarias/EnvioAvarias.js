@@ -328,7 +328,7 @@ const FormPage = () => {
             className="btn-primary"
             disabled={isLoading || isSending || isSubmitting}
           >
-            {isSubmitting ? "Enviando..." : "Enviar"}
+            {isSubmitting ? 'Enviando...' : 'Enviar'}
           </button>
           <Link to="/avarias/avarias-lista" className="option">
             <button type="button" className="btn-secondary">
