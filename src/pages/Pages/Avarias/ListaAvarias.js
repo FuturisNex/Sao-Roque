@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import database from '../../../auth/firebase';
+import logo from "../../../data/img/logotipo.png";
 import './Style/lista.css';
 
 const ListaAvarias = () => {
@@ -60,6 +61,7 @@ const ListaAvarias = () => {
     <div className="containerLista">
       <div className="form">
         <div className="lista-avarias">
+          <img src={logo} alt="Logo" className="logo-form" />
           <h1 className="titulo">Lista de Avarias</h1>
           <ul className="avarias-list">
             {avarias.map((avaria) => (
