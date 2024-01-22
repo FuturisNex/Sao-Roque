@@ -24,10 +24,6 @@ const FormPage = () => {
   const [isSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChangeResponsavel = (event) => {
-    setResponsavel(event.target.value.toUpperCase());
-  };
-
   const fetchProductDescription = () => {
     try {
       const matchingProduct = fornecedorData.find(
@@ -244,7 +240,7 @@ const FormPage = () => {
           type="text"
           id="responsavel"
           value={responsavel}
-          onChange={handleChangeResponsavel}
+          onChange={handleChange}
           className="form__input"
           required
         />
