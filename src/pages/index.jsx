@@ -2,7 +2,6 @@ export { default as Winthor } from './Pages/Winthor';
 export { default as Rebaixa } from './Pages/Rebaixa/Rebaixa';
 export { default as RebaixaEnvio } from './Pages/Rebaixa/RebaixaEnvio';
 export { default as EnvioAvarias } from './Pages/Avarias/EnvioAvarias';
-export { default as HomeAvarias } from './Pages/Avarias/HomeAvarias';
 export { default as ListaAvarias } from './Pages/Avarias/ListaAvarias';
 export { default as NotFound } from './Notfound/NotFund';
 export { default as Encarte } from './Pages/Encarte';
