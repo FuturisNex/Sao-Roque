@@ -75,36 +75,36 @@ const FormPage = () => {
     const savedObs = localStorage.getItem('obs');
 
     if (savedResponsavel) {
-       setResponsavel(savedResponsavel);
+      setResponsavel(savedResponsavel);
     }
     if (savedFilial) {
-       setFilial(savedFilial);
+      setFilial(savedFilial);
     }
     if (savedComprador) {
-       setComprador(savedComprador);
+      setComprador(savedComprador);
     }
     if (savedCod) {
-       setCod(savedCod);
+      setCod(savedCod);
     }
     if (savedFornecedor) {
-       setFornecedor(savedFornecedor);
-     }
+      setFornecedor(savedFornecedor);
+    }
     if (savedTipo) {
-       setTipo(savedTipo);
-     }
+      setTipo(savedTipo);
+    }
     if (savedVolume) {
-       setVolume(savedVolume);
-     }
+      setVolume(savedVolume);
+    }
     if (savedNota) {
-       setNota(savedNota);
-     }
+      setNota(savedNota);
+    }
     if (savedVlnota) {
-       setVlnota(savedVlnota);
-     }
+      setVlnota(savedVlnota);
+    }
     if (savedObs) {
-       setObs(savedObs);
-     }
-   }, []);
+      setObs(savedObs);
+    }
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'cod') {
