@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import database from '../../../auth/firebase';
-import logo from "../../../data/img/logotipo.png";
+import logo from '../../../data/img/logotipo.png';
 import './Style/lista.css';
 
 const ListaAvarias = () => {
