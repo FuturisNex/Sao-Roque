@@ -69,16 +69,16 @@ const FormPage = () => {
   }, [cod, previousCod]);
 
   useEffect(() => {
-    const savedResponsavel = Cookies.get("responsavel");
-    const savedFilial = Cookies.get("filial");
-    const savedComprador = Cookies.get("comprador");
-    const savedCod = Cookies.get("cod");
-    const savedFornecedor = Cookies.get("fornecedor");
-    const savedTipo = Cookies.get("tipo");
-    const savedVolume = Cookies.get("volume");
-    const savedNota = Cookies.get("nota");
-    const savedVlnota = Cookies.get("vlnota");
-    const savedObs = Cookies.get("obs");
+    const savedResponsavel = Cookies.get('responsavel');
+    const savedFilial = Cookies.get('filial');
+    const savedComprador = Cookies.get('comprador');
+    const savedCod = Cookies.get('cod');
+    const savedFornecedor = Cookies.get('fornecedor');
+    const savedTipo = Cookies.get('tipo');
+    const savedVolume = Cookies.get('volume');
+    const savedNota = Cookies.get('nota');
+    const savedVlnota = Cookies.get('vlnota');
+    const savedObs = Cookies.get('obs');
 
     if (savedResponsavel) {
       setResponsavel(savedResponsavel);
