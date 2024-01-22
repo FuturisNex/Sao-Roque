@@ -74,34 +74,34 @@ const FormPage = () => {
     const savedVlnota = localStorage.getItem('vlnota');
     const savedObs = localStorage.getItem('obs');
 
-    if (savedResponsavel) {
+    if (savedResponsavel !== null) {
       setResponsavel(savedResponsavel);
     }
-    if (savedFilial) {
+    if (savedFilial !== null) {
       setFilial(savedFilial);
     }
-    if (savedComprador) {
+    if (savedComprador !== null) {
       setComprador(savedComprador);
     }
-    if (savedCod) {
+    if (savedCod !== null) {
       setCod(savedCod);
     }
-    if (savedFornecedor) {
+    if (savedFornecedor !== null) {
       setFornecedor(savedFornecedor);
     }
-    if (savedTipo) {
+    if (savedTipo !== null) {
       setTipo(savedTipo);
     }
-    if (savedVolume) {
+    if (savedVolume !== null) {
       setVolume(savedVolume);
     }
-    if (savedNota) {
+    if (savedNota !== null) {
       setNota(savedNota);
     }
-    if (savedVlnota) {
+    if (savedVlnota !== null) {
       setVlnota(savedVlnota);
     }
-    if (savedObs) {
+    if (savedObs !== null) {
       setObs(savedObs);
     }
   }, []);
