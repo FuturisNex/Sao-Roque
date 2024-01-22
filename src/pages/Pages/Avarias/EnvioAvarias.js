@@ -196,6 +196,15 @@ const FormPage = () => {
         setSuccessMessage(response.data);
         resetForm();
         setIsSubmitted(true);
+        localStorage.removeItem('responsavel');
+        localStorage.removeItem('comprador');
+        localStorage.removeItem('filial');
+        localStorage.removeItem('cod');
+        localStorage.removeItem('fornecedor');
+        localStorage.removeItem('tipo');
+        localStorage.removeItem('nota');
+        localStorage.removeItem('vlnota');
+        localStorage.removeItem('obs');
       } else {
         throw new Error(
           'Erro ao enviar formulário. Tente novamente mais tarde.',
