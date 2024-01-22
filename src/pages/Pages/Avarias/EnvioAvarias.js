@@ -69,17 +69,48 @@ const FormPage = () => {
   }, [cod, previousCod]);
 
   useEffect(() => {
-    Cookies.set('responsavel', responsavel, { expires: 365 });
-    Cookies.set('filial', filial, { expires: 365 });
-    Cookies.set('comprador', comprador, { expires: 365 });
-    Cookies.set('cod', cod.toString(), { expires: 365 });
-    Cookies.set('fornecedor', fornecedor, { expires: 365 });
-    Cookies.set('tipo', tipo, { expires: 365 });
-    Cookies.set('volume', volume.toString(), { expires: 365 });
-    Cookies.set('nota', nota.toString(), { expires: 365 });
-    Cookies.set('vlnota', vlnota, { expires: 365 });
-    Cookies.set('obs', obs, { expires: 365 });
-  }, [responsavel, filial, comprador, cod, fornecedor, tipo, volume, nota, vlnota, obs]);
+    const savedResponsavel = Cookies.get("responsavel");
+    const savedFilial = Cookies.get("filial");
+    const savedComprador = Cookies.get("comprador");
+    const savedCod = Cookies.get("cod");
+    const savedFornecedor = Cookies.get("fornecedor");
+    const savedTipo = Cookies.get("tipo");
+    const savedVolume = Cookies.get("volume");
+    const savedNota = Cookies.get("nota");
+    const savedVlnota = Cookies.get("vlnota");
+    const savedObs = Cookies.get("obs");
+
+    if (savedResponsavel) {
+      setResponsavel(savedResponsavel);
+    }
+    if (savedFilial) {
+      setFilial(savedFilial);
+    }
+    if (savedComprador) {
+      setComprador(savedComprador);
+    }
+    if (savedCod) {
+      setCod(savedCod);
+    }
+    if (savedFornecedor) {
+      setFornecedor(savedFornecedor);
+    }
+    if (savedTipo) {
+      setTipo(savedTipo);
+    }
+    if (savedVolume) {
+      setVolume(savedVolume);
+    }
+    if (savedNota) {
+      setNota(savedNota);
+    }
+    if (savedVlnota) {
+      setVlnota(savedVlnota);
+    }
+    if (savedObs) {
+      setObs(savedObs);
+    }
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'cod') {
