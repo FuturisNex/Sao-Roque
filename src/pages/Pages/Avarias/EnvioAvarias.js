@@ -153,6 +153,8 @@ const FormPage = () => {
   };
 
   const handleVlnotaChange = (event) => {
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
     const value = event.target.value;
     const sanitizedValue = value.replace(/[^0-9,]/g, '');
     setVlnota(sanitizedValue);
