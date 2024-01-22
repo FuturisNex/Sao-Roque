@@ -63,48 +63,48 @@ const FormPage = () => {
   }, [cod, previousCod]);
 
   useEffect(() => {
-      const savedResponsavel = localStorage.getItem('responsavel');
-      const savedFilial = localStorage.getItem('filial');
-      const savedComprador = localStorage.getItem('comprador');
-      const savedCod = localStorage.getItem('cod');
-      const savedFornecedor = localStorage.getItem('fornecedor');
-      const savedTipo = localStorage.getItem('tipo');
-      const savedVolume = localStorage.getItem('volume');
-      const savedNota = localStorage.getItem('nota');
-      const savedVlnota = localStorage.getItem('vlnota');
-      const savedObs = localStorage.getItem('obs');
+    const savedResponsavel = localStorage.getItem('responsavel');
+    const savedFilial = localStorage.getItem('filial');
+    const savedComprador = localStorage.getItem('comprador');
+    const savedCod = localStorage.getItem('cod');
+    const savedFornecedor = localStorage.getItem('fornecedor');
+    const savedTipo = localStorage.getItem('tipo');
+    const savedVolume = localStorage.getItem('volume');
+    const savedNota = localStorage.getItem('nota');
+    const savedVlnota = localStorage.getItem('vlnota');
+    const savedObs = localStorage.getItem('obs');
 
-      if (savedResponsavel) {
-        setResponsavel(savedResponsavel);
-      }
-      if (savedFilial) {
-        setFilial(savedFilial);
-      }
-      if (savedComprador) {
-        setComprador(savedComprador);
-      }
-      if (savedCod) {
-        setCod(savedCod);
-      }
-      if (savedFornecedor) {
-        setFornecedor(savedFornecedor);
-      }
-      if (savedTipo) {
-        setTipo(savedTipo);
-      }
-      if (savedVolume) {
-        setVolume(savedVolume);
-      }
-      if (savedNota) {
-        setNota(savedNota);
-      }
-      if (savedVlnota) {
-        setVlnota(savedVlnota);
-      }
-      if (savedObs) {
-        setObs(savedObs);
-      }
-    }, []);
+    if (savedResponsavel) {
+       setResponsavel(savedResponsavel);
+    }
+    if (savedFilial) {
+       setFilial(savedFilial);
+    }
+    if (savedComprador) {
+       setComprador(savedComprador);
+    }
+    if (savedCod) {
+       setCod(savedCod);
+    }
+    if (savedFornecedor) {
+       setFornecedor(savedFornecedor);
+     }
+    if (savedTipo) {
+       setTipo(savedTipo);
+     }
+    if (savedVolume) {
+       setVolume(savedVolume);
+     }
+    if (savedNota) {
+       setNota(savedNota);
+     }
+    if (savedVlnota) {
+       setVlnota(savedVlnota);
+     }
+    if (savedObs) {
+       setObs(savedObs);
+     }
+   }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'cod') {
