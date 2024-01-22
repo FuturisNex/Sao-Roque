@@ -2,21 +2,20 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Style/forms.css';
 import { Link } from 'react-router-dom';
-import { useLocalStorage } from 'react-use-localstorage';
 import logo from '../../../data/img/logotipo.png';
 import fornecedorData from '../../../data/fornecedores.json';
 
 const FormPage = () => {
-  const [responsavel, setResponsavel] = useLocalStorage("responsavel", "");
-  const [comprador, setComprador] = useLocalStorage("comprador", "");
-  const [filial, setFilial] = useLocalStorage("filial", "");
-  const [cod, setCod] = useLocalStorage("cod", "");
-  const [fornecedor, setFornecedor] = useLocalStorage("fornecedor", "");
-  const [tipo, setTipo] = useLocalStorage("tipo", "");
-  const [volume, setVolume] = useLocalStorage("volume", "");
-  const [nota, setNota] = useLocalStorage("nota", "");
-  const [vlnota, setVlnota] = useLocalStorage("vlnota", "");
-  const [obs, setObs] = useLocalStorage("obs", "");
+  const [responsavel, setResponsavel] = useState('');
+  const [comprador, setComprador] = useState('');
+  const [filial, setFilial] = useState('');
+  const [cod, setCod] = useState('');
+  const [fornecedor, setFornecedor] = useState('');
+  const [tipo, setTipo] = useState('');
+  const [volume, setVolume] = useState('');
+  const [nota, setNota] = useState('');
+  const [vlnota, setVlnota] = useState('');
+  const [obs, setObs] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -48,11 +47,6 @@ const FormPage = () => {
   };
 
   useEffect(() => {
-    Cookies.set('responsavel', responsavel);
-    Cookies.set('filial', filial);
-  }, [responsavel, filial]);
-
-  useEffect(() => {
     const fetchData = () => {
       if (cod !== '' && cod !== previousCod) {
         setIsLoading(true);
@@ -69,16 +63,16 @@ const FormPage = () => {
   }, [cod, previousCod]);
 
   useEffect(() => {
-      const savedResponsavel = localStorage.getItem("responsavel");
-      const savedFilial = localStorage.getItem("filial");
-      const savedComprador = localStorage.getItem("comprador");
-      const savedCod = localStorage.getItem("cod");
-      const savedFornecedor = localStorage.getItem("fornecedor");
-      const savedTipo = localStorage.getItem("tipo");
-      const savedVolume = localStorage.getItem("volume");
-      const savedNota = localStorage.getItem("nota");
-      const savedVlnota = localStorage.getItem("vlnota");
-      const savedObs = localStorage.getItem("obs");
+      const savedResponsavel = localStorage.getItem('responsavel');
+      const savedFilial = localStorage.getItem('filial');
+      const savedComprador = localStorage.getItem('comprador');
+      const savedCod = localStorage.getItem('cod');
+      const savedFornecedor = localStorage.getItem('fornecedor');
+      const savedTipo = localStorage.getItem('tipo');
+      const savedVolume = localStorage.getItem('volume');
+      const savedNota = localStorage.getItem('nota');
+      const savedVlnota = localStorage.getItem('vlnota');
+      const savedObs = localStorage.getItem('obs');
 
       if (savedResponsavel) {
         setResponsavel(savedResponsavel);
@@ -115,24 +109,36 @@ const FormPage = () => {
   const handleChange = ({ target: { name, value } }) => {
     if (name === 'cod') {
       setCod(value);
+      localStorage.setItem('cod', value);
+    } else if (name === 'responsavel') {
+      setResponsavel(value);
+      localStorage.setItem('responsavel', value);
     } else if (name === 'comprador') {
       setComprador(value);
+      localStorage.setItem('comprador', value);
     } else if (name === 'fornecedor') {
       setFornecedor(value);
+      localStorage.setItem('fornecedor', value);
     } else if (name === 'tipo') {
       setTipo(value);
+      localStorage.setItem('tipo', value);
     } else if (name === 'volume') {
       setVolume(value);
+      localStorage.setItem('volume', value);
     } else if (name === 'vlnota') {
       setVlnota(value);
+      localStorage.setItem('vlnota', value);
     } else if (name === 'nota') {
       setNota(value);
+      localStorage.setItem('nota', value);
     } else if (name === 'obs') {
       setObs(value);
+      localStorage.setItem('obs', value);
     }
   };
 
   const resetForm = () => {
+    setResponsavel('');
     setComprador('');
     setCod('');
     setFornecedor('');
