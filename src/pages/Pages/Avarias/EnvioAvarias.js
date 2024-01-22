@@ -69,16 +69,16 @@ const FormPage = () => {
   }, [cod, previousCod]);
 
   useEffect(() => {
-    Cookies.set("responsavel", responsavel, { expires: 365 });
-    Cookies.set("filial", filial, { expires: 365 });
-    Cookies.set("comprador", comprador, { expires: 365 });
-    Cookies.set("cod", cod.toString(), { expires: 365 });
-    Cookies.set("fornecedor", fornecedor, { expires: 365 });
-    Cookies.set("tipo", tipo, { expires: 365 });
-    Cookies.set("volume", volume.toString(), { expires: 365 });
-    Cookies.set("nota", nota.toString(), { expires: 365 });
-    Cookies.set("vlnota", vlnota, { expires: 365 });
-    Cookies.set("obs", obs, { expires: 365 });
+    Cookies.set('responsavel', responsavel, { expires: 365 });
+    Cookies.set('filial', filial, { expires: 365 });
+    Cookies.set('comprador', comprador, { expires: 365 });
+    Cookies.set('cod', cod.toString(), { expires: 365 });
+    Cookies.set('fornecedor', fornecedor, { expires: 365 });
+    Cookies.set('tipo', tipo, { expires: 365 });
+    Cookies.set('volume', volume.toString(), { expires: 365 });
+    Cookies.set('nota', nota.toString(), { expires: 365 });
+    Cookies.set('vlnota', vlnota, { expires: 365 });
+    Cookies.set('obs', obs, { expires: 365 });
   }, [responsavel, filial, comprador, cod, fornecedor, tipo, volume, nota, vlnota, obs]);
 
   const handleChange = ({ target: { name, value } }) => {
