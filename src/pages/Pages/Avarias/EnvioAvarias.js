@@ -178,7 +178,7 @@ const FormPage = () => {
   };
 
   return (
-    <div className="containerForms">
+    <div className="containerAvarias">
       {isSubmitted && successMessage && (
         <div className="successMessage">
           <span>{successMessage}</span>
