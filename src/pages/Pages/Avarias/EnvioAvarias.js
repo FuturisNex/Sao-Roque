@@ -26,6 +26,8 @@ const FormPage = () => {
 
   const handleChangeResponsavel = (event) => {
     setResponsavel(event.target.value.toUpperCase());
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
   };
 
   const fetchProductDescription = () => {
