@@ -135,6 +135,7 @@ const FormPage = () => {
       setObs(value);
       localStorage.setItem('obs', value);
     }
+      localStorage.setItem(name, value);
   };
 
   const resetForm = () => {
