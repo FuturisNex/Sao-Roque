@@ -1,10 +1,15 @@
-.containerForms {
+.containerRebaixa {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #e0e0e0;
   background-size: cover;
+}
+
+.titulo {
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
 .successMessage {
@@ -91,61 +96,56 @@
   border-bottom: 2px solid #0f39ac;
 }
 
-.form__button {
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.option {
+  text-decoration: none;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin: 0 1rem;
+  transition: background-color 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+
+.btn-primary {
   width: 100%;
-  padding: 0.5rem;
   background-color: #0f39ac;
   color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
 }
 
-.form__ver {
+.btn-secondary {
   width: 100%;
-  padding: 0.5rem;
-  background-color: #3fc71d;
+  background-color: #00b618;
   color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin-top: 15px;
 }
 
-.form__button:hover {
+.btn-primary:hover {
   background-color: #3c65d8;
 }
 
-.form__ver:hover {
+.btn-secondary:hover {
   background-color: #7ae43c;
 }
 
-.form__ver1 {
-  width: 100%;
-  padding: 0.5rem;
-  background-color: #ff4500;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin-top: 15px;
-  margin-bottom: 25px;
-}
-
-.form__ver1:hover {
-  background-color: #ff8c00;
-}
-
 @media only screen and (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
   .successMessage {
     font-size: 1rem;
     padding: 15px;
