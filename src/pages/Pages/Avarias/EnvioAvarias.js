@@ -24,12 +24,6 @@ const FormPage = () => {
   const [isSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChangeResponsavel = (event) => {
-    setResponsavel(event.target.value.toUpperCase());
-    const { name, value } = event.target;
-    handleChange({ target: { name, value: value.toUpperCase() } });
-  };
-
   const fetchProductDescription = () => {
     try {
       const matchingProduct = fornecedorData.find(
@@ -150,6 +144,12 @@ const FormPage = () => {
     setVlnota('');
     setNota('');
     setObs('');
+  };
+
+  const handleChangeResponsavel = (event) => {
+    setResponsavel(event.target.value.toUpperCase());
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
   };
 
   const handleVlnotaChange = (event) => {
