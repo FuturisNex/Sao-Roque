@@ -238,9 +238,9 @@ const FormPage = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
-          <Link to="/avarias/avarias-home" className="back-button">
-            <span>&#8592;  </span> Lista de Avaria
-          </Link>
+        <Link to="/avarias/avarias-home" className="back-button">
+          <span>&#8592;  </span> Lista de Avaria
+        </Link>
         <img src={logo} alt="Logo" className="logo-form" />
         <h1 className="titulo">Painel de Envio Avarias</h1>
         <label htmlFor="responsavel" className="form__label">
@@ -375,10 +375,10 @@ const FormPage = () => {
           required
         />
 
-          <button
-            type="submit"
-            className="btn-primary"
-            disabled={isLoading || isSending || isSubmitting}
+        <button
+           type="submit"
+           className="btn-primary"
+           disabled={isLoading || isSending || isSubmitting}
           >
             {isSubmitting ? 'Enviando...' : 'Enviar'}
           </button>
