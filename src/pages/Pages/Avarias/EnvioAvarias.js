@@ -238,7 +238,7 @@ const FormPage = () => {
         </div>
       )}
       <form onSubmit={handleSubmit} className="form">
-        <Link to="/avarias/avarias-home" className="back-button">
+        <Link to="/avarias/avarias-lista" className="back-button">
           <span>&#8592;  </span> Lista de Avaria
         </Link>
         <img src={logo} alt="Logo" className="logo-form" />
