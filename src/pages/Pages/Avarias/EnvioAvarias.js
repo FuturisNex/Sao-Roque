@@ -376,12 +376,12 @@ const FormPage = () => {
         />
 
         <button
-           type="submit"
-           className="btn-primary"
-           disabled={isLoading || isSending || isSubmitting}
-          >
-            {isSubmitting ? 'Enviando...' : 'Enviar'}
-          </button>
+          type="submit"
+          className="btn-primary"
+          disabled={isLoading || isSending || isSubmitting}
+        >
+          {isSubmitting ? 'Enviando...' : 'Enviar'}
+        </button>
 
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
       </form>
