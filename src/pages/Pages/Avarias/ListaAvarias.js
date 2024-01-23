@@ -63,8 +63,8 @@ const ListaAvarias = () => {
       <div className="form">
         <div className="lista-avarias">
          <Link to="/avarias/avarias-home" className="back-button">
-            <span>&#8592;</span> Voltar
-          </Link>
+           <span>&#8592;</span> Voltar
+         </Link>
           <img src={logo} alt="Logo" className="logo-form" />
           <h1 className="titulo">Lista de Avarias</h1>
           <ul className="avarias-list">
