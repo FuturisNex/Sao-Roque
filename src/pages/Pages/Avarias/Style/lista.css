@@ -16,6 +16,7 @@
   font-size: 18px;
   display: flex;
   align-items: center;
+  transition: background-color 0.3s;
 }
 
 .back-button span {
@@ -23,8 +24,12 @@
   font-weight: bold;
 }
 
+.back-button span:hover {
+  box-shadow: 0px 0px 5px #fff;
+}
+
 .back-button:hover {
-  box-shadow: 0px 0px 5px #333;
+  transform: translateY(-5px);
 }
 
 .lista-avarias {
