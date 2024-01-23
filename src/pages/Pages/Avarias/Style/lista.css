@@ -18,9 +18,13 @@
   align-items: center;
 }
 
-.back-button span{
+.back-button span {
   margin-right: 5px;
   font-weight: bold;
+}
+
+.back-button:hover {
+  box-shadow: 0px 0px 5px #333;
 }
 
 .lista-avarias {
