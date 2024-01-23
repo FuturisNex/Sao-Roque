@@ -18,8 +18,9 @@
   align-items: center;
 }
 
-.back-button {
+.back-button span{
   margin-right: 5px;
+  font-weight: bold;
 }
 
 .lista-avarias {
