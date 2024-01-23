@@ -239,7 +239,7 @@ const FormPage = () => {
       )}
       <form onSubmit={handleSubmit} className="form">
           <Link to="/avarias/avarias-home" className="back-button">
-            <span>&#8592;</span>   Enviar Avaria
+            <span>&#8592;  </span> Lista de Avaria
           </Link>
         <img src={logo} alt="Logo" className="logo-form" />
         <h1 className="titulo">Painel de Envio Avarias</h1>
