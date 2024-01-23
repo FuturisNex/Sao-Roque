@@ -24,12 +24,8 @@
   font-weight: bold;
 }
 
-.back-button span:hover {
-  box-shadow: 0px 0px 5px #fff;
-}
-
 .back-button:hover {
-  transform: translateY(-5px);
+  transform: translateY(3px);
 }
 
 .lista-avarias {
