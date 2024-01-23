@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import database from '../../../auth/firebase';
 import logo from '../../../data/img/logotipo.png';
 import './Style/lista.css';
@@ -61,6 +62,9 @@ const ListaAvarias = () => {
     <div className="containerLista">
       <div className="form">
         <div className="lista-avarias">
+         <Link to="/avarias/avarias-home" className="back-button">
+            <span>&#8592;</span> Voltar
+          </Link>
           <img src={logo} alt="Logo" className="logo-form" />
           <h1 className="titulo">Lista de Avarias</h1>
           <ul className="avarias-list">
