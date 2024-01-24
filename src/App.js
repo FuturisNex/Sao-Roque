@@ -85,7 +85,6 @@ const App = () => {
                 <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
                 <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
 
-                <Route path="/" element={<Comprador />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
