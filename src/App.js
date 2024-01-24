@@ -32,6 +32,7 @@ const App = () => {
 
   const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
   || window.location.pathname.startsWith('/validades');
+  || window.location.pathname.startsWith('/');
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
