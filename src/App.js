@@ -31,7 +31,7 @@ const App = () => {
   const isMenuActive = activeMenu;
 
   const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
-  || window.location.pathname.startsWith('/validades');
+  || window.location.pathname.startsWith('/validades')
   || window.location.pathname === '/';
 
   return (
