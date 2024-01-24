@@ -21,7 +21,7 @@ import {
   Jurandir,
   RebaixaEnvio,
   EnvioAvarias,
-  ListaAvarias,
+  ListaAvarias
 } from './pages';
 
 const App = () => {
