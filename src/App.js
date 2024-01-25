@@ -32,7 +32,7 @@ const App = () => {
 
   const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
   || window.location.pathname.startsWith('/validades')
-  || window.location.pathname === '/';
+  || window.location.pathname === '/'
   || window.location.pathname === '*';
 
   return (
