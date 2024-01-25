@@ -25,15 +25,14 @@ import {
 } from './pages';
 
 const App = () => {
-  const { currentMode, activeMenu } = useStateContext();
+  const { currentMode, activeMenu, themeSettings } = useStateContext();
 
   const isDarkMode = currentMode === 'Dark';
   const isMenuActive = activeMenu;
 
   const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
   || window.location.pathname.startsWith('/validades')
-  || window.location.pathname === '/'
-  || window.location.pathname === '*';
+  || window.location.pathname === '/';
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
@@ -61,12 +60,15 @@ const App = () => {
           >
             <div
               className={`fixed md:static bg-main-bg ${
-                isMenuActive && !isRebaixaEnvioPage ? 'hidden' : ''
-              }`}
+                isMenuActive && !isRebaixaEnvioPage
+                  ? 'dark:bg-main-dark-bg'
+                  : ''
+              } navbar w-full`}
             >
-              <Navbar />
+              {isRebaixaEnvioPage ? null : <Navbar />}
             </div>
-            <div className="relative w-full">
+            <div>
+              {themeSettings && <ThemeSettings />}
               <Routes>
                 <Route path="/comercial/comprador/sergio" element={<Sergio />} />
                 <Route path="/comercial/comprador/marivone" element={<Marivone />} />
@@ -83,16 +85,14 @@ const App = () => {
                 <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
                 <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
                 <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
-                <Route path="/avarias" element={<EnvioAvarias />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
-            <ThemeSettings />
-            <ToastContainer />
           </div>
         </div>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 };
