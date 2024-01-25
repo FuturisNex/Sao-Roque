@@ -25,7 +25,7 @@ import {
 } from './pages';
 
 const App = () => {
-  const { currentMode, activeMenu, themeSettings } = useStateContext();
+  const { currentMode, activeMenu } = useStateContext();
 
   const isDarkMode = currentMode === 'Dark';
   const isMenuActive = activeMenu;
