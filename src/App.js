@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useStateContext } from './contexts/ContextProvider';
-import { Navbar, Sidebar } from './components';
+import { Navbar, Sidebar, ThemeSettings } from './components';
 import './App.css';
 import {
   Winthor,
@@ -25,16 +25,15 @@ import {
 } from './pages';
 
 const App = () => {
-  const { currentMode, activeMenu } = useStateContext();
+  const { currentMode, activeMenu, themeSettings } = useStateContext();
 
   const isDarkMode = currentMode === 'Dark';
   const isMenuActive = activeMenu;
 
   const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
   || window.location.pathname.startsWith('/validades')
-  || window.location.pathname === '/';
-
-  const isNotFoundPage = window.location.pathname === '/not-found'
+  || window.location.pathname.startsWith('/avaria')
+  || window.location.pathname === '/'
   || window.location.pathname === '*';
 
   return (
@@ -63,32 +62,36 @@ const App = () => {
           >
             <div
               className={`fixed md:static bg-main-bg ${
-                isMenuActive && !isRebaixaEnvioPage && !isNotFoundPage ? 'hidden' : ''
-              }`}
+                isMenuActive && !isRebaixaEnvioPage
+                  ? 'dark:bg-main-dark-bg'
+                  : ''
+              } navbar w-full`}
             >
-              <Navbar />
+              {isRebaixaEnvioPage ? null : <Navbar />}
             </div>
-            <div className="relative w-full">
-          <Routes>
-              <Route path="/comercial/comprador/sergio" element={<Sergio />} />
-              <Route path="/comercial/comprador/marivone" element={<Marivone />} />
-              <Route path="/comercial/comprador/vitor" element={<Vitor />} />
-              <Route path="/comercial/comprador/sena" element={<Sena />} />
-              <Route path="/comercial/comprador/jurandir" element={<Jurandir />} />
-              <Route path="/comercial/comprador" element={<Comprador />} />
-              <Route path="/comercial/analise" element={<Analise />} />
-              <Route path="/comercial/documentos" element={<Documentos />} />
-              <Route path="/comercial/agenda" element={<Agenda />} />
-              <Route path="/comercial/rebaixa" element={<Rebaixa />} />
-              <Route path="/comercial/encarte" element={<Encarte />} />
-              <Route path="/comercial/winthor" element={<Winthor />} />
-              <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
-              <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
-              <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
-              <Route path="*" element={<NotFound />} />
-          </Routes>
+            <div>
+              {themeSettings && <ThemeSettings />}
+              <Routes>
+                <Route path="/comercial/comprador/sergio" element={<Sergio />} />
+                <Route path="/comercial/comprador/marivone" element={<Marivone />} />
+                <Route path="/comercial/comprador/vitor" element={<Vitor />} />
+                <Route path="/comercial/comprador/sena" element={<Sena />} />
+                <Route path="/comercial/comprador/jurandir" element={<Jurandir />} />
+                <Route path="/comercial/comprador" element={<Comprador />} />
+                <Route path="/comercial/analise" element={<Analise />} />
+                <Route path="/comercial/documentos" element={<Documentos />} />
+                <Route path="/comercial/agenda" element={<Agenda />} />
+                <Route path="/comercial/rebaixa" element={<Rebaixa />} />
+                <Route path="/comercial/encarte" element={<Encarte />} />
+                <Route path="/comercial/winthor" element={<Winthor />} />
+                <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
+                <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
+                <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
+
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
           </div>
-         </div>
         </div>
       </BrowserRouter>
       <ToastContainer />
