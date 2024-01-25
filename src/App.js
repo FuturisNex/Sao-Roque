@@ -69,27 +69,26 @@ const App = () => {
               <Navbar />
             </div>
             <div className="relative w-full">
-            <Routes>
-                <Route path="/comercial/comprador/sergio" element={<Sergio />} />
-                <Route path="/comercial/comprador/marivone" element={<Marivone />} />
-                <Route path="/comercial/comprador/vitor" element={<Vitor />} />
-                <Route path="/comercial/comprador/sena" element={<Sena />} />
-                <Route path="/comercial/comprador/jurandir" element={<Jurandir />} />
-                <Route path="/comercial/comprador" element={<Comprador />} />
-                <Route path="/comercial/analise" element={<Analise />} />
-                <Route path="/comercial/documentos" element={<Documentos />} />
-                <Route path="/comercial/agenda" element={<Agenda />} />
-                <Route path="/comercial/rebaixa" element={<Rebaixa />} />
-                <Route path="/comercial/encarte" element={<Encarte />} />
-                <Route path="/comercial/winthor" element={<Winthor />} />
-                <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
-                <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
-                <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
-
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </div>
+          <Routes>
+              <Route path="/comercial/comprador/sergio" element={<Sergio />} />
+              <Route path="/comercial/comprador/marivone" element={<Marivone />} />
+              <Route path="/comercial/comprador/vitor" element={<Vitor />} />
+              <Route path="/comercial/comprador/sena" element={<Sena />} />
+              <Route path="/comercial/comprador/jurandir" element={<Jurandir />} />
+              <Route path="/comercial/comprador" element={<Comprador />} />
+              <Route path="/comercial/analise" element={<Analise />} />
+              <Route path="/comercial/documentos" element={<Documentos />} />
+              <Route path="/comercial/agenda" element={<Agenda />} />
+              <Route path="/comercial/rebaixa" element={<Rebaixa />} />
+              <Route path="/comercial/encarte" element={<Encarte />} />
+              <Route path="/comercial/winthor" element={<Winthor />} />
+              <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
+              <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
+              <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
+              <Route path="*" element={<NotFound />} />
+          </Routes>
           </div>
+         </div>
         </div>
       </BrowserRouter>
       <ToastContainer />
