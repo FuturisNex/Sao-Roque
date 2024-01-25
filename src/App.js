@@ -33,44 +33,43 @@ const App = () => {
   const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
   || window.location.pathname.startsWith('/validades')
   || window.location.pathname === '/'
+
+  const isNotFoundPage = window.location.pathname === '/not-found' 
   || window.location.pathname === '*';
 
-  return (
-    <div className={isDarkMode ? 'dark' : ''}>
-      <BrowserRouter>
+return (
+  <div className={isDarkMode ? 'dark' : ''}>
+    <BrowserRouter>
+      <div
+        className={`flex relative ${
+          isDarkMode ? 'dark:bg-main-dark-bg' : 'bg-main-bg'
+        }`}
+      >
         <div
-          className={`flex relative ${
-            isDarkMode ? 'dark:bg-main-dark-bg' : 'bg-main-bg'
+          className={`w-${
+            isMenuActive && !isRebaixaEnvioPage ? '72 fixed' : '0'
+          } sidebar ${
+            isDarkMode ? 'dark:bg-secondary-dark-bg' : ''
+          } bg-white`}
+        >
+          {isRebaixaEnvioPage ? null : <Sidebar />}
+        </div>
+        <div
+          className={`w-full min-h-screen flex-2 ${
+            isMenuActive && !isRebaixaEnvioPage
+              ? 'dark:bg-main-dark-bg bg-main-bg md:ml-72'
+              : 'bg-main-bg dark:bg-main-dark-bg'
           }`}
         >
           <div
-            className={`w-${
-              isMenuActive && !isRebaixaEnvioPage ? '72 fixed' : '0'
-            } sidebar ${
-              isDarkMode ? 'dark:bg-secondary-dark-bg' : ''
-            } bg-white`}
-          >
-            {isRebaixaEnvioPage ? null : <Sidebar />}
-          </div>
-          <div
-            className={`w-full min-h-screen flex-2 ${
-              isMenuActive && !isRebaixaEnvioPage
-                ? 'dark:bg-main-dark-bg bg-main-bg md:ml-72'
-                : 'bg-main-bg dark:bg-main-dark-bg'
+            className={`fixed md:static bg-main-bg ${
+              isMenuActive && !isRebaixaEnvioPage && !isNotFoundPage ? 'hidden' : ''
             }`}
           >
-            <div
-              className={`fixed md:static bg-main-bg ${
-                isMenuActive && !isRebaixaEnvioPage
-                  ? 'dark:bg-main-dark-bg'
-                  : ''
-              } navbar w-full`}
-            >
-              {isRebaixaEnvioPage ? null : <Navbar />}
-            </div>
-            <div>
-              {themeSettings && <ThemeSettings />}
-              <Routes>
+            <Navbar />
+          </div>
+          <div className="relative w-full">
+            <Routes>
                 <Route path="/comercial/comprador/sergio" element={<Sergio />} />
                 <Route path="/comercial/comprador/marivone" element={<Marivone />} />
                 <Route path="/comercial/comprador/vitor" element={<Vitor />} />
