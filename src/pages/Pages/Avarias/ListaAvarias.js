@@ -30,7 +30,12 @@ const ListaAvarias = () => {
       }
     };
     fetchData();
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 40000);
+
     return () => {
+      clearInterval(intervalId);
       avariasRef.off('value');
     };
   }, []);
