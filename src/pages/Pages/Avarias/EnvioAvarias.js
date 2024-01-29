@@ -331,6 +331,7 @@ const FormPage = () => {
           required
         >
           <option value="">Selecione o tipo</option>
+          <option value="Avarias Hortis">Avarias Hortis</option>
           <option value="Validade | Vencido">Validade | Vencido</option>
           <option value="Avarias | Danificado | Imprópio para Consumo">
             Avarias | Danificado | Imprópio para Consumo
