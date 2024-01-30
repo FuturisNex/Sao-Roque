@@ -376,7 +376,7 @@ const FormPage = () => {
           Volume:
         </label>
         <input
-          type="number"
+          type="text"
           id="volume"
           name="volume"
           value={volume}
