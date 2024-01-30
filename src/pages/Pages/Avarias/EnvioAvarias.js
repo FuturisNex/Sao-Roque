@@ -58,10 +58,6 @@ const FormPage = () => {
     fetchData();
   }, [cod, previousCod]);
 
-  const handleWheel = (event) => {
-    event.preventDefault();
-  };
-
   useEffect(() => {
     const savedResponsavel = localStorage.getItem('responsavel');
     const savedFilial = localStorage.getItem('filial');
@@ -352,7 +348,7 @@ const FormPage = () => {
           value={nota}
           onChange={handleChange}
           className="form__input"
-          onWheel={handleWheel}
+          onWheel={(e) => e.preventDefault()}
           required
         />
 
@@ -379,7 +375,7 @@ const FormPage = () => {
           value={volume}
           onChange={handleChange}
           className="form__input"
-          onWheel={handleWheel}
+          onWheel={(e) => e.preventDefault()}
           required
         />
 
