@@ -59,7 +59,7 @@ const FormPage = () => {
   }, [cod, previousCod]);
 
   const handleWheel = (event) => {
-  event.preventDefault();
+    event.preventDefault();
   };
 
   useEffect(() => {
