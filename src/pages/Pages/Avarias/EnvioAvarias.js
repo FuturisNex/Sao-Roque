@@ -361,6 +361,7 @@ const FormPage = () => {
           value={vlnota}
           onChange={handleVlnotaChange}
           className="form__input"
+          required
         />
 
         <label htmlFor="volume" className="form__label">
