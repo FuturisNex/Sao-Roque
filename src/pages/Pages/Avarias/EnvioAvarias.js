@@ -58,6 +58,10 @@ const FormPage = () => {
     fetchData();
   }, [cod, previousCod]);
 
+  const handleWheel = (event) => {
+  event.preventDefault();
+  };
+
   useEffect(() => {
     const savedResponsavel = localStorage.getItem('responsavel');
     const savedFilial = localStorage.getItem('filial');
