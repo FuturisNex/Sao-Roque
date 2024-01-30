@@ -348,6 +348,7 @@ const FormPage = () => {
           value={nota}
           onChange={handleChange}
           className="form__input"
+          onWheel={handleWheel}
           required
         />
 
@@ -374,6 +375,7 @@ const FormPage = () => {
           value={volume}
           onChange={handleChange}
           className="form__input"
+          onWheel={handleWheel}
           required
         />
 
