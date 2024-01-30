@@ -158,6 +158,13 @@ const FormPage = () => {
     const sanitizedValue = value.replace(/[^0-9,]/g, '');
     setVlnota(sanitizedValue);
   };
+  
+  const handleVolumeChange = (event) => {
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
+    const sanitizedValue = value.replace(/[^0-9,]/g, '');
+    setVolume(sanitizedValue);
+  };
 
   const formatCurrency = (value) => {
     const formattedValue = parseFloat(
@@ -373,7 +380,7 @@ const FormPage = () => {
           id="volume"
           name="volume"
           value={volume}
-          onChange={handleChange}
+          onChange={handleVolumeChange}
           className="form__input"
           onWheel={(e) => e.preventDefault()}
           required
