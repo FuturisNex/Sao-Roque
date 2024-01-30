@@ -158,7 +158,7 @@ const FormPage = () => {
     const sanitizedValue = value.replace(/[^0-9,]/g, '');
     setVlnota(sanitizedValue);
   };
-  
+
   const handleVolumeChange = (event) => {
     const { name, value } = event.target;
     handleChange({ target: { name, value: value.toUpperCase() } });
