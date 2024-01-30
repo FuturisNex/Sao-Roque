@@ -177,7 +177,7 @@ const FormPage = () => {
     const { name, value } = event.target;
     handleChange({ target: { name, value: value.toUpperCase() } });
     const sanitizedValue = value.replace(/[^0-9,]/g, '');
-    setNota(sanitizedValue);
+    setCod(sanitizedValue);
   };
 
   const formatCurrency = (value) => {
