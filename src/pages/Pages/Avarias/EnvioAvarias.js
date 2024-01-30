@@ -173,6 +173,13 @@ const FormPage = () => {
     setNota(sanitizedValue);
   };
 
+  const handleCompradorChange = (event) => {
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
+    const sanitizedValue = value.replace(/[^0-9,]/g, '');
+    setNota(sanitizedValue);
+  };
+
   const formatCurrency = (value) => {
     const formattedValue = parseFloat(
       value.replace(',', '.'),
@@ -312,11 +319,11 @@ const FormPage = () => {
           Código do Fornecedor:
         </label>
         <input
-          type="number"
+          type="text"
           id="cod"
           name="cod"
           value={cod}
-          onChange={handleChange}
+          onChange={handleCompradorChange}
           className="form__input"
           required
         />
