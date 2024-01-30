@@ -166,6 +166,13 @@ const FormPage = () => {
     setVolume(sanitizedValue);
   };
 
+  const handleNotaChange = (event) => {
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
+    const sanitizedValue = value.replace(/[^0-9,]/g, '');
+    setNota(sanitizedValue);
+  };
+
   const formatCurrency = (value) => {
     const formattedValue = parseFloat(
       value.replace(',', '.'),
@@ -349,11 +356,11 @@ const FormPage = () => {
           Nº da Nota:
         </label>
         <input
-          type="number"
+          type="text"
           id="nota"
           name="nota"
           value={nota}
-          onChange={handleChange}
+          onChange={handleNotaChange}
           className="form__input"
           onWheel={(e) => e.preventDefault()}
           required
