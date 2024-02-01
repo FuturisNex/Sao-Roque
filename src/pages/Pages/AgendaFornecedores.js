@@ -7,7 +7,7 @@ const AgendaFornecedor = () => {
   const [hora, setHora] = useState('');
   const [comprador, setComprador] = useState('');
   const [fornecedor, setFornecedor] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -118,7 +118,7 @@ const AgendaFornecedor = () => {
       <form onSubmit={handleSubmit} className="form">
         <img src={logo} alt="Logo" className="logo-form" />
         <h1 className="titulo">Agenda São Roque</h1>
-        <label htmlFor='data' className="form__label">
+          <label htmlFor="data" className="form__label">
         data:
         </label>
         <input
@@ -131,7 +131,7 @@ const AgendaFornecedor = () => {
           onWheel={(e) => e.preventDefault()}
           required
         />
-        <label htmlFor='hora' className="form__label">
+          <label htmlFor="hora" className="form__label">
         hora:
         </label>
         <input
