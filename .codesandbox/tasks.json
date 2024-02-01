@@ -16,13 +16,11 @@
     },
     "build": {
       "name": "build",
-      "command": "npm run build",
-      "runAtStart": false
+      "command": "npm run build"
     },
     "eject": {
       "name": "eject",
-      "command": "npm run eject",
-      "runAtStart": false
+      "command": "npm run eject"
     }
   }
 }
