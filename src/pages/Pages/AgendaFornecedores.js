@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import logo from "../../data/img/logotipo.png";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import logo from '../../data/img/logotipo.png';
 
 const AgendaFornecedor = () => {
-  const [data, setData] = useState("");
-  const [hora, setHora] = useState("");
-  const [comprador, setComprador] = useState("");
-  const [fornecedor, setFornecedor] = useState("");
+  const [data, setData] = useState('');
+  const [hora, setHora] = useState('');
+  const [comprador, setComprador] = useState('');
+  const [fornecedor, setFornecedor] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState('');
   const [isSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
-    const savedData = localStorage.getItem("data");
-    const savedHora = localStorage.getItem("hora");
-    const savedComprador = localStorage.getItem("comprador");
-    const savedFornecedor = localStorage.getItem("fornecedor");
+    const savedData = localStorage.getItem('data');
+    const savedHora = localStorage.getItem('hora');
+    const savedComprador = localStorage.getItem('comprador');
+    const savedFornecedor = localStorage.getItem('fornecedor');
 
     if (savedData !== null) {
       setData(savedData);
@@ -35,26 +35,26 @@ const AgendaFornecedor = () => {
   }, []);
 
   const handleChange = ({ target: { name, value } }) => {
-    if (name === "data") {
+    if (name === 'data') {
       setData(value);
-      localStorage.setItem("data", value);
-    } else if (name === "hora") {
+      localStorage.setItem('data', value);
+    } else if (name === 'hora') {
       setHora(value);
-      localStorage.setItem("hora", value);
-    } else if (name === "comprador") {
+      localStorage.setItem('hora', value);
+    } else if (name === 'comprador') {
       setComprador(value);
-      localStorage.setItem("comprador", value);
-    } else if (name === "fornecedor") {
+      localStorage.setItem('comprador', value);
+    } else if (name === 'fornecedor') {
       setFornecedor(value);
-      localStorage.setItem("fornecedor", value);
+      localStorage.setItem('fornecedor', value);
     }
     localStorage.setItem(name, value);
   };
 
   const resetForm = () => {
-    setHora("");
-    setComprador("");
-    setFornecedor("");
+    setHora('');
+    setComprador('');
+    setFornecedor('');
   };
 
   const handleSubmit = async (event) => {
@@ -65,18 +65,18 @@ const AgendaFornecedor = () => {
     }
 
     setIsSubmitting(true);
-    setErrorMessage("");
-    setSuccessMessage("");
+    setErrorMessage('');
+    setSuccessMessage('');
 
     try {
       const formData = new FormData();
-      formData.append("Data", data);
-      formData.append("Hora", hora);
-      formData.append("Comprador", comprador);
-      formData.append("Fornecedor", fornecedor);
+      formData.append('Data', data);
+      formData.append('Hora', hora);
+      formData.append('Comprador', comprador);
+      formData.append('Fornecedor', fornecedor);
 
       const response = await axios.post(
-        "https://script.google.com/macros/s/AKfycbyfzgPsemiVocIR12Z-D8STX0qNr2eXOOxZeLxSBELM3J0y7aZV-y-9QozjtzD_YQwf/exec",
+        'https://script.google.com/macros/s/AKfycbyfzgPsemiVocIR12Z-D8STX0qNr2eXOOxZeLxSBELM3J0y7aZV-y-9QozjtzD_YQwf/exec',
         formData,
       );
 
@@ -84,12 +84,12 @@ const AgendaFornecedor = () => {
         setSuccessMessage(response.data);
         resetForm();
         setIsSubmitted(true);
-        localStorage.removeItem("hora");
-        localStorage.removeItem("comprador");
-        localStorage.removeItem("fornecedor");
+        localStorage.removeItem('hora');
+        localStorage.removeItem('comprador');
+        localStorage.removeItem('fornecedor');
       } else {
         throw new Error(
-          "Erro ao enviar formulário. Tente novamente mais tarde.",
+          'Erro ao enviar formulário. Tente novamente mais tarde.',
         );
       }
     } catch (error) {
@@ -102,7 +102,7 @@ const AgendaFornecedor = () => {
 
   const handleCloseSuccessMessage = () => {
     setIsSubmitted(false);
-    setSuccessMessage("");
+    setSuccessMessage('');
   };
 
   return (
@@ -118,7 +118,7 @@ const AgendaFornecedor = () => {
       <form onSubmit={handleSubmit} className="form">
         <img src={logo} alt="Logo" className="logo-form" />
         <h1 className="titulo">Agenda São Roque</h1>
-        <label htmlFor="data" className="form__label">
+        <label htmlFor='data' className="form__label">
         data:
         </label>
         <input
@@ -131,7 +131,7 @@ const AgendaFornecedor = () => {
           onWheel={(e) => e.preventDefault()}
           required
         />
-        <label htmlFor="hora" className="form__label">
+        <label htmlFor='hora' className="form__label">
         hora:
         </label>
         <input
@@ -182,7 +182,7 @@ const AgendaFornecedor = () => {
           className="btn-primary"
           disabled={isLoading || isSending || isSubmitting}
         >
-          {isSubmitting ? "Enviando..." : "Enviar"}
+          {isSubmitting ? 'Enviando...' : 'Enviar'}
         </button>
 
         {errorMessage && <div className="errorMessage">{errorMessage}</div>}
