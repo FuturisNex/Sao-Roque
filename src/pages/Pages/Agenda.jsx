@@ -4,8 +4,8 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import '../Style-Card.css';
 
 const buyers = [
-  { name: 'AGENDAR', icon: <FaClock size={30} color='white' /> },
-  { name: 'CALÊNDARIO', icon: <FaCalendarAlt size={30} color='white' /> },
+  { name: 'AGENDAR', icon: <FaClock size={30} color="white" /> },
+  { name: 'CALÊNDARIO', icon: <FaCalendarAlt size={30} color="white" /> },
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
@@ -17,7 +17,7 @@ const BuyerCard = ({ buyer, handleClick }) => {
       style={{ backgroundColor: currentColor }}
       onClick={() => handleClick(buyer.name)}
     >
-      <div className='buyer-icon'>{buyer.icon}</div>
+      <div className="buyer-icon">{buyer.icon}</div>
       <p>{buyer.name}</p>
     </div>
   );
