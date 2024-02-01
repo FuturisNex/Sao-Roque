@@ -31,12 +31,11 @@ const App = () => {
   const isDarkMode = currentMode === 'Dark';
   const isMenuActive = activeMenu;
 
-  const isRebaixaEnvioPage =
-    window.location.pathname.startsWith('/avarias') ||
-    window.location.pathname.startsWith('/validades') ||
-    window.location.pathname.startsWith('/avaria') ||
-    window.location.pathname === '/' ||
-    window.location.pathname === '*';
+  const isRebaixaEnvioPage = window.location.pathname.startsWith('/avarias')
+    || window.location.pathname.startsWith('/validades')
+    || window.location.pathname.startsWith('/avaria')
+    || window.location.pathname === '/'
+    || window.location.pathname === '*';
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
