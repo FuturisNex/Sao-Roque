@@ -48,7 +48,7 @@ const App = () => {
     '/validades/rebaixa-envio',
   ];
 
-  const isAllowedPath = allowedPaths.some(path => window.location.pathname.startsWith(path));
+  const isAllowedPath = allowedPaths.some((path) => window.location.pathname.startsWith(path));
 
   return (
     <div className={isDarkMode ? 'dark' : ''}>
