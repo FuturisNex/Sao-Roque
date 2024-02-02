@@ -28,7 +28,7 @@ const AvariaMenu = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      AVARIAS: 'comercial/avarias',
+      AVARIAS: 'https://docs.google.com/spreadsheets/d/1sFNMVHhasw7ie8RVzZ8NOJ10FPcFP5Q1asJEk6bEQmo/edit?usp=sharing',
       ENVIAR: '/avarias/avarias-home',
     }[buyer];
 
