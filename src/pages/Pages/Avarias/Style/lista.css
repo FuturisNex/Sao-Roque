@@ -7,10 +7,132 @@
   background-size: cover;
 }
 
+.form1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  background-color: #f0f0f0d2;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: auto;
+  width: 90%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  margin-bottom: 20px;
+
+}
+
+.filter-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.filter-options label {
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.filter-options select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 150px;
+}
+
+.avarias-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.avaria-item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.avaria-item button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+}
+
+.avaria-item:hover {
+  background-color: #f5f5f5;
+}
+
+.avaria-item .comprador,
+.avaria-item .fornecedor,
+.avaria-item .perca,
+.avaria-item .nota {
+  margin-bottom: 5px;
+}
+
+.avaria-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.avaria-card-details {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+.avaria-detalhes {
+  margin-top: 10px;
+}
+
+.detalhe-item {
+  margin-bottom: 10px;
+}
+
+.detalhe-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
+
+.titulo-detalhes {
+  margin-bottom: 15px;
+}
+
 .back-button {
   position: absolute;
-  top: 20px;
-  left: 30px;
+  top: 40px;
+  left: 90px;
   text-decoration: none;
   color: #333;
   font-size: 18px;

@@ -7,6 +7,9 @@ import './Style/lista.css';
 const ListaAvarias = () => {
   const [avarias, setAvarias] = useState([]);
   const [selectedAvaria, setSelectedAvaria] = useState(null);
+  const [envioFilter, setEnvioFilter] = useState('');
+  const [responsavelFilter, setResponsavelFilter] = useState('');
+  const [fornecedorFilter, setFornecedorFilter] = useState('');
 
   useEffect(() => {
     const avariasRef = database.ref('BancoDadosAvarias');
@@ -29,7 +32,9 @@ const ListaAvarias = () => {
         console.error('Erro ao buscar dados:', error);
       }
     };
+
     fetchData();
+
     const intervalId = setInterval(() => {
       fetchData();
     }, 40000);
@@ -63,17 +68,68 @@ const ListaAvarias = () => {
     'OBSERVAÇÕES',
   ];
 
+  // Filtrar avarias com base nos filtros selecionados
+  const filteredAvarias = avarias.filter((avaria) => {
+    const matchesEnvio = !envioFilter || avaria.ENVIO === envioFilter;
+    const matchesResponsavel = !responsavelFilter || avaria.RESPONSAVEL === responsavelFilter;
+    const matchesFornecedor = !fornecedorFilter || avaria.FORNECEDOR === fornecedorFilter;
+
+    return matchesEnvio && matchesResponsavel && matchesFornecedor;
+  });
+
   return (
     <div className="containerLista">
-      <div className="form">
+      <Link to="/avarias/avarias-home" className="back-button">
+        <span>&#8592;</span>   Enviar Avaria
+      </Link>
+      <div className="form1">
         <div className="lista-avarias">
-          <Link to="/avarias/avarias-home" className="back-button">
-            <span>&#8592;</span>   Enviar Avaria
-          </Link>
-          <img src={logo} alt="Logo" className="logo-form" />
-          <h1 className="titulo">Lista de Avarias</h1>
+          <div className="filter-options">
+            <label htmlFor="envioFilter">Envio:</label>
+            <select
+              id="envioFilter"
+              value={envioFilter}
+              onChange={(e) => setEnvioFilter(e.target.value)}
+            >
+              <option value="">Todos</option>
+              {avarias.map((avaria) => avaria.ENVIO).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+
+            <label htmlFor="responsavelFilter">Responsável:</label>
+            <select
+              id="responsavelFilter"
+              value={responsavelFilter}
+              onChange={(e) => setResponsavelFilter(e.target.value)}
+            >
+              <option value="">Todos</option>
+              {avarias.map((avaria) => avaria.RESPONSAVEL).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+
+            <label htmlFor="fornecedorFilter">Fornecedor:</label>
+            <select
+              id="fornecedorFilter"
+              value={fornecedorFilter}
+              onChange={(e) => setFornecedorFilter(e.target.value)}
+            >
+              <option value="">Todos</option>
+              {avarias.map((avaria) => avaria.FORNECEDOR).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+          </div>
+
           <ul className="avarias-list">
-            {avarias.map((avaria) => (
+            {filteredAvarias.map((avaria) => (
               <li
                 key={avaria.id}
                 className={`avaria-item ${avaria.STATUS.toLowerCase()}`}
@@ -97,6 +153,7 @@ const ListaAvarias = () => {
               </li>
             ))}
           </ul>
+
           {selectedAvaria && (
             <div className="avaria-overlay">
               <div className="avaria-card-details">

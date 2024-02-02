@@ -23,6 +23,7 @@ const FormPage = () => {
   const [previousCod, setPreviousCod] = useState('');
   const [isSending] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const fetchProductDescription = () => {
     try {
@@ -188,13 +189,7 @@ const FormPage = () => {
     return formattedValue;
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (isSubmitting) {
-      return;
-    }
-
+  const handleSubmit = async () => {
     setIsSubmitting(true);
     setErrorMessage('');
     setSuccessMessage('');
@@ -248,6 +243,19 @@ const FormPage = () => {
     setSuccessMessage('');
   };
 
+  const handleCloseConfirmation = () => {
+    setIsConfirmationOpen(false);
+  };
+
+  const handleOpenConfirmation = () => {
+    setIsConfirmationOpen(true);
+  };
+
+  const handleConfirmSubmission = () => {
+    handleSubmit();
+    handleCloseConfirmation();
+  };
+
   return (
     <div className="containerAvarias">
       {isSubmitted && successMessage && (
@@ -258,7 +266,36 @@ const FormPage = () => {
           </button>
         </div>
       )}
-      <form onSubmit={handleSubmit} className="form">
+
+      {isConfirmationOpen && (
+        <div className={`confirmationModal ${isConfirmationOpen ? '' : 'hidden'}`}>
+          <p>Deseja realmente enviar o formulário?</p>
+          <div className="confirmationModal-buttons">
+            <button
+              type="button"
+              onClick={handleConfirmSubmission}
+              className="confirmationModal-button confirm"
+            >
+              Confirmar
+            </button>
+            <button
+              type="button"
+              onClick={handleCloseConfirmation}
+              className="confirmationModal-button cancel"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      )}
+
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleOpenConfirmation();
+        }}
+        className="form"
+      >
         <Link to="/avarias/avarias-lista" className="back-button">
           <span>&#8592;  </span> Lista de Avaria
         </Link>
@@ -399,7 +436,6 @@ const FormPage = () => {
           onWheel={(e) => e.preventDefault()}
           required
         />
-
         <button
           type="submit"
           className="btn-primary"

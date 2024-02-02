@@ -1,61 +1,42 @@
-.containerAvarias {
+.containerForms {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #e0e0e0;
+  background-image: url("../../../data/img/fundo.jpg");
   background-size: cover;
 }
-.confirmationModal {
-  background-color: #fff;
-  padding: 30px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+
+.errorMessage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  color: #242424;
+  border-radius: 5px;
+  padding: 25px;
+  font-size: 1.2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  width: 330px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.confirmationModal p {
-  margin-bottom: 20px;
+.errorMessage span {
+  margin-bottom: 30px;
 }
 
-.confirmationModal-buttons {
-  display: flex;
-  gap: 80px;
-}
-
-.confirmationModal button {
-  padding: 10px;
-  cursor: pointer;
-  flex: 1;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-}
-
-.confirmationModal button.cancel {
+.errorMessage button {
   background-color: #fff;
-}
-
-.confirmationModal button.confirm {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.confirmationModal.hidden {
-  display: none;
-}
-
-
-.titulo {
-  font-size: 28px;
-  margin-bottom: 20px;
+  color: #ffffff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 .successMessage {
@@ -104,21 +85,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
-  background-color: #f0f0f0d2;
+  padding: 2.5rem;
+  background-color: rgba(240, 240, 240, 0.576);
   border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  max-width: 680px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
   width: 90%;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .form__label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  margin-top: 0.7rem;
 }
 
 .select {
@@ -130,7 +111,7 @@
   width: 100%;
   border-radius: 0.5rem;
   padding: 0.7rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   border: none;
   border-bottom: 2px solid #ccc;
   font-size: 1rem;
@@ -142,56 +123,69 @@
   border-bottom: 2px solid #0f39ac;
 }
 
-.options {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.option {
-  text-decoration: none;
-}
-
-.btn-primary,
-.btn-secondary {
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+.form__button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #0f39ac;
+  margin-top: 1rem;
+  margin-bottom: 25px;
+  color: #fff;
+  font-size: 1.1rem;
   font-weight: bold;
   border: none;
   border-radius: 0.3rem;
   cursor: pointer;
-  margin: 0 1rem;
-  transition: background-color 0.3s ease-in-out;
-  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
 }
 
-.btn-primary {
-  width: 100%;
-  background-color: #0f39ac;
-  color: #fff;
-}
-
-.btn-secondary {
-  width: 100%;
-  background-color: #00b618;
-  color: #fff;
-}
-
-.btn-primary:hover {
+.form__button:hover {
   background-color: #3c65d8;
 }
 
-.btn-secondary:hover {
-  background-color: #7ae43c;
+.Relatorios {
+  display: flex;
+}
+
+.btn_ver {
+  margin-right: 0.2rem;
+  margin-left: 0.2rem;
+}
+
+.btn_ver {
+  width: 100%;
+  min-width: 207px;
+  padding: 0.5rem;
+  background-color: #15b400;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 25px;
+}
+
+.btn_ver:hover {
+  background-color: #ff9100;
 }
 
 @media only screen and (max-width: 768px) {
-  .btn-primary,
-  .btn-secondary {
+  .errorMessage {
     font-size: 1rem;
-    padding: 0.8rem 1.5rem;
+    padding: 15px;
+    width: 80%;
   }
+
+  .errorMessage span {
+    margin-bottom: 15px;
+  }
+
+  .errorMessage button {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
   .successMessage {
     font-size: 1rem;
     padding: 15px;
@@ -218,8 +212,12 @@
     margin-bottom: 0;
   }
 
-  .form__button,
-  .form__ver .form__ver1 {
+  .form__button {
     width: 100%;
+  }
+
+  .btn_ver {
+    width: 100%;
+    min-width: 130px;
   }
 }

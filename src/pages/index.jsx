@@ -1,5 +1,6 @@
 export { default as Winthor } from './Pages/Winthor';
 export { default as Rebaixa } from './Pages/Rebaixa/Rebaixa';
+export { default as AvariaMenu } from './Pages/MenuAvaria/AvariasMenu';
 export { default as RebaixaEnvio } from './Pages/Rebaixa/RebaixaEnvio';
 export { default as EnvioAvarias } from './Pages/Avarias/EnvioAvarias';
 export { default as ListaAvarias } from './Pages/Avarias/ListaAvarias';

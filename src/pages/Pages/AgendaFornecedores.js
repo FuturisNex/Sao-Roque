@@ -118,8 +118,8 @@ const AgendaFornecedor = () => {
       <form onSubmit={handleSubmit} className="form">
         <img src={logo} alt="Logo" className="logo-form" />
         <h1 className="titulo">Agenda São Roque</h1>
-          <label htmlFor="data" className="form__label">
-        data:
+        <label htmlFor="data" className="form__label">
+          data:
         </label>
         <input
           type="text"
@@ -131,8 +131,8 @@ const AgendaFornecedor = () => {
           onWheel={(e) => e.preventDefault()}
           required
         />
-          <label htmlFor="hora" className="form__label">
-        hora:
+        <label htmlFor="hora" className="form__label">
+          hora:
         </label>
         <input
           type="text"

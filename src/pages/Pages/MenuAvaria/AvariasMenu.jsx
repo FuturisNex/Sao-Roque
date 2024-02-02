@@ -1,11 +1,11 @@
 import React from 'react';
-import { FaCalendarAlt, FaClock } from 'react-icons/fa';
-import { useStateContext } from '../../contexts/ContextProvider';
-import '../Style-Card.css';
+import { AiFillShop, AiOutlineSend } from 'react-icons/ai';
+import { useStateContext } from '../../../contexts/ContextProvider';
+import '../../Style-Card.css';
 
 const buyers = [
-  { name: 'AGENDAR', icon: <FaClock size={30} color="white" /> },
-  { name: 'CALÊNDARIO', icon: <FaCalendarAlt size={30} color="white" /> },
+  { name: 'AVARIAS', icon: <AiFillShop  size={30} color="white" /> },
+  { name: 'ENVIAR', icon: <AiOutlineSend size={30} color="white" /> },
 ];
 
 const BuyerCard = ({ buyer, handleClick }) => {
@@ -23,13 +23,13 @@ const BuyerCard = ({ buyer, handleClick }) => {
   );
 };
 
-const Analise = () => {
+const AvariaMenu = () => {
   const { currentMode } = useStateContext();
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      AGENDAR: '/agenda/fornecedor',
-      CALÊNDARIO: 'https://outlook.office.com/bookings/calendar',
+      AVARIAS: 'comercial/avarias',
+      ENVIAR: '/avarias/avarias-home',
     }[buyer];
 
     if (url) {
@@ -48,4 +48,4 @@ const Analise = () => {
   );
 };
 
-export default Analise;
+export default AvariaMenu;

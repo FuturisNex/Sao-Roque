@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChartBar, FaTags, FaFileContract } from 'react-icons/fa';
-import { AiOutlineCalendar, AiFillPlayCircle } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlineShoppingCart , AiFillPlayCircle } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
 import { IoMdPerson } from 'react-icons/io';
 
@@ -39,6 +39,15 @@ export const links = [
         name: 'Rebaixa',
         url: 'comercial/rebaixa',
         icon: <FiShoppingBag />,
+      },
+    ],
+  },
+  {
+    links: [
+      {
+        name: 'Avarias',
+        url: 'comercial/avarias',
+        icon: <AiOutlineShoppingCart  />,
       },
     ],
   },
