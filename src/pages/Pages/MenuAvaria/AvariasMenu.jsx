@@ -4,7 +4,7 @@ import { useStateContext } from '../../../contexts/ContextProvider';
 import '../../Style-Card.css';
 
 const buyers = [
-  { name: 'AVARIAS', icon: <AiFillShop  size={30} color="white" /> },
+  { name: 'AVARIAS', icon: <AiFillShop size={30} color="white" /> },
   { name: 'ENVIAR', icon: <AiOutlineSend size={30} color="white" /> },
 ];
 
