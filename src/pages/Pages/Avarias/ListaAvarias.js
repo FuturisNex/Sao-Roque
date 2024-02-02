@@ -136,6 +136,9 @@ const ListaAvarias = () => {
                 <button type="button" onClick={() => handleAvariaClick(avaria)}>
                   <div>
                     <span className="comprador">
+                      <b>LOJA:</b> {avaria.FILIAL}
+                    </span>
+                    <span className="comprador">
                       <b>COMPRADOR:</b> {avaria.COMPRADOR}
                     </span>
                     <span className="fornecedor">
