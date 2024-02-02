@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChartBar, FaTags, FaFileContract } from 'react-icons/fa';
-import { AiOutlineCalendar, AiOutlineShoppingCart , AiFillPlayCircle } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlineShoppingCart, AiFillPlayCircle } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
 import { IoMdPerson } from 'react-icons/io';
 
@@ -47,7 +47,7 @@ export const links = [
       {
         name: 'Avarias',
         url: 'comercial/avarias',
-        icon: <AiOutlineShoppingCart  />,
+        icon: <AiOutlineShoppingCart />,
       },
     ],
   },
