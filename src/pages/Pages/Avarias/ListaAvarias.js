@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import database from '../../../auth/firebase';
-import logo from '../../../data/img/logotipo.png';
 import './Style/lista.css';
 
 const ListaAvarias = () => {
