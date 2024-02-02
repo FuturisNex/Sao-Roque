@@ -98,14 +98,14 @@ const ListaAvarias = () => {
               ))}
             </select>
 
-            <label htmlFor="responsavelFilter">Responsável:</label>
+            <label htmlFor="responsavelFilter">Loja:</label>
             <select
               id="responsavelFilter"
               value={responsavelFilter}
               onChange={(e) => setResponsavelFilter(e.target.value)}
             >
               <option value="">Todos</option>
-              {avarias.map((avaria) => avaria.RESPONSAVEL).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+              {avarias.map((avaria) => avaria.FILIAL).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
