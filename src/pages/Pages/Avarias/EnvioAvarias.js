@@ -11,6 +11,7 @@ const FormPage = () => {
   const [filial, setFilial] = useState('');
   const [cod, setCod] = useState('');
   const [fornecedor, setFornecedor] = useState('');
+  const [departamento, setDepartamento] = useState('');
   const [tipo, setTipo] = useState('');
   const [volume, setVolume] = useState('');
   const [nota, setNota] = useState('');
@@ -65,6 +66,7 @@ const FormPage = () => {
     const savedComprador = localStorage.getItem('comprador');
     const savedCod = localStorage.getItem('cod');
     const savedFornecedor = localStorage.getItem('fornecedor');
+    const savedDepartamento = localStorage.getItem('departamento');
     const savedTipo = localStorage.getItem('tipo');
     const savedVolume = localStorage.getItem('volume');
     const savedNota = localStorage.getItem('nota');
@@ -85,6 +87,9 @@ const FormPage = () => {
     }
     if (savedFornecedor !== null) {
       setFornecedor(savedFornecedor);
+    }
+    if (savedDepartamento !== null) {
+      setDepartamento(savedTipo);
     }
     if (savedTipo !== null) {
       setTipo(savedTipo);
@@ -116,6 +121,9 @@ const FormPage = () => {
     } else if (name === 'fornecedor') {
       setFornecedor(value);
       localStorage.setItem('fornecedor', value);
+    } else if (name === 'departamento') {
+      setDepartamento(value);
+      localStorage.setItem('departamento', value);
     } else if (name === 'tipo') {
       setTipo(value);
       localStorage.setItem('tipo', value);
@@ -140,6 +148,7 @@ const FormPage = () => {
     setComprador('');
     setCod('');
     setFornecedor('');
+    setDepartamento('');
     setTipo('');
     setVolume('');
     setVlnota('');
@@ -201,6 +210,7 @@ const FormPage = () => {
       formData.append('Filial', filial);
       formData.append('Cod', cod);
       formData.append('Fornecedor', fornecedor);
+      formData.append('Departamento', departamento);
       formData.append('Tipo', tipo);
       formData.append('Volume', volume);
       formData.append('Nota', nota);
@@ -221,6 +231,7 @@ const FormPage = () => {
         localStorage.removeItem('filial');
         localStorage.removeItem('cod');
         localStorage.removeItem('fornecedor');
+        localStorage.removeItem('departamento');
         localStorage.removeItem('tipo');
         localStorage.removeItem('nota');
         localStorage.removeItem('vlnota');
@@ -377,6 +388,27 @@ const FormPage = () => {
           className="form__input"
           required
         />
+
+        <label htmlFor="departamento" className="form__label">
+          Selecione o Departamento:
+        </label>
+        <select
+          id="departamento"
+          value={departamento}
+          onChange={(event) => setDepartamento(event.target.value)}
+          className="form__input select"
+          required
+        >
+          <option value="">Selecione o departamento</option>
+          <option value="Mercadoria">marcadoria</option>
+          <option value="Bebidas">Bebidas</option>
+          <option value="Perfumaria">Perfumaria</option>
+          <option value="Limpeza">Limpeza</option>
+          <option value="Utilidades">Utilidades</option>
+          <option value="Padaria">Padaria</option>
+          <option value="Frios e Laticinios">Frios e Laticinios</option>
+          <option value="Pet">Pet</option>
+        </select>
 
         <label htmlFor="tipo" className="form__label">
           Selecione o Tipo:
