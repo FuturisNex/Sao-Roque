@@ -400,7 +400,7 @@ const FormPage = () => {
           required
         >
           <option value="">Selecione o departamento</option>
-          <option value="Mercadoria">marcadoria</option>
+          <option value="Mercadoria">Mercadoria</option>
           <option value="Bebidas">Bebidas</option>
           <option value="Perfumaria">Perfumaria</option>
           <option value="Limpeza">Limpeza</option>
