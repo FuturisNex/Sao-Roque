@@ -6,7 +6,7 @@ import { useStateContext } from '../../contexts/ContextProvider';
 import '../Style-Card.css';
 
 const buyers = [
-  { name: 'DRIVE', icon: <FaGoogleDrive size={30} color="white" /> },
+  { name: 'ARQUIVOS', icon: <FaGoogleDrive size={30} color="white" /> },
   { name: 'FORNECEDORES', icon: <IoMdPeople size={30} color="white" /> },
   { name: 'FILIAIS', icon: <AiFillShop size={30} color="white" /> },
   { name: 'LOJAS NOVAS', icon: <FaShoppingBag size={30} color="white" /> },
@@ -33,7 +33,7 @@ const Documentos = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      DRIVE: 'https://gsaoroque-my.sharepoint.com/:f:/g/personal/gustavo_batista_gruposaoroque_com/EpNxFnAUcpdCrhRiY8X09QIBM087cvW9nn5CgrQLRQc-Rg?e=4dv08P',
+      ARQUIVOS: 'https://gsaoroque-my.sharepoint.com/:f:/g/personal/gustavo_batista_gruposaoroque_com/EpNxFnAUcpdCrhRiY8X09QIBM087cvW9nn5CgrQLRQc-Rg?e=4dv08P',
       FORNECEDORES: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/Eb2H5W_8tjZAuQA88FvCEeoBQjQSXzqS7AvjVVyctonQtw?e=dRKS3y',
       FILIAIS: 'https://gsaoroque-my.sharepoint.com/:x:/g/personal/gustavo_batista_gruposaoroque_com/Ed4CXqJ__99Om6Q9cSxjFqAB9Cn2gpn1GAgO1DDlYGslsg?e=YLKJLt',
       'LOJAS NOVAS': 'https://gsaoroque-my.sharepoint.com/:f:/g/personal/gustavo_batista_gruposaoroque_com/EsuTPpTUAPVMgKbldAnvrpQBpf7uwVnxqz2oePujdJniGQ?e=8Ghxm4',
