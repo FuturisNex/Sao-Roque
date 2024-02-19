@@ -105,7 +105,7 @@ const ListaAvarias = () => {
               onChange={(e) => setStatusFilter(e.target.value)}
             >
               <option value="">Todos</option>
-              {avarias.map((avaria) => avaria.RESPONSAVEL).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+              {avarias.map((avaria) => avaria.STATUS).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
