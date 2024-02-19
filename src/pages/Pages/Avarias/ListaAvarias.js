@@ -7,7 +7,7 @@ const ListaAvarias = () => {
   const [avarias, setAvarias] = useState([]);
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [envioFilter, setEnvioFilter] = useState('');
-  const [responsavelFilter, setResponsavelFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
   const [fornecedorFilter, setFornecedorFilter] = useState('');
 
   useEffect(() => {
@@ -70,7 +70,7 @@ const ListaAvarias = () => {
   // Filtrar avarias com base nos filtros selecionados
   const filteredAvarias = avarias.filter((avaria) => {
     const matchesEnvio = !envioFilter || avaria.ENVIO === envioFilter;
-    const matchesResponsavel = !responsavelFilter || avaria.RESPONSAVEL === responsavelFilter;
+    const matchesResponsavel = !statusFilter || avaria.STATUS === statusFilter;
     const matchesFornecedor = !fornecedorFilter || avaria.FORNECEDOR === fornecedorFilter;
 
     return matchesEnvio && matchesResponsavel && matchesFornecedor;
@@ -98,11 +98,11 @@ const ListaAvarias = () => {
               ))}
             </select>
 
-            <label htmlFor="responsavelFilter">Responsavel:</label>
+            <label htmlFor="statusFilter">Status:</label>
             <select
-              id="responsavelFilter"
-              value={responsavelFilter}
-              onChange={(e) => setResponsavelFilter(e.target.value)}
+              id="statusFilter"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
             >
               <option value="">Todos</option>
               {avarias.map((avaria) => avaria.RESPONSAVEL).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
