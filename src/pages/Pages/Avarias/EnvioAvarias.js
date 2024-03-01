@@ -356,7 +356,7 @@ const FormPage = () => {
         >
           <option value="">Selecione o Comprador</option>
           <option value="SÉRGIO">Sérgio</option>
-          <option value="SENA">Sena</option>
+          <option value="ROCHA">Rocha</option>
           <option value="MARIVONE">Marivone</option>
           <option value="JURANDIR">Jurandir</option>
           <option value="VITOR">Vitor</option>
