@@ -91,6 +91,20 @@ const ListaAvarias = () => {
               onChange={(e) => setEnvioFilter(e.target.value)}
             >
               <option value="">Todos</option>
+              {avarias.map((avaria) => avaria.['Nº NOTA']).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
+
+            <label htmlFor="statusFilter">Nº NOTA:</label>
+            <select
+              id="statusFilter"
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
+            >
+              <option value="">Todos</option>
               {avarias.map((avaria) => avaria.ENVIO).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
                 <option key={option} value={option}>
                   {option}
