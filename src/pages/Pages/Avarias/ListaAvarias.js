@@ -91,7 +91,7 @@ const ListaAvarias = () => {
               onChange={(e) => setEnvioFilter(e.target.value)}
             >
               <option value="">Todos</option>
-              {avarias.map((avaria) => avaria.['Nº NOTA']).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
+              {avarias.map((avaria) => avaria.["Nº NOTA"]).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
                 <option key={option} value={option}>
                   {option}
                 </option>
