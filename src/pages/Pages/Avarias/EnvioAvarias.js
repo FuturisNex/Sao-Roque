@@ -308,7 +308,7 @@ const FormPage = () => {
         className="form"
       >
         <Link to="/avarias/avarias-lista" className="back-button">
-          <span>&#8592;  </span> Lista de Avaria
+          Lista de Avarias
         </Link>
         <img src={logo} alt="Logo" className="logo-form" />
         <h1 className="titulo">Painel de Envio Avarias</h1>

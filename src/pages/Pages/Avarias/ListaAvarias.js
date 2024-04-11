@@ -6,9 +6,9 @@ import './Style/lista.css';
 const ListaAvarias = () => {
   const [avarias, setAvarias] = useState([]);
   const [selectedAvaria, setSelectedAvaria] = useState(null);
-  const [envioFilter, setEnvioFilter] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [fornecedorFilter, setFornecedorFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage] = useState(10);
 
   useEffect(() => {
     const avariasRef = database.ref('BancoDadosAvarias');
@@ -24,7 +24,7 @@ const ListaAvarias = () => {
               id: key,
               ...value,
             }),
-          );
+          ).sort((a, b) => a.ENVIO.localeCompare(b.ENVIO)); // Ordenar por envio
           setAvarias(avariasArray);
         }
       } catch (error) {
@@ -52,83 +52,49 @@ const ListaAvarias = () => {
     setSelectedAvaria(null);
   };
 
-  const detalhesOrdenados = [
-    'ENVIO',
-    'RESPONSAVEL',
-    'COMPRADOR',
-    'FILIAL',
-    'CODIGO',
-    'FORNECEDOR',
-    'TIPO',
-    'Nº NOTA',
-    'VL NOTA',
-    'VOLUME',
-    'STATUS',
-    'OBSERVAÇÕES',
-  ];
+  // Paginação
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = avarias.filter((avaria) =>
+    Object.values(avaria).some((value) =>
+      String(value).toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  ).slice(indexOfFirstItem, indexOfLastItem);
 
-  // Filtrar avarias com base nos filtros selecionados
-  const filteredAvarias = avarias.filter((avaria) => {
-    const matchesEnvio = !envioFilter || avaria.ENVIO === envioFilter;
-    const matchesResponsavel = !statusFilter || avaria.STATUS === statusFilter;
-    const matchesFornecedor = !fornecedorFilter || avaria.FORNECEDOR === fornecedorFilter;
+  // Número total de páginas
+  const totalPages = Math.ceil(avarias.length / itemsPerPage);
 
-    return matchesEnvio && matchesResponsavel && matchesFornecedor;
-  });
+  // Alterar página
+  const paginate = (pageNumber) => {
+    if (pageNumber < 1) {
+      setCurrentPage(1);
+    } else {
+      setCurrentPage(pageNumber);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="containerLista">
       <Link to="/avarias/avarias-home" className="back-button">
-        <span>&#8592;</span>   Enviar Avaria
+        Enviar Avarias
       </Link>
       <div className="form1">
-        <div className="lista-avarias">
-          <div className="filter-options">
-            <label htmlFor="envioFilter">Envio:</label>
-            <select
-              id="envioFilter"
-              value={envioFilter}
-              onChange={(e) => setEnvioFilter(e.target.value)}
-            >
-              <option value="">Todos</option>
-              {avarias.map((avaria) => avaria.ENVIO).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-
-            <label htmlFor="statusFilter">Status:</label>
-            <select
-              id="statusFilter"
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-            >
-              <option value="">Todos</option>
-              {avarias.map((avaria) => avaria.STATUS).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-
-            <label htmlFor="fornecedorFilter">Fornecedor:</label>
-            <select
-              id="fornecedorFilter"
-              value={fornecedorFilter}
-              onChange={(e) => setFornecedorFilter(e.target.value)}
-            >
-              <option value="">Todos</option>
-              {avarias.map((avaria) => avaria.FORNECEDOR).filter((value, index, self) => self.indexOf(value) === index).map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
+        <div className="filter-options">
+          <div className="search-bar">
+            <input
+              type="text"
+              className="search-input"
+              placeholder="Pesquisar"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
           </div>
+        </div>
 
+        <div className="lista-avarias">
           <ul className="avarias-list">
-            {filteredAvarias.map((avaria) => (
+            {currentItems.map((avaria) => (
               <li
                 key={avaria.id}
                 className={`avaria-item ${avaria.STATUS.toLowerCase()}`}
@@ -164,23 +130,33 @@ const ListaAvarias = () => {
                 </button>
                 <h2 className="titulo-detalhes">Detalhes da Avaria</h2>
                 <div className="avaria-detalhes">
-                  {detalhesOrdenados.map((key) => {
-                    if (key !== 'id') {
-                      return (
-                        <div key={key} className="detalhe-item">
-                          <span className="detalhe-label">
-                            {key.toUpperCase()}:
-                          </span>{' '}
-                          {selectedAvaria[key]}
-                        </div>
-                      );
-                    }
-                    return null;
-                  })}
+                  {Object.entries(selectedAvaria)
+                    .filter(([key]) => key !== 'id')
+                    .map(([key, value]) => (
+                      <div key={key} className="detalhe-item">
+                        <span className="detalhe-label">
+                          {key.toUpperCase()}:
+                        </span>{' '}
+                        {value}
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>
           )}
+        </div>
+
+        <div className="pagination">
+          <div className="page-arrow" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+            &#8249;
+          </div>
+          <div className="page-numbers">
+            <span>Página: </span>
+            <span className="page-number">{currentPage}</span>
+          </div>
+          <div className="page-arrow" onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
+            &#8250;
+          </div>
         </div>
       </div>
     </div>

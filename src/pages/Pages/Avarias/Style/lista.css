@@ -1,25 +1,10 @@
 .containerLista {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #e0e0e0;
-  background-size: cover;
-}
-
-.form1 {
-  display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  padding: 4rem;
-  background-color: #f0f0f0d2;
-  border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  max-width: auto;
-  width: 90%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  align-items: center;
+  background-color: #bebebe;
+  background-size: cover;
 }
 
 .filter-container {
@@ -27,23 +12,35 @@
 
 }
 
-.filter-options {
+.form1 {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 50px;
+  justify-content: center;
+  padding: 3rem;
+  padding-bottom: 15px;
+  background-color: #e6e6e6d2;
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: auto;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  flex-grow: 1;
+  max-height: 97vh;
 }
 
-.filter-options label {
-  margin-right: 10px;
-  margin-left: 20px;
+.search-bar {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
-.filter-options select {
+.search-input {
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #8d8b8b;
+  background-color: #e6e6e6;
   border-radius: 4px;
-  width: 150px;
+  width: 400px;
 }
 
 .avarias-list {
@@ -69,7 +66,7 @@
 }
 
 .avaria-item:hover {
-  background-color: #f5f5f5;
+  background-color: #e4e2e2;
 }
 
 .avaria-item .comprador,
@@ -132,28 +129,35 @@
 .back-button {
   position: absolute;
   top: 40px;
-  left: 90px;
+  left: 100px;
   text-decoration: none;
   color: #333;
   font-size: 18px;
-  display: flex;
-  align-items: center;
-  transition: background-color 0.3s;
+  display: inline-block;
+  padding: 8px 12px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .back-button span {
   margin-right: 5px;
   font-weight: bold;
+  font-size: large;
 }
 
 .back-button:hover {
-  transform: translateY(3px);
+  transform: scale(1.05);
+  background-color: #333;
+  color: #fff;
 }
 
 .lista-avarias {
   font-family: Arial, sans-serif;
-  margin: 10px;
+  margin: 5px;
   text-align: center;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .titulo {
@@ -181,7 +185,7 @@
 }
 
 .avaria-item:hover {
-  transform: translateY(-5px);
+  transform: scale(1.02);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -271,4 +275,27 @@
 .avaria-item button div span {
   display: block;
   text-align: left;
+}
+
+.pagination {
+  display: flex;
+  margin-top: 6px;
+  margin-bottom: 0;
+  align-items: center;
+}
+
+.page-arrow {
+  margin: 0 10px;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+}
+
+.page-number {
+  margin: 0 5px;
+  font-weight: bold;
 }
