@@ -24,7 +24,7 @@ const ListaAvarias = () => {
               id: key,
               ...value,
             }),
-          ).sort((a, b) => a.ENVIO.localeCompare(b.ENVIO)); // Ordenar por envio
+          ).sort((a, b) => new Date(b.ENVIO) - new Date(a.ENVIO));
           setAvarias(avariasArray);
         }
       } catch (error) {
@@ -53,16 +53,13 @@ const ListaAvarias = () => {
     setSelectedAvaria(null);
   };
 
-  // Paginação
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = avarias
     .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase()))).slice(indexOfFirstItem, indexOfLastItem);
 
-  // Número total de páginas
   const totalPages = Math.ceil(avarias.length / itemsPerPage);
 
-  // Alterar página
   const paginate = (pageNumber) => {
     if (pageNumber < 1) {
       setCurrentPage(1);
