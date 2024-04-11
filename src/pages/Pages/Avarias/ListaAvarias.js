@@ -24,7 +24,7 @@ const ListaAvarias = () => {
               id: key,
               ...value,
             }),
-          ).sort((a, b) => new Date(b.ENVIO) - new Date(a.ENVIO));
+          ).sort((a, b) => parseInt(b['Nº NOTA'], 10) - parseInt(a['Nº NOTA'], 10));
           setAvarias(avariasArray);
         }
       } catch (error) {
