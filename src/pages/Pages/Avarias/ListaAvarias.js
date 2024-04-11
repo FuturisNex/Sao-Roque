@@ -55,11 +55,13 @@ const ListaAvarias = () => {
   // Paginação
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = avarias.filter((avaria) =>
-    Object.values(avaria).some((value) =>
-      String(value).toLowerCase().includes(searchTerm.toLowerCase())
+  const currentItems = avarias
+    .filter((avaria) =>
+      Object.values(avaria).some((value) =>
+        String(value).toLowerCase().includes(searchTerm.toLowerCase())
+      )
     )
-  ).slice(indexOfFirstItem, indexOfLastItem);
+    .slice(indexOfFirstItem, indexOfLastItem);
 
   // Número total de páginas
   const totalPages = Math.ceil(avarias.length / itemsPerPage);
