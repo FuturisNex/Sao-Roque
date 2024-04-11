@@ -62,6 +62,7 @@ module.exports = {
     'jsx-a11y/no-autofocus': 0,
     'jsx-a11y/no-static-element-interactions': 0,
     'react/no-array-index-key': 0,
+    'eslint-disable-next-line no-console': 0,
     'jsx-a11y/anchor-is-valid': [
       'error',
       {

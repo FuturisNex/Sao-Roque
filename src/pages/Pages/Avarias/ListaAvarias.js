@@ -28,6 +28,7 @@ const ListaAvarias = () => {
           setAvarias(avariasArray);
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Erro ao buscar dados:', error);
       }
     };
@@ -56,12 +57,7 @@ const ListaAvarias = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = avarias
-    .filter((avaria) =>
-      Object.values(avaria).some((value) =>
-        String(value).toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    )
-    .slice(indexOfFirstItem, indexOfLastItem);
+    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase()))).slice(indexOfFirstItem, indexOfLastItem);
 
   // Número total de páginas
   const totalPages = Math.ceil(avarias.length / itemsPerPage);

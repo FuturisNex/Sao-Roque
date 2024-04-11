@@ -95,6 +95,7 @@ const RebaixaEnvio = () => {
         );
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
       setErrorMessage(error.message);
     } finally {
@@ -112,7 +113,7 @@ const RebaixaEnvio = () => {
 
       return () => clearTimeout(timeoutId);
     }
-    return () => {};
+    return () => { };
   }, [errorMessage]);
 
   useEffect(() => {

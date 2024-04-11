@@ -242,6 +242,7 @@ const FormPage = () => {
         );
       }
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error(error);
       setErrorMessage(error.message);
     } finally {
