@@ -8,7 +8,7 @@ const ListaAvarias = () => {
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(20);
 
   useEffect(() => {
     const avariasRef = database.ref('BancoDadosAvarias');
@@ -24,10 +24,11 @@ const ListaAvarias = () => {
               id: key,
               ...value,
             }),
-          ).sort((a, b) => b.SEQ - a.SEQ); // Ordenar por número SEQ, do maior para o menor
+          ).sort((a, b) => parseInt(b['SEQ'], 10) - parseInt(a['SEQ'], 10));
           setAvarias(avariasArray);
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Erro ao buscar dados:', error);
       }
     };
@@ -87,12 +88,34 @@ const ListaAvarias = () => {
         </div>
 
         <div className="lista-avarias">
-          <select className="selectAvaria" onChange={(e) => handleAvariaClick(avarias.find(avaria => avaria.id === e.target.value))}>
-            <option value="">Selecione uma avaria</option>
+          <ul className="avarias-list">
             {currentItems.map((avaria) => (
-              <option key={avaria.id} value={avaria.id}>{avaria.FILIAL} - {avaria.COMPRADOR} - {avaria.FORNECEDOR} - {avaria.TIPO}</option>
+              <li
+                key={avaria.id}
+                className={`avaria-item ${avaria.STATUS.toLowerCase()}`}
+              >
+                <button type="button" onClick={() => handleAvariaClick(avaria)}>
+                  <div>
+                    <span className="comprador">
+                      <b>LOJA:</b> {avaria.FILIAL}
+                    </span>
+                    <span className="comprador">
+                      <b>COMPRADOR:</b> {avaria.COMPRADOR}
+                    </span>
+                    <span className="fornecedor">
+                      <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
+                    </span>
+                    <span className="perca">
+                      <b>TIPO:</b> {avaria.TIPO}
+                    </span>
+                    <span className="nota">
+                      <b>Nº NOTA:</b> {avaria['Nº NOTA']}
+                    </span>
+                  </div>
+                </button>
+              </li>
             ))}
-          </select>
+          </ul>
 
           {selectedAvaria && (
             <div className="avaria-overlay">
