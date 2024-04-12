@@ -56,17 +56,15 @@ const ListaAvarias = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = avarias
-    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase())))
-    .slice(indexOfFirstItem, indexOfLastItem);
+    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase()))).slice(indexOfFirstItem, indexOfLastItem);
 
-  const lastPage = Math.ceil(currentItems.length / itemsPerPage);
-  setCurrentPage(lastPage === 0 ? 1 : lastPage);
+  const totalPages = Math.ceil(avarias.length / itemsPerPage);
 
   const paginate = (pageNumber) => {
     if (pageNumber < 1) {
       setCurrentPage(1);
-    } else if (pageNumber > lastPage) {
-      setCurrentPage(lastPage);
+    } else if (pageNumber > totalPages) {
+      setCurrentPage(totalPages);
     } else {
       setCurrentPage(pageNumber);
     }
@@ -156,7 +154,7 @@ const ListaAvarias = () => {
             <span>Página: </span>
             <span className="page-number">{currentPage}</span>
           </div>
-          <div className="page-arrow" onClick={() => paginate(currentPage + 1)} disabled={currentPage === lastPage}>
+          <div className="page-arrow" onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
             &#8250;
           </div>
         </div>
