@@ -24,7 +24,7 @@ const ListaAvarias = () => {
               id: key,
               ...value,
             }),
-          ).sort((a, b) => parseInt(b.SEQ, 10) - parseInt(a.SEQ, 10))
+          ).sort((a, b) => parseInt(b.SEQ, 10) - parseInt(a.SEQ, 10));
           setAvarias(avariasArray);
         }
       } catch (error) {
