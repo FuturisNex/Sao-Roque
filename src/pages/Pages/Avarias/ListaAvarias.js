@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import database from '../../../auth/firebase';
 import './Style/lista.css';
@@ -8,7 +7,7 @@ const ListaAvarias = () => {
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(50); // Definindo um estado para a quantidade de itens por página
+  const [itemsPerPage] = useState(50);
 
   useEffect(() => {
     const avariasRef = database.ref('BancoDadosAvarias');
@@ -25,13 +24,10 @@ const ListaAvarias = () => {
               ...value,
             }),
           ).sort((a, b) => parseInt(b.SEQ, 10) - parseInt(a.SEQ, 10));
-
-          // Atualizando o estado da quantidade de itens por página para a quantidade total de avarias
-          setItemsPerPage(avariasArray.length);
-
           setAvarias(avariasArray);
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Erro ao buscar dados:', error);
       }
     };
@@ -56,10 +52,23 @@ const ListaAvarias = () => {
     setSelectedAvaria(null);
   };
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = avarias
-    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase())));
+    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase()))).slice(indexOfFirstItem, indexOfLastItem);
 
-  // Removendo a lógica de paginação
+  const totalPages = Math.ceil(avarias.length / itemsPerPage);
+
+  const paginate = (pageNumber) => {
+    if (pageNumber < 1) {
+      setCurrentPage(1);
+    } else if (pageNumber > totalPages) {
+      setCurrentPage(totalPages);
+    } else {
+      setCurrentPage(pageNumber);
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="containerLista">
@@ -134,6 +143,19 @@ const ListaAvarias = () => {
               </div>
             </div>
           )}
+        </div>
+
+        <div className="pagination">
+          <div className="page-arrow" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+            &#8249;
+          </div>
+          <div className="page-numbers">
+            <span>Página: </span>
+            <span className="page-number">{currentPage}</span>
+          </div>
+          <div className="page-arrow" onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
+            &#8250;
+          </div>
         </div>
       </div>
     </div>
