@@ -84,7 +84,10 @@ const ListaAvarias = () => {
               className="search-input"
               placeholder="Pesquisar"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setCurrentPage(1);
+              }}
             />
           </div>
         </div>
