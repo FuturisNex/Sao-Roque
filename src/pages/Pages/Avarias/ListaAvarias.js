@@ -126,7 +126,7 @@ const ListaAvarias = () => {
                 <h2 className="titulo-detalhes">Detalhes da Avaria</h2>
                 <div className="avaria-detalhes">
                   {Object.entries(selectedAvaria)
-                    .filter(([key]) => key !== 'id')
+                    .filter(([key]) => key !== 'id' && key !== 'SEQ')
                     .map(([key, value]) => (
                       <div key={key} className="detalhe-item">
                         <span className="detalhe-label">
