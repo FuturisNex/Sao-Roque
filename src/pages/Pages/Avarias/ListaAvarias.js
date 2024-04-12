@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import database from '../../../auth/firebase';
 import './Style/lista.css';
@@ -25,10 +24,10 @@ const ListaAvarias = () => {
               ...value,
             }),
           ).sort((a, b) => parseInt(b.SEQ, 10) - parseInt(a.SEQ, 10));
-
           setAvarias(avariasArray);
         }
       } catch (error) {
+        // eslint-disable-next-line no-console
         console.error('Erro ao buscar dados:', error);
       }
     };
@@ -70,16 +69,6 @@ const ListaAvarias = () => {
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  useEffect(() => {
-    setCurrentPage(1); // Define a página atual como a primeira ao realizar uma pesquisa
-
-    // Se a quantidade de itens for menor do que a quantidade por página,
-    // ajusta a página atual para 1 para exibir os itens encontrados
-    if (currentItems.length < itemsPerPage) {
-      setCurrentPage(1);
-    }
-  }, [searchTerm, currentItems, itemsPerPage]);
 
   return (
     <div className="containerLista">
