@@ -8,7 +8,7 @@ const ListaAvarias = () => {
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(50);
 
   useEffect(() => {
     const avariasRef = database.ref('BancoDadosAvarias');
@@ -62,9 +62,11 @@ const ListaAvarias = () => {
 
   const paginate = (pageNumber) => {
     if (pageNumber < 1) {
-      setCurrentPage(1);
+    setCurrentPage(1);
+    } else if (pageNumber > totalPages) {
+    setCurrentPage(totalPages);
     } else {
-      setCurrentPage(pageNumber);
+    setCurrentPage(pageNumber);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
