@@ -62,11 +62,11 @@ const ListaAvarias = () => {
 
   const paginate = (pageNumber) => {
     if (pageNumber < 1) {
-    setCurrentPage(1);
+      setCurrentPage(1);
     } else if (pageNumber > totalPages) {
-    setCurrentPage(totalPages);
+      setCurrentPage(totalPages);
     } else {
-    setCurrentPage(pageNumber);
+      setCurrentPage(pageNumber);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
