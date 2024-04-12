@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import database from '../../../auth/firebase';
 import './Style/lista.css';
@@ -55,15 +56,17 @@ const ListaAvarias = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = avarias
-    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase()))).slice(indexOfFirstItem, indexOfLastItem);
+    .filter((avaria) => Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase())))
+    .slice(indexOfFirstItem, indexOfLastItem);
 
-  const totalPages = Math.ceil(avarias.length / itemsPerPage);
+  const lastPage = Math.ceil(currentItems.length / itemsPerPage);
+  setCurrentPage(lastPage === 0 ? 1 : lastPage);
 
   const paginate = (pageNumber) => {
     if (pageNumber < 1) {
       setCurrentPage(1);
-    } else if (pageNumber > totalPages) {
-      setCurrentPage(totalPages);
+    } else if (pageNumber > lastPage) {
+      setCurrentPage(lastPage);
     } else {
       setCurrentPage(pageNumber);
     }
@@ -153,7 +156,7 @@ const ListaAvarias = () => {
             <span>Página: </span>
             <span className="page-number">{currentPage}</span>
           </div>
-          <div className="page-arrow" onClick={() => paginate(currentPage + 1)} disabled={currentPage === totalPages}>
+          <div className="page-arrow" onClick={() => paginate(currentPage + 1)} disabled={currentPage === lastPage}>
             &#8250;
           </div>
         </div>
