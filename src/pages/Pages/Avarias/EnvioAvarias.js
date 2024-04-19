@@ -343,6 +343,7 @@ const FormPage = () => {
           <option value="11">Tomé de Souza</option>
           <option value="13">Artemia Express</option>
           <option value="14">Calamar Express</option>
+          <option value="15">santo Estevão</option>
         </select>
 
         <label htmlFor="comprador" className="form__label">
