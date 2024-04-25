@@ -26,7 +26,6 @@ import {
   ListaAvarias,
   AvariaMenu,
 } from './pages';
-import AvariasLojas from './pages/Pages/Avarias/AvariaLojas';
 
 const App = () => {
   const { currentMode, themeSettings } = useStateContext();
@@ -83,8 +82,6 @@ const App = () => {
                 <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
                 <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
                 <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
-                <Route path="/avarias-lojas" element={<AvariasLojas />} />
-
                 <Route path="*" element={<NotFound />} />
               </Routes>
               <Analytics />
