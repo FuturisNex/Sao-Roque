@@ -14,6 +14,7 @@
     "@syncfusion/ej2-react-popups": "^19.4.52",
     "@syncfusion/ej2-react-richtexteditor": "^19.4.50",
     "@syncfusion/ej2-react-schedule": "^19.4.50",
+    "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.3",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
