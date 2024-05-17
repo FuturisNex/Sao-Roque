@@ -1,5 +1,4 @@
 import React from 'react';
-import { Analytics } from '@vercel/analytics/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -84,7 +83,6 @@ const App = () => {
                 <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
-              <Analytics />
             </div>
           </div>
         </div>
