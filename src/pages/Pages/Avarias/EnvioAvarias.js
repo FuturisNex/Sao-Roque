@@ -407,6 +407,7 @@ const FormPage = () => {
           <option value="Perfumaria">Perfumaria</option>
           <option value="Limpeza">Limpeza</option>
           <option value="Utilidades">Utilidades</option>
+          <option value="Salgados, Defumados e Embutidos">Salgados, Defumados e Embutidos</option>
           <option value="Frios e Laticinios">Frios e Laticinios</option>
           <option value="Pet">Pet</option>
         </select>
