@@ -10,8 +10,6 @@ const EditarAvaria = () => {
 
   const detailOrder = [
     'FILIAL',
-    'ENVIO',
-    'STATUS',
     'RESPONSAVEL',
     'COMPRADOR',
     'CODIGO',
