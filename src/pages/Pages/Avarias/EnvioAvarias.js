@@ -357,11 +357,12 @@ const FormPage = () => {
           required
         >
           <option value="">Selecione o Comprador</option>
-          <option value="SÉRGIO">Sérgio</option>
           <option value="ROCHA">Rocha</option>
+          <option value="VITOR">Vitor</option>
+          <option value="SÉRGIO">Sérgio</option>
           <option value="MARIVONE">Marivone</option>
           <option value="JURANDIR">Jurandir</option>
-          <option value="VITOR">Vitor</option>
+          <option value="CASSIO">Cassio</option>
           <option value="LUCAS">Lucas</option>
         </select>
 
@@ -402,15 +403,15 @@ const FormPage = () => {
           required
         >
           <option value="">Selecione o departamento</option>
-          <option value="Mercearia">Mercearia</option>
+          <option value="Pet">Pet</option>
           <option value="Bebidas">Bebidas</option>
+          <option value="Mercearia">Mercearia</option>
           <option value="Perfumaria">Perfumaria</option>
           <option value="Limpeza">Limpeza</option>
           <option value="Utilidades">Utilidades</option>
+          <option value="Frios e Laticinios">Frios e Laticinios</option>
           <option value="Congelados e Prato Pronto">Congelados e Prato Pronto</option>
           <option value="Salgados, Defumados e Embutidos">Salgados, Defumados e Embutidos</option>
-          <option value="Frios e Laticinios">Frios e Laticinios</option>
-          <option value="Pet">Pet</option>
         </select>
 
         <label htmlFor="tipo" className="form__label">
