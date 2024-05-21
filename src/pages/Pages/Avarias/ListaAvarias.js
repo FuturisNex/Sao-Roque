@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import database from '../../../auth/firebase';
 import './Style/lista.css';
 
@@ -9,6 +9,22 @@ const ListaAvarias = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(50);
+  const [detailOrder] = useState([
+    'FILIAL',
+    'ENVIO',
+    'STATUS',
+    'RESPONSAVEL',
+    'COMPRADOR',
+    'CODIGO',
+    'FORNECEDOR',
+    'DEPARTAMENTO',
+    'Nº NOTA',
+    'VL NOTA',
+    'VOLUME',
+    'TIPO',
+    'OBSERVACAO',
+  ]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const avariasRef = database.ref('BancoDadosAvarias');
@@ -28,7 +44,6 @@ const ListaAvarias = () => {
           setAvarias(avariasArray);
         }
       } catch (error) {
-        // eslint-disable-next-line no-console
         console.error('Erro ao buscar dados:', error);
       }
     };
@@ -51,6 +66,20 @@ const ListaAvarias = () => {
 
   const handleCloseDetailCard = () => {
     setSelectedAvaria(null);
+  };
+
+  const handleEditAvaria = (id) => {
+    navigate(`/editar-avaria/${id}`);
+  };
+
+  const handleDeleteAvaria = async (id) => {
+    try {
+      await database.ref(`BancoDadosAvarias/${id}`).remove();
+      setAvarias(avarias.filter((avaria) => avaria.id !== id));
+      setSelectedAvaria(null);
+    } catch (error) {
+      console.error('Erro ao excluir avaria:', error);
+    }
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -104,6 +133,9 @@ const ListaAvarias = () => {
                     <span className="comprador">
                       <b>LOJA:</b> {avaria.FILIAL}
                     </span>
+                    <span className="nota">
+                      <b>Nº NOTA:</b> {avaria['Nº NOTA']}
+                    </span>
                     <span className="comprador">
                       <b>COMPRADOR:</b> {avaria.COMPRADOR}
                     </span>
@@ -112,9 +144,6 @@ const ListaAvarias = () => {
                     </span>
                     <span className="perca">
                       <b>TIPO:</b> {avaria.TIPO}
-                    </span>
-                    <span className="nota">
-                      <b>Nº NOTA:</b> {avaria['Nº NOTA']}
                     </span>
                   </div>
                 </button>
@@ -130,17 +159,18 @@ const ListaAvarias = () => {
                 </button>
                 <h2 className="titulo-detalhes">Detalhes da Avaria</h2>
                 <div className="avaria-detalhes">
-                  {Object.entries(selectedAvaria)
-                    .filter(([key]) => key !== 'id' && key !== 'SEQ')
-                    .map(([key, value]) => (
-                      <div key={key} className="detalhe-item">
-                        <span className="detalhe-label">
-                          {key.toUpperCase()}:
-                        </span>{' '}
-                        {value}
-                      </div>
-                    ))}
+                  {detailOrder.map((key) => (
+                    <div key={key} className="detalhe-item">
+                      <span className="detalhe-label">
+                        {key.toUpperCase()}:
+                      </span>{' '}
+                      {selectedAvaria[key]}
+                    </div>
+                  ))}
                 </div>
+                <button type="button" onClick={() => handleEditAvaria(selectedAvaria.id)} className="edit-button">
+                  Editar
+                </button>
               </div>
             </div>
           )}

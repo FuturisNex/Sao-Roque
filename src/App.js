@@ -25,6 +25,7 @@ import {
   ListaAvarias,
   AvariaMenu,
 } from './pages';
+import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
 
 const App = () => {
   const { currentMode, themeSettings } = useStateContext();
@@ -81,6 +82,7 @@ const App = () => {
                 <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
                 <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
                 <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
+                <Route path="/editar-avaria/:id" component={EditarAvaria} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
