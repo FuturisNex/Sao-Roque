@@ -22,8 +22,7 @@
   background-color: #e6e6e6d2;
   border-radius: 0.5rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  max-width: auto;
-  width: 90%;
+  width: 98%;
   margin-top: 10px;
   margin-bottom: 10px;
   flex-grow: 1;
@@ -50,13 +49,6 @@
   margin: 0;
 }
 
-.avaria-item {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  overflow: hidden;
-}
-
 .avaria-item button {
   background: none;
   border: none;
@@ -66,8 +58,19 @@
   padding: 10px;
 }
 
+.avaria-item {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 80%;
+  transition: background-color 0.3s;
+  border-radius: 10px;
+  text-align: left;
+}
+
 .avaria-item:hover {
-  background-color: #e4e2e2;
+  background-color: #a7dcff;
+  box-shadow: 0 6px rgb(190, 190, 190)ba(0, 0, 0, 0.2);
 }
 
 .avaria-item .comprador,
@@ -130,7 +133,7 @@
 .back-button {
   position: absolute;
   top: 25px;
-  left: 80px;
+  left: 30px;
   text-decoration: none;
   color: #ffffff;
   background-color: #1190f8;
@@ -170,22 +173,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.avaria-item {
-  padding: 20px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  max-width: 800px;
-  width: 100%;
-  transition: background-color 0.3s;
-  border-radius: 10px;
-  text-align: left;
-}
-
-.avaria-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 .pendente {
