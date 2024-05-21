@@ -12,8 +12,12 @@ const EditarAvaria = () => {
       try {
         const avariaRef = database.ref(`BancoDadosAvarias/${id}`);
         const snapshot = await avariaRef.once('value');
-        const avariaData = snapshot.val();
-        setAvaria(avariaData);
+        if (snapshot.exists()) {
+          const avariaData = snapshot.val();
+          setAvaria(avariaData);
+        } else {
+          console.error('Avaria não encontrada');
+        }
       } catch (error) {
         console.error('Erro ao buscar dados:', error);
       }
@@ -30,7 +34,8 @@ const EditarAvaria = () => {
     }));
   };
 
-  const handleSave = async () => {
+  const handleSave = async (e) => {
+    e.preventDefault();
     try {
       await database.ref(`BancoDadosAvarias/${id}`).update(avaria);
       navigate('/avarias/avarias-home');
