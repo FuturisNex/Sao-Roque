@@ -54,7 +54,7 @@
 
 
 .titulo {
-  font-size: 28px;
+  font-size: 22px;
   margin-bottom: 20px;
 }
 
@@ -90,13 +90,13 @@
   cursor: pointer;
 }
 
-.logo-form {
+.logo-form_avaria {
   background-size: cover;
   width: 100%;
-  max-width: 12em;
+  max-width: 10em;
   height: auto;
   margin: 0 auto;
-  margin-bottom: 20px;
+  margin-bottom: 9px;
 }
 
 .form {
@@ -104,7 +104,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem;
+  padding: 2rem 4rem;
   background-color: #e6e6e6d2;
   border-radius: 0.8rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -118,7 +118,6 @@
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  margin-top: 1rem;
 }
 
 .select {
@@ -130,7 +129,6 @@
   width: 100%;
   border-radius: 0.5rem;
   padding: 0.7rem;
-  margin-bottom: 1rem;
   border: none;
   border-bottom: 2px solid #ccc;
   font-size: 1rem;

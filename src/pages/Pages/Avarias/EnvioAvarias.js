@@ -311,7 +311,7 @@ const FormPage = () => {
         <Link to="/avarias/avarias-lista" className="back-button">
           Lista de Avarias
         </Link>
-        <img src={logo} alt="Logo" className="logo-form" />
+        <img src={logo} alt="Logo" className="logo-form_avaria" />
         <h1 className="titulo">Painel de Envio Avarias</h1>
         <label htmlFor="responsavel" className="form__label">
           Nome do Responsavel:
