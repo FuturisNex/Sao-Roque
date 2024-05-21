@@ -336,14 +336,14 @@ const FormPage = () => {
           required
         >
           <option value="">Selecione a Loja</option>
-          <option value="1">Santa Mônica</option>
-          <option value="2">Castro Alves</option>
-          <option value="4">Fraga Maia</option>
-          <option value="5">Artemia Pires</option>
-          <option value="11">Tomé de Souza</option>
-          <option value="13">Artemia Express</option>
-          <option value="14">Calamar Express</option>
-          <option value="15">santo Estevão</option>
+          <option value="1">01  - Santa Mônica</option>
+          <option value="2">02  - Castro Alves</option>
+          <option value="4">04  - Fraga Maia</option>
+          <option value="5">05  - Artemia Pires</option>
+          <option value="11">11 - Tomé de Souza</option>
+          <option value="13">14 - Artemia Express</option>
+          <option value="14">13 - Calamar Express</option>
+          <option value="15">15 - santo Estevão</option>
         </select>
 
         <label htmlFor="comprador" className="form__label">
