@@ -1,11 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import database from '../../../auth/firebase';
+import './Style/EditarAvaria.css';
 
 const EditarAvaria = () => {
   const { id } = useParams();
   const [avaria, setAvaria] = useState(null);
   const navigate = useNavigate();
+
+  const detailOrder = [
+    'FILIAL',
+    'ENVIO',
+    'STATUS',
+    'RESPONSAVEL',
+    'COMPRADOR',
+    'CODIGO',
+    'FORNECEDOR',
+    'DEPARTAMENTO',
+    'Nº NOTA',
+    'VL NOTA',
+    'VOLUME',
+    'TIPO',
+    'OBSERVACAO',
+  ];
 
   useEffect(() => {
     const fetchAvaria = async () => {
@@ -38,34 +55,35 @@ const EditarAvaria = () => {
     e.preventDefault();
     try {
       await database.ref(`BancoDadosAvarias/${id}`).update(avaria);
-      navigate('/avarias/avarias-home');
+      navigate('/avarias/avarias-lista');
     } catch (error) {
       console.error('Erro ao salvar dados:', error);
     }
   };
 
   if (!avaria) {
-    return <div>Carregando...</div>;
+    return <div className="loading">Carregando...</div>;
   }
 
   return (
-    <div>
-      <h2>Editar Avaria</h2>
-      <form onSubmit={handleSave}>
-        {Object.entries(avaria).map(([key, value]) => (
-          <div key={key}>
-            <label>
+    <div className="editar-avaria-container">
+      <h2 className="editar-avaria-titulo">Editar Avaria</h2>
+      <form onSubmit={handleSave} className="editar-avaria-form">
+        {detailOrder.map((key) => (
+          <div key={key} className="form-group">
+            <label className="form-label">
               {key}:
               <input
                 type="text"
                 name={key}
-                value={value}
+                value={avaria[key] || ''}
                 onChange={handleChange}
+                className="form-input"
               />
             </label>
           </div>
         ))}
-        <button type="submit">Salvar</button>
+        <button type="submit" className="save-button">Salvar</button>
       </form>
     </div>
   );
