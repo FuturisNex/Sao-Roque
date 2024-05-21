@@ -129,16 +129,15 @@
 
 .back-button {
   position: absolute;
-  top: 40px;
-  left: 100px;
+  top: 25px;
+  left: 80px;
   text-decoration: none;
-  color: #333;
+  color: #ffffff;
+  background-color: #1190f8;
   font-size: 18px;
   display: inline-block;
+  border-radius: 7px;
   padding: 8px 12px;
-  border: 2px solid #333;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
 }
 
 .back-button span {
@@ -148,8 +147,7 @@
 }
 
 .back-button:hover {
-  transform: scale(1.05);
-  background-color: #333;
+  background-color: #40a9ff;
   color: #fff;
 }
 
