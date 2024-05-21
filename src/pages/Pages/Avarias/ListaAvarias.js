@@ -72,16 +72,6 @@ const ListaAvarias = () => {
     navigate(`/editar-avaria/${id}`);
   };
 
-  const handleDeleteAvaria = async (id) => {
-    try {
-      await database.ref(`BancoDadosAvarias/${id}`).remove();
-      setAvarias(avarias.filter((avaria) => avaria.id !== id));
-      setSelectedAvaria(null);
-    } catch (error) {
-      console.error('Erro ao excluir avaria:', error);
-    }
-  };
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = avarias
