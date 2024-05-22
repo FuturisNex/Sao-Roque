@@ -21,6 +21,13 @@ const EditarAvaria = () => {
     'OBSERVACAO',
   ];
 
+  const selectOptions = {
+    FILIAL: ['1 - Santa Monica', '2 - Fraga Maia', '5 - Artemia Pires', '11 - Tomé de Souza', '13 - Calamar', '14 - Artemia Express', '15 - Santo Estevão'],
+    COMPRADOR: ['Rocha', 'Vitor', 'Sérgio', 'Jurandir', 'Ana Carina', 'Lucas', 'Cassio'],
+    DEPARTAMENTO: ['Pet', 'Bebidas', 'Mercearia', 'Perfumaria', 'Limpeza', 'Utilidades', 'Frios e Laticinios', 'Congelados e Prato Pronto', 'Salgados, Defumados e Embutidos'],
+    TIPO: ['Avarias Hortis', 'Validade | Vencido', 'Avarias | Danificado | Imprópio para Consumo'],
+  };
+
   useEffect(() => {
     const fetchAvaria = async () => {
       try {
@@ -70,13 +77,28 @@ const EditarAvaria = () => {
           <div key={key} className="form-group">
             <label className="form-label">
               {key}:
-              <input
-                type="text"
-                name={key}
-                value={avaria[key] || ''}
-                onChange={handleChange}
-                className="form-input"
-              />
+              {selectOptions[key] ? (
+                <select
+                  name={key}
+                  value={avaria[key] || ''}
+                  onChange={handleChange}
+                  className="form__input select"
+                >
+                  {selectOptions[key].map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  name={key}
+                  value={avaria[key] || ''}
+                  onChange={handleChange}
+                  className="form-input"
+                />
+              )}
             </label>
           </div>
         ))}
