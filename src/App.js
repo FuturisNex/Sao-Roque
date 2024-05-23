@@ -1,11 +1,12 @@
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useStateContext } from './contexts/ContextProvider';
 import { Navbar, Sidebar, ThemeSettings } from './components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
 import {
   Winthor,
   AgendaFornecedor,
