@@ -37,25 +37,25 @@
   }
   
   .custom-button {
-    background-color: #00c000;
+    background-color: #0096ec;
     border: none;
     color: white;
     transition: background-color 0.3s, box-shadow 0.3s;
   }
   
   .custom-button:hover {
-    background-color: #009200;
+    background-color: #007ac0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
   
   .custom-button:active {
-    background-color: #009200;
+    background-color: #007ac0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;
   }
   
   .custom-button:focus {
     outline: none;
-    box-shadow: 0 0 0 0.2rem rgba(0, 255, 85, 0.5);
+    box-shadow: 0 0 0 0.2rem rgba(0, 119, 255, 0.5);
   }
   
   .cancel-button {
