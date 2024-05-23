@@ -57,18 +57,18 @@
   
   .cancel-button {
     background-color: transparent;
-    color: #6c757d;
+    color: #5d6063;
     transition: color 0.3s, border-color 0.3s;
   }
   
   .cancel-button:hover {
     background-color: transparent;
-    color: #323638;
+    color: #b30d0d;
   }
   
   .cancel-button:active {
     background-color: transparent;
-    color: #323638;
+    color: #b30d0d;
   }
   
   .cancel-button:focus {
