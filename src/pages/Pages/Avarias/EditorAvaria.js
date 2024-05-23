@@ -70,6 +70,7 @@ const EditarAvaria = () => {
   const confirmSave = async () => {
     try {
       await database.ref(`BancoDadosAvarias/${id}`).update(avaria);
+      // eslint-disable-next-line no-use-before-define
       await atualizarPlanilhaGoogle(avaria);
       navigate('/avarias/avarias-lista');
     } catch (error) {
