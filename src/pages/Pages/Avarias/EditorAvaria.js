@@ -54,18 +54,10 @@ const EditarAvaria = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    let newValue = value;
-
-    if (name === 'FILIAL') {
-      const option = selectOptions.FILIAL.find((opt) => opt === value);
-      if (option) {
-        newValue = option.split(' - ')[0];
-      }
-    }
 
     setAvaria((prevAvaria) => ({
       ...prevAvaria,
-      [name]: newValue,
+      [name]: value,
     }));
   };
 
@@ -77,6 +69,7 @@ const EditarAvaria = () => {
   const confirmSave = async () => {
     try {
       await database.ref(`BancoDadosAvarias/${id}`).update(avaria);
+      await atualizarPlanilhaGoogle(avaria);
       navigate('/avarias/avarias-lista');
     } catch (error) {
       console.error('Erro ao salvar dados:', error);
@@ -85,12 +78,30 @@ const EditarAvaria = () => {
     }
   };
 
+  const atualizarPlanilhaGoogle = async (dados) => {
+    const response = await fetch('https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exechttps://script.google.com/macros/s/AKfycbz7kI9rHuXhAhN61yxDVJqS9t-xm0NOs4Bvz3Rua6nk5NWa1PkoQy1Ujv4MaSrI_uJY/exec', {
+      method: 'POST',
+      body: JSON.stringify(dados)
+    });
+    if (response.ok) {
+      console.log('Dados atualizados na planilha do Google com sucesso!');
+    } else {
+      console.error('Erro ao atualizar dados na planilha do Google:', response.status);
+    }
+  };
+
   const getChangedFields = () => {
     if (!originalAvaria || !avaria) return [];
 
-    return Object.keys(avaria)
-      .filter((key) => avaria[key] !== originalAvaria[key])
-      .map((key) => ({ field: key, oldValue: originalAvaria[key], newValue: avaria[key] }));
+    const changedFields = [];
+
+    for (const key in avaria) {
+      if (avaria.hasOwnProperty(key) && avaria[key] !== originalAvaria[key]) {
+        changedFields.push({ field: key, oldValue: originalAvaria[key], newValue: avaria[key] });
+      }
+    }
+
+    return changedFields;
   };
 
   const changedFields = getChangedFields();
@@ -110,12 +121,12 @@ const EditarAvaria = () => {
               {selectOptions[key] ? (
                 <select
                   name={key}
-                  value={selectOptions[key].find((opt) => opt.startsWith(avaria[key])) || ''}
+                  value={avaria[key] || ''}
                   onChange={handleChange}
                   className="form__input select"
                 >
-                  {selectOptions[key].map((option) => (
-                    <option key={option} value={option}>
+                  {selectOptions[key].map((option, index) => (
+                    <option key={index} value={option.split(' - ')[0]}>
                       {option}
                     </option>
                   ))}
