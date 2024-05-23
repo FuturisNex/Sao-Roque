@@ -69,9 +69,14 @@ const EditarAvaria = () => {
 
   const confirmSave = async () => {
     try {
-      await database.ref(`BancoDadosAvarias/${id}`).update(avaria);
+      const dadosParaEnviar = {
+        ...avaria,
+        SEQ: id,
+      };
+
+      await database.ref(`BancoDadosAvarias/${id}`).update(dadosParaEnviar);
       // eslint-disable-next-line no-use-before-define
-      await atualizarPlanilhaGoogle(avaria);
+      await atualizarPlanilhaGoogle(dadosParaEnviar);
       navigate('/avarias/avarias-lista');
     } catch (error) {
       console.error('Erro ao salvar dados:', error);
