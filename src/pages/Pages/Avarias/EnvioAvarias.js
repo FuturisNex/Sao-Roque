@@ -244,7 +244,7 @@ const FormPage = () => {
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error(error);
-      setErrorMessage(error.message);
+      setErrorMessage(error.response ? error.response.data : 'Erro ao enviar formulário. Tente novamente mais tarde.');
     } finally {
       setIsSubmitting(false);
     }

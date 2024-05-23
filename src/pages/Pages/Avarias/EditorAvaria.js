@@ -83,7 +83,7 @@ const EditarAvaria = () => {
   const atualizarPlanilhaGoogle = async (dados) => {
     try {
       const response = await axios.post(
-        'https://script.google.com/macros/s/AKfycbwWjP-HkA6k8DBzQIteFnCmh7nPAJeHQ412G1OwMcM20-B26Zh_5v2SIYbJcIbFEKgv/exec',
+        'https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exec',
         {
           seq: id,
           dados: {
