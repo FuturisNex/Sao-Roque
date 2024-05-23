@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Modal, Button, Table } from 'react-bootstrap';
+import axios from 'axios';
 import database from '../../../auth/firebase';
 import './Style/EditarAvaria.css';
 import './Style/CustomModal.css';
-import axios from 'axios';
 
 const EditarAvaria = () => {
   const { id } = useParams();
@@ -98,7 +98,7 @@ const EditarAvaria = () => {
             TIPO: dados.TIPO,
             OBSERVACAO: dados.OBSERVACAO,
           },
-        }
+        },
       );
 
       if (response.status === 200) {
