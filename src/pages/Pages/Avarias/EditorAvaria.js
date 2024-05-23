@@ -57,7 +57,7 @@ const EditarAvaria = () => {
     let newValue = value;
 
     if (name === 'FILIAL') {
-      const option = selectOptions.FILIAL.find(opt => opt === value);
+      const option = selectOptions.FILIAL.find((opt) => opt === value);
       if (option) {
         newValue = option.split(' - ')[0];
       }
@@ -110,7 +110,7 @@ const EditarAvaria = () => {
               {selectOptions[key] ? (
                 <select
                   name={key}
-                  value={selectOptions[key].find(opt => opt.startsWith(avaria[key])) || ''}
+                  value={selectOptions[key].find((opt) => opt.startsWith(avaria[key])) || ''}
                   onChange={handleChange}
                   className="form__input select"
                 >
