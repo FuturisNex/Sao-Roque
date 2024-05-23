@@ -4,6 +4,7 @@ import { Modal, Button, Table } from 'react-bootstrap';
 import database from '../../../auth/firebase';
 import './Style/EditarAvaria.css';
 import './Style/CustomModal.css';
+import axios from 'axios';
 
 const EditarAvaria = () => {
   const { id } = useParams();
@@ -29,7 +30,7 @@ const EditarAvaria = () => {
     FILIAL: ['1 - Santa Monica', '2 - Castro Alves', '4 - Fraga Maia', '5 - Artemia Pires', '11 - Tomé de Souza', '13 - Calamar', '14 - Artemia Express', '15 - Santo Estevão'],
     COMPRADOR: ['Rocha', 'Vitor', 'Sérgio', 'Jurandir', 'Ana Carina', 'Lucas', 'Cassio'],
     DEPARTAMENTO: ['Pet', 'Bebidas', 'Mercearia', 'Perfumaria', 'Limpeza', 'Utilidades', 'Frios e Laticinios', 'Congelados e Prato Pronto', 'Salgados, Defumados e Embutidos'],
-    TIPO: ['Avarias Hortis', 'Validade | Vencido', 'Avarias | Danificado | Imprópio para Consumo'],
+    TIPO: ['Avarias Hortis', 'Validade | Vencido', 'Avarias | Danificado | Impróprio para Consumo'],
   };
 
   useEffect(() => {
@@ -79,14 +80,33 @@ const EditarAvaria = () => {
   };
 
   const atualizarPlanilhaGoogle = async (dados) => {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exechttps://script.google.com/macros/s/AKfycbz7kI9rHuXhAhN61yxDVJqS9t-xm0NOs4Bvz3Rua6nk5NWa1PkoQy1Ujv4MaSrI_uJY/exec', {
-      method: 'POST',
-      body: JSON.stringify(dados)
-    });
-    if (response.ok) {
-      console.log('Dados atualizados na planilha do Google com sucesso!');
-    } else {
-      console.error('Erro ao atualizar dados na planilha do Google:', response.status);
+    try {
+      const response = await axios.post(
+        'https://script.google.com/macros/s/AKfycbwWjP-HkA6k8DBzQIteFnCmh7nPAJeHQ412G1OwMcM20-B26Zh_5v2SIYbJcIbFEKgv/exec',
+        {
+          seq: id,
+          dados: {
+            FILIAL: dados.FILIAL,
+            COMPRADOR: dados.COMPRADOR,
+            CODIGO: dados.CODIGO,
+            FORNECEDOR: dados.FORNECEDOR,
+            DEPARTAMENTO: dados.DEPARTAMENTO,
+            'Nº NOTA': dados['Nº NOTA'],
+            'VL NOTA': dados['VL NOTA'],
+            VOLUME: dados.VOLUME,
+            TIPO: dados.TIPO,
+            OBSERVACAO: dados.OBSERVACAO,
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        console.log('Dados atualizados na planilha do Google com sucesso!');
+      } else {
+        console.error('Erro ao atualizar dados na planilha do Google:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao enviar dados para o Google Apps Script:', error);
     }
   };
 
@@ -95,11 +115,11 @@ const EditarAvaria = () => {
 
     const changedFields = [];
 
-    for (const key in avaria) {
-      if (avaria.hasOwnProperty(key) && avaria[key] !== originalAvaria[key]) {
+    Object.keys(avaria).forEach((key) => {
+      if (Object.prototype.hasOwnProperty.call(avaria, key) && avaria[key] !== originalAvaria[key]) {
         changedFields.push({ field: key, oldValue: originalAvaria[key], newValue: avaria[key] });
       }
-    }
+    });
 
     return changedFields;
   };
