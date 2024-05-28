@@ -82,9 +82,8 @@ const Sidebar = () => {
               <NavLink
                 to={`/${link.url}`}
                 key={link.name}
-                activeClassName="active"
                 onClick={handleCloseSideBar}
-                style={({ isActive }) => getStyle(isActive)}
+                style={getStyle(isActive(link.url))}
                 className={isActive ? 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active' : 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link'}
                 target={link.target === '_blank' ? '_blank' : undefined}
               >
