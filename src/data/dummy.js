@@ -15,7 +15,7 @@ export const gridOrderImage = (props) => (
 );
 
 export const links = [
-    {
+  {
     links: [
       {
         name: 'Inicio',
