@@ -19,10 +19,6 @@ const Sidebar = () => {
     return null;
   }
 
-  const isActive = (url) => {
-    return pathname === `/${url}`;
-  };
-
   const getStyle = (isActive) => ({ backgroundColor: isActive ? currentColor : 'transparent', });
 
   return (
