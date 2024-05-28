@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { links } from '../data/dummy';
 import { MdOutlineCancel } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 import logo from '../data/img/logotipo.png';
+import { links } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
@@ -78,6 +78,7 @@ const Sidebar = () => {
               <NavLink
                 to={`/${link.url}`}
                 key={link.name}
+                activeClassName="active"
                 onClick={handleCloseSideBar}
                 style={({ isActive }) => getStyle(isActive)}
                 className={isActive ? 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active' : 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link'}
