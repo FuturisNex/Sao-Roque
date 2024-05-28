@@ -35,12 +35,12 @@ const Sidebar = () => {
     >
       <img
         src={logo}
-        alt='Logo'
+        alt="Logo"
         className="Sidebar-logo"
         style={{
-          display: "block",
-          margin: "25px auto -20px",
-          width: "60%",
+          display: 'block',
+          margin: '25px auto -20px',
+          width: '60%',
         }}
       />
       <div className="flex justify-between items-center sidebar-header">
