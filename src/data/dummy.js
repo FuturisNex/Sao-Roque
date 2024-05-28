@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChartBar, FaTags, FaFileContract } from 'react-icons/fa';
-import { AiOutlineCalendar, AiOutlineShoppingCart, AiFillPlayCircle } from 'react-icons/ai';
+import { AiOutlineCalendar, AiFillHome, AiOutlineShoppingCart, AiFillPlayCircle } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
 import { IoMdPerson } from 'react-icons/io';
 
@@ -15,6 +15,15 @@ export const gridOrderImage = (props) => (
 );
 
 export const links = [
+    {
+    links: [
+      {
+        name: 'Inicio',
+        url: 'comercial/home',
+        icon: <AiFillHome />,
+      },
+    ],
+  },
   {
     links: [
       {
