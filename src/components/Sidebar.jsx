@@ -7,8 +7,7 @@ import { links } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
-  const { currentColor, activeMenu, setActiveMenu, screenSize } =
-    useStateContext();
+  const { currentColor, activeMenu, setActiveMenu, screenSize } = useStateContext();
 
   const handleCloseSideBar = () => {
     if (activeMenu !== undefined && screenSize <= 900) {
@@ -37,11 +36,11 @@ const Sidebar = () => {
       <img
         src={logo}
         alt='Logo'
-        className='Sidebar-logo'
+        className="Sidebar-logo"
         style={{
-          display: 'block',
-          margin: '25px auto -20px',
-          width: '60%',
+          display: "block",
+          margin: "25px auto -20px",
+          width: "60%",
         }}
       />
       <div className="flex justify-between items-center sidebar-header">
@@ -64,7 +63,7 @@ const Sidebar = () => {
       </div>
       <div
         className="mt-10 sidebar-links"
-        style={{ marginTop: "2.5rem", padding: "0 1rem" }}
+        style={{ marginTop: '2.5rem', padding: '0 1rem' }}
       >
         {links.map((item) => (
           <div key={item.title}>
@@ -77,11 +76,10 @@ const Sidebar = () => {
                 key={link.name}
                 onClick={handleCloseSideBar}
                 style={({ isActive }) => ({
-                  backgroundColor: isActive ? currentColor : "",
+                  backgroundColor: isActive ? currentColor : '',
                 })}
-                className={({ isActive }) => isActive ? "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active" : "flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link"
-                }
-                target={link.target === "_blank" ? "_blank" : undefined}
+                className={({ isActive }) => isActive ? 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active' : 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link'}
+                target={link.target === '_blank' ? '_blank' : undefined}
               >
                 {link.icon}
                 <span className="capitalize sidebar-link-text">
