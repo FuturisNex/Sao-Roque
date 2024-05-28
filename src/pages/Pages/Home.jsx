@@ -4,18 +4,6 @@ import './Home.css';
 const ReportsPage = () => (
   <div className="reports-page">
     <div className="report-container">
-      <h2>Relatório 1</h2>
-      <iframe
-        title="Rebaixa"
-        width="1200"
-        height="150"
-        src="https://lookerstudio.google.com/embed/reporting/6dd0c967-915c-47e4-a828-4ac1f129d7bd/page/aKZnD"
-        frameBorder="0"
-        allowFullScreen
-        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
-      />
-    </div>
-    <div className="report-container">
       <h2>Performance Varejo</h2>
       <iframe
         title="Relatório 2"
