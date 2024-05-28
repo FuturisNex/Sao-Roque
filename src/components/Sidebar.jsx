@@ -20,8 +20,8 @@ const Sidebar = () => {
   }
 
   const getStyle = (isActive) => ({
-  backgroundColor: isActive ? currentColor : ''
-});
+    backgroundColor: isActive ? currentColor : '',
+  });
 
   return (
     <div
