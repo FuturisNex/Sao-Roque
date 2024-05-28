@@ -28,7 +28,7 @@ import {
   AvariaMenu,
 } from './pages';
 import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
-import ReportsPage from "./pages/Pages/Home";
+import ReportsPage from './pages/Pages/Home';
 
 const App = () => {
   const { currentMode, themeSettings } = useStateContext();
