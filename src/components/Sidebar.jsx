@@ -19,19 +19,19 @@ const Sidebar = () => {
     return null;
   }
 
+  // Função para determinar a classe do NavLink com base em isActive
+  const getNavLinkClass = (isActive) => {
+    if (isActive) {
+      return 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active';
+    } else {
+      return 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link';
+    }
+  };
+
   return (
     <div
       className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 sidebar"
-      style={{
-        width: '275px',
-        backgroundColor: '#fff',
-        boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)',
-        display: 'flex',
-        flexDirection: 'column',
-        paddingBottom: '10px',
-        overflow: 'hidden',
-        transition: 'all 0.3s ease',
-      }}
+      style={{ width: '275px', backgroundColor: '#fff', boxShadow: '2px 0 5px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'column', paddingBottom: '10px', overflow: 'hidden', transition: 'all 0.3s ease' }}
     >
       <img
         src={logo}
@@ -61,10 +61,7 @@ const Sidebar = () => {
           </button>
         </TooltipComponent>
       </div>
-      <div
-        className="mt-10 sidebar-links"
-        style={{ marginTop: '2.5rem', padding: '0 1rem' }}
-      >
+      <div className="mt-10 sidebar-links" style={{ marginTop: '2.5rem', padding: '0 1rem' }}>
         {links.map((item) => (
           <div key={item.title}>
             <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase sidebar-category">
@@ -78,13 +75,11 @@ const Sidebar = () => {
                 style={({ isActive }) => ({
                   backgroundColor: isActive ? currentColor : '',
                 })}
-                className={({ isActive }) => isActive ? 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active' : 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link'}
+                className={getNavLinkClass}
                 target={link.target === '_blank' ? '_blank' : undefined}
               >
                 {link.icon}
-                <span className="capitalize sidebar-link-text">
-                  {link.name}
-                </span>
+                <span className="capitalize sidebar-link-text">{link.name}</span>
               </NavLink>
             ))}
           </div>
