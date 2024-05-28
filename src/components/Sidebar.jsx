@@ -19,6 +19,10 @@ const Sidebar = () => {
     return null;
   }
 
+  const getStyle = (isActive) => ({
+  backgroundColor: isActive ? currentColor : ''
+});
+
   return (
     <div
       className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 sidebar"
@@ -75,14 +79,8 @@ const Sidebar = () => {
                 to={`/${link.url}`}
                 key={link.name}
                 onClick={handleCloseSideBar}
-                style={({ isActive }) => ({
-                  backgroundColor: isActive ? currentColor : ''
-                })}
-                className={({ isActive }) =>
-                  isActive
-                    ? 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active'
-                    : 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link'
-                }
+                style={getStyle(isActive)}
+                className={isActive ? 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2 sidebar-link active' : 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2 sidebar-link'}
                 target={link.target === '_blank' ? '_blank' : undefined}
               >
                 {link.icon}
