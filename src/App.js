@@ -28,6 +28,7 @@ import {
   AvariaMenu,
 } from './pages';
 import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
+import ReportsPage from "./pages/Pages/Home";
 
 const App = () => {
   const { currentMode, themeSettings } = useStateContext();
@@ -48,6 +49,7 @@ const App = () => {
     '/comercial/avarias',
     '/comercial/encarte',
     '/comercial/winthor',
+    '/comercial/home',
     '/validades/rebaixa-envio',
   ];
 
@@ -81,6 +83,7 @@ const App = () => {
                 <Route path="/comercial/avarias" element={<AvariaMenu />} />
                 <Route path="/comercial/encarte" element={<Encarte />} />
                 <Route path="/comercial/winthor" element={<Winthor />} />
+                <Route path="/comercial/home" element={<ReportsPage />} />
                 <Route path="/validades/rebaixa-envio" element={<RebaixaEnvio />} />
                 <Route path="/avarias/avarias-lista" element={<ListaAvarias />} />
                 <Route path="/avarias/avarias-home" element={<EnvioAvarias />} />
