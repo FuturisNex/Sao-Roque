@@ -58,7 +58,7 @@ const App = () => {
     <div className={isDarkMode ? 'dark' : ''}>
       <BrowserRouter>
         <div className={`flex relative ${isDarkMode ? 'dark:bg-main-dark-bg' : 'bg-main-bg'}`}>
-          <div className={`fixed md:static ${isAllowedPath ? "w-72" : "w-0"} sidebar ${isDarkMode ? "dark:bg-secondary-dark-bg" : ""} bg-white`}>
+          <div className={`fixed md:static ${isAllowedPath ? 'w-72' : 'w-0'} sidebar ${isDarkMode ? 'dark:bg-secondary-dark-bg' : ''} bg-white`}>
             {isAllowedPath && <Sidebar />}
           </div>
           <div className={`w-full min-h-screen flex-2 ${isAllowedPath ? 'dark:bg-main-dark-bg bg-main-bg' : 'bg-main-bg dark:bg-main-dark-bg'}`}>
