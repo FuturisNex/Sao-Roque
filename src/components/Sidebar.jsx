@@ -23,17 +23,16 @@ const Sidebar = () => {
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
 
   return (
-    <div className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10" style={{ width: '275px' }}>
+    <div className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10" style={{borderRadius: '15px', margin: '10px', backgroundColor: '#fff', width: '275px'}}>
       <img
         src={logo}
         alt="Logo"
-        className="Sidebar-logo"
         style={{
           display: 'flex',
           margin: 'auto',
           marginTop: '25px',
           marginBottom: '-20px',
-          width: '60%',
+          width: '50%',
         }}
       />
       <div className="flex justify-between items-center">
@@ -50,7 +49,7 @@ const Sidebar = () => {
           </button>
         </TooltipComponent>
       </div>
-      <div className="mt-10 ">
+      <div className="mt-1 ">
         {links.map((item) => (
           <div key={item.title}>
             <p className="text-gray-400 dark:text-gray-400 m-3 mt-4 uppercase">

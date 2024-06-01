@@ -46,7 +46,6 @@ const Navbar = () => {
   const [notificationCount, setNotificationCount] = useState(0);
   const [bellAnimation, setBellAnimation] = useState(false);
 
-  // Move the declaration of handleBellAnimation here
   const handleBellAnimation = () => {
     setBellAnimation(true);
     setTimeout(() => {
@@ -157,17 +156,7 @@ const Navbar = () => {
           </div>
         </Tooltip>
       </div>
-      {isClicked.notification && <Notification />}
       {isClicked.userProfile && <UserProfile />}
-      {playSound && (
-        <audio
-          src="../data/som.mp3"
-          autoPlay
-          onEnded={() => setPlaySound(false)}
-        >
-          <track kind="captions" srcLang="en" label="Portuguese captions" />
-        </audio>
-      )}
     </div>
   );
 };

@@ -2,8 +2,7 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useStateContext } from './contexts/ContextProvider';
-import { Navbar, Sidebar, ThemeSettings } from './components';
+import { Navbar, Sidebar } from './components';
 import './App.css';
 
 import {
@@ -30,9 +29,6 @@ import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
 import ReportsPage from './pages/Pages/Home';
 
 const App = () => {
-  const { currentMode, themeSettings } = useStateContext();
-
-  const isDarkMode = currentMode === 'Dark';
 
   const allowedPaths = [
     '/comercial/comprador/sergio',
@@ -55,18 +51,19 @@ const App = () => {
   const isAllowedPath = allowedPaths.some((path) => window.location.pathname.startsWith(path));
 
   return (
-    <div className={isDarkMode ? 'dark' : ''}>
+    <div>
       <BrowserRouter>
-        <div className={`flex relative ${isDarkMode ? 'dark:bg-main-dark-bg' : 'bg-main-bg'}`}>
-          <div className={`fixed md:static ${isAllowedPath ? 'w-72' : 'w-0'} sidebar ${isDarkMode ? 'dark:bg-secondary-dark-bg' : ''} bg-white`}>
-            {isAllowedPath && <Sidebar />}
-          </div>
+        <div className={`flex relative`}>
+          {isAllowedPath && (
+            <div className={`fixed md:static sidebar`}>
+              <Sidebar />
+            </div>
+          )}
           <div className={`w-full min-h-screen flex-2 ${isAllowedPath ? 'dark:bg-main-dark-bg bg-main-bg' : 'bg-main-bg dark:bg-main-dark-bg'}`}>
             <div className={`fixed md:static bg-main-bg ${isAllowedPath ? 'dark:bg-main-dark-bg' : ''} navbar w-full`}>
               {isAllowedPath && <Navbar />}
             </div>
             <div>
-              {themeSettings && <ThemeSettings />}
               <Routes>
                 <Route path="/comercial/comprador/sergio" element={<Sergio />} />
                 <Route path="/comercial/comprador/marivone" element={<Marivone />} />

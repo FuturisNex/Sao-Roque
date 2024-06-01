@@ -87,15 +87,6 @@ export const links = [
       },
     ],
   },
-  {
-    links: [
-      {
-        name: 'Curso Whintor',
-        url: 'comercial/winthor',
-        icon: <AiFillPlayCircle />,
-      },
-    ],
-  },
 ];
 
 export const themeColors = [

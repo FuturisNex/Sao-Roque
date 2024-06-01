@@ -1,69 +1,24 @@
 @import url('https://cdn.syncfusion.com/ej2/material.css');
 
+.md\:mr-6 {
+  background-color: white;
+  margin-right: 1.5rem;
+  margin: 10px;
+  border-radius: 10px;
+}
+
 .sidebar {
-  box-shadow: rgb(113 122 131 / 11%) 0px 7px 30px 0px;
-}
-
-.nav-item,
-.navbar {
-  display: inline;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Estilos do Sidebar */
-.Sidebar {
-  height: 100%;
-  overflow: auto;
-  padding-bottom: 10px;
-  width: 275px;
-}
-
-.Sidebar-logo {
-  display: flex;
-  margin: auto;
-  margin-top: 25px;
-  margin-bottom: -20px;
-  width: 60%;
-}
-
-.Sidebar .activeLink {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding-left: 4px;
-  padding-top: 3px;
-  padding-bottom: 2.5px;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
-  margin: 2px;
-  background-color: #4b5563;
-}
-
-.Sidebar .normalLink {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding-left: 4px;
-  padding-top: 3px;
-  padding-bottom: 2.5px;
-  border-radius: 10px;
-  color: #6b7280;
-  font-size: 16px;
-  margin: 2px;
-}
-
-.Sidebar .normalLink:hover {
-  color: black;
-  background-color: #f3f4f6;
+  background-color: transparent;
 }
 
 a {
   padding-top: 10px;
   color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
   text-decoration: auto;
+}
+
+.bg-main-bg {
+  background-color: transparent;
 }
 
 .capitalize {
