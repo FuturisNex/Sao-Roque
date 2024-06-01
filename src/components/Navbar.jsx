@@ -11,7 +11,7 @@ import './Style/navbar.css';
 import './Style/notificationBellAnimation.css';
 
 import avatar from '../data/img/avatar.png';
-import { Notification, UserProfile } from '.';
+import { UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor, children }) => (
@@ -42,7 +42,6 @@ const Navbar = () => {
     setScreenSize,
   } = useStateContext();
   const [piscarStatus, setPiscarStatus] = useState(false);
-  const [playSound, setPlaySound] = useState(false);
   const [notificationCount, setNotificationCount] = useState(0);
   const [bellAnimation, setBellAnimation] = useState(false);
 
@@ -83,7 +82,6 @@ const Navbar = () => {
       setPiscarStatus(value === true || value === 'true');
 
       if (value === true || value === 'true') {
-        setPlaySound(true);
         handleBellAnimation();
         toast('Nova notificação!', {
           position: toast.POSITION.END_CENTER,
@@ -105,7 +103,6 @@ const Navbar = () => {
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
   const handleNotificationClick = () => {
     handleClick('notification');
-    setPlaySound(false);
     setBellAnimation(true);
     setTimeout(() => {
       setBellAnimation(false);

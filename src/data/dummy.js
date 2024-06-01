@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaChartBar, FaTags, FaFileContract } from 'react-icons/fa';
-import { AiOutlineCalendar, AiFillHome, AiOutlineShoppingCart, AiFillPlayCircle } from 'react-icons/ai';
+import { AiOutlineCalendar, AiFillHome, AiOutlineShoppingCart } from 'react-icons/ai';
 import { FiShoppingBag } from 'react-icons/fi';
 import { IoMdPerson } from 'react-icons/io';
 

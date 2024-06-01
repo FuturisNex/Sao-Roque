@@ -20,10 +20,10 @@ const Sidebar = () => {
   }
 
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg  text-white  text-md m-2';
-  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
+  const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray hover:text-gray-500 m-2';
 
   return (
-    <div className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10" style={{borderRadius: '15px', margin: '10px', backgroundColor: '#fff', width: '275px'}}>
+    <div className="h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10" style={{ borderRadius: '15px', margin: '10px', backgroundColor: '#fff', width: '275px' }}>
       <img
         src={logo}
         alt="Logo"
@@ -64,6 +64,7 @@ const Sidebar = () => {
                   backgroundColor: isActive ? currentColor : '',
                 })}
                 className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                activeStyle={{ backgroundColor: currentColor, color: '#fff' }}
                 target={link.target === '_blank' ? '_blank' : undefined}
               >
                 {link.icon}

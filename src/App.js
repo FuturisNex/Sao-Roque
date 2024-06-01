@@ -29,7 +29,6 @@ import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
 import ReportsPage from './pages/Pages/Home';
 
 const App = () => {
-
   const allowedPaths = [
     '/comercial/comprador/sergio',
     '/comercial/comprador/marivone',
@@ -53,9 +52,9 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <div className={`flex relative`}>
+        <div className={'flex relative'}>
           {isAllowedPath && (
-            <div className={`fixed md:static sidebar`}>
+            <div className={'fixed md:static sidebar'}>
               <Sidebar />
             </div>
           )}
