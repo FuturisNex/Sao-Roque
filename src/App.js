@@ -29,7 +29,6 @@ import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
 import ReportsPage from './pages/Pages/Home';
 
 const App = () => {
-
   const allowedPaths = [
     '/comercial/comprador/sergio',
     '/comercial/comprador/marivone',
