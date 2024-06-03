@@ -18,15 +18,6 @@ export const links = [
   {
     links: [
       {
-        name: 'Inicio',
-        url: 'comercial/home',
-        icon: <AiFillHome />,
-      },
-    ],
-  },
-  {
-    links: [
-      {
         name: 'Comprador',
         url: 'comercial/comprador',
         icon: <IoMdPerson />,
