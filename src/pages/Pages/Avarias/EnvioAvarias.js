@@ -360,7 +360,7 @@ const FormPage = () => {
           <option value="Rocha">Rocha</option>
           <option value="Vitor">Vitor</option>
           <option value="Sérgio">Sérgio</option>
-          <option value="Marivone">Marivone</option>
+          <option value="Carina">Carina</option>
           <option value="Jurandir">Jurandir</option>
           <option value="Cassio">Cassio</option>
           <option value="Lucas">Lucas</option>
