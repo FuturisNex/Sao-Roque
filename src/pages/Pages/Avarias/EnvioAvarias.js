@@ -162,6 +162,12 @@ const FormPage = () => {
     handleChange({ target: { name, value: value.toUpperCase() } });
   };
 
+  const handleChangeObs = (event) => {
+    setResponsavel(event.target.value.toUpperCase());
+    const { name, value } = event.target;
+    handleChange({ target: { name, value: value.toUpperCase() } });
+  };
+
   const handleVlnotaChange = (event) => {
     const { name, value } = event.target;
     handleChange({ target: { name, value: value.toUpperCase() } });
@@ -481,7 +487,7 @@ const FormPage = () => {
           id="obs"
           name="obs"
           value={obs}
-          onChange={handleChangeResponsavel}
+          onChange={handleChangeObs}
           className="form__input"
           onWheel={(e) => e.preventDefault()}
         />
