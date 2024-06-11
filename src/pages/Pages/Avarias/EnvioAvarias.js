@@ -163,7 +163,7 @@ const FormPage = () => {
   };
 
   const handleChangeObs = (event) => {
-    setResponsavel(event.target.value.toUpperCase());
+    setObs(event.target.value.toUpperCase());
     const { name, value } = event.target;
     handleChange({ target: { name, value: value.toUpperCase() } });
   };
