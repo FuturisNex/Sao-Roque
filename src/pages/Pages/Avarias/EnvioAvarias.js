@@ -472,6 +472,20 @@ const FormPage = () => {
           onWheel={(e) => e.preventDefault()}
           required
         />
+
+        <label htmlFor="obs" className="form__label">
+          Observações:
+        </label>
+        <input
+          type="text"
+          id="obs"
+          name="obs"
+          value={obs}
+          onChange={handleChangeResponsavel}
+          className="form__input"
+          onWheel={(e) => e.preventDefault()}
+        />
+
         <button
           type="submit"
           className="btn-primary"
