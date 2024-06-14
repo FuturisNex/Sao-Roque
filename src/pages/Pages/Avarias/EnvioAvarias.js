@@ -328,6 +328,7 @@ const FormPage = () => {
           value={responsavel}
           onChange={handleChangeResponsavel}
           className="form__input"
+          placeholder="Seu nome"
           required
         />
 
@@ -382,6 +383,7 @@ const FormPage = () => {
           value={cod}
           onChange={handleCompradorChange}
           className="form__input"
+          placeholder="Código do Fornecedor"
           required
         />
 
@@ -395,6 +397,7 @@ const FormPage = () => {
           value={fornecedor}
           onChange={handleChange}
           className="form__input"
+          placeholder="Nome do Fornecedor"
           required
         />
 
@@ -449,6 +452,7 @@ const FormPage = () => {
           onChange={handleNotaChange}
           className="form__input"
           onWheel={(e) => e.preventDefault()}
+          placeholder="Número da Nota"
           required
         />
 
@@ -462,6 +466,7 @@ const FormPage = () => {
           value={vlnota}
           onChange={handleVlnotaChange}
           className="form__input"
+          placeholder="Valor da Nota"
           required
         />
 
@@ -476,6 +481,7 @@ const FormPage = () => {
           onChange={handleVolumeChange}
           className="form__input"
           onWheel={(e) => e.preventDefault()}
+          placeholder="Volume da Nota"
           required
         />
 
@@ -489,6 +495,7 @@ const FormPage = () => {
           value={obs}
           onChange={handleChangeObs}
           className="form__input"
+          placeholder="Sua Observação"
           onWheel={(e) => e.preventDefault()}
         />
 
