@@ -131,12 +131,12 @@ const ListaAvarias = () => {
                     <span className="comprador">
                       <b>COMPRADOR:</b> {avaria.COMPRADOR}
                     </span>
-                    </span>
                     <span className="perca">
                       <b>TIPO:</b> {avaria.TIPO}
                     </span>
                     <span className="fornecedor">
                       <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
+                    </span>
                     <span className="perca">
                       <b>TIPO:</b> {avaria.TIPO}
                     </span>
