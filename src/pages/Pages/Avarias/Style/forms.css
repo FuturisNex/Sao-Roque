@@ -54,7 +54,7 @@
 
 
 .titulo {
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 20px;
 }
 
@@ -93,10 +93,10 @@
 .logo-form_avaria {
   background-size: cover;
   width: 100%;
-  max-width: 10em;
+  max-width: 9em;
   height: auto;
   margin: 0 auto;
-  margin-bottom: 9px;
+  margin-bottom: 8px;
 }
 
 .form {
@@ -115,9 +115,10 @@
 }
 
 .form__label {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: .5rem;
+  width: 100%;
 }
 
 .select {
@@ -129,6 +130,7 @@
   width: 100%;
   border-radius: 0.5rem;
   padding: 0.7rem;
+  margin-bottom: 0.5rem;
   border: none;
   border-bottom: 2px solid #ccc;
   font-size: 1rem;
