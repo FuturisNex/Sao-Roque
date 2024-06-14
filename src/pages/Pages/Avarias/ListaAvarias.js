@@ -138,7 +138,7 @@ const ListaAvarias = () => {
                       <b>FORNECEDOR:</b> {avaria.FORNECEDOR}
                     </span>
                     <span className="perca">
-                      <b>OBSERVAçÃO:</b> {avaria.OBSERVACAO}
+                      <b>OBSERVAÇÃO:</b> {avaria.OBSERVACAO}
                     </span>
                   </div>
                 </button>
