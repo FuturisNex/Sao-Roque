@@ -3,183 +3,119 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #bebebe;
-  background-size: cover;
+  background-color: #cecece;
+  padding: 20px;
 }
 
-.filter-container {
+.filter-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
   margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.store-select,
+.department-select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 200px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  max-width: 200px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  padding-bottom: 15px;
+  padding: 2rem;
   background-color: #e6e6e6d2;
-  border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 98%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  flex-grow: 1;
-  min-height: 97vh;
-  max-height: 97vh;
-}
-
-.search-bar {
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-.search-input {
-  padding: 8px;
-  border: 1px solid #8d8b8b;
-  background-color: #e6e6e6;
-  border-radius: 4px;
-  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
 }
 
 .avarias-list {
   list-style: none;
   padding: 0;
   margin: 0;
-}
-
-.avaria-item button {
-  background: none;
-  border: none;
-  cursor: pointer;
   width: 100%;
-  text-align: left;
-  padding: 10px;
 }
 
-.avaria-item {
-  padding: 10px;
-  margin-bottom: 10px;
-  cursor: pointer;
-  width: 80%;
-  transition: background-color 0.3s;
-  border-radius: 10px;
-  text-align: left;
+.avaria-content {
+  display: flex;
+  align-items: center;
 }
 
-.avaria-item:hover {
-  background-color: #a7dcffb6;
-  box-shadow: 0 6px rgb(190, 190, 190)ba(0, 0, 0, 0.2);
-}
-
-.avaria-item .comprador,
-.avaria-item .fornecedor,
-.avaria-item .perca,
-.avaria-item .nota {
-  margin-bottom: 5px;
-}
-
-.avaria-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+.filial-box {
+  width: 60px;
+  height: 60px;
+  background-color: #f1f1f1;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
-}
-
-.avaria-card-details {
-  background-color: #fff;
-  border-radius: 4px;
-  padding: 20px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  width: 100%;
-}
-
-.avaria-detalhes {
-  margin-top: 10px;
-}
-
-.detalhe-item {
-  margin-bottom: 10px;
-}
-
-.detalhe-label {
+  margin-right: 15px;
   font-weight: bold;
-  margin-right: 5px;
+  font-size: 1.2rem;
+  border-radius: 5px;
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  color: #333;
-}
-
-.titulo-detalhes {
-  margin-bottom: 15px;
-}
-
-.back-button {
-  position: absolute;
-  top: 25px;
-  left: 30px;
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #1190f8;
-  font-size: 18px;
-  display: inline-block;
-  border-radius: 7px;
-  padding: 8px 12px;
-}
-
-.back-button span {
-  margin-right: 5px;
-  font-weight: bold;
-  font-size: large;
-}
-
-.back-button:hover {
-  background-color: #40a9ff;
-  color: #fff;
-}
-
-.lista-avarias {
-  font-family: Arial, sans-serif;
-  margin: 5px;
-  text-align: center;
-  width: 100%;
-  overflow-y: auto;
-}
-
-.titulo {
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-.avarias-list {
-  list-style: none;
-  padding: 0;
+.avaria-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: start;
 }
 
-.pendente {
-  background-color: #ff000081;
+.avaria-item {
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.avaria-item .nota,
+.avaria-item .comprador,
+.avaria-item .fornecedor,
+.avaria-item .perca {
+  margin-bottom: 5px;
+}
+
+.enviado {
+  border-left: 5px solid #f0e68c;
 }
 
 .resolvido {
-  background-color: #00d60080;
+  border-left: 5px solid #98fb98;
+}
+
+.cancelado {
+  border-left: 5px solid #f08080;
+}
+
+.em-tratamento {
+  border-left: 5px solid #add8e6;
 }
 
 .avaria-overlay {
@@ -208,28 +144,23 @@
 
 .close {
   position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  background-color: transparent;
+  top: 10px;
+  right: 10px;
+  background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
-  color: #555;
-  border-radius: 50%;
-  transition: transform 0.3s ease-in-out;
-}
-
-.close:hover {
-  transform: scale(1.1);
+  font-size: 18px;
+  color: #333;
 }
 
 .titulo-detalhes {
-  font-size: 20px;
   margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #333;
 }
 
-.detalhes {
-  font-size: 16px;
+.avaria-detalhes {
+  margin-bottom: 20px;
 }
 
 .detalhe-item {
@@ -238,41 +169,43 @@
 
 .detalhe-label {
   font-weight: bold;
-  margin-right: 5px;
-  color: #555;
 }
 
-.avaria-detalhes {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+.edit-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.avaria-item .titulo {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.avaria-item .dados {
-  font-weight: normal;
-}
-
-.avaria-item button div span {
-  display: block;
-  text-align: left;
+.edit-button:hover {
+  background: #45a049;
 }
 
 .pagination {
   display: flex;
-  margin-top: 6px;
-  margin-bottom: 0;
+  justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .page-arrow {
-  margin: 0 10px;
-  font-size: 25px;
   cursor: pointer;
+  font-size: 24px;
+  padding: 0 10px;
+}
+
+.page-arrow[disabled] {
+  color: #ccc;
+  cursor: not-allowed;
 }
 
 .page-numbers {
@@ -281,25 +214,54 @@
 }
 
 .page-number {
-  margin: 0 5px;
+  margin-left: 5px;
   font-weight: bold;
 }
 
-.edit-button {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  color: #000000;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+.back-button {
+  align-self: flex-start;
+  text-decoration: none;
+  color: black;
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
-.edit-button :hover {
-  color: #e23e3e;
+.back-button:hover {
+  background-color: #f0f0f0;
 }
 
-.edit-button svg {
-  width: 20px;
-  height: 20px;
+@media (max-width: 768px) {
+  .form1 {
+    padding: 1.5rem;
+  }
+
+  .avaria-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filial-box {
+    margin-bottom: 10px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .store-select,
+  .department-select {
+    max-width: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .avaria-card-details {
+    width: 95%;
+  }
 }
