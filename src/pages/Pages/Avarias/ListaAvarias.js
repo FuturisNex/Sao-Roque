@@ -10,7 +10,7 @@ const ListaAvarias = () => {
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(50);
+  const [itemsPerPage] = useState(15);
   const [detailOrder] = useState([
     'FILIAL',
     'ENVIO',
