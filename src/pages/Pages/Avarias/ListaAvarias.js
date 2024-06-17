@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { database } from '../../../auth/firebase';
+import database from '../../../auth/firebase';
 import './Style/lista.css';
 
 const ListaAvarias = () => {
