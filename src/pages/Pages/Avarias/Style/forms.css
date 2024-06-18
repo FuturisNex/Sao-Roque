@@ -1,10 +1,7 @@
 .containerAvarias {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #bebebe;
-  background-size: cover;
+  padding: 20px;
+  background-color: #cecece;
+  font-family: 'Arial', sans-serif;
 }
 .confirmationModal {
   background-color: #fff;
@@ -55,7 +52,7 @@
 
 .titulo {
   text-align: center;
-  font-size: 26px;
+  font-size: 23px;
   color: #333;
   font-weight: 600;
 }
@@ -104,29 +101,19 @@
 .form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 4rem;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
   background-color: #e6e6e6d2;
-  border-radius: 0.8rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  max-width: 680px;
-  width: 90%;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form__label {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 5px;
   width: 100%;
+  margin-bottom: -5px;
   color: #555;
-}
-
-.select {
-  background-color: white;
-  color: black;
 }
 
 .form__input {
@@ -140,6 +127,11 @@
 
 .form__input:focus {
   border-color: #3498db;
+}
+
+.select {
+  background-color: white;
+  color: black;
 }
 
 .options {
