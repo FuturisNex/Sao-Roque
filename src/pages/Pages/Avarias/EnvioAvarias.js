@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Style/forms.css';
 import { Link } from 'react-router-dom';
-import logo from '../../../data/img/logotipo.png';
 import fornecedorData from '../../../data/fornecedores.json';
 
 const FormPage = () => {
