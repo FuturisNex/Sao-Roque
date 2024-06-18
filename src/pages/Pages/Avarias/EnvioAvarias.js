@@ -276,7 +276,7 @@ const FormPage = () => {
   return (
     <div className="containerAvarias">
         <Link to="/avarias/avarias-lista" className="back-button">
-          Lista de Avarias
+        Lista de Avarias
         </Link>
       {isSubmitted && successMessage && (
         <div className="successMessage">
