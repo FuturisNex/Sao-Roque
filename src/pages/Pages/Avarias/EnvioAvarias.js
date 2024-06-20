@@ -34,6 +34,7 @@ const FormPage = () => {
       if (matchingProduct) {
         setComprador(matchingProduct.Comprador || '');
         return matchingProduct.Fornecedor || '';
+      // eslint-disable-next-line no-else-return
       } else {
         setComprador('');
         return '';
