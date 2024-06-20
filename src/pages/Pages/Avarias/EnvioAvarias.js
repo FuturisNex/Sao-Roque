@@ -41,7 +41,7 @@ const FormPage = () => {
       }
     } catch (error) {
       setErrorMessage(
-        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.'
+        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.',
       );
     }
   };
@@ -59,7 +59,7 @@ const FormPage = () => {
           setPreviousCod(cod);
         } catch (error) {
           setErrorMessage(
-            'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.'
+            'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.',
           );
         } finally {
           setIsLoading(false);
