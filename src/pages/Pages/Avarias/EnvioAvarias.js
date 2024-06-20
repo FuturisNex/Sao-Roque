@@ -27,32 +27,42 @@ const FormPage = () => {
 
   const fetchProductDescription = () => {
     try {
-      const matchingProduct = fornecedorData.find(
+      const matchingProduct = fornecedorData.Fornecedores.find(
         (product) => product.Codigo === parseInt(cod, 10),
       );
 
       if (matchingProduct) {
-        return matchingProduct.Fornecedor;
+        setComprador(matchingProduct.Comprador || '');
+        return matchingProduct.Fornecedor || '';
+      } else {
+        setComprador('');
+        return '';
       }
-
-      return '';
     } catch (error) {
       setErrorMessage(
-        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.',
+        'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.'
       );
     }
   };
 
   useEffect(() => {
-    const fetchData = () => {
+    const fetchData = async () => {
       if (cod !== '' && cod !== previousCod) {
         setIsLoading(true);
         setErrorMessage('');
         setSuccessMessage('');
-        const description = fetchProductDescription();
-        setFornecedor(description);
-        setPreviousCod(cod);
-        setIsLoading(false);
+
+        try {
+          const description = fetchProductDescription();
+          setFornecedor(description);
+          setPreviousCod(cod);
+        } catch (error) {
+          setErrorMessage(
+            'Erro ao buscar a razão social do fornecedor. Tente novamente mais tarde.'
+          );
+        } finally {
+          setIsLoading(false);
+        }
       }
     };
 
@@ -191,8 +201,7 @@ const FormPage = () => {
   const handleCompradorChange = (event) => {
     const { name, value } = event.target;
     handleChange({ target: { name, value: value.toUpperCase() } });
-    const sanitizedValue = value.replace(/[^0-9,]/g, '');
-    setCod(sanitizedValue);
+    setCod(value);
   };
 
   const formatCurrency = (value) => {
@@ -351,26 +360,6 @@ const FormPage = () => {
           <option value="15">15 - santo Estevão</option>
         </select>
 
-        <label htmlFor="comprador" className="form__label">
-          Selecione o Comprador:
-        </label>
-        <select
-          id="comprador"
-          value={comprador}
-          onChange={(event) => setComprador(event.target.value)}
-          className="form__input select"
-          required
-        >
-          <option value="">Selecione o Comprador</option>
-          <option value="Rocha">Rocha</option>
-          <option value="Vitor">Vitor</option>
-          <option value="Sérgio">Sérgio</option>
-          <option value="Carina">Carina</option>
-          <option value="Jurandir">Jurandir</option>
-          <option value="Cassio">Cassio</option>
-          <option value="Lucas">Lucas</option>
-        </select>
-
         <label htmlFor="cod" className="form__label">
           Código do Fornecedor:
         </label>
@@ -398,6 +387,26 @@ const FormPage = () => {
           placeholder="Nome do Fornecedor"
           required
         />
+
+        <label htmlFor="comprador" className="form__label">
+          Selecione o Comprador:
+        </label>
+        <select
+          id="comprador"
+          value={comprador}
+          onChange={(event) => setComprador(event.target.value)}
+          className="form__input select"
+          required
+        >
+          <option value="">Selecione o Comprador</option>
+          <option value="Rocha">Rocha</option>
+          <option value="Vitor">Vitor</option>
+          <option value="Sergio">Sergio</option>
+          <option value="Carina">Carina</option>
+          <option value="Jurandir">Jurandir</option>
+          <option value="Cassio">Cassio</option>
+          <option value="Lucas">Lucas</option>
+        </select>
 
         <label htmlFor="departamento" className="form__label">
           Selecione o Departamento:
