@@ -33,7 +33,7 @@ const ListaAvarias = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const avariasRef = database.ref('BancoDadosAvarias');
+    const avariasRef = database.ref('NotasAvarias');
 
     const fetchData = async () => {
       try {
