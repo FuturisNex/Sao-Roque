@@ -32,6 +32,8 @@ const ListaAvarias = () => {
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const navigate = useNavigate();
 
+  const storeOrder = [1, 2, 4, 5, 11, 13, 14, 15];
+
   useEffect(() => {
     const avariasRef = database.ref('NotasAvarias');
 
@@ -50,9 +52,12 @@ const ListaAvarias = () => {
 
           const storeSet = new Set(avariasArray.map((avaria) => avaria.FILIAL));
           const departmentSet = new Set(avariasArray.map((avaria) => avaria.DEPARTAMENTO));
-          // eslint-disable-next-line no-shadow
-          const storeOptions = Array.from(storeSet).filter(Boolean);
-          // eslint-disable-next-line no-shadow
+
+          const storeOptions = Array.from(storeSet)
+            .filter(Boolean)
+            .sort((a, b) => storeOrder.indexOf(parseInt(a)) - storeOrder.indexOf(parseInt(b)))
+            .filter(store => storeOrder.includes(parseInt(store))); // Apenas mostrar as lojas na ordem desejada
+
           const departmentOptions = Array.from(departmentSet).filter(Boolean);
 
           setStoreOptions(storeOptions);
