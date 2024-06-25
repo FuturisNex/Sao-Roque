@@ -53,15 +53,15 @@ const ListaAvarias = () => {
           const storeSet = new Set(avariasArray.map((avaria) => avaria.FILIAL));
           const departmentSet = new Set(avariasArray.map((avaria) => avaria.DEPARTAMENTO));
 
-          const storeOptions = Array.from(storeSet)
+          const fetchedStoreOptions = Array.from(storeSet)
             .filter(Boolean)
-            .sort((a, b) => storeOrder.indexOf(parseInt(a)) - storeOrder.indexOf(parseInt(b)))
-            .filter(store => storeOrder.includes(parseInt(store))); // Apenas mostrar as lojas na ordem desejada
+            .sort((a, b) => storeOrder.indexOf(parseInt(a, 10)) - storeOrder.indexOf(parseInt(b, 10)))
+            .filter((store) => storeOrder.includes(parseInt(store, 10))); // Apenas mostrar as lojas na ordem desejada
 
-          const departmentOptions = Array.from(departmentSet).filter(Boolean);
+          const fetchedDepartmentOptions = Array.from(departmentSet).filter(Boolean);
 
-          setStoreOptions(storeOptions);
-          setDepartmentOptions(departmentOptions);
+          setStoreOptions(fetchedStoreOptions);
+          setDepartmentOptions(fetchedDepartmentOptions);
           setAvarias(avariasArray);
         }
       } catch (error) {
