@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import database from '../../../auth/firebase';
@@ -125,9 +125,6 @@ const ListaAvarias = () => {
 
   return (
     <div className="containerLista">
-      <Link to="/avarias/avarias-home" className="back-button">
-        Enviar Avarias
-      </Link>
       <div className="form1">
         <div className="filter-options">
           <div className="search-bar">

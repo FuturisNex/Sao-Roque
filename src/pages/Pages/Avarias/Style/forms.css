@@ -1,6 +1,7 @@
 .containerAvarias {
   padding: 20px;
   background-color: #cecece;
+  margin-left: 70px;
   font-family: 'Arial', sans-serif;
 }
 .confirmationModal {
@@ -104,7 +105,7 @@
   gap: 15px;
   max-width: 600px;
   margin: 0 auto;
-  background-color: #e6e6e6d2;
+  background-color: #f0f0f0ec;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Style/forms.css';
-import { Link } from 'react-router-dom';
 import fornecedorData from '../../../data/fornecedores.json';
 
 const FormPage = () => {
@@ -285,9 +284,6 @@ const FormPage = () => {
 
   return (
     <div className="containerAvarias">
-      <Link to="/avarias/avarias-lista" className="back-button">
-        Lista de Avarias
-      </Link>
       {isSubmitted && successMessage && (
         <div className="successMessage">
           <span>{successMessage}</span>

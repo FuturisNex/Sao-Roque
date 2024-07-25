@@ -27,6 +27,7 @@ import {
 } from './pages';
 import EditarAvaria from './pages/Pages/Avarias/EditorAvaria';
 import ReportsPage from './pages/Pages/Home';
+import SidebarAvaria from './components/SidebarAvaria';
 
 const App = () => {
   const allowedPaths = [
@@ -47,7 +48,12 @@ const App = () => {
     '/validades/rebaixa-envio',
   ];
 
+  const allowedPathsAvaria = [
+    '/avarias',
+  ];
+
   const isAllowedPath = allowedPaths.some((path) => window.location.pathname.startsWith(path));
+  const isAllowedPathAvaria = allowedPathsAvaria.some((path) => window.location.pathname.startsWith(path));
 
   return (
     <div>
@@ -56,6 +62,11 @@ const App = () => {
           {isAllowedPath && (
             <div className="fixed md:static sidebar">
               <Sidebar />
+            </div>
+          )}
+          {isAllowedPathAvaria && (
+            <div className="fixed md:static sidebar">
+              <SidebarAvaria />
             </div>
           )}
           <div className={`w-full min-h-screen flex-2 ${isAllowedPath ? 'dark:bg-main-dark-bg bg-main-bg' : 'bg-main-bg dark:bg-main-dark-bg'}`}>
