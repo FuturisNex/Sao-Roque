@@ -9,7 +9,7 @@ const ListaAvarias = () => {
   const [avarias, setAvarias] = useState([]);
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [noteNumberFilter, setNoteNumberFilter] = useState(''); // Novo estado para filtro por nº nota
+  const [noteNumberFilter, setNoteNumberFilter] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(100);
   const [detailOrder] = useState([
@@ -29,6 +29,7 @@ const ListaAvarias = () => {
   ]);
   const [storeOptions, setStoreOptions] = useState([]);
   const [departmentOptions, setDepartmentOptions] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [noteNumberOptions, setNoteNumberOptions] = useState([]);
   const [selectedStore, setSelectedStore] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
