@@ -150,6 +150,15 @@ const ListaAvarias = () => {
               }}
             />
           </div>
+          <div className="note-number-filter">
+            <input
+              type="text"
+              className="note-number-input"
+              placeholder="Filtrar por Nº NOTA"
+              value={noteNumberFilter}
+              onChange={handleNoteNumberChange}
+            />
+          </div>
           {storeOptions.length > 0 && (
             <select
               className="store-select"
@@ -174,15 +183,6 @@ const ListaAvarias = () => {
               ))}
             </select>
           )}
-          <div className="note-number-filter">
-            <input
-              type="text"
-              className="note-number-input"
-              placeholder="Filtrar por Nº NOTA"
-              value={noteNumberFilter}
-              onChange={handleNoteNumberChange}
-            />
-          </div>
         </div>
 
         <div className="lista-avarias">

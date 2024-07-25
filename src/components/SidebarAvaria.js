@@ -7,7 +7,7 @@ const SidebarAvaria = () => {
   const location = useLocation();
 
   return (
-    <div className="sidebar">
+    <div className="sidebarA">
       <Link to="/avarias/avarias-home" className={`sidebar-icon ${location.pathname === '/avarias/avarias-home' ? 'active' : ''}`}>
         <FaBoxOpen />
         <span>Enviar</span>
