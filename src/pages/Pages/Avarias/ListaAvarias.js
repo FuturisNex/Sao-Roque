@@ -9,6 +9,7 @@ const ListaAvarias = () => {
   const [avarias, setAvarias] = useState([]);
   const [selectedAvaria, setSelectedAvaria] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [noteNumberFilter, setNoteNumberFilter] = useState(''); // Novo estado para filtro por nº nota
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(100);
   const [detailOrder] = useState([
@@ -28,6 +29,7 @@ const ListaAvarias = () => {
   ]);
   const [storeOptions, setStoreOptions] = useState([]);
   const [departmentOptions, setDepartmentOptions] = useState([]);
+  const [noteNumberOptions, setNoteNumberOptions] = useState([]);
   const [selectedStore, setSelectedStore] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const navigate = useNavigate();
@@ -52,6 +54,7 @@ const ListaAvarias = () => {
 
           const storeSet = new Set(avariasArray.map((avaria) => avaria.FILIAL));
           const departmentSet = new Set(avariasArray.map((avaria) => avaria.DEPARTAMENTO));
+          const noteNumberSet = new Set(avariasArray.map((avaria) => avaria['Nº NOTA']));
 
           const fetchedStoreOptions = Array.from(storeSet)
             .filter(Boolean)
@@ -59,9 +62,11 @@ const ListaAvarias = () => {
             .filter((store) => storeOrder.includes(parseInt(store, 10))); // Apenas mostrar as lojas na ordem desejada
 
           const fetchedDepartmentOptions = Array.from(departmentSet).filter(Boolean);
+          const fetchedNoteNumberOptions = Array.from(noteNumberSet).filter(Boolean);
 
           setStoreOptions(fetchedStoreOptions);
           setDepartmentOptions(fetchedDepartmentOptions);
+          setNoteNumberOptions(fetchedNoteNumberOptions);
           setAvarias(avariasArray);
         }
       } catch (error) {
@@ -97,6 +102,7 @@ const ListaAvarias = () => {
   const filteredItems = avarias
     .filter((avaria) => (selectedStore !== '' ? String(avaria.FILIAL) === selectedStore : true)
       && (selectedDepartment !== '' ? avaria.DEPARTAMENTO === selectedDepartment : true)
+      && (noteNumberFilter !== '' ? String(avaria['Nº NOTA']).toLowerCase().includes(noteNumberFilter.toLowerCase()) : true) // Corrigido para garantir que é uma string
       && Object.values(avaria).some((value) => String(value).toLowerCase().includes(searchTerm.toLowerCase())))
     .slice(indexOfFirstItem, indexOfLastItem);
 
@@ -123,6 +129,11 @@ const ListaAvarias = () => {
     setCurrentPage(1);
   };
 
+  const handleNoteNumberChange = (e) => {
+    setNoteNumberFilter(e.target.value);
+    setCurrentPage(1);
+  };
+
   return (
     <div className="containerLista">
       <div className="form1">
@@ -145,7 +156,7 @@ const ListaAvarias = () => {
               value={selectedStore}
               onChange={handleStoreChange}
             >
-              <option value="">Todas as Filiais</option>
+              <option value="">Todas Lojas</option>
               {storeOptions.map((store) => (
                 <option key={store} value={String(store)}>{store}</option>
               ))}
@@ -157,12 +168,21 @@ const ListaAvarias = () => {
               value={selectedDepartment}
               onChange={handleDepartmentChange}
             >
-              <option value="">Todos os Departamentos</option>
+              <option value="">Todos Departamentos</option>
               {departmentOptions.map((department) => (
                 <option key={department} value={department}>{department}</option>
               ))}
             </select>
           )}
+          <div className="note-number-filter">
+            <input
+              type="text"
+              className="note-number-input"
+              placeholder="Filtrar por Nº NOTA"
+              value={noteNumberFilter}
+              onChange={handleNoteNumberChange}
+            />
+          </div>
         </div>
 
         <div className="lista-avarias">

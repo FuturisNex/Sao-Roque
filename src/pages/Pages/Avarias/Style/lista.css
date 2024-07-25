@@ -34,6 +34,7 @@
 }
 
 .store-select,
+.note-number-input,
 .department-select {
   padding: 12px;
   border: 1px solid #ccc;
