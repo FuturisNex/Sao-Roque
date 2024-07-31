@@ -36,7 +36,7 @@ const EditarAvaria = () => {
   useEffect(() => {
     const fetchAvaria = async () => {
       try {
-        const avariaRef = database.ref(`BancoDadosAvarias/${id}`);
+        const avariaRef = database.ref(`NotasAvarias/${id}`);
         const snapshot = await avariaRef.once('value');
         if (snapshot.exists()) {
           const avariaData = snapshot.val();
@@ -67,42 +67,25 @@ const EditarAvaria = () => {
     setShowModal(true);
   };
 
-  const confirmSave = async () => {
-    try {
-      const dadosParaEnviar = {
-        ...avaria,
-        SEQ: id,
-      };
-
-      await database.ref(`BancoDadosAvarias/${id}`).update(dadosParaEnviar);
-      // eslint-disable-next-line no-use-before-define
-      await atualizarPlanilhaGoogle(dadosParaEnviar);
-      navigate('/avarias/avarias-lista');
-    } catch (error) {
-      console.error('Erro ao salvar dados:', error);
-    } finally {
-      setShowModal(false);
-    }
-  };
-
   const atualizarPlanilhaGoogle = async (dados) => {
     try {
       const response = await axios.post(
         'https://script.google.com/macros/s/AKfycbyRqcYz2d1f3Hjba5nZPWd3VNZ4gSnZ3uLn1JmX0M_H27zdfR_zbm3zdSarOji0XS_T/exec',
         {
-          seq: id,
-          dados: {
-            FILIAL: dados.FILIAL,
-            COMPRADOR: dados.COMPRADOR,
-            CODIGO: dados.CODIGO,
-            FORNECEDOR: dados.FORNECEDOR,
-            DEPARTAMENTO: dados.DEPARTAMENTO,
-            'Nº NOTA': dados['Nº NOTA'],
-            'VL NOTA': dados['VL NOTA'],
-            VOLUME: dados.VOLUME,
-            TIPO: dados.TIPO,
-            OBSERVACAO: dados.OBSERVACAO,
-          },
+          SEQ: id,
+          DataEnvio: dados.DataEnvio,
+          Responsavel: dados.Responsavel,
+          Comprador: dados.Comprador,
+          Filial: dados.Filial,
+          Cod: dados.Cod,
+          Fornecedor: dados.Fornecedor,
+          Departamento: dados.Departamento,
+          Tipo: dados.Tipo,
+          Volume: dados.Volume,
+          Nota: dados.Nota,
+          Vlnota: dados.Vlnota,
+          Status: dados.Status,
+          Obs: dados.Obs,
         },
       );
 
@@ -113,6 +96,23 @@ const EditarAvaria = () => {
       }
     } catch (error) {
       console.error('Erro ao enviar dados para o Google Apps Script:', error);
+    }
+  };
+
+  const confirmSave = async () => {
+    try {
+      const dadosParaEnviar = {
+        ...avaria,
+        SEQ: id,
+      };
+
+      await database.ref(`NotasAvarias/${id}`).update(dadosParaEnviar);
+      await atualizarPlanilhaGoogle(dadosParaEnviar);
+      navigate('/avarias/avarias-lista');
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+    } finally {
+      setShowModal(false);
     }
   };
 
@@ -163,47 +163,48 @@ const EditarAvaria = () => {
                   name={key}
                   value={avaria[key] || ''}
                   onChange={handleChange}
-                  className="form-input"
+                  className="form__input"
                 />
               )}
             </label>
           </div>
         ))}
-        <button type="submit" className="save-button custom-button">Salvar</button>
+        <button type="submit" className="btn-salvar">Salvar</button>
+        <button type="button" onClick={() => navigate('/avarias/avarias-lista')} className="btn-cancelar">Cancelar</button>
       </form>
-      <Modal show={showModal} onHide={() => setShowModal(false)} centered size="lg">
+
+      <Modal show={showModal} onHide={() => setShowModal(false)} className="custom-modal">
         <Modal.Header closeButton>
-          <Modal.Title>Confirme as Alterações</Modal.Title>
+          <Modal.Title>Confirmar alterações</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          <h6>Você tem certeza que deseja salvar as seguintes alterações?</h6>
           {changedFields.length > 0 ? (
-            <Table striped bordered hover responsive>
+            <Table striped bordered hover>
               <thead>
                 <tr>
                   <th>Campo</th>
-                  <th>Valor Anterior</th>
+                  <th>Valor Original</th>
                   <th>Novo Valor</th>
                 </tr>
               </thead>
               <tbody>
-                {changedFields.map(({ field, oldValue, newValue }) => (
-                  <tr key={field}>
-                    <td>{field}</td>
-                    <td>{oldValue}</td>
-                    <td>{newValue}</td>
+                {changedFields.map((field, index) => (
+                  <tr key={index}>
+                    <td>{field.field}</td>
+                    <td>{field.oldValue}</td>
+                    <td>{field.newValue}</td>
                   </tr>
                 ))}
               </tbody>
             </Table>
           ) : (
-            <p>Não houve alterações nos dados.</p>
+            <p>Nenhuma alteração detectada.</p>
           )}
         </Modal.Body>
         <Modal.Footer>
-          <div className="button-group">
-            <Button variant="outline-secondary" size="lg" className="cancel-button" onClick={() => setShowModal(false)}>Cancelar</Button>
-            <Button variant="primary" size="lg" className="custom-button" onClick={confirmSave}>Confirmar</Button>
-          </div>
+          <Button variant="secondary" onClick={() => setShowModal(false)}>Cancelar</Button>
+          <Button variant="primary" onClick={confirmSave}>Confirmar</Button>
         </Modal.Footer>
       </Modal>
     </div>

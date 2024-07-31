@@ -256,9 +256,12 @@ const FormPage = () => {
         );
       }
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(error);
-      setErrorMessage(error.response ? error.response.data : 'Erro ao enviar formulário. Tente novamente mais tarde.');
+      if (error.response && error.response.status === 400) {
+        setErrorMessage(error.response.data);
+      } else {
+        setErrorMessage(error.response ? error.response.data : 'Erro ao enviar formulário. Tente novamente mais tarde.');
+      }
     } finally {
       setIsSubmitting(false);
     }
