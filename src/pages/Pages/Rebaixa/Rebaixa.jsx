@@ -28,7 +28,7 @@ const Rebaixa = () => {
 
   const handleBuyerClick = (buyer) => {
     const url = {
-      REBAIXA: 'https://docs.google.com/spreadsheets/d/1fpWoqKzuYC5_8G0RNtvjdpuUReQJnYjLB4RbGQl-ClY/edit?usp=sharing',
+      REBAIXA: 'https://rebaixa-saoroque.vercel.app/lista',
       ENVIAR: 'https://sistema-comprador.vercel.app/',
     }[buyer];
 
